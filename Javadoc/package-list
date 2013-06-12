@@ -1,5 +1,8 @@
 mobi.pdf417
 mobi.pdf417.activity
 net.photopay.base
+net.photopay.hardware.camera.focus
+net.photopay.hardware.orientation
 net.photopay.ocr
+net.photopay.progressbar
 net.photopay.view.viewfinder
