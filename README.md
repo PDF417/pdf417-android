@@ -55,7 +55,7 @@ Simply place the project into your workspace and reference it from your applicat
 		Intent intent = new Intent(this, ScanActivity.class);
 		
 		/** In order for library to work, a valid license key needs to be provided.
-		  * Library is free for non-commercial and personal use.
+		  * Library is free for non-commercial and personal use in which case license is not needed.
 		  * For pricing and licensing options, see http://pdf417.mobi
 		  */
 		intent.putExtra(BaseCameraActivity.EXTRAS_LICENSE_KEY, "4b2b088801ead5183cef6d5038b45003494ce5ca36a1e19fd145557926109e0865a1e794438f6c12a0");
