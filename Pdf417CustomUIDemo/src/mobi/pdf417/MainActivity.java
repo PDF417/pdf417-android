@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
             case R.id.btnDefaultUINoLogo: {
                 // create intent for scan activity
                 Intent intent = new Intent(this, ScanActivity.class);
-                // add license that allows removing of dialog in default UI
+                // add license that allows removing of logo in default UI
                 intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "1c61089106f282473fbe6a5238ec585f8ca0c29512b2dea3b7c17b8030c9813dc965ca8e70c8557347177515349e6e");
                 // create settings object
                 Pdf417MobiSettings sett = new Pdf417MobiSettings();
@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
             case R.id.btnCustomUI: {
                 // create intent for custom scan activity
                 Intent intent = new Intent(this, CustomScanActivity.class);
-                // add license that allows removing of dialog in default UI
+                // add license that allows creating custom camera overlay
                 intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "1c61089106f282473fbe6a5238ec585f8ca0c29512b2dea3b7c17b8030c9813dc965ca8e70c8557347177515349e6e");
                 // create settings object
                 Pdf417MobiSettings sett = new Pdf417MobiSettings();

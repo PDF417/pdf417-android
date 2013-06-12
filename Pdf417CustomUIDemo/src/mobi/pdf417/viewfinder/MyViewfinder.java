@@ -5,6 +5,7 @@ import net.photopay.geometry.Point;
 import net.photopay.hardware.orientation.Orientation;
 import net.photopay.view.viewfinder.AbstractBarcodeViewFinder;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -52,6 +53,7 @@ public class MyViewfinder extends AbstractBarcodeViewFinder {
 
     @Override
     public void setOrientation(Orientation orientation) {
+        Log.i("MVF", "Set orientation to: " + orientation);
         myLayout_.setDirection(orientation.intValue());
     }
 

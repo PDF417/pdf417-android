@@ -6,7 +6,6 @@ import net.photopay.base.BaseBarcodeActivity;
 import net.photopay.hardware.orientation.Orientation;
 import net.photopay.view.viewfinder.AbstractBarcodeViewFinder;
 import net.photopay.view.viewfinder.IViewFinder;
-import android.util.Log;
 import android.view.LayoutInflater;
 
 public class CustomScanActivity extends BaseBarcodeActivity {
@@ -32,6 +31,7 @@ public class CustomScanActivity extends BaseBarcodeActivity {
     protected void onSetupViewFinder(IViewFinder viewfinder) {
         // just set the viewfinder into its default position
         viewfinder.setDefaultTarget();
+        viewfinder.setOrientation(Orientation.ORIENTATION_PORTRAIT);
     }
 
 }

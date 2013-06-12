@@ -32,10 +32,13 @@ public class RotatedRelativeLayout extends RelativeLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (isVertical(direction)) {
             super.onMeasure(heightMeasureSpec, widthMeasureSpec);
-            Log.i(TAG, "Measured dimension: " + getMeasuredHeight() + "x" + getMeasuredWidth());
+            Log.i(TAG, "[vertical] Measured dimension: " + getMeasuredHeight() + "x"
+                + getMeasuredWidth());
             setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+            Log.i(TAG, "[horizontal] Measured dimension: " + getMeasuredWidth() + "x"
+                + getMeasuredHeight());
             setMeasuredDimension(getMeasuredWidth(), getMeasuredHeight());
         }
     }
@@ -43,7 +46,8 @@ public class RotatedRelativeLayout extends RelativeLayout {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        Log.i(TAG, "Bounds: l: " + l + ", t: " + t + ", r: " + r + ", b: " + b);
+        Log.i(TAG, "Changed: " + changed + ", Bounds: l: " + l + ", t: " + t + ", r: " + r
+            + ", b: " + b);
     }
 
     public int getDirection() {
@@ -52,7 +56,8 @@ public class RotatedRelativeLayout extends RelativeLayout {
 
     public void setDirection(int direction) {
         this.direction = direction;
-        requestLayout();
+        Log.i(TAG, "Set direction: " + this.direction);
+        invalidate();
     }
 
     @Override
@@ -97,6 +102,5 @@ public class RotatedRelativeLayout extends RelativeLayout {
 
         super.dispatchDraw(canvas);
         canvas.restore();
-
     }
 }
