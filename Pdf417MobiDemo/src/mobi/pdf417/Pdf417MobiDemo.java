@@ -36,8 +36,6 @@ public class Pdf417MobiDemo extends Activity {
         Intent intent = new Intent(this, Pdf417ScanActivity.class);
         // add a resource id for sound that will be played on successful scan (optional)
         intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
-        // add license key (required)
-//        intent.putExtra(BaseCameraActivity.EXTRAS_LICENSE_KEY, "4b2b088801ead5183cef6d5038b45003494ce5ca36a1e19fd145557926109e0865a1e794438f6c12a0");
         /**
          * You can use Pdf417MobiSettings object to tweak additional scanning parameters.
          * This is entirely optional. If you don't send this object via intent, default

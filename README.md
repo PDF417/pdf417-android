@@ -13,45 +13,45 @@ The package contains two Android projects:
 
 1. Go to https://github.com/PDF417/android and copy GitHub code URL as shown on picture:
 
-	![Copy GitHub URL](/img/01-get-github-url.png)
+	![Copy GitHub URL](img/01-get-github-url.png)
 
 2. Paste this URL to Eclipse Git Repository view:
 
-	![Paste git URL to Eclipse](/img/02-paste-github-url.png)
+	![Paste git URL to Eclipse](img/02-paste-github-url.png)
 
 3. Pass through "Clone Git Repository" by clicking Next, Next and Finish:
 
-	![Clone Git Repo step 1](/img/03-github-step1.png)
-	![Clone Git Repo step 2](/img/04-github-step2.png)
-	![Clone Git Repo step 3](/img/05-github-step3.png)
+	![Clone Git Repo step 1](img/03-github-step1.png)
+	![Clone Git Repo step 2](img/04-github-step2.png)
+	![Clone Git Repo step 3](img/05-github-step3.png)
 	
    Cloned project shows as on this picture:
 
-	![Project cloned](/img/06-project-cloned.png)
+	![Project cloned](img/06-project-cloned.png)
 
 4. Right click with your mouse on Package Explorer in Eclipse and then on "Import...":
 
-	![Importing](/img/07-importing-project.png)
+	![Importing](img/07-importing-project.png)
 
 5. Select "Android -> Existing Android Code Into Workspace" and then "Next":
 
-	![Import step 1](/img/08-importing-step1.png)
+	![Import step 1](img/08-importing-step1.png)
 
 6. Click on "Browse..." and then search for "android" folder in your Eclipse workspace. Click OK.
 
-	![Import step 2](/img/09-importing-step2.png)
+	![Import step 2](img/09-importing-step2.png)
 
 7. Just click on Finish to import the three projects:
 
-	![Import step 3](/img/10-importing-step3.png)
+	![Import step 3](img/10-importing-step3.png)
 
 8. Three projects should appear:
 
-	![Project imported](/img/11-import-finished.png)
+	![Project imported](img/11-import-finished.png)
 
 9. Plugin your Android phone to USB, right click on "Pdf417MobiDemo", then "Run As" and "Android Application" and voila, the app is built, installed and run on your phone:
 
-	![Run PDF417 demo](/img/12-install.png)
+	![Run PDF417 demo](img/12-install.png)
 
 ## How to integrate Pdf417MobiSdk into your project
 
@@ -68,11 +68,11 @@ Simply place the project into your workspace and reference it from your applicat
     	<uses-feature android:name="android.hardware.camera.autofocus" />
     	<uses-feature android:glEsVersion="0x00020000" />
 	
-	Also, add ScanActivity entry:
+	Also, add Pdf417ScanActivity entry:
 	
-		<activity android:name="mobi.pdf417.activity.ScanActivity" android:label="@string/app_name" android:screenOrientation="portrait">
+		<activity android:name="mobi.pdf417.activity.Pdf417ScanActivity" android:label="@string/app_name" android:screenOrientation="portrait">
 			<intent-filter>
-				<action android:name="mobi.pdf417.activity.ScanActivity" />
+				<action android:name="mobi.pdf417.activity.Pdf417ScanActivity" />
 				<category android:name="android.intent.category.DEFAULT" />			
 			</intent-filter>
 		</activity>
@@ -93,31 +93,21 @@ Simply place the project into your workspace and reference it from your applicat
 
 		-dontwarn android.support.v4.**
  
-4. You can start scanning process by starting `ScanActivity` activity with Intent initialized in the following way:
+4. You can start scanning process by starting `Pdf417ScanActivity` activity with Intent initialized in the following way:
     
 		// Intent for ScanActivity
-		Intent intent = new Intent(this, ScanActivity.class);
-		
-		/** In order for library to work, a valid license key needs to be provided.
-		  * Library is free for non-commercial and personal use in which case license is not needed.
-		  * For pricing and licensing options, see http://pdf417.mobi
-		  */
-		intent.putExtra(BaseCameraActivity.EXTRAS_LICENSE_KEY, "4b2b088801ead5183cef6d5038b45003494ce5ca36a1e19fd145557926109e0865a1e794438f6c12a0");
+		Intent intent = new Intent(this, Pdf417ScanActivity.class);
 		
         /** If you want sound to be played after the scanning process ends, 
          *  put here the resource ID of your sound file. 
          */
-        intent.putExtra(ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
 				
 		// Starting Activity
 		startActivityForResult(intent, MY_REQUEST_CODE);
 		
 
-	`ScanActivity` will return the result to your activity via intent passed to your `onActivityResult` method after user click `Use` button in dialog shown after successful scan.
-
-	License key is bound to package name of application which integrates the library. Demo license key works for package name `mobi.pdf417`. To integrate library properly into your application, obtain a license from [PDF417.mobi web]. 
-###NOTE
-    - [PDF417.mobi web] is currently under construction. To obtain license key, contact us at <pdf417@photopay.net>. 
+	`Pdf417ScanActivity` will return the result to your activity via intent passed to your `onActivityResult` method after user click `Use` button in dialog shown after successful scan. 
 	
 5. Obtaining the scanned data is done in the `onActivityResult` method. If the recognition returned some results, result code returned will be `BaseBarcodeActivity.RESULT_OK`. Optionally, if user tapped the `Copy` button in dialog, result code returned will be `BaseBarcodeActivity.RESULT_OK_DATA_COPIED` to indicate that barcode data is copied into clipboard. For example, your implementation of this method could look like this:
 
@@ -147,7 +137,11 @@ Simply place the project into your workspace and reference it from your applicat
 
 - Modifying other resources.
 
-	You can also modify other resources, such as colors and camera overlay layouts. To change a color, simply open res/valies/colors.xml and change the values of colors. Changing camera overlay layout is not recommended in this version as it might break the library. We have plans to better the support for creating totaly customized camera overlays for paying customers.
+	You can also modify other resources, such as colors and camera overlay layouts. To change a color, simply open res/values/colors.xml and change the values of colors. Changing camera overlay layout is explained in demo application called `Pdf417CustomUIDemo`. In order to be able to change camera overlay, you must buy a license.
+	
+	License key is bound to package name of application which integrates the library. Demo license key works for package name `mobi.pdf417`. To integrate library properly into your application, obtain a license from [PDF417.mobi web]. 
+###NOTE
+    - [PDF417.mobi web] is currently under construction. To obtain license key, contact us at <pdf417@photopay.net>.
 
 ## Pdf417MobiDemo application
 
