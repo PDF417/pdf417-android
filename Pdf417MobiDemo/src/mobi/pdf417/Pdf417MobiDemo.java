@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class MainActivity extends Activity {
+public class Pdf417MobiDemo extends Activity {
     
     public static final String TAG = "MainActivity";
     

@@ -24,7 +24,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="mobi.pdf417.MainActivity"
+            android:name="mobi.pdf417.Pdf417MobiDemo"
             android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>

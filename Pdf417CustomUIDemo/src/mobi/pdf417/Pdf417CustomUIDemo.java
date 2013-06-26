@@ -11,7 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends Activity {
+public class Pdf417CustomUIDemo extends Activity {
     
     public static final String TAG = "MainActivity";
     
