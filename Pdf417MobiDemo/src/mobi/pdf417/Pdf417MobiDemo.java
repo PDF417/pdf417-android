@@ -3,7 +3,7 @@ package mobi.pdf417;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import mobi.pdf417.activity.ScanActivity;
+import mobi.pdf417.activity.Pdf417ScanActivity;
 import net.photopay.base.BaseBarcodeActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -33,9 +33,9 @@ public class Pdf417MobiDemo extends Activity {
     public void btnScan_click(View v) {
         Log.i(TAG, "scan will be performed");
         // create intent for scan activity
-        Intent intent = new Intent(this, ScanActivity.class);
+        Intent intent = new Intent(this, Pdf417ScanActivity.class);
         // add a resource id for sound that will be played on successful scan (optional)
-        intent.putExtra(ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
         // add license key (required)
 //        intent.putExtra(BaseCameraActivity.EXTRAS_LICENSE_KEY, "4b2b088801ead5183cef6d5038b45003494ce5ca36a1e19fd145557926109e0865a1e794438f6c12a0");
         /**

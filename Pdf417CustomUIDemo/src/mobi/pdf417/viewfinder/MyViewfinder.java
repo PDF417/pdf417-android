@@ -59,15 +59,17 @@ public class MyViewfinder extends AbstractBarcodeViewFinder {
 
     @Override
     public void setPointSet(float[] points, boolean biColorPointSet) {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void displayAutofocusFailed() {
-        // TODO Auto-generated method stub
         
     }
 
+    @Override
+    public boolean isAnimationInProgress() {
+        return false;
+    }
 
 }

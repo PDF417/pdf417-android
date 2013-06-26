@@ -34,10 +34,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="mobi.pdf417.activity.ScanActivity"
+            android:name="mobi.pdf417.activity.Pdf417ScanActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
-                <action android:name="mobi.pdf417.activity.ScanActivity" />
+                <action android:name="mobi.pdf417.activity.Pdf417ScanActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

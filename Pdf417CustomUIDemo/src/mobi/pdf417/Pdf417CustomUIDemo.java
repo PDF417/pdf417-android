@@ -3,7 +3,7 @@ package mobi.pdf417;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import mobi.pdf417.activity.ScanActivity;
+import mobi.pdf417.activity.Pdf417ScanActivity;
 import net.photopay.base.BaseBarcodeActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -29,7 +29,7 @@ public class Pdf417CustomUIDemo extends Activity {
         switch(id) {
             case R.id.btnDefaultUINoDialog: {
                 // create intent for scan activity
-                Intent intent = new Intent(this, ScanActivity.class);
+                Intent intent = new Intent(this, Pdf417ScanActivity.class);
                 // add license that allows removing of dialog in default UI
                 intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "1c61089106f282473fbe6a5238ec585f8ca0c29512b2dea3b7c17b8030c9813dc965ca8e70c8557347177515349e6e");
                 // create settings object
@@ -49,7 +49,7 @@ public class Pdf417CustomUIDemo extends Activity {
             }
             case R.id.btnDefaultUINoLogo: {
                 // create intent for scan activity
-                Intent intent = new Intent(this, ScanActivity.class);
+                Intent intent = new Intent(this, Pdf417ScanActivity.class);
                 // add license that allows removing of logo in default UI
                 intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "1c61089106f282473fbe6a5238ec585f8ca0c29512b2dea3b7c17b8030c9813dc965ca8e70c8557347177515349e6e");
                 // create settings object
