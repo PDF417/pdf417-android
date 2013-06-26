@@ -9,12 +9,56 @@ The package contains two Android projects:
  
  The project contains one Activity called ScanActivity that is responsible for camera control and barcode recognition
 
+## Quick start to get and run Android demo in Eclipse
+
+1. Go to https://github.com/PDF417/android and copy GitHub code URL as shown on picture:
+
+	![Copy GitHub URL](/img/01-get-github-url.png)
+
+2. Paste this URL to Eclipse Git Repository view:
+
+	![Paste git URL to Eclipse](/img/02-paste-github-url.png)
+
+3. Pass through "Clone Git Repository" by clicking Next, Next and Finish:
+
+	![Clone Git Repo step 1](/img/03-github-step1.png)
+	![Clone Git Repo step 2](/img/03-github-step2.png)
+	![Clone Git Repo step 3](/img/03-github-step3.png)
+	
+   Cloned project shows as on this picture:
+
+	![Project cloned](/img/06-project-cloned.png)
+
+4. Right click with your mouse on Package Explorer in Eclipse and then on "Import...":
+
+	![Importing](/img/07-importing-project.png)
+
+5.Select "Android -> Existing Android Code Into Workspace" and then "Next":
+
+	![Import step 1](/img/08-importing-step1.png)
+
+6. Click on "Browse..." and then search for "android" folder in your Eclipse workspace. Click OK.
+
+	![Import step 2](/img/09-importing-step2.png)
+
+7.Just click on Finish to import the three projects:
+
+	![Import step 3](/img/10-importing-step3.png)
+
+8.Three projects should appear:
+
+	![Project imported](/img/11-import-finished.png)
+
+9. Plugin your Android phone to USB, right click on "Pdf417MobiDemo", then "Run As" and "Android Application" and voila, the app is built, installed and run on your phone:
+
+	![Run PDF417 demo](/img/12-install.png)
+
 ## How to integrate Pdf417MobiSdk into your project
 
 1. Pdf417MobiSdk is an Android Library project with classes, resources and everything required to function properly. 
 Simply place the project into your workspace and reference it from your application project. 
 
-	![Referencing Pdf417MobiSdk](libraryref.png)
+	![Referencing Pdf417MobiSdk](img/libraryref.png)
  	
 2. Edit your `AndroidManifest.xml`. You should include camera, camera autofocus and OpenGL 2.0 features:
 
