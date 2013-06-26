@@ -22,8 +22,8 @@ The package contains two Android projects:
 3. Pass through "Clone Git Repository" by clicking Next, Next and Finish:
 
 	![Clone Git Repo step 1](/img/03-github-step1.png)
-	![Clone Git Repo step 2](/img/03-github-step2.png)
-	![Clone Git Repo step 3](/img/03-github-step3.png)
+	![Clone Git Repo step 2](/img/04-github-step2.png)
+	![Clone Git Repo step 3](/img/05-github-step3.png)
 	
    Cloned project shows as on this picture:
 
@@ -33,7 +33,7 @@ The package contains two Android projects:
 
 	![Importing](/img/07-importing-project.png)
 
-5.Select "Android -> Existing Android Code Into Workspace" and then "Next":
+5. Select "Android -> Existing Android Code Into Workspace" and then "Next":
 
 	![Import step 1](/img/08-importing-step1.png)
 
@@ -41,11 +41,11 @@ The package contains two Android projects:
 
 	![Import step 2](/img/09-importing-step2.png)
 
-7.Just click on Finish to import the three projects:
+7. Just click on Finish to import the three projects:
 
 	![Import step 3](/img/10-importing-step3.png)
 
-8.Three projects should appear:
+8. Three projects should appear:
 
 	![Project imported](/img/11-import-finished.png)
 
