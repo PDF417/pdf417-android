@@ -140,8 +140,6 @@ Simply place the project into your workspace and reference it from your applicat
 	You can also modify other resources, such as colors and camera overlay layouts. To change a color, simply open res/values/colors.xml and change the values of colors. Changing camera overlay layout is explained in demo application called `Pdf417CustomUIDemo`. In order to be able to change camera overlay, you must buy a license.
 	
 	License key is bound to package name of application which integrates the library. Demo license key works for package name `mobi.pdf417`. To integrate library properly into your application, obtain a license from [PDF417.mobi web]. 
-###NOTE
-    - [PDF417.mobi web] is currently under construction. To obtain license key, contact us at <pdf417@photopay.net>.
 
 ## Pdf417MobiDemo application
 
