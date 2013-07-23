@@ -77,7 +77,7 @@ Simply place the project into your workspace and reference it from your applicat
 			</intent-filter>
 		</activity>
 		
-3. If you are using ProGuard, add the following line to your `proguard-project.txt`
+3. If you are using ProGuard, add the following lines to your `proguard-project.txt`
  
  		-keep class net.photopay.** { *; }
 
@@ -90,6 +90,15 @@ Simply place the project into your workspace and reference it from your applicat
         -keepclassmembers class mobi.pdf417.** { 
             *; 
         }
+        
+        -keepattributes InnerClasses
+
+        -keep class **.R
+        -keep class **.R$* {
+            <fields>;
+        }
+        
+        -dontwarn android.hardware.**
 
 		-dontwarn android.support.v4.**
  
