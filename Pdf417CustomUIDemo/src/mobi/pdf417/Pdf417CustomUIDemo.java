@@ -38,9 +38,7 @@ public class Pdf417CustomUIDemo extends Activity {
                 sett.setPdf417Enabled(true);
                 // set this to true to enable QR code scanning
                 sett.setQrCodeEnabled(true); 
-                // if license permits this, set this to true to prevent showing dialog after
-                // successful scan
-                // if license forbids this, this option has no effect
+                // set this to true to prevent showing dialog after successful scan
                 sett.setDontShowDialog(true);
                 // put settings as intent extra
                 intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);

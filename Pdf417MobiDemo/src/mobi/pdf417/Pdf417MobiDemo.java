@@ -47,10 +47,8 @@ public class Pdf417MobiDemo extends Activity {
         sett.setPdf417Enabled(true);
         // set this to true to enable QR code scanning
         sett.setQrCodeEnabled(true); 
-        // if license permits this, set this to true to prevent showing dialog after
-        // successful scan
-        // if license forbids this, this option has no effect
-        sett.setDontShowDialog(true);
+        // set this to true to prevent showing dialog after successful scan
+        sett.setDontShowDialog(false);
         // if license permits this, remove Pdf417.mobi logo overlay on scan activity
         // if license forbids this, this option has no effect
         sett.setRemoveOverlayEnabled(true);
