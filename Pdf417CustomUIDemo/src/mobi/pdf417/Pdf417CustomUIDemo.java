@@ -3,6 +3,7 @@ package mobi.pdf417;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import mobi.pdf417.Pdf417MobiSettings;
 import mobi.pdf417.activity.Pdf417ScanActivity;
 import net.photopay.base.BaseBarcodeActivity;
 import android.app.Activity;
@@ -14,6 +15,8 @@ import android.view.View;
 public class Pdf417CustomUIDemo extends Activity {
     
     public static final String TAG = "MainActivity";
+    
+    public static final String LICENSE = "1c61089106f282473fbe6a5238ec585f8ca0c29512b2dea3b7c17b8030c9813dc965ca8e70c8557347177515349e6e";
     
     private static final int MY_REQUEST_CODE = 1337;
 
@@ -31,7 +34,7 @@ public class Pdf417CustomUIDemo extends Activity {
                 // create intent for scan activity
                 Intent intent = new Intent(this, Pdf417ScanActivity.class);
                 // add license that allows removing of dialog in default UI
-                intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "1c61089106f282473fbe6a5238ec585f8ca0c29512b2dea3b7c17b8030c9813dc965ca8e70c8557347177515349e6e");
+                intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
                 // create settings object
                 Pdf417MobiSettings sett = new Pdf417MobiSettings();
                 // set this to true to enable PDF417 scanning
@@ -49,7 +52,7 @@ public class Pdf417CustomUIDemo extends Activity {
                 // create intent for scan activity
                 Intent intent = new Intent(this, Pdf417ScanActivity.class);
                 // add license that allows removing of logo in default UI
-                intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "1c61089106f282473fbe6a5238ec585f8ca0c29512b2dea3b7c17b8030c9813dc965ca8e70c8557347177515349e6e");
+                intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
                 // create settings object
                 Pdf417MobiSettings sett = new Pdf417MobiSettings();
                 // set this to true to enable PDF417 scanning
@@ -68,7 +71,7 @@ public class Pdf417CustomUIDemo extends Activity {
                 // create intent for custom scan activity
                 Intent intent = new Intent(this, CustomScanActivity.class);
                 // add license that allows creating custom camera overlay
-                intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "1c61089106f282473fbe6a5238ec585f8ca0c29512b2dea3b7c17b8030c9813dc965ca8e70c8557347177515349e6e");
+                intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
                 // create settings object
                 Pdf417MobiSettings sett = new Pdf417MobiSettings();
                 // set this to true to enable PDF417 scanning

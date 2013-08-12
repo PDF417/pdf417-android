@@ -1,5 +1,6 @@
 package mobi.pdf417;
 
+import mobi.pdf417.R;
 import mobi.pdf417.viewfinder.MyViewfinder;
 import mobi.pdf417.viewfinder.RotatedRelativeLayout;
 import net.photopay.base.BaseBarcodeActivity;
