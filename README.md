@@ -175,6 +175,7 @@ Simply place the project into your workspace and reference it from your applicat
 			}
 		}
 
+    Additionaly, if you don't need the whole per element information, you can just use `getAllData` method of `BarcodeDetailedData` class to obtain byte array of the whole barcode. Note that you need to be able to extract useful information from such a byte array on your own.
 
 
 ## Translation and localization
