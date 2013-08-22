@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import mobi.pdf417.activity.Pdf417ScanActivity;
+import net.photopay.barcode.BarcodeDetailedData;
 import net.photopay.base.BaseBarcodeActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -85,7 +86,9 @@ public class Pdf417MobiDemo extends Activity {
             String barcodeType = data.getStringExtra(BaseBarcodeActivity.EXTRAS_BARCODE_TYPE);
             // read the data contained in barcode
             String barcodeData = data.getStringExtra(BaseBarcodeActivity.EXTRAS_RESULT);
-
+            // read raw barcode data
+            BarcodeDetailedData rawData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RAW_RESULT);
+            
             // if barcode contains URL, create intent for browser
             // else, contain intent for message
             boolean barcodeDataIsUrl = false;
@@ -107,7 +110,12 @@ public class Pdf417MobiDemo extends Activity {
                 // ask user what to do with data
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, barcodeType + ": " + barcodeData);
+				StringBuilder sb = new StringBuilder(barcodeType);
+				sb.append(": ");
+				sb.append(barcodeData);
+				sb.append("\n\n\n raw data:\n\n");
+				sb.append(rawData.toString());
+                intent.putExtra(Intent.EXTRA_TEXT, sb.toString());
                 startActivity(Intent.createChooser(intent, getString(R.string.UseWith)));
             }
         }

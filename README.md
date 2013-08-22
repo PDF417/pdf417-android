@@ -138,6 +138,45 @@ Simply place the project into your workspace and reference it from your applicat
             }
 		}
 
+6. In order to obtain raw barcode data, you need to obtain `BarcodeDetailedData` structure from `BaseBarcodeActivity.EXTRAS_RAW_RESULT` extra. This structure will contain list of barcode elements. Each barcode element contains byte array with its raw data and type of that raw data. Type of raw data can be either `ElementType.TEXT_DATA` or `ElementType.BYTE_DATA`. `ElementType.TEXT_DATA` defines that byte array can be interpreted as string, whilst `ElementType.BYTE_DATA` defines that byte arrray is probably not string. However, you can always convert all data to string and you will then get the same string that you can obtain from `BaseBarcodeActivity.EXTRAS_RESULT` extra. For example, you can use that structure like this:
+
+		@Override
+		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+			super.onActivityResult(requestCode, resultCode, data);
+			
+            if(requestCode==MY_REQUEST_CODE && resultCode==BaseBarcodeActivity.RESULT_OK) {
+                // read raw barcode data
+                BarcodeDetailedData rawData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RAW_RESULT);
+                            // get list of barcode elements
+            	List<BarcodeElement> elems = rawData.getElements();
+	            // log the amount of elements
+    	        Log.i(TAG, "Number of barcode elements is " + elems.size());
+        	    // now iterate over elements
+            	for(int i=0; i<elems.size(); ++i) {
+            		BarcodeElement elem = elems.get(i);
+            		// get the barcode element type
+            		ElementType elemType = elem.getElementType();
+            		// get raw bytes of the element
+            		byte[] rawBytes = elem.getElementBytes();
+            		
+            		// do with that data whatever you want
+            		// for example print it
+            		Log.i(TAG, "Element #" + i + " is of type: " + elemType.name());
+            		StringBuilder sb = new StringBuilder("{");
+            		for(int j=0; j<rawBytes.length; ++j) {
+            			sb.append((int)rawBytes[j] & 0x0FF);
+            			if(j!=rawBytes.length-1) {
+            				sb.append(", ");
+            			}
+            		}
+            		sb.append("}");
+            		Log.i(TAG, sb.toString());
+            	}
+			}
+		}
+
+
+
 ## Translation and localization
 
 - Adding new language

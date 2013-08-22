@@ -1,5 +1,9 @@
 # Release notes
 
+## 1.1
+- support for reading raw barcode data
+- support for reading damaged and non-standard PDF417 barcodes
+
 ## 1.0.1
 - support for case insensitive package matching when checking for license key
 - added release notes

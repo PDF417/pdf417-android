@@ -2,14 +2,19 @@ package mobi.pdf417;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import mobi.pdf417.Pdf417MobiSettings;
 import mobi.pdf417.activity.Pdf417ScanActivity;
+import net.photopay.barcode.BarcodeDetailedData;
+import net.photopay.barcode.BarcodeElement;
+import net.photopay.barcode.ElementType;
 import net.photopay.base.BaseBarcodeActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class Pdf417CustomUIDemo extends Activity {
@@ -97,6 +102,51 @@ public class Pdf417CustomUIDemo extends Activity {
             String barcodeType = data.getStringExtra(BaseBarcodeActivity.EXTRAS_BARCODE_TYPE);
             // read the data contained in barcode
             String barcodeData = data.getStringExtra(BaseBarcodeActivity.EXTRAS_RESULT);
+            
+            // read raw barcode data
+            BarcodeDetailedData rawData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RAW_RESULT);
+            
+            // the following is the explanation on how to use raw data
+            /**
+             * BarcodeDetailedData is a structure that contains vector
+             * of barcode elements. Each barcode element contains byte
+             * array with raw data for this element and the type of 
+             * that byte array. The type can be either ElementType.TEXT_DATA
+             * or ElementType.BYTE_DATA.
+             * TEXT_DATA means that bytes in that element represent text
+             * and can be converted to string.
+             * BYTE_DATA meand that bytes in that element don't represent
+             * anything in particular and you should decide of to use them.
+             * 
+             * Of course, both BYTE_DATA and TEXT_DATA fields can be
+             * converted to string (this is actually done in library for
+             * string result obtained in barcodeData variable).
+             */
+            // get list of barcode elements
+            List<BarcodeElement> elems = rawData.getElements();
+            // log the amount of elements
+            Log.i(TAG, "Number of barcode elements is " + elems.size());
+            // now iterate over elements
+            for(int i=0; i<elems.size(); ++i) {
+            		BarcodeElement elem = elems.get(i);
+            		// get the barcode element type
+            		ElementType elemType = elem.getElementType();
+            		// get raw bytes of the element
+            		byte[] rawBytes = elem.getElementBytes();
+            		
+            		// do with that data whatever you want
+            		// for example print it
+            		Log.i(TAG, "Element #" + i + " is of type: " + elemType.name());
+            		StringBuilder sb = new StringBuilder("{");
+            		for(int j=0; j<rawBytes.length; ++j) {
+            			sb.append((int)rawBytes[j] & 0x0FF);
+            			if(j!=rawBytes.length-1) {
+            				sb.append(", ");
+            			}
+            		}
+            		sb.append("}");
+            		Log.i(TAG, sb.toString());
+            }
 
             // if barcode contains URL, create intent for browser
             // else, contain intent for message
