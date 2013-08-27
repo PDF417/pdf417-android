@@ -60,13 +60,12 @@ Simply place the project into your workspace and reference it from your applicat
 
 	![Referencing Pdf417MobiSdk](img/libraryref.png)
  	
-2. Edit your `AndroidManifest.xml`. You should include camera, camera autofocus and OpenGL 2.0 features:
+2. Edit your `AndroidManifest.xml`. You should include camera and camera autofocus features:
 
    		<uses-permission android:name="android.permission.CAMERA" />
 
    		<uses-feature android:name="android.hardware.camera" />
     	<uses-feature android:name="android.hardware.camera.autofocus" />
-    	<uses-feature android:glEsVersion="0x00020000" />
 	
 	Also, add Pdf417ScanActivity entry:
 	
