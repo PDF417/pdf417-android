@@ -1,5 +1,8 @@
 # Release notes
 
+## 1.2.0
+- support for micro PDF417 standard
+
 ## 1.1.0
 - support for reading raw barcode data
 - support for reading damaged and non-standard PDF417 barcodes
