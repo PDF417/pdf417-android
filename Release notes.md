@@ -1,5 +1,8 @@
 # Release notes
 
+## 1.2.1
+- fixed race condition in detection display
+
 ## 1.2.0
 - support for micro PDF417 standard
 
