@@ -6,10 +6,12 @@ import java.net.URL;
 import mobi.pdf417.activity.Pdf417ScanActivity;
 import net.photopay.barcode.BarcodeDetailedData;
 import net.photopay.base.BaseBarcodeActivity;
+import net.photopay.hardware.camera.CameraType;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -37,6 +39,10 @@ public class Pdf417MobiDemo extends Activity {
         Intent intent = new Intent(this, Pdf417ScanActivity.class);
         // add a resource id for sound that will be played on successful scan (optional)
         intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
+        // If you want to open front facing camera, uncomment the following line.
+        // Note that front facing cameras do not have autofocus support, so it will not
+        // be possible to scan denser and smaller codes.
+//        intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE);
         /**
          * You can use Pdf417MobiSettings object to tweak additional scanning parameters.
          * This is entirely optional. If you don't send this object via intent, default
