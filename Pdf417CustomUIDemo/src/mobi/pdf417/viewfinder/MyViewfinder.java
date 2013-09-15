@@ -4,13 +4,14 @@ import mobi.pdf417.R;
 import net.photopay.geometry.Point;
 import net.photopay.hardware.orientation.Orientation;
 import net.photopay.view.viewfinder.AbstractBarcodeViewFinder;
+import net.photopay.view.viewfinder.MessageType;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 
-public class MyViewfinder extends AbstractBarcodeViewFinder {
+public class MyViewfinder extends AbstractBarcodeViewFinder<MessageType> {
     
     private RotatedRelativeLayout myLayout_;
     private Activity myActivity_;

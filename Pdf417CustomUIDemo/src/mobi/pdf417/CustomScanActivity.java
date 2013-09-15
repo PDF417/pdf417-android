@@ -18,8 +18,8 @@ public class CustomScanActivity extends BaseBarcodeActivity {
     }
 
     @Override
-    protected AbstractBarcodeViewFinder onCreateBarcodeViewFinder() {
-        AbstractBarcodeViewFinder viewFinder = null;
+    protected AbstractBarcodeViewFinder<?> onCreateBarcodeViewFinder() {
+        AbstractBarcodeViewFinder<?> viewFinder = null;
         LayoutInflater inflater = getLayoutInflater();
 
         RotatedRelativeLayout cameraOverlay =
@@ -29,7 +29,7 @@ public class CustomScanActivity extends BaseBarcodeActivity {
     }
 
     @Override
-    protected void onSetupViewFinder(IViewFinder viewfinder) {
+    protected void onSetupViewFinder(IViewFinder<?> viewfinder) {
         // just set the viewfinder into its default position
         viewfinder.setDefaultTarget();
         viewfinder.setOrientation(Orientation.ORIENTATION_PORTRAIT);
