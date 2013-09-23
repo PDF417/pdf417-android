@@ -1,5 +1,9 @@
 # Release notes
 
+## 1.3
+- adding support for front facing cameras
+- fixed memory leaks
+
 ## 1.2.1
 - fixed race condition in detection display
 
