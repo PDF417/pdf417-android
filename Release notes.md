@@ -1,5 +1,10 @@
 # Release notes
 
+## 1.3.1
+- better and faster barcode detection
+- faster detection and decoding performance
+- additional bugfixes
+
 ## 1.3
 - adding support for front facing cameras
 - fixed memory leaks
