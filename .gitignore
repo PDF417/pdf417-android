@@ -21,3 +21,5 @@ local.properties
 
 gdb.setup
 gdbserver
+
+.DS_Store
