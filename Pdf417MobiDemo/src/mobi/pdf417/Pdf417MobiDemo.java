@@ -37,9 +37,10 @@ public class Pdf417MobiDemo extends Activity {
         Intent intent = new Intent(this, Pdf417ScanActivity.class);
         // add a resource id for sound that will be played on successful scan (optional)
         intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
-        // if you want to use front facing camera instead of back facing
-        // uncoment the following line
-//        intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE);
+        
+        // set the license key
+//        intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
+        
         // If you want to open front facing camera, uncomment the following line.
         // Note that front facing cameras do not have autofocus support, so it will not
         // be possible to scan denser and smaller codes.

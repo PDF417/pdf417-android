@@ -103,19 +103,43 @@ Simply place the project into your workspace and reference it from your applicat
  
 4. You can start scanning process by starting `Pdf417ScanActivity` activity with Intent initialized in the following way:
     
-		// Intent for ScanActivity
+		// Intent for Pdf417ScanActivity
 		Intent intent = new Intent(this, Pdf417ScanActivity.class);
-		
-        /** If you want sound to be played after the scanning process ends, 
-         *  put here the resource ID of your sound file. 
-         */
-        intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
 				
-		// Starting Activity
+		// Start Activity
 		startActivityForResult(intent, MY_REQUEST_CODE);
 		
-
 	`Pdf417ScanActivity` will return the result to your activity via intent passed to your `onActivityResult` method after user click `Use` button in dialog shown after successful scan. 
+	
+	You can use pdf417 SDK free of change and without license key for development and non-commercial projects. Once you obtain a commercial license key from [www.pdf417.mobi](www.pdf417.mobi), you can set it with `EXTRAS_LICENSE_KEY` intent extra like this:
+	
+		// set the license key
+		intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
+		
+	You can also set additional settings to Intent used for initializing the `Pdf417ScanActivity`:
+	
+	* If you want sound to be played after the scanning process ends, use `EXTRAS_BEEP_RESOURCE` to set the resource ID of the sound, like this
+	
+			intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
+			
+	* if you want to use front facing camera instead of back facing camera, you should set `EXTRA_CAMERA_TYPE` to `CAMERA_FRONTFACE`, like this:
+	
+			intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE)
+			
+	* You can use `Pdf417MobiSettings` object to tweak additional scanning parameters. This is entirely optional. If you don't send this object via intent, default scanning parameters will be used - this means both QR and PDF417 codes will be scanned and default camera overlay will be shown. For example, you could set settings as in following example:
+	
+			Pdf417MobiSettings sett = new Pdf417MobiSettings();
+			// set this to true to enable PDF417 scanning
+			sett.setPdf417Enabled(true);
+			// set this to true to enable QR code scanning
+			sett.setQrCodeEnabled(true); 
+			// set this to true to prevent showing dialog after successful scan
+			sett.setDontShowDialog(false);
+			// if license permits this, remove Pdf417.mobi logo overlay on scan activity
+			// if license forbids this, this option has no effect
+			sett.setRemoveOverlayEnabled(true);
+			// put settings as intent extra
+			intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
 	
 5. Obtaining the scanned data is done in the `onActivityResult` method. If the recognition returned some results, result code returned will be `BaseBarcodeActivity.RESULT_OK`. Optionally, if user tapped the `Copy` button in dialog, result code returned will be `BaseBarcodeActivity.RESULT_OK_DATA_COPIED` to indicate that barcode data is copied into clipboard. For example, your implementation of this method could look like this:
 
