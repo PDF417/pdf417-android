@@ -212,6 +212,16 @@ Simply place the project into your workspace and reference it from your applicat
 	You can also modify other resources, such as colors and camera overlay layouts. To change a color, simply open res/values/colors.xml and change the values of colors. Changing camera overlay layout is explained in demo application called `Pdf417CustomUIDemo`. In order to be able to change camera overlay, you must buy a license.
 	
 	License key is bound to package name of application which integrates the library. Demo license key works for package name `mobi.pdf417`. To integrate library properly into your application, obtain a license from [PDF417.mobi web]. 
+	
+## Troubleshooting
+
+In case of problems with using the SDK, you should do as follows:
+
+* enable logging to get the ability to see what is library doing. To enable logging, put this line in your application:
+
+		net.photopay.util.Log.setLogLevel(net.photopay.util.LogLevel.LOG_VERBOSE);
+After this line, library will display as much information about its work as possible. Make sure to remove this line in your production code as lots of log outputs may slow down the performance of library.
+* If you cannot solve problems by yourself, do not hesitate to contact us at <pdf417@photopay.net>. Make sure you include the logs when contacting us to minimize the time to find and correct a bug. Also, if having problems reading specific barcodes, please send us high resolution scans of those problematic barcodes.
 
 ## Pdf417MobiDemo application
 
