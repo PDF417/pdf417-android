@@ -43,16 +43,16 @@ public class Pdf417MobiDemo extends Activity {
 		// set EXTRAS_ALWAYS_USE_HIGH_RES to true if you want to always use highest 
 		// possible camera resolution (enabled by default for all devices that support
 		// at least 720p camera preview frame size)
-		// intent.putExtra(Pdf417ScanActivity.EXTRAS_ALWAYS_USE_HIGH_RES, true);
+//		intent.putExtra(Pdf417ScanActivity.EXTRAS_ALWAYS_USE_HIGH_RES, true);
         
 		// set the license key (for commercial versions only) - obtain your key at
 		// http://pdf417.mobi
-		// intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
+//		intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
         
 		// If you want to open front facing camera, uncomment the following line.
 		// Note that front facing cameras do not have autofocus support, so it will not
 		// be possible to scan denser and smaller codes.
-		// intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE);
+//		intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE);
         
 		// You can use Pdf417MobiSettings object to tweak additional scanning parameters.
 		// This is entirely optional. If you don't send this object via intent, default
@@ -72,7 +72,7 @@ public class Pdf417MobiDemo extends Activity {
 		// put settings as intent extra
 		intent.putExtra(Pdf417ScanActivity.EXTRAS_SETTINGS, sett);
 				
-		// Starting Activity
+		// Start Activity
 		startActivityForResult(intent, MY_REQUEST_CODE);
     }
     

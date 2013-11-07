@@ -103,46 +103,10 @@ Simply place the project into your workspace and reference it from your applicat
  
 4. You can start scanning process by starting `Pdf417ScanActivity` activity with Intent initialized in the following way:
     
-		// Intent for ScanActivity
+		// Intent for Pdf417ScanActivity.class
 		Intent intent = new Intent(this, Pdf417ScanActivity.class);
-		
-		// If you want sound to be played after the scanning process ends, 
-		// put here the resource ID of your sound file. (optional)
-		intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
-        
-		// set EXTRAS_ALWAYS_USE_HIGH_RES to true if you want to always use highest 
-		// possible camera resolution (enabled by default for all devices that support
-		// at least 720p camera preview frame size)
-		// intent.putExtra(Pdf417ScanActivity.EXTRAS_ALWAYS_USE_HIGH_RES, true);
-        
-		// set the license key (for commercial versions only) - obtain your key at
-		// http://pdf417.mobi
-		// intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
-        
-		// If you want to open front facing camera, uncomment the following line.
-		// Note that front facing cameras do not have autofocus support, so it will not
-		// be possible to scan denser and smaller codes.
-		// intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE);
-        
-		// You can use Pdf417MobiSettings object to tweak additional scanning parameters.
-		// This is entirely optional. If you don't send this object via intent, default
-		// scanning parameters will be used - this means both QR and PDF417 codes will
-		// be scanned and default camera overlay will be shown.
-
-		Pdf417MobiSettings sett = new Pdf417MobiSettings();
-		// set this to true to enable PDF417 scanning
-		sett.setPdf417Enabled(true);
-		// set this to true to enable QR code scanning
-		sett.setQrCodeEnabled(true); 
-		// set this to true to prevent showing dialog after successful scan
-		sett.setDontShowDialog(false);
-		// if license permits this, remove Pdf417.mobi logo overlay on scan activity
-		// if license forbids this, this option has no effect
-		sett.setRemoveOverlayEnabled(true);
-		// put settings as intent extra
-		intent.putExtra(Pdf417ScanActivity.EXTRAS_SETTINGS, sett);
 				
-		// Starting Activity
+		// Start Activity
 		startActivityForResult(intent, MY_REQUEST_CODE);
 		
 
@@ -159,6 +123,10 @@ Simply place the project into your workspace and reference it from your applicat
 	
 			intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
 			
+	* If you wany to always use the highest available camera resolution, set `EXTRAS_ALWAYS_USE_HIGH_RES` to true. This is by default enabled for all devices that support at least 720p camera preview frame size. To set this parameter, use the following code snippet:
+		
+			intent.putExtra(Pdf417ScanActivity.EXTRAS_ALWAYS_USE_HIGH_RES, true);
+	
 	* if you want to use front facing camera instead of back facing camera, you should set `EXTRA_CAMERA_TYPE` to `CAMERA_FRONTFACE`, like this:
 	
 			intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE)
