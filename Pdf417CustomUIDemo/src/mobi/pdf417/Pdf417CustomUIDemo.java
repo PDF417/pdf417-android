@@ -42,7 +42,7 @@ public class Pdf417CustomUIDemo extends Activity {
 			// create settings object
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
 			// set this to true to enable PDF417 scanning
-			sett.setPdf417Enabled(true);
+			sett.setPdf417Enabled(true, true);
 			// set this to true to enable QR code scanning
 			sett.setQrCodeEnabled(true);
 			// set this to true to prevent showing dialog after successful scan
@@ -60,7 +60,7 @@ public class Pdf417CustomUIDemo extends Activity {
 			// create settings object
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
 			// set this to true to enable PDF417 scanning
-			sett.setPdf417Enabled(true);
+			sett.setPdf417Enabled(true, true);
 			// set this to true to enable QR code scanning
 			sett.setQrCodeEnabled(true);
 			// if license permits this, remove Pdf417.mobi logo overlay on scan activity
@@ -79,11 +79,9 @@ public class Pdf417CustomUIDemo extends Activity {
 			// create settings object
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
 			// set this to true to enable PDF417 scanning
-			sett.setPdf417Enabled(true);
+			sett.setPdf417Enabled(true, true);
 			// set this to true to enable QR code scanning
 			sett.setQrCodeEnabled(true);
-			// set this to true to prevent showing dialog after successful scan
-			sett.setDontShowDialog(true);
 			// put settings as intent extra
 			intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
 			startActivityForResult(intent, MY_REQUEST_CODE);
@@ -98,14 +96,15 @@ public class Pdf417CustomUIDemo extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == MY_REQUEST_CODE && resultCode == BaseBarcodeActivity.RESULT_OK) {
+			// read scan result
+			Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
 
 			// read scanned barcode type (PDF417 or QR code)
-			String barcodeType = data.getStringExtra(BaseBarcodeActivity.EXTRAS_BARCODE_TYPE);
+			String barcodeType = scanData.getBarcodeType();
 			// read the data contained in barcode
-			String barcodeData = data.getStringExtra(BaseBarcodeActivity.EXTRAS_RESULT);
-
+			String barcodeData = scanData.getBarcodeData();
 			// read raw barcode data
-			BarcodeDetailedData rawData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RAW_RESULT);
+			BarcodeDetailedData rawData = scanData.getBarcodeRawData();
 
 			// the following is the explanation on how to use raw data
 			/**

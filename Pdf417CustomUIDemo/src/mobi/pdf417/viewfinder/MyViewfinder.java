@@ -1,76 +1,33 @@
 package mobi.pdf417.viewfinder;
 
 import mobi.pdf417.R;
-import net.photopay.geometry.Point;
-import net.photopay.hardware.orientation.Orientation;
-import net.photopay.view.viewfinder.AbstractBarcodeViewFinder;
-import net.photopay.view.viewfinder.MessageType;
+import net.photopay.view.viewfinder.AbstractViewFinder;
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 
-public class MyViewfinder extends AbstractBarcodeViewFinder<MessageType> {
+public class MyViewfinder extends AbstractViewFinder {
     
-    private RotatedRelativeLayout myLayout_;
-    private Activity myActivity_;
-    private Button backButton_;
+    private View mLayout;
+    private Activity mActivity;
+    private Button mBackButton;
     
-    public MyViewfinder(Activity myActivity, RotatedRelativeLayout layout) {
-        myLayout_ = layout;
-        myActivity_ = myActivity;
-        backButton_ = (Button)myLayout_.findViewById(R.id.btnBack);
-        backButton_.setOnClickListener(new View.OnClickListener() {
+    public MyViewfinder(Activity myActivity, View layout) {
+        mLayout = layout;
+        mActivity = myActivity;
+        mBackButton = (Button)mLayout.findViewById(R.id.btnBack);
+        mBackButton.setOnClickListener(new View.OnClickListener() {
             
             @Override
             public void onClick(View v) {
-                myActivity_.finish();
+                mActivity.finish();
             }
         });
     }
-
+    
     @Override
-    public View getView() {
-        return myLayout_;
+    public View getRotatableView() {
+        return mLayout;
     }
-
-    @Override
-    public void publishDetectionStatus(int detectionStatus, boolean showProgress) {
-        // this will be explained later        
-    }
-
-    @Override
-    public void setDefaultTarget() {
-        // this will be explained later
-        
-    }
-
-    @Override
-    public void setNewTarget(Point uleft, Point uright, Point lleft, Point lright, int uleftIndex) {
-        // this will be explained later
-        
-    }
-
-    @Override
-    public void setOrientation(Orientation orientation) {
-        Log.i("MVF", "Set orientation to: " + orientation);
-        myLayout_.setDirection(orientation.intValue());
-    }
-
-    @Override
-    public void setPointSet(float[] points, boolean biColorPointSet) {
-        
-    }
-
-    @Override
-    public void displayAutofocusFailed() {
-        
-    }
-
-    @Override
-    public boolean isAnimationInProgress() {
-        return false;
-    }
-
 }

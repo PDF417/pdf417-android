@@ -4,6 +4,5 @@ net.photopay.barcode
 net.photopay.base
 net.photopay.hardware.camera.focus
 net.photopay.hardware.orientation
-net.photopay.ocr
-net.photopay.progressbar
+net.photopay.recognition
 net.photopay.view.viewfinder
