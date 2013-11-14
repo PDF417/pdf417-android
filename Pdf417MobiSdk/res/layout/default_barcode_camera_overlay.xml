@@ -21,5 +21,24 @@
         android:text="@string/photopayHome"
         android:textColor="@color/helpButtonForeground"
         android:textSize="14sp" />
+   
+   
+      <Button
+        android:id="@+id/torchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        android:minHeight="1dp"
+        android:minWidth="1dp"
+        android:background="@drawable/photopay_button"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/LightOff"
+        android:textColor="@color/helpButtonForeground"
+        android:textSize="14sp" />
 
 </FrameLayout>
