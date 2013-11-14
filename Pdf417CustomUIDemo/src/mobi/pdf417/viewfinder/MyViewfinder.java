@@ -12,6 +12,8 @@ public class MyViewfinder extends AbstractViewFinder {
     private View mLayout;
     private Activity mActivity;
     private Button mBackButton;
+    private Button mTorchButton;
+    private boolean mTorchEnabled = false;
     
     public MyViewfinder(Activity myActivity, View layout) {
         mLayout = layout;
@@ -24,6 +26,30 @@ public class MyViewfinder extends AbstractViewFinder {
                 mActivity.finish();
             }
         });
+        
+        mTorchButton = (Button)mLayout.findViewById(R.id.btnTorch);
+        mTorchButton.setVisibility(View.GONE);
+    }
+    
+    public void setupViewfinder() {
+        if(isCameraTorchSupported()) {
+        	mTorchButton.setVisibility(View.VISIBLE);
+        	mTorchButton.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					boolean success = setTorchEnabled(!mTorchEnabled);
+					if(success) {
+						mTorchEnabled = !mTorchEnabled;
+					}
+					if(mTorchEnabled) {
+						mTorchButton.setText(R.string.LightOn);
+					} else {
+						mTorchButton.setText(R.string.LightOff);
+					}
+				}
+			});
+        }
     }
     
     @Override

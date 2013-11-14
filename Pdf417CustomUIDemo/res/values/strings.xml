@@ -8,4 +8,7 @@
     <string name="default_ui_no_dialog">Default overlay, no dialog</string>
     <string name="default_ui_no_logo">Default overlay, no logo</string>
     <string name="UseWith">Use with</string>
+    <string name="Back">Back</string>
+    <string name="LightOff">Light: off</string>
+    <string name="LightOn">Light: on</string>
 </resources>

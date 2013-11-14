@@ -13,6 +13,7 @@ public class CustomScanActivity extends BaseBarcodeActivity {
 
 	private int mScanCount = 0;
 	private Handler mHandler = new Handler();
+	MyViewfinder mViewfinder;
 	
 	/**
 	 * This method must create and return custom viewfinder object that
@@ -20,12 +21,16 @@ public class CustomScanActivity extends BaseBarcodeActivity {
 	 * and how they are rotated.
 	 */
 	protected AbstractViewFinder onCreateViewFinder() {
-		AbstractViewFinder viewFinder = null;
 		LayoutInflater inflater = getLayoutInflater();
-
 		View rotatableCameraOverlay = inflater.inflate(R.layout.camera_overlay_layout, null);
-		viewFinder = new MyViewfinder(this, rotatableCameraOverlay);
-		return viewFinder;
+		mViewfinder = new MyViewfinder(this, rotatableCameraOverlay);
+		return mViewfinder;
+	}
+	
+	@Override
+	protected void onSetupViewFinder(AbstractViewFinder viewfinder) {
+		super.onSetupViewFinder(viewfinder);
+		mViewfinder.setupViewfinder();
 	}
 
 	/**

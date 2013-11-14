@@ -138,18 +138,20 @@ public class Pdf417MobiDemo extends Activity {
 				StringBuilder sb = new StringBuilder(barcodeType);
 				sb.append(": ");
 				sb.append(barcodeData);
-				sb.append("\n\n\n raw data:\n\n");
-				sb.append(rawData.toString());
-				sb.append("\n\n\n raw data merged:\n\n");
-				byte[] allData = rawData.getAllData();
-				sb.append("{");
-				for (int i = 0; i < allData.length; ++i) {
-					sb.append((int) allData[i] & 0x0FF);
-					if (i != allData.length - 1) {
-						sb.append(", ");
+				if (rawData != null) {
+					sb.append("\n\n\n raw data:\n\n");
+					sb.append(rawData.toString());
+					sb.append("\n\n\n raw data merged:\n\n");
+					byte[] allData = rawData.getAllData();
+					sb.append("{");
+					for (int i = 0; i < allData.length; ++i) {
+						sb.append((int) allData[i] & 0x0FF);
+						if (i != allData.length - 1) {
+							sb.append(", ");
+						}
 					}
+					sb.append("}");
 				}
-				sb.append("}");
 				intent.putExtra(Intent.EXTRA_TEXT, sb.toString());
 				startActivity(Intent.createChooser(intent, getString(R.string.UseWith)));
 			}

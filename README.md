@@ -245,6 +245,7 @@ Additionally, there are several method you might want to override in your derive
 Besides methods that you are allowed to override, there are several protected final utility methods you can use for your needs.
 
 * `resumeScanning` - this method will perform all required steps for performing a new scan. You will probably need to call this method from overriden `onScanningDone` method.
+* `pauseScanning` - this method will perform all required steps for pausing the scanning loop.
 
 ### Extending `AbstractViewFinder`
 Although all methods in this class have default implementation, the class is kept abstract to prevent instatiations. Class derived from this class is responsible for managing the UI that will be drawn on top of camera preview surface. When you inflate your custom UI from xml or build it in code, you should return it either in method `getRotatableView` or in method `getFixedView`. If you return your View in method `getRotatableView`, your view will be rotated on top of camera surface as device orientation changes occur. If you return your view in method `getFixedView`, your view will always remain in portrait orientation mode (camera activity will always be in portrait mode, regardless of setting in AndroidManifest.xml). If you return both fixed and rotatable views, rotatable view will be layouted on top of fixed view, but touch events will be firstly dispatched to fixed view and then to rotatable view.
@@ -269,6 +270,12 @@ Besides mentioned methods there are more methods you might want to override:
 * `displayAutofocusFailed` - This method will be called when camera focusing has failed. Camera manager usually tries different focusing strategies and this method is called when all those strategies fail to indicate that either object on which camera is being focused is too close or ambient light conditions are poor.
 * `isAnimationInProgress` -  This method should return `true` if it wants to prevent finishing the activity while some animation is in progress. Default implementation returns `false`.
 
+Besides methods that you are allowed to override, there are several protected final utility methods you can use for your needs.
+
+* `isCameraFocused` - returns `true` if camera thinks it has focused on object. Note that camera has to be loaded for this method to work.
+* `focusCamera` - requests camera to perform autofocus. If camera does not support autofocus feature, method does nothing. Note that camera has to be loaded for this method to work.
+* `isCameraTorchSupported` - returns `true` if camera supports torch flash mode. Note that camera has to be loaded for this method to work.
+* `setTorchEnabled` - if torch flash mode is supported on camera, this method can be used to enable/disable torch flash mode. If operation is successful, method returns true. Note that camera has to be loaded for this method to work.
 	
 ## Troubleshooting
 
@@ -277,12 +284,14 @@ In case of problems with using the SDK, you should do as follows:
 * Enable logging to get the ability to see what is library doing. To enable logging, put this line in your application:
 
 		net.photopay.util.Log.setLogLevel(net.photopay.util.LogLevel.LOG_VERBOSE);
+
 After this line, library will display as much information about its work as possible. Make sure to remove this line in your production code as lots of log outputs may slow down the performance of library.
-* If you cannot solve problems by yourself, do not hesitate to contact us at <pdf417@photopay.net>. Make sure you include the logs when contacting us to minimise the time to find and correct a bug. Also, if having problems reading specific barcodes, please send us high resolution scans of those problematic barcodes.
+
+If you cannot solve problems by yourself, do not hesitate to contact us at <pdf417@photopay.net>. Make sure you include the logs when contacting us to minimise the time to find and correct a bug. Also, if having problems reading specific barcodes, please send us high resolution scans of those problematic barcodes.
 
 ## Pdf417MobiDemo application
 
-In the package is the working demo application in which you can experiment with integration details.
+In the package is the working demo application in which you can experiment with integration details. Also, in the package there is `Pdf417CustomUIDemo`
 
 ## Additional info
 
