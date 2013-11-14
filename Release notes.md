@@ -1,5 +1,16 @@
 # Release notes
 
+## 2.0
+- new simpler API
+- better support for custom user interface
+- ability to scan multiple barcodes without closing camera activity (from custom UI only)
+- added torch control button to default PDF417.mobi demo app
+- PDF417CustomUIDemo contains example of controlling camera torch and example of scanning multiple barcodes without closing camera activity
+- documentation updates
+
+## 1.6
+- autofocus and flash features are now optional (play store app now supports much more devices)
+
 ## 1.3.1
 - better and faster barcode detection
 - faster detection and decoding performance
