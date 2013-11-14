@@ -42,7 +42,7 @@ public class Pdf417CustomUIDemo extends Activity {
 			// create settings object
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
 			// set this to true to enable PDF417 scanning
-			sett.setPdf417Enabled(true, true);
+			sett.setPdf417Enabled(true);
 			// set this to true to enable QR code scanning
 			sett.setQrCodeEnabled(true);
 			// set this to true to prevent showing dialog after successful scan
@@ -60,7 +60,7 @@ public class Pdf417CustomUIDemo extends Activity {
 			// create settings object
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
 			// set this to true to enable PDF417 scanning
-			sett.setPdf417Enabled(true, true);
+			sett.setPdf417Enabled(true);
 			// set this to true to enable QR code scanning
 			sett.setQrCodeEnabled(true);
 			// if license permits this, remove Pdf417.mobi logo overlay on scan activity
@@ -79,7 +79,7 @@ public class Pdf417CustomUIDemo extends Activity {
 			// create settings object
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
 			// set this to true to enable PDF417 scanning
-			sett.setPdf417Enabled(true, true);
+			sett.setPdf417Enabled(true);
 			// set this to true to enable QR code scanning
 			sett.setQrCodeEnabled(true);
 			// put settings as intent extra

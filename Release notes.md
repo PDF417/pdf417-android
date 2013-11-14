@@ -7,6 +7,7 @@
 - added torch control button to default PDF417.mobi demo app
 - PDF417CustomUIDemo contains example of controlling camera torch and example of scanning multiple barcodes without closing camera activity
 - documentation updates
+- support for scanning damaged and non-standard PDF417 barcodes - if barcode checksum is not correct, returned result is marked as "uncertain"
 
 ## 1.6
 - autofocus and flash features are now optional (play store app now supports much more devices)

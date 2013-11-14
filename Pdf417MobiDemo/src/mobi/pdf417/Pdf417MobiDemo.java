@@ -60,13 +60,7 @@ public class Pdf417MobiDemo extends Activity {
 
 		Pdf417MobiSettings sett = new Pdf417MobiSettings();
 		// set this to true to enable PDF417 scanning
-		// second parameter defines whether uncertain scanning mode will be used
-		/**
-		 * Using uncertaing scanning mode can enable reading of non-standard and
-		 * broken PDF417 barcodes, but there is no guarantee that all data will
-		 * be read.
-		 */
-		sett.setPdf417Enabled(true, false);
+		sett.setPdf417Enabled(true);
 		// set this to true to enable QR code scanning
 		sett.setQrCodeEnabled(true);
 		// set this to true to prevent showing dialog after successful scan
@@ -113,6 +107,8 @@ public class Pdf417MobiDemo extends Activity {
 			String barcodeData = scanData.getBarcodeData();
 			// read raw barcode data
 			BarcodeDetailedData rawData = scanData.getBarcodeRawData();
+			// determine if returned scan data is certain
+			boolean uncertainData = scanData.isResultUncertain();
 
 			// if barcode contains URL, create intent for browser
 			// else, contain intent for message
@@ -135,7 +131,11 @@ public class Pdf417MobiDemo extends Activity {
 				// ask user what to do with data
 				Intent intent = new Intent(Intent.ACTION_SEND);
 				intent.setType("text/plain");
-				StringBuilder sb = new StringBuilder(barcodeType);
+				StringBuilder sb = new StringBuilder();
+				if(uncertainData) {
+					sb.append("This scan data is uncertain!\n\n");
+				}
+				sb.append(barcodeType);
 				sb.append(": ");
 				sb.append(barcodeData);
 				if (rawData != null) {

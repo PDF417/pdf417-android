@@ -135,11 +135,6 @@ Simply place the project into your workspace and reference it from your applicat
 	
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
 			// set this to true to enable PDF417 scanning
-			// second parameter defines whether uncertain scanning mode will be used
-			// Using uncertaing scanning mode can enable reading of non-standard and
-			// broken PDF417 barcodes, but there is no guarantee that all data will
-			// be read.
-			//
 			sett.setPdf417Enabled(true);
 			// set this to true to enable QR code scanning
 			sett.setQrCodeEnabled(true); 
@@ -165,6 +160,8 @@ Simply place the project into your workspace and reference it from your applicat
                 String barcodeType = scanData.getBarcodeType();
                 // read the data contained in barcode
                 String barcodeData = scanData.getBarcodeData();
+                // determine if returned data is uncertain
+                boolean uncertainData = scanData.isResultUncertain();
                 
                 // ask user what to do with data
                 Intent intent = new Intent(Intent.ACTION_SEND);
