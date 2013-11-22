@@ -6,11 +6,19 @@ import java.net.URL;
 import mobi.pdf417.activity.Pdf417ScanActivity;
 import net.photopay.barcode.BarcodeDetailedData;
 import net.photopay.base.BaseBarcodeActivity;
+import net.photopay.base.BaseRecognitionActivity;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,6 +36,62 @@ public class Pdf417MobiDemo extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater menuInflater = getMenuInflater();
+		menuInflater.inflate(R.layout.menu, menu);
+		return true;
+	}
+	
+	@SuppressWarnings("deprecation")
+	private void showVersionString() {
+		String nativeVersionString = BaseRecognitionActivity.getNativeLibraryVersionString();
+		PackageInfo pInfo;
+		try {
+			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			String appVersion = pInfo.versionName;
+			int appVersionCode = pInfo.versionCode;
+			
+			StringBuilder infoStr = new StringBuilder();
+			infoStr.append("Application version: ");
+			infoStr.append(appVersion);
+			infoStr.append(", build ");
+			infoStr.append(appVersionCode);
+			infoStr.append("\nNative library version: ");
+			infoStr.append(nativeVersionString);
+			
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Version info");
+			alertDialog.setMessage(infoStr.toString());
+
+			alertDialog.setButton(this.getString(R.string.photopayOK), new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					if(dialog!=null) {
+						dialog.dismiss();
+					}
+				}
+			});
+
+			alertDialog.setCancelable(false);
+			alertDialog.show();
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+		case R.id.menu_version:
+			showVersionString();
+			return true;
+		}
+		return false;
 	}
 
 	public void btnScan_click(View v) {
