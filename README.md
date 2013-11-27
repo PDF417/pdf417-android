@@ -69,14 +69,8 @@ Simply place the project into your workspace and reference it from your applicat
 	
 	Also, add Pdf417ScanActivity entry:
 	
-		<activity android:name="mobi.pdf417.activity.Pdf417ScanActivity" android:label="@string/app_name" android:screenOrientation="portrait">
-			<intent-filter>
-				<action android:name="mobi.pdf417.activity.Pdf417ScanActivity" />
-				<category android:name="android.intent.category.DEFAULT" />			
-			</intent-filter>
-		</activity>
+		<activity android:name="mobi.pdf417.activity.Pdf417ScanActivity" android:label="@string/app_name" android:screenOrientation="portrait" />
 		
-	Note that `Pdf417ScanActivity` or your custom scan activity __must__ be in portrait mode. PDF417.mobi's camera management expects camera surface to be in portrait mode. Other activity modes will not work as expected. Nevertheless, you can have your UI rotated to landscape programmatically (PDF417.mobi does that automatically, as explained in chapter "Creating Custom Camera User Interface").
 		
 3. If you are using ProGuard, add the following lines to your `proguard-project.txt`
  
