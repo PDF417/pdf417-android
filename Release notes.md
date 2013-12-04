@@ -1,5 +1,9 @@
 # Release notes
 
+## 2.0.1
+- support for having camera activity in landscape mode - extended support to Android 2.1 devices
+  (fixing Samsung Galaxy Mini issues)
+
 ## 2.0
 - new simpler API
 - better support for custom user interface
