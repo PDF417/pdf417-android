@@ -234,6 +234,7 @@ Additionally, there are several method you might want to override in your derive
 * `onAfterPause` - this method is called as last thing in base activity's `onPause` method. You can use it to perform terminations of your objects before activity goes to pause.
 * `isOrientationAllowed` - whenever device orientation change occurs, this method is called to determine if given device orientation is allowed. If method returns true and your implementation of `AbstractViewFinder` has returned a non-null rotatable view, it will be rotated to that orientation.
 * `onScanningDone` - this method is called every time a scan operation finishes with result. The scanning result is given as a parameter of the method. If you want to return the result to the calling activity, you should set the activity's result with method `setResult` and call `finish`. If you want to perform more scanning without the need for restarting the activity, you can call `resumeScanning` method from here. `Pdf417CustomUIDemo` application shows an example how to scan 5 barcodes consecutively with 2 seconds pause between each scan.
+* `onConfigureWindow` - This method is called inside `onCreate` method. You can use it to configure activity window. Default implementation sets the FLAG_SECURE flag on activity windows to prevent taking screenshots of camera activity.
 
 Besides methods that you are allowed to override, there are several protected final utility methods you can use for your needs.
 

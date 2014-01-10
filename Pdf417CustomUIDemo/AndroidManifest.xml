@@ -35,6 +35,7 @@
         </activity>
         <activity
             android:name="mobi.pdf417.activity.Pdf417ScanActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait" >
         </activity>
         <activity
