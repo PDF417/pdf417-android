@@ -4,6 +4,8 @@
 - support for having title bar and status bar in camera activity
 - support for custom activity window configuration (added overridable method `onConfigureWindow` to `BaseCameraActivity`)
 - support for library license keys (key that supports multiple application package names)
+- Added option to scan barcodes which don't have quiet zone around them
+- Improved scanning algorithm
 
 ## 2.0.1
 - support for having camera activity in landscape mode - extended support to Android 2.1 devices (fixing Samsung Galaxy Mini issues)

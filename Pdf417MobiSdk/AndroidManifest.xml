@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" android:versionCode="73" android:versionName="v2.1.0" package="net.photopay">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" android:versionCode="74" android:versionName="v2.1.0" package="net.photopay">
 
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true"/>
 
