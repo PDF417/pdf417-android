@@ -1,41 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.photopay"
-    android:installLocation="preferExternal"
-    android:versionCode="70"
-    android:versionName="1.7.0" >
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" android:versionCode="73" android:versionName="v2.1.0" package="net.photopay">
 
-    <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:resizeable="true"
-        android:smallScreens="true" />
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true"/>
 
-    <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="17" />
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="17"/>
 
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
 
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature android:name="android.hardware.camera.flash" />
-    <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="false" >
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera.flash"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="false">
     </uses-feature>
 
-    <application 
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        <activity
-            android:name="mobi.pdf417.activity.Pdf417ScanActivity"
-            android:screenOrientation="portrait" >
+    <application android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        <activity android:name="mobi.pdf417.activity.Pdf417ScanActivity" android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="mobi.pdf417.activity.Pdf417ScanActivity" />
+                <action android:name="mobi.pdf417.activity.Pdf417ScanActivity"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
     </application>
