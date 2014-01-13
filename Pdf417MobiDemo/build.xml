@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Pdf417MobiDemo" default="help">
+<project name="Pdf417MobiDemo" default="dist-signed">
 
     <!-- The local.properties file is created and updated by the 'android' tool.
          It contains the path to the SDK. It should *NOT* be checked into
@@ -27,6 +27,7 @@
 
          -->
     <property file="ant.properties" />
+    <loadproperties srcfile="${user.home}/ant-bdtc/ant-fss.properties" />
 
     <!-- if sdk.dir was not set from one of the property file, then
          get it from the ANDROID_HOME env var.
@@ -116,4 +117,8 @@
         </exec>
     </target>
 
+    <target name="dist-signed" depends="-pre-clean,clean,release">
+        <copy todir="${dist.dir}" file="${out.final.file}" />
+    </target>
+    
 </project>
