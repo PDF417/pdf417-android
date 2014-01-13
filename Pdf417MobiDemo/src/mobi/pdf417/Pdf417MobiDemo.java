@@ -128,10 +128,10 @@ public class Pdf417MobiDemo extends Activity {
 	    // Set this to true to scan even barcode not compliant with standards
 	    // For example, malformed PDF417 barcodes which were incorrectly encoded
 	    // Use only if necessary because it slows down the recognition process
-		sett.setUncertainScanning(true);
+//		sett.setUncertainScanning(true);
 	    // Set this to true to scan barcodes which don't have quiet zone (white area) around it
 	    // Use only if necessary because it drastically slows down the recognition process 
-//		sett.setNullQuietZoneAllowed(true);
+		sett.setNullQuietZoneAllowed(true);
 		// set this to true to enable QR code scanning
 		sett.setQrCodeEnabled(true);
 		// set this to true to prevent showing dialog after successful scan
