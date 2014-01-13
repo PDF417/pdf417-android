@@ -88,14 +88,13 @@
     -->
     <!-- version-tag: 1 -->
     <import file="${sdk.dir}/tools/ant/build.xml" />
-	<import file="${core.photopay.dir}/CommonLibraries/antTasks/helperTasks.xml"/>
 	
     <!-- Creates the output directories if they don't exist yet. -->
     <target name="dirs">
     	<mkdir dir="gen" />
     </target>
 	
-    <target name="resource-src" depends="dirs, update-manifest">
+    <target name="resource-src" depends="dirs">
         <echo>Generating R.java / Manifest.java from the resources [SDK]...</echo>
         <exec executable="aapt" failonerror="true">
             <arg value="package" />
