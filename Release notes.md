@@ -1,5 +1,9 @@
 # Release notes
 
+## 2.2.0
+- very important bugfix release
+- this version does not use R class for referencing resources from within binary jar - this means that from now on PDF417.mobi library can be repacked into another android library project; this also means that PhoneGap integration will now be easier and AppCelerator Titanium intergration has been made possible
+
 ## 2.1.0
 - support for having title bar and status bar in camera activity
 - support for custom activity window configuration (added overridable method `onConfigureWindow` to `BaseCameraActivity`)
