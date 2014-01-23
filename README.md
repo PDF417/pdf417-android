@@ -284,7 +284,7 @@ In case of problems with using the SDK, you should do as follows:
 
 * Enable logging to get the ability to see what is library doing. To enable logging, put this line in your application:
 
-		net.photopay.util.Log.setLogLevel(net.photopay.util.LogLevel.LOG_VERBOSE);
+		net.photopay.util.Log.setLogLevel(net.photopay.util.Log.LogLevel.LOG_VERBOSE);
 
 After this line, library will display as much information about its work as possible. Make sure to remove this line in your production code as lots of log outputs may slow down the performance of library.
 
