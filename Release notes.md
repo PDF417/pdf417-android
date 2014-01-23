@@ -1,5 +1,9 @@
 # Release notes
 
+## 2.3.0
+- various bugfixes
+- added support for scanning inverted barcodes
+
 ## 2.2.0
 - very important bugfix release
 - this version does not use R class for referencing resources from within binary jar - this means that from now on PDF417.mobi library can be repacked into another android library project; this also means that PhoneGap integration will now be easier and AppCelerator Titanium intergration has been made possible
