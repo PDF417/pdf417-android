@@ -1,5 +1,9 @@
 # Release notes
 
+## 2.3.1
+- fixed bug which caused camera on Nexus 7 not being detected
+- fixed wrong detection location drawing when front facing camera is being used
+
 ## 2.3.0
 - various bugfixes
 - added support for scanning inverted barcodes

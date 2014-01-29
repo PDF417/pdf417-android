@@ -277,6 +277,7 @@ Besides methods that you are allowed to override, there are several protected fi
 * `focusCamera` - requests camera to perform autofocus. If camera does not support autofocus feature, method does nothing. Note that camera has to be loaded for this method to work.
 * `isCameraTorchSupported` - returns `true` if camera supports torch flash mode. Note that camera has to be loaded for this method to work.
 * `setTorchEnabled` - if torch flash mode is supported on camera, this method can be used to enable/disable torch flash mode. If operation is successful, method returns true. Note that camera has to be loaded for this method to work.
+* `getCameraType` - returns the type of currently opened camera (either back facing or front facing). If no camera is currently in use, method return `null`. This information is useful for adapting UI to mirrored camera preview when front facing camera is used.
 	
 ## Troubleshooting
 
