@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.4.0
+- initial support for Data Matrix and Aztec 2D barcodes
+
 ## 2.3.1
 - fixed bug which caused camera on Nexus 7 not being detected
 - fixed wrong detection location drawing when front facing camera is being used
