@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.5.0
+- added support for setting scanning region
+
 ## 2.4.0
 - initial support for Data Matrix and Aztec 2D barcodes
 

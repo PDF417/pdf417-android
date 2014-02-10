@@ -127,6 +127,28 @@ Simply place the project into your workspace and reference it from your applicat
 	
 			intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE)
 			
+	* if you want to set scanning region, you can do it in the following way:
+	
+			// define scanning region
+			// first parameter of rectangle is x-coordinate represented as percentage
+			// of view width*, second parameter is y-coordinate represented as percentage
+			// of view height*, third parameter is region width represented as percentage
+			// of view width* and fourth parameter is region height represented as percentage
+			// of view heigth*
+			//
+			// * view width and height are defined in current context, i.e. they depend on
+			// screen orientation. If you allow your ROI view to be rotated, then in portrait
+			// view width will be smaller than height, whilst in landscape orientation width
+			// will be larger than height. This complies with view designer preview in eclipse ADT.
+			// If you choose not to rotate your ROI view, then your ROI view will be layout either
+			// in portrait or landscape, depending on setting for your camera activity in AndroidManifest.xml
+			Rectangle roi = new Rectangle(0.2f, 0.1f, 0.5f, 0.4f);
+			intent.putExtra(BaseBarcodeActivity.EXTRAS_ROI, roi);
+			// if you intent to rotate your ROI view, you should set the EXTRAS_ROTATE_ROI extra to true
+			// so that PDF417.mobi can adjust ROI coordinates for native library when device orientation
+			// change event occurs
+			intent.putExtra(BaseBarcodeActivity.EXTRAS_ROTATE_ROI, true);
+			
 	* You can use `Pdf417MobiSettings` object to tweak additional scanning parameters. This is entirely optional. If you don't send this object via intent, default scanning parameters will be used - this means both QR and PDF417 codes will be scanned and default camera overlay will be shown. For example, you could set settings as in following example:
 	
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
