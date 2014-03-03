@@ -1,5 +1,10 @@
 # Release notes
 
+## 2.5.1
+- various bugfixes and performance improvements, especially when scanning uncertain PDF417 barcodes
+- non UTF-8 string JNI transfer support:
+	- if string is not UTF-8, instead of showing "Invalid UTF-8 string", part of the string that can be decoded will be decoded as ASCII bytes
+
 ## 2.5.0
 - added support for setting scanning region
 
