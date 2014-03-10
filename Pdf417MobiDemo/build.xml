@@ -27,7 +27,6 @@
 
          -->
     <property file="ant.properties" />
-    <loadproperties srcfile="${user.home}/ant-bdtc/ant-fss.properties" />
 
     <!-- if sdk.dir was not set from one of the property file, then
          get it from the ANDROID_HOME env var.

@@ -86,13 +86,6 @@ Simply place the project into your workspace and reference it from your applicat
             *; 
         }
         
-        -keepattributes InnerClasses
-
-        -keep class **.R
-        -keep class **.R$* {
-            <fields>;
-        }
-        
         -dontwarn android.hardware.**
 
 		-dontwarn android.support.v4.**

@@ -31,13 +31,6 @@
     *; 
 }
 
--keepattributes InnerClasses
-
--keep class **.R
--keep class **.R$* {
-    <fields>;
-}
-
 -dontwarn android.hardware.**
 
 -dontwarn android.support.v4.**

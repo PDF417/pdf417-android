@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.5.2
+- fixed ProGuard compile warnings
+
 ## 2.5.1
 - various bugfixes and performance improvements, especially when scanning uncertain PDF417 barcodes
 - non UTF-8 string JNI transfer support:
