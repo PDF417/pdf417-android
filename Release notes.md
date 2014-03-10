@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.5.3
+- fixed camera orientation bug on Samsung Galaxy Ace GT-S5830i
+
 ## 2.5.2
 - fixed ProGuard compile warnings
 
