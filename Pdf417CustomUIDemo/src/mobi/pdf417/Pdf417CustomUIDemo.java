@@ -74,6 +74,22 @@ public class Pdf417CustomUIDemo extends Activity {
         }
         case R.id.btnCustomUI: {
             // create intent for custom scan activity
+            Intent intent = new Intent(this, DefaultScanActivity.class);
+            // add license that allows creating custom camera overlay
+            intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
+            // create settings object
+            Pdf417MobiSettings sett = new Pdf417MobiSettings();
+            // set this to true to enable PDF417 scanning
+            sett.setPdf417Enabled(true);
+            // set this to true to enable QR code scanning
+            sett.setQrCodeEnabled(true);
+            // put settings as intent extra
+            intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
+            startActivityForResult(intent, MY_REQUEST_CODE);
+            break;
+        }
+        case R.id.btnCustomUIROI: {
+            // create intent for custom scan activity
             Intent intent = new Intent(this, CustomScanActivity.class);
             // add license that allows creating custom camera overlay
             intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
@@ -104,7 +120,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // so that PDF417.mobi can adjust ROI coordinates for native library when device orientation
             // change event occurs
             intent.putExtra(BaseBarcodeActivity.EXTRAS_ROTATE_ROI, true);
-            
+
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
         }

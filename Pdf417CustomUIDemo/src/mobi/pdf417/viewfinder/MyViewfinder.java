@@ -66,7 +66,7 @@ public class MyViewfinder extends AbstractViewFinder {
     @SuppressWarnings("deprecation")
     @Override
     public View getRotatableView() {
-        // if we want to trotate ROI, then we must pack roi layout and button layout into a
+        // if we want to rotate ROI, then we must pack roi layout and button layout into a
         // single view and return it. In this example we will pack them in FrameLayout.
         if (mRotateRoi) {
             if (mLayoutHolder == null) {

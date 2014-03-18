@@ -42,6 +42,10 @@
             android:name="mobi.pdf417.CustomScanActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="mobi.pdf417.DefaultScanActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
