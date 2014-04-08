@@ -1,8 +1,9 @@
 # Release notes
 
-## 2.5.4
-- first build that accepts new license key format
-- lots of improvements in scanning of code39 and code128 barcodes
+## 2.6.0
+- new format of license key
+- fixed race condition in focus management
+- improved support for Code128 and Code39 barcodes
 
 ## 2.5.3
 - fixed camera orientation bug on Samsung Galaxy Ace GT-S5830i
