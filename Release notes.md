@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.6.1
+- added support for changing camera activity's background color
+
 ## 2.6.0
 - new format of license key
 - fixed race condition in focus management
