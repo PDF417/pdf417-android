@@ -1,1 +1,1 @@
-Built from core repository commit v2.4.0-1-gb38f2b1944900484bee5cd4d16b53b6e1efac878
+Built from core repository commit v2.4.0-1-g7b3f1e2756503c455bf534745197cee99932df25
