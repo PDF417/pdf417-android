@@ -142,6 +142,10 @@ Simply place the project into your workspace and reference it from your applicat
 			// change event occurs
 			intent.putExtra(BaseBarcodeActivity.EXTRAS_ROTATE_ROI, true);
 			
+	* if you want to optimize camera parameters for near object scanning, you should set `EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING` to `true`. When camera parameters are optimized for near object scanning, macro focus mode will be preferred over autofocus mode. Thus, camera will have easier time focusing on to near objects, but might have harder time focusing on far objects. If you expect that most of your scans will be performed by holding the device very near the object, turn on that parameter. By default, this parameter is set to `false`. Set the parameter like this:
+	
+			intent.putExtra(Pdf417ScanActivity.EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING, true)
+			
 	* You can use `Pdf417MobiSettings` object to tweak additional scanning parameters. This is entirely optional. If you don't send this object via intent, default scanning parameters will be used - this means both QR and PDF417 codes will be scanned and default camera overlay will be shown. For example, you could set settings as in following example:
 	
 			Pdf417MobiSettings sett = new Pdf417MobiSettings();
