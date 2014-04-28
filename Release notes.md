@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.6.2
+- support for entering premium license key that can be used with multiple application package names
+
 ## 2.6.1
 - added support for changing camera activity's background color
 

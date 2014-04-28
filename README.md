@@ -106,6 +106,14 @@ Simply place the project into your workspace and reference it from your applicat
 		// set the license key
 		intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
 		
+	License key is bound to package name of your application. For example, if you have license key that is bound to `mobi.pdf417` app package, you cannot use the same key in other applications. However, if you purchase Premium license, you will get license key that can be used in multiple applications. This license key will then not be bound to package name of the app. Instead, it will be bound to the license owner string that needs to be provided to the library together with the license key. To provide license owner string, use the `EXTRAS_LICENSE_OWNER` intent extra like this:
+	
+		// set the license key
+		intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
+		intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_OWNER, "Enter_License_Owner_Here");
+		
+	If you do not provide license owner, license key will be validated against current application package name and will fail to unlock the library.
+	
 	You can also set additional settings to Intent used for initializing the `Pdf417ScanActivity`:
 	
 	* If you want sound to be played after the scanning process ends, use `EXTRAS_BEEP_RESOURCE` to set the resource ID of the sound, like this
