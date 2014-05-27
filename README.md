@@ -259,6 +259,31 @@ Simply place the project into your workspace and reference it from your applicat
 
     Additionally, if you don't need the whole per element information, you can just use `getAllData` method of `BarcodeDetailedData` class to obtain byte array of the whole barcode. Note that you need to be able to extract useful information from such a byte array on your own.
 
+## Processor architecture considerations
+
+Since version 3.0.0, Pdf417.mobi is distributed with both ARMv6, ARMv7 and x86 native library binaries. Older versions were built only for ARM architectures.
+
+ARMv7 architecture gives the ability to take advantage of hardware accelerated floating point operations and SIMD processing with [NEON](http://www.arm.com/products/processors/technologies/neon.php). This gives Pdf417.mobi a huge performance boost on devices that have ARMv7 processors. Most new devices (all since 2012.) have ARMv7 processor so it makes little sense not to take advantage of performance boosts that those processors can give.
+
+x86 architecture gives the ability to obtain native speed on x86 android devices, like [Prestigio 5430](http://www.gsmarena.com/prestigio_multiphone_5430_duo-5721.php). Without that, Pdf417.mobi will not work on such devices, or it will be run on top of ARM emulator that is shipped with device - this will give a huge performance penalty.
+
+However, there are some issues to be considered:
+
+- ARMv7 processors understand ARMv6 instruction set, but ARMv6 processors do not understand ARMv7 instructions.
+- if ARMv7 processor executes ARMv6 code, it does not take advantage of hardware floating point acceleration and does not use SIMD operations
+- ARMv7 build of native library cannot be run on devices that do not have ARMv7 compatible processor (list of those old devices can be found [here](http://www.getawesomeinstantly.com/list-of-armv5-armv6-and-armv5-devices/))
+- neither ARMv6 nor ARMv7 processors understand x86 instruction sets
+- x86 processors do not understand neither ARMv6 nor ARMv7 instruction set
+- however, some x86 android devices ship with the builtin [ARM emulator](http://commonsware.com/blog/2013/11/21/libhoudini-what-it-means-for-developers.html) - such devices are able to run ARM binaries (both ARMv6 and ARMv7) but with performance penalty. There is also a risk that builtin ARM emulator will not understand some specific ARM instruction and will crash.
+
+Pdf417MobiSdk android library contains both ARMv6, ARMv7 and x86 builds of native library. Those build are found in subfolder `libs`:
+
+- `libs/armeabi` contains native libraries for ARMv6 processor architecture
+- `libs/armeabi-v7a` contains native libraries for ARMv7 processor arhitecture
+- `libs/x86` contains native libraries for x86 processor architecture
+
+By default, when you integrate Pdf417MobiSdk into your app (see above for instructions), your app will contain native builds for all processor architectures. Thus, Pdf417.mobi will work on ARMv6 and x86 devices and will use ARMv7 features on ARMv7 devices. However, the size of your application will be rather large.
+
 
 ## Translation and localisation
 

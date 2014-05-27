@@ -5,7 +5,7 @@
 - API change:
     - `onScanningDone` method in BaseBarcodeActivity now receives list of scanning results instead of single scanning result
     - this list can have zero, one or more scan results
-    - if multiple barcode recognizers are turned on and `shouldAllowMultipleScanResultsOnSingleImage` method of `Pdf417MobiSettings` returns true, list can have multiple scan data, on the contrary it will have at most one element (similar behaviour as before)
+    - if multiple barcode recognizers are turned on and `shouldAllowMultipleScanResultsOnSingleImage` method of `Pdf417MobiSettings` returns true, list can have multiple scan data, otherwise it will have at most one element (similar behaviour as before)
 - new key has been added for retrieving list of recognised objects via intent: `BaseBarcodeActivity.EXTRAS_RESULT_LIST`
     - you can obtain the list with following snippet:
 
