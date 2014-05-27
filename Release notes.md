@@ -1,5 +1,16 @@
 # Release notes
 
+## 3.0.0
+- support for obtaining multiple scan results from single camera frame
+- API change:
+    - `onScanningDone` method in BaseBarcodeActivity now receives list of scanning results instead of single scanning result
+    - this list can have zero, one or more scan results
+    - if multiple barcode recognizers are turned on and `shouldAllowMultipleScanResultsOnSingleImage` method of `Pdf417MobiSettings` returns true, list can have multiple scan data, on the contrary it will have at most one element (similar behaviour as before)
+- new key has been added for retrieving list of recognised objects via intent: `BaseBarcodeActivity.EXTRAS_RESULT_LIST`
+    - you can obtain the list with following snippet:
+
+            ArrayList<Pdf417MobiScanData> dataList = getIntent().getExtras().getParcelableArrayList(BaseBarcodeActivity.EXTRAS_RESULT_LIST);
+
 ## 2.6.2
 - support for entering premium license key that can be used with multiple application package names
 

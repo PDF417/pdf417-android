@@ -201,7 +201,23 @@ Simply place the project into your workspace and reference it from your applicat
             }
 		}
 
-6. In order to obtain raw barcode data, you need to obtain `BarcodeDetailedData` structure by calling `getBarcodeRawData` method of `Pdf417ScanData` instance returned via `BaseBarcodeActivity.EXTRAS_RESULT` extra in result intent. This structure will contain list of barcode elements. Each barcode element contains byte array with its raw data and type of that raw data. Type of raw data can be either `ElementType.TEXT_DATA` or `ElementType.BYTE_DATA`. `ElementType.TEXT_DATA` defines that byte array can be interpreted as string, whilst `ElementType.BYTE_DATA` defines that byte array is probably not string. However, you can always convert all data to string and you will then get the same string that you can obtain by calling `getBarcodeData`. For example, you can use that structure like this:
+6. You can also obtain the list of all data that have been scanned (if there is more than one). For that matter, you need to use `BaseBarcodeActivity.EXTRAS_RESULT_LIST` key as shown in following example:
+ 		
+        @Override
+		  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		    super.onActivityResult(requestCode, resultCode, data);
+			
+            if(requestCode==MY_REQUEST_CODE && resultCode==BaseBarcodeActivity.RESULT_OK) {
+                // read scan result
+			    ArrayList<Pdf417MobiScanData> scanDataList = data.getParcelableArrayList(BaseBarcodeActivity.EXTRAS_RESULT_LIST);
+            
+                for(Pdf417MobiScanData scanData : scanDataList) {
+                    // do whatever you need to do with data
+                }
+            }
+		}
+
+7. In order to obtain raw barcode data, you need to obtain `BarcodeDetailedData` structure by calling `getBarcodeRawData` method of `Pdf417ScanData` instance returned via `BaseBarcodeActivity.EXTRAS_RESULT` extra in result intent. This structure will contain list of barcode elements. Each barcode element contains byte array with its raw data and type of that raw data. Type of raw data can be either `ElementType.TEXT_DATA` or `ElementType.BYTE_DATA`. `ElementType.TEXT_DATA` defines that byte array can be interpreted as string, whilst `ElementType.BYTE_DATA` defines that byte array is probably not string. However, you can always convert all data to string and you will then get the same string that you can obtain by calling `getBarcodeData`. For example, you can use that structure like this:
 
 		@Override
 		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -267,7 +283,7 @@ Additionally, there are several method you might want to override in your derive
 * `onBeforeLoadingCamera` - this method is called inside base activity's `onResume` method just before loading camera. You can use it to perform your own initialisations here. If method returns `true`, camera will be loaded and initialised. If method returns `false`, camera will not be loaded. You might need that behaviour if you want, for example, to display a help activity to user on the first run. Since in that case your scanning activity will exit as soon as it has been started, you can evade camera and native recognizer initalization to save resources and time.
 * `onAfterPause` - this method is called as last thing in base activity's `onPause` method. You can use it to perform terminations of your objects before activity goes to pause.
 * `isOrientationAllowed` - whenever device orientation change occurs, this method is called to determine if given device orientation is allowed. If method returns true and your implementation of `AbstractViewFinder` has returned a non-null rotatable view, it will be rotated to that orientation.
-* `onScanningDone` - this method is called every time a scan operation finishes with result. The scanning result is given as a parameter of the method. If you want to return the result to the calling activity, you should set the activity's result with method `setResult` and call `finish`. If you want to perform more scanning without the need for restarting the activity, you can call `resumeScanning` method from here. `Pdf417CustomUIDemo` application shows an example how to scan 5 barcodes consecutively with 2 seconds pause between each scan.
+* `onScanningDone` - this method is called every time a scan operation finishes with result. The list of scanning results is given as a parameter of the method. If you want to return the result to the calling activity, you should set the activity's result with method `setResult` and call `finish`. If you want to perform more scanning without the need for restarting the activity, you can call `resumeScanning` method from here. `Pdf417CustomUIDemo` application shows an example how to perform 5 consecutive scans with 2 seconds pause between them.
 * `onConfigureWindow` - This method is called inside `onCreate` method. You can use it to configure activity window. Default implementation sets the FLAG_SECURE flag on activity windows to prevent taking screenshots of camera activity.
 
 Besides methods that you are allowed to override, there are several protected final utility methods you can use for your needs.
