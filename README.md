@@ -298,7 +298,7 @@ However, removing a processor architecture has some consequences:
 - by removing ARMv7 support, PDF417.mobi will work on both devices that have ARMv6 and ARMv7 processor. However, on ARMv7 processors, hardware floating point and SIMD acceleration will not be used, thus making PDF417.mobi much slower. 
 - by removing x86 support, PDF417.mobi will not work on devices that have x86 processor, except in situations when devices have ARM emulator - in that case, PDF417.mobi will work, but will be slow
 
-Our recommendation is to include both ARMv6, ARMv7 and x86 versions into your app - it will work on all devices and will provide best user experience. However, if you really need to reduce the size of your app, we recommend releasing three versions of your app - one version with only ARMv6 version of PDF417.mobi for old devices, one version with only ARMv7 version of PDF417.mobi for new devices and one with only x86 version of PDF417.mobi for those rare x86 devices.
+Our recommendation is to include both ARMv6, ARMv7 and x86 versions into your app - it will work on all devices and will provide best user experience. However, if you really need to reduce the size of your app, we recommend releasing three versions of your app - one version with only ARMv6 version of PDF417.mobi for old devices, one version with only ARMv7 version of PDF417.mobi for new devices and one version with only x86 version of PDF417.mobi for those rare x86 devices.
 
 **Important note**
 
