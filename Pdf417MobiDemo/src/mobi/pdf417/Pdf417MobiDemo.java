@@ -2,6 +2,7 @@ package mobi.pdf417;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import mobi.pdf417.activity.Pdf417ScanActivity;
 import net.photopay.barcode.BarcodeDetailedData;
@@ -139,6 +140,8 @@ public class Pdf417MobiDemo extends Activity {
         // if license permits this, remove Pdf417.mobi logo overlay on scan activity
         // if license forbids this, this option has no effect
         sett.setRemoveOverlayEnabled(true);
+        // set this to false if you want to receive at most one scan result
+//        sett.setAllowMultipleScanResultsOnSingleImage(false);
         // put settings as intent extra
         intent.putExtra(Pdf417ScanActivity.EXTRAS_SETTINGS, sett);
 
@@ -169,63 +172,77 @@ public class Pdf417MobiDemo extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == MY_REQUEST_CODE && resultCode == BaseBarcodeActivity.RESULT_OK) {
-            // read scan result
-            Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
+            // obtain scan results
+            ArrayList<Pdf417MobiScanData> scanDataList = data.getParcelableArrayListExtra(BaseBarcodeActivity.EXTRAS_RESULT_LIST);
+            // NOTE: if you are interested in only single scan result, you can obtain the first element of the array list
+            //       or you can use the old key EXTRAS_RESULT
+            // If you have set allowing of multiple scan results on single image to false (Pdf417MobiSettings.setAllowMultipleScanResultsOnSingleImage method)
+            // scanDataList will contain at most one element.
+//            Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
+            
+            StringBuilder sb = new StringBuilder();
+            
+            for(Pdf417MobiScanData scanData : scanDataList) {
 
-            // read scanned barcode type (PDF417 or QR code)
-            String barcodeType = scanData.getBarcodeType();
-            // read the data contained in barcode
-            String barcodeData = scanData.getBarcodeData();
-            // read raw barcode data
-            BarcodeDetailedData rawData = scanData.getBarcodeRawData();
-            // determine if returned scan data is certain
-            boolean uncertainData = scanData.isResultUncertain();
+                // read scanned barcode type (PDF417 or QR code)
+                String barcodeType = scanData.getBarcodeType();
+                // read the data contained in barcode
+                String barcodeData = scanData.getBarcodeData();
+                // read raw barcode data
+                BarcodeDetailedData rawData = scanData.getBarcodeRawData();
+                // determine if returned scan data is certain
+                boolean uncertainData = scanData.isResultUncertain();
 
-            // if barcode contains URL, create intent for browser
-            // else, contain intent for message
-            boolean barcodeDataIsUrl = false;
+                // if barcode contains URL, create intent for browser
+                // else, contain intent for message
+                boolean barcodeDataIsUrl = false;
 
-            try {
-                @SuppressWarnings("unused")
-                URL url = new URL(barcodeData);
-                barcodeDataIsUrl = true;
-            } catch (MalformedURLException exc) {
-                barcodeDataIsUrl = false;
-            }
-
-            if (barcodeDataIsUrl) {
-                // create intent for browser
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(barcodeData));
-                startActivity(intent);
-            } else {
-                // ask user what to do with data
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                StringBuilder sb = new StringBuilder();
-                if (uncertainData) {
-                    sb.append("This scan data is uncertain!\n\n");
+                try {
+                    @SuppressWarnings("unused")
+                    URL url = new URL(barcodeData);
+                    barcodeDataIsUrl = true;
+                } catch (MalformedURLException exc) {
+                    barcodeDataIsUrl = false;
                 }
-                sb.append(barcodeType);
-                sb.append(": ");
-                sb.append(barcodeData);
-                if (rawData != null) {
-                    sb.append("\n\n\n raw data:\n\n");
-                    sb.append(rawData.toString());
-                    sb.append("\n\n\n raw data merged:\n\n");
-                    byte[] allData = rawData.getAllData();
-                    sb.append("{");
-                    for (int i = 0; i < allData.length; ++i) {
-                        sb.append((int) allData[i] & 0x0FF);
-                        if (i != allData.length - 1) {
-                            sb.append(", ");
-                        }
+
+                if (barcodeDataIsUrl) {
+                    // create intent for browser
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(barcodeData));
+                    startActivity(intent);
+                    return;
+                } else {
+                    // ask user what to do with data
+                    if (uncertainData) {
+                        sb.append("This scan data is uncertain!\n\n");
                     }
-                    sb.append("}");
+                    sb.append(barcodeType);
+                    sb.append(" string data:\n");
+                    sb.append(barcodeData);
+                    if (rawData != null) {
+                        sb.append("\n\n");
+                        sb.append(barcodeType);
+                        sb.append(" raw data:\n");
+                        sb.append(rawData.toString());
+                        sb.append("\n");
+                        sb.append(barcodeType);
+                        sb.append(" raw data merged:\n");
+                        byte[] allData = rawData.getAllData();
+                        sb.append("{");
+                        for (int i = 0; i < allData.length; ++i) {
+                            sb.append((int) allData[i] & 0x0FF);
+                            if (i != allData.length - 1) {
+                                sb.append(", ");
+                            }
+                        }
+                        sb.append("}\n\n\n");
+                    }
                 }
-                intent.putExtra(Intent.EXTRA_TEXT, sb.toString());
-                startActivity(Intent.createChooser(intent, getString(R.string.UseWith)));
             }
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, sb.toString());
+            startActivity(Intent.createChooser(intent, getString(R.string.UseWith)));
         }
     }
 }

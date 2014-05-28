@@ -23,6 +23,7 @@
     <string name="PPCancel">Cancel</string>
     <string name="PPUse">Use</string>
     <string name="Copy">Copy</string>
+    <string name="ResultList">List of scan results</string>
     
     <string name="Copied">Text copied to clipboard</string>
     

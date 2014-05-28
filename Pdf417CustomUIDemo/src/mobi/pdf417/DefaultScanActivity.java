@@ -1,5 +1,7 @@
 package mobi.pdf417;
 
+import java.util.ArrayList;
+
 import mobi.pdf417.defaultViewfinder.DefaultBarcodeSkin;
 import net.photopay.base.BaseBarcodeActivity;
 import net.photopay.hardware.orientation.Orientation;
@@ -54,7 +56,7 @@ public class DefaultScanActivity extends BaseBarcodeActivity {
      * scanned one
      */
     @Override
-    protected void onScanningDone(Pdf417MobiScanData scanData) {
+    protected void onScanningDone(ArrayList<Pdf417MobiScanData> scanDataList) {
         mScanCount++;
         StringBuilder sb = new StringBuilder();
         sb.append("Scanned ");
@@ -77,7 +79,8 @@ public class DefaultScanActivity extends BaseBarcodeActivity {
         Toast.makeText(this, sb.toString(), Toast.LENGTH_SHORT).show();
         if (mScanCount >= 5) {
             Intent intent = new Intent();
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_RESULT, scanData);
+            intent.putExtra(BaseBarcodeActivity.EXTRAS_RESULT, scanDataList.get(0));
+            intent.putParcelableArrayListExtra(BaseBarcodeActivity.EXTRAS_RESULT_LIST, scanDataList);
             setResult(BaseBarcodeActivity.RESULT_OK, intent);
             finish();
         } else {

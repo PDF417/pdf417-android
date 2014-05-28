@@ -171,24 +171,30 @@ extends net.photopay.base.BaseRecognitionActivity</pre>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../net/photopay/base/BaseBarcodeActivity.html#EXTRAS_RESULT_LIST">EXTRAS_RESULT_LIST</a></strong></code>
+<div class="block">List of results after recognition</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>protected android.os.Handler</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/base/BaseBarcodeActivity.html#mHandler">mHandler</a></strong></code>
 <div class="block">Handler object for cross-thread communication</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/base/BaseBarcodeActivity.html#PREFS_PHOTOPAY_FILENAME">PREFS_PHOTOPAY_FILENAME</a></strong></code>
 <div class="block">PhotoPay preferences file</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/base/BaseBarcodeActivity.html#RESULT_OK">RESULT_OK</a></strong></code>
 <div class="block">This code is returned on successful scan.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static int</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/base/BaseBarcodeActivity.html#RESULT_OK_DATA_COPIED">RESULT_OK_DATA_COPIED</a></strong></code>
 <div class="block">This code is returned on successful scan after which copy button was
@@ -317,7 +323,7 @@ extends net.photopay.base.BaseRecognitionActivity</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../../net/photopay/base/BaseBarcodeActivity.html#onScanningDone(mobi.pdf417.Pdf417MobiScanData)">onScanningDone</a></strong>(<a href="../../../mobi/pdf417/Pdf417MobiScanData.html" title="class in mobi.pdf417">Pdf417MobiScanData</a>&nbsp;scanData)</code>
+<td class="colLast"><code><strong><a href="../../../net/photopay/base/BaseBarcodeActivity.html#onScanningDone(java.util.ArrayList)">onScanningDone</a></strong>(java.util.ArrayList&lt;<a href="../../../mobi/pdf417/Pdf417MobiScanData.html" title="class in mobi.pdf417">Pdf417MobiScanData</a>&gt;&nbsp;scanDataList)</code>
 <div class="block">This method is called when barcode has been scanned.</div>
 </td>
 </tr>
@@ -423,6 +429,17 @@ extends net.photopay.base.BaseRecognitionActivity</pre>
 <pre>public static final&nbsp;java.lang.String EXTRAS_RESULT</pre>
 <div class="block">Result after recognition</div>
 <dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#net.photopay.base.BaseBarcodeActivity.EXTRAS_RESULT">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="EXTRAS_RESULT_LIST">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EXTRAS_RESULT_LIST</h4>
+<pre>public static final&nbsp;java.lang.String EXTRAS_RESULT_LIST</pre>
+<div class="block">List of results after recognition</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#net.photopay.base.BaseBarcodeActivity.EXTRAS_RESULT_LIST">Constant Field Values</a></dd></dl>
 </li>
 </ul>
 <a name="EXTRAS_ALWAYS_USE_HIGH_RES">
@@ -659,17 +676,17 @@ extends net.photopay.base.BaseRecognitionActivity</pre>
 </dl>
 </li>
 </ul>
-<a name="onScanningDone(mobi.pdf417.Pdf417MobiScanData)">
+<a name="onScanningDone(java.util.ArrayList)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>onScanningDone</h4>
-<pre>protected&nbsp;void&nbsp;onScanningDone(<a href="../../../mobi/pdf417/Pdf417MobiScanData.html" title="class in mobi.pdf417">Pdf417MobiScanData</a>&nbsp;scanData)</pre>
+<pre>protected&nbsp;void&nbsp;onScanningDone(java.util.ArrayList&lt;<a href="../../../mobi/pdf417/Pdf417MobiScanData.html" title="class in mobi.pdf417">Pdf417MobiScanData</a>&gt;&nbsp;scanDataList)</pre>
 <div class="block">This method is called when barcode has been scanned. You can use this
  method to set the activity result and finish the activity, or you can
  call resumeScanning to perform one additional scan.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>scanData</code> - Barcode scanning result</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>scanDataList</code> - List of Barcode scanning results</dd></dl>
 </li>
 </ul>
 <a name="onSetupViewFinder(net.photopay.view.viewfinder.AbstractViewFinder)">

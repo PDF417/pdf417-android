@@ -10,6 +10,9 @@
     - you can obtain the list with following snippet:
 
             ArrayList<Pdf417MobiScanData> dataList = getIntent().getExtras().getParcelableArrayList(BaseBarcodeActivity.EXTRAS_RESULT_LIST);
+            
+- by default, taking screenshots of camera activity is now allowed (until now it was disabled by default and could be overriden with custom implementation of `onConfigureWindow`)
+- added support for x86 devices
 
 ## 2.6.2
 - support for entering premium license key that can be used with multiple application package names
