@@ -284,9 +284,25 @@ Pdf417MobiSdk android library contains both ARMv6, ARMv7 and x86 builds of nativ
 
 By default, when you integrate Pdf417MobiSdk into your app (see above for instructions), your app will contain native builds for all processor architectures. Thus, Pdf417.mobi will work on ARMv6 and x86 devices and will use ARMv7 features on ARMv7 devices. However, the size of your application will be rather large.
 
+### Reducing the final size of your app
+
+If your final app is too large because of PDF417.mobi, you can decide to remove one processor architecture from Pdf417MobiSdk. You can do this just by deleting appropriate folder inside Pdf417MobiSdk that contains native library for specific processor architecture:
+
+- to remove ARMv6 support, delete folder `libs/armeabi`
+- to remove ARMv7 support, delete folder `libs/armeabi-v7a`
+- to remove x86 support, delete folder `libs/x86`
+
+However, removing a processor architecture has some consequences:
+
+- by removing ARMv6 support PDF417.mobi will not work on devices that have ARMv6 processors.
+- by removing ARMv7 support, PDF417.mobi will work on both devices that have ARMv6 and ARMv7 processor. However, on ARMv7 processors, hardware floating point and SIMD acceleration will not be used, thus making PDF417.mobi much slower. 
+- by removing x86 support, PDF417.mobi will not work on devices that have x86 processor, except in situations when devices have ARM emulator - in that case, PDF417.mobi will work, but will be slow
+
+Our recommendation is to include both ARMv6, ARMv7 and x86 versions into your app - it will work on all devices and will provide best user experience. However, if you really need to reduce the size of your app, we recommend releasing three versions of your app - one version with only ARMv6 version of PDF417.mobi for old devices, one version with only ARMv7 version of PDF417.mobi for new devices and one with only x86 version of PDF417.mobi for those rare x86 devices.
+
 **Important note**
 
-If you are combining PDf417.mobi library with some other libraries that contain native code into your application, make sure you match the architectures of all native libraries. For example, if third party library has got only ARMv6 and x86 versions, you must use exactly ARMv6 and x86 versions of PDF417.mobi with that library, but not ARMv7. Using ARMv7 will most definitely crash your app on loading time on some devices because it will try to load all its native dependencies in same preferred architecture - for example Nexus 4 preferres ARMv7 native libraries so it will see that there is a PDF417.mobi ARMv7 native library and will load it. After that, it will try to load ARMv7 version of your third party library which does not exist - therefore app will crash with `UnsatisfiedLinkException`.
+If you are combining PDF417.mobi library with some other libraries that contain native code into your application, make sure you match the architectures of all native libraries. For example, if third party library has got only ARMv6 and x86 versions, you must use exactly ARMv6 and x86 versions of PDF417.mobi with that library, but not ARMv7. Using ARMv7 will most definitely crash your app on loading time on some devices because it will try to load all its native dependencies in same preferred architecture - for example Nexus 4 preferres ARMv7 native libraries so it will see that there is a PDF417.mobi ARMv7 native library and will load it. After that, it will try to load ARMv7 version of your third party library which does not exist - therefore app will crash with `UnsatisfiedLinkException`.
 
 
 ## Translation and localisation
