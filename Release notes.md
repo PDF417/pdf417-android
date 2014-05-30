@@ -1,5 +1,8 @@
 # Release notes
 
+## 3.0.1
+- fixed focusing issue on HTC One V
+
 ## 3.0.0
 - support for obtaining multiple scan results from single camera frame
 - API change:
