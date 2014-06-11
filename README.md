@@ -9,6 +9,8 @@ The package contains two Android projects:
  
  The project contains one Activity called ScanActivity that is responsible for camera control and barcode recognition
 
+ For more info visit http://pdf417.mobi
+
 ## Quick start to get and run Android demo in Eclipse
 
 1. Go to https://github.com/PDF417/android and copy GitHub code URL as shown on picture:
