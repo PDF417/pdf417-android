@@ -1,0 +1,23 @@
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        applicationId "mobi.pdf417.demo"
+        minSdkVersion 7
+        targetSdkVersion 19
+    }
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+    }
+}
+
+dependencies {
+    compile project(':pdf417MobiSdk')
+}

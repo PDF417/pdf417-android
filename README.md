@@ -55,7 +55,7 @@ The package contains two Android projects:
 
 	![Run PDF417 demo](img/12-install.png)
 
-## How to integrate Pdf417MobiSdk into your project
+### How to integrate Pdf417MobiSdk into your project using Eclipse
 
 1. Pdf417MobiSdk is an Android Library project with classes, resources and everything required to function properly. 
 Simply place the project into your workspace and reference it from your application project. 
@@ -72,9 +72,24 @@ Simply place the project into your workspace and reference it from your applicat
 	Also, add Pdf417ScanActivity entry:
 	
 		<activity android:name="mobi.pdf417.activity.Pdf417ScanActivity" android:label="@string/app_name" android:screenOrientation="portrait" />
-		
-		
-3. If you are using ProGuard, add the following lines to your `proguard-project.txt`
+
+
+
+### How to integrate Pdf417MobiSdk into your project using Android Studio and Gradle
+
+1. Open your project using Android Studio, open Project structure dialog from File menu and select '+'. Proceed with 'Import existing project', select AndroidStudio/pdf417MobiSdk folder.  
+
+	![Referencing Pdf417MobiSdk](img/as-libraryref.png)
+
+2. Edit your application build.gradle file, add dependency to pdf417MobiSdk library module:
+
+		dependencies {
+    		compile project(':pdf417MobiSdk')
+		}
+
+### Proguard configuration and starting a scan activity
+
+3. If you are using ProGuard, add the following lines to your application `proguard-project.txt` file
  
  		-keep class net.photopay.** { *; }
 

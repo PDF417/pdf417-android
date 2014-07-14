@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Pdf417MobiSdk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/pdf417MobiSdk/libs/Pdf417MobiSdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
