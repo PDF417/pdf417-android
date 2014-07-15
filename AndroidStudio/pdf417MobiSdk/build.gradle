@@ -1,13 +1,13 @@
 apply plugin: 'android-library'
 
 android {
-    compileSdkVersion 17
+    compileSdkVersion 19
     buildToolsVersion "19.1.0"
 
     defaultConfig {
         applicationId "mobi.pdf417"
         minSdkVersion 7
-        targetSdkVersion 17
+        targetSdkVersion 19
     }
 
     buildTypes {
