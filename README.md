@@ -87,6 +87,66 @@ Simply place the project into your workspace and reference it from your applicat
     		compile project(':pdf417MobiSdk')
 		}
 
+### How to integrate Pdf417MobiSdk into your project using Maven
+
+Maven repository for PDF417.mobi SDK is: [http://pdf417.mobi/maven](http://pdf417.mobi/maven).
+
+Open your pom.xml file and add these directives as appropriate:
+
+	<properties>
+		<pdf417mobi.version>3.0.1</pdf417mobi.version>
+	</properties>
+	
+	<repositories>
+       	<repository>
+           	<id>pdf417repo</id>
+           	<url>http://pdf417.mobi/maven</url>
+       	</repository>
+    </repositories>
+
+	<dependencies>
+		<dependency>
+			  <groupId>mobi.pdf417</groupId>
+			  <artifactId>sdk-library</artifactId>
+			  <version>${pdf417mobi.version}</version>
+	  	</dependency>
+
+	  	<dependency>
+			  <groupId>mobi.pdf417</groupId>
+			  <artifactId>sdk-resources</artifactId>
+			  <type>aar</type>
+			  <version>${pdf417mobi.version}</version>
+	  	</dependency>
+
+	  	<dependency>
+			  <groupId>mobi.pdf417</groupId>
+			  <artifactId>libPhotoPayBarcode</artifactId>
+			  <type>so</type>
+			  <classifier>armeabi</classifier>
+			  <version>${pdf417mobi.version}</version>
+	  	</dependency>
+		
+		<dependency>
+			  <groupId>mobi.pdf417</groupId>
+			  <artifactId>libPhotoPayBarcode</artifactId>
+			  <type>so</type>
+			  <classifier>armeabi-v7a</classifier>
+			  <version>${pdf417mobi.version}</version>
+	  	</dependency>
+
+	  	<dependency>
+			  <groupId>mobi.pdf417</groupId>
+			  <artifactId>libPhotoPayBarcode</artifactId>
+			  <type>so</type>
+			  <classifier>x86</classifier>
+			  <version>${pdf417mobi.version}</version>
+	  	</dependency>
+	<dependencies>
+
+Note: do not forget to add android-support-v13 as a dependency!
+
+Maven dependency has been tested on android-maven-plugin version 3.8.2.
+
 ### Proguard configuration and starting a scan activity
 
 3. If you are using ProGuard, add the following lines to your application `proguard-project.txt` file
