@@ -143,7 +143,6 @@ Open your pom.xml file and add these directives as appropriate:
 	  	</dependency>
 	<dependencies>
 
-Note: do not forget to add android-support-v13 as a dependency!
 
 Maven dependency has been tested on android-maven-plugin version 3.8.2.
 
