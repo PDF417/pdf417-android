@@ -1,4 +1,3 @@
-*.iml
 .gradle
 */.idea/workspace.xml
 local.properties

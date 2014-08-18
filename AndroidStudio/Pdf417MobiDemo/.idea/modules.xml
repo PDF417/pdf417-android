@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Pdf417MobiDemo.iml" filepath="$PROJECT_DIR$/Pdf417MobiDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/pdf417MobiDemo/pdf417MobiDemo.iml" filepath="$PROJECT_DIR$/pdf417MobiDemo/pdf417MobiDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pdf417MobiDemoCustomUI/pdf417MobiDemoCustomUI.iml" filepath="$PROJECT_DIR$/pdf417MobiDemoCustomUI/pdf417MobiDemoCustomUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/../pdf417MobiSdk/pdf417MobiSdk.iml" filepath="$PROJECT_DIR$/../pdf417MobiSdk/pdf417MobiSdk.iml" />
     </modules>
   </component>

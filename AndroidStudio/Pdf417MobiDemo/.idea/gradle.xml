@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/pdf417MobiDemo" />
+            <option value="$PROJECT_DIR$/pdf417MobiDemoCustomUI" />
             <option value="$PROJECT_DIR$/../pdf417MobiSdk" />
           </set>
         </option>
