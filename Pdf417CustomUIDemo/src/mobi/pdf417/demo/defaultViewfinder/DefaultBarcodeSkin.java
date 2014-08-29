@@ -1,6 +1,6 @@
 package mobi.pdf417.demo.defaultViewfinder;
 
-import mobi.pdf417.R;
+import mobi.pdf417.demo.R;
 import net.photopay.geometry.Point;
 import net.photopay.view.viewfinder.AbstractViewFinder;
 import android.app.Activity;

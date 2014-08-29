@@ -14,7 +14,7 @@ package mobi.pdf417.demo.defaultViewfinder;
 import mobi.pdf417.demo.defaultViewfinder.geometry.PointSet;
 import mobi.pdf417.demo.defaultViewfinder.geometry.Quadrilateral;
 import mobi.pdf417.demo.defaultViewfinder.geometry.QuadrilateralEvaluator;
-import mobi.pdf417.R;
+import mobi.pdf417.demo.R;
 import net.photopay.geometry.Point;
 import net.photopay.hardware.camera.CameraType;
 import net.photopay.nineoldandroids.animation.ValueAnimator;

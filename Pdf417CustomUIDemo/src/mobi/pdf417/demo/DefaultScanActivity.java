@@ -41,7 +41,7 @@ public class DefaultScanActivity extends BaseBarcodeActivity {
         LayoutInflater inflater = getLayoutInflater();
 
         ViewGroup defaultBarcodeLayout =
-            (ViewGroup) inflater.inflate(mobi.pdf417.R.layout.default_barcode_camera_overlay, null);
+            (ViewGroup) inflater.inflate(mobi.pdf417.demo.R.layout.default_barcode_camera_overlay, null);
         mSkin = new DefaultBarcodeSkin(this, defaultBarcodeLayout, true);
         return mSkin;
     }
