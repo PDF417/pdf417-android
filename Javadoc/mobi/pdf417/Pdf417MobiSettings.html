@@ -34,7 +34,7 @@
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../mobi/pdf417/Pdf417MobiScanData.html" title="class in mobi.pdf417"><span class="strong">Prev Class</span></a></li>
-<li>Next Class</li>
+<li><a href="../../mobi/pdf417/USDLScanData.html" title="class in mobi.pdf417"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?mobi/pdf417/Pdf417MobiSettings.html" target="_top">Frames</a></li>
@@ -286,56 +286,68 @@ implements android.os.Parcelable</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setDontShowDialog(boolean)">setDontShowDialog</a></strong>(boolean&nbsp;dontShowDialog)</code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setDecodeUSDriverLicenseData(boolean)">setDecodeUSDriverLicenseData</a></strong>(boolean&nbsp;usdl)</code>
+<div class="block">Sets whether or not decoding of US Driver License data should be performed.</div>
+</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setDontShowDialog(boolean)">setDontShowDialog</a></strong>(boolean&nbsp;dontShowDialog)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setEan13Enabled(boolean)">setEan13Enabled</a></strong>(boolean&nbsp;ean13Enabled)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setEan8Enabled(boolean)">setEan8Enabled</a></strong>(boolean&nbsp;ean8Enabled)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setInverseScanning(boolean)">setInverseScanning</a></strong>(boolean&nbsp;inverseScanning)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setItfEnabled(boolean)">setItfEnabled</a></strong>(boolean&nbsp;itfEnabled)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setNullQuietZoneAllowed(boolean)">setNullQuietZoneAllowed</a></strong>(boolean&nbsp;nullQuietZoneAllowed)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setPdf417Enabled(boolean)">setPdf417Enabled</a></strong>(boolean&nbsp;pdf417Enabled)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setQrCodeEnabled(boolean)">setQrCodeEnabled</a></strong>(boolean&nbsp;qrCodeEnabled)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setRemoveOverlayEnabled(boolean)">setRemoveOverlayEnabled</a></strong>(boolean&nbsp;removeOverlayEnabled)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setUncertainScanning(boolean)">setUncertainScanning</a></strong>(boolean&nbsp;uncertainScanning)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setUpcaEnabled(boolean)">setUpcaEnabled</a></strong>(boolean&nbsp;upcaEnabled)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#setUpceEnabled(boolean)">setUpceEnabled</a></strong>(boolean&nbsp;upceEnabled)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#shouldAllowMultipleScanResultsOnSingleImage()">shouldAllowMultipleScanResultsOnSingleImage</a></strong>()</code>
 <div class="block">Returns true if multiple scan results can be obtained from single image.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../mobi/pdf417/Pdf417MobiSettings.html#shouldDecodeUSDriverLicenseData()">shouldDecodeUSDriverLicenseData</a></strong>()</code>
+<div class="block">Returns true if decoding of US Driver License barcode data should be performed.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -800,7 +812,7 @@ implements android.os.Parcelable</pre>
 <a name="setAllowMultipleScanResultsOnSingleImage(boolean)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setAllowMultipleScanResultsOnSingleImage</h4>
 <pre>public&nbsp;void&nbsp;setAllowMultipleScanResultsOnSingleImage(boolean&nbsp;multiScan)</pre>
@@ -810,6 +822,29 @@ implements android.os.Parcelable</pre>
  The upside of turning that option off is the speed - if you enable lots of recognizers, as soon as the first recognizer succeeds in
  reading the barcode or slip, function will return and other recognizers will not get a chance to analyze the image. The downside is that
  you are then unable to obtain multiple results from single image.</div>
+</li>
+</ul>
+<a name="shouldDecodeUSDriverLicenseData()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>shouldDecodeUSDriverLicenseData</h4>
+<pre>public&nbsp;boolean&nbsp;shouldDecodeUSDriverLicenseData()</pre>
+<div class="block">Returns true if decoding of US Driver License barcode data should be performed. Note that the actual decoding will
+ take place only if license allows it.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>true if decoding of US Driver License barcode data should be performed.</dd></dl>
+</li>
+</ul>
+<a name="setDecodeUSDriverLicenseData(boolean)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setDecodeUSDriverLicenseData</h4>
+<pre>public&nbsp;void&nbsp;setDecodeUSDriverLicenseData(boolean&nbsp;usdl)</pre>
+<div class="block">Sets whether or not decoding of US Driver License data should be performed. Note that the actual decoding will
+ take place only if license allows it.</div>
 </li>
 </ul>
 </li>
@@ -838,7 +873,7 @@ implements android.os.Parcelable</pre>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../mobi/pdf417/Pdf417MobiScanData.html" title="class in mobi.pdf417"><span class="strong">Prev Class</span></a></li>
-<li>Next Class</li>
+<li><a href="../../mobi/pdf417/USDLScanData.html" title="class in mobi.pdf417"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?mobi/pdf417/Pdf417MobiSettings.html" target="_top">Frames</a></li>

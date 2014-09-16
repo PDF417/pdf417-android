@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import mobi.pdf417.Pdf417MobiScanData;
 import mobi.pdf417.Pdf417MobiSettings;
+import mobi.pdf417.USDLScanData;
 import mobi.pdf417.activity.Pdf417ScanActivity;
 import net.photopay.barcode.BarcodeDetailedData;
 import net.photopay.base.BaseBarcodeActivity;
@@ -113,7 +114,7 @@ public class Pdf417MobiDemo extends Activity {
 
         // set the license key (for commercial versions only) - obtain your key at
         // http://pdf417.mobi
-        //		intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "BTH7-L4JO-UI5T-JAFP-YSKX-BXZT-SDKE-LKIZ"); // demo license key for package mobi.pdf417.demo
 
         // If you want to open front facing camera, uncomment the following line.
         // Note that front facing cameras do not have autofocus support, so it will not
@@ -135,6 +136,9 @@ public class Pdf417MobiDemo extends Activity {
         // Set this to true to scan barcodes which don't have quiet zone (white area) around it
         // Use only if necessary because it drastically slows down the recognition process 
         sett.setNullQuietZoneAllowed(true);
+        // Set this to true to enable parsing of data from US Driver's License barcodes
+        // This feature is available only if license key permits it.
+        sett.setDecodeUSDriverLicenseData(true);
         // set this to true to enable QR code scanning
         sett.setQrCodeEnabled(true);
         // set this to true to prevent showing dialog after successful scan
@@ -195,49 +199,71 @@ public class Pdf417MobiDemo extends Activity {
                 // determine if returned scan data is certain
                 boolean uncertainData = scanData.isResultUncertain();
 
-                // if barcode contains URL, create intent for browser
-                // else, contain intent for message
-                boolean barcodeDataIsUrl = false;
-
-                try {
-                    @SuppressWarnings("unused")
-                    URL url = new URL(barcodeData);
-                    barcodeDataIsUrl = true;
-                } catch (MalformedURLException exc) {
-                    barcodeDataIsUrl = false;
-                }
-
-                if (barcodeDataIsUrl) {
-                    // create intent for browser
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse(barcodeData));
-                    startActivity(intent);
-                    return;
-                } else {
-                    // ask user what to do with data
+                if(scanData instanceof USDLScanData) {
                     if (uncertainData) {
                         sb.append("This scan data is uncertain!\n\n");
                     }
                     sb.append(barcodeType);
-                    sb.append(" string data:\n");
-                    sb.append(barcodeData);
-                    if (rawData != null) {
-                        sb.append("\n\n");
-                        sb.append(barcodeType);
-                        sb.append(" raw data:\n");
-                        sb.append(rawData.toString());
-                        sb.append("\n");
-                        sb.append(barcodeType);
-                        sb.append(" raw data merged:\n");
-                        byte[] allData = rawData.getAllData();
-                        sb.append("{");
-                        for (int i = 0; i < allData.length; ++i) {
-                            sb.append((int) allData[i] & 0x0FF);
-                            if (i != allData.length - 1) {
-                                sb.append(", ");
-                            }
+                    sb.append("\n{\n");
+                    USDLScanData usdlData = (USDLScanData) scanData;
+                    Bundle b = usdlData.getDataBundle();
+                    for(String s : b.keySet()) {
+                        String val = b.getString(s);
+                        if(val != null) {
+                            sb.append('\"');
+                            sb.append(s);
+                            sb.append("\" : \"");
+                            sb.append(val);
+                            sb.append("\",\n");
                         }
-                        sb.append("}\n\n\n");
+                    }
+                    sb.append("}\n\n\n");
+                } else {
+
+                    // if barcode contains URL, create intent for browser
+                    // else, contain intent for message
+                    boolean barcodeDataIsUrl = false;
+
+                    try {
+                        @SuppressWarnings("unused")
+                        URL url = new URL(barcodeData);
+                        barcodeDataIsUrl = true;
+                    } catch (MalformedURLException exc) {
+                        barcodeDataIsUrl = false;
+                    }
+
+                    if (barcodeDataIsUrl) {
+                        // create intent for browser
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse(barcodeData));
+                        startActivity(intent);
+                        return;
+                    } else {
+                        // ask user what to do with data
+                        if (uncertainData) {
+                            sb.append("This scan data is uncertain!\n\n");
+                        }
+                        sb.append(barcodeType);
+                        sb.append(" string data:\n");
+                        sb.append(barcodeData);
+                        if (rawData != null) {
+                            sb.append("\n\n");
+                            sb.append(barcodeType);
+                            sb.append(" raw data:\n");
+                            sb.append(rawData.toString());
+                            sb.append("\n");
+                            sb.append(barcodeType);
+                            sb.append(" raw data merged:\n");
+                            byte[] allData = rawData.getAllData();
+                            sb.append("{");
+                            for (int i = 0; i < allData.length; ++i) {
+                                sb.append((int) allData[i] & 0x0FF);
+                                if (i != allData.length - 1) {
+                                    sb.append(", ");
+                                }
+                            }
+                            sb.append("}\n\n\n");
+                        }
                     }
                 }
             }

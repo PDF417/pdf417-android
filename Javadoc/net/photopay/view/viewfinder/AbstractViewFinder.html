@@ -149,98 +149,105 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#displayLineDetectionResult(net.photopay.lines.LineDetectionResult)">displayLineDetectionResult</a></strong>(net.photopay.lines.LineDetectionResult&nbsp;result)</code>
+<div class="block">This method is called to nofity viewfinder object that line detection result 
+ has become available and that you can draw it in your viewfinder.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#displayMessage(java.lang.CharSequence)">displayMessage</a></strong>(java.lang.CharSequence&nbsp;text)</code>
 <div class="block">Viewfinder should display given message.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#displayMessageImmediately(java.lang.CharSequence)">displayMessageImmediately</a></strong>(java.lang.CharSequence&nbsp;text)</code>
 <div class="block">Viewfinder should display given message.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#displayOcrResult(net.photopay.ocr.OcrResult)">displayOcrResult</a></strong>(net.photopay.ocr.OcrResult&nbsp;result)</code>
 <div class="block">This method is called to nofity viewfinder object that OCR result has become
  available and that you can draw it in your viewfinder.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#focusCamera()">focusCamera</a></strong>()</code>
 <div class="block">Requests camera to perform autofocus.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>net.photopay.hardware.camera.CameraType</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getCameraType()">getCameraType</a></strong>()</code>
 <div class="block">Returns the currently opened camera's type (front facing or back facing).</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>android.view.View</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getFixedView()">getFixedView</a></strong>()</code>
 <div class="block">This method is called when adding viewfinder on top of camera surface.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../net/photopay/hardware/orientation/Orientation.html" title="enum in net.photopay.hardware.orientation">Orientation</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getInitialOrientation()">getInitialOrientation</a></strong>()</code>
 <div class="block">This method is called when rotatable view is being layouted on top of
  camera UI (provided that getRotatableView returns non-null).</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>android.view.View</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getRotatableView()">getRotatableView</a></strong>()</code>
 <div class="block">This method is called when adding viewfinder on top of camera surface.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getRotationAnimationDuration()">getRotationAnimationDuration</a></strong>()</code>
 <div class="block">If you have rotatable view and have enabled rotation animation, you can
  return animation duration in miliseconds by overriding this method.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#isAnimationInProgress()">isAnimationInProgress</a></strong>()</code>
 <div class="block">This method should return true if it wants to prevent finishing the
  activity while some animation is in progress.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#isCameraFocused()">isCameraFocused</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#isCameraTorchSupported()">isCameraTorchSupported</a></strong>()</code>
 <div class="block">Returns true if camera supports torch flash mode.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#isOnlyBarcode()">isOnlyBarcode</a></strong>()</code>
 <div class="block">Returns true if only barcode scanning will be performed.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#onSizeChanged(int, int)">onSizeChanged</a></strong>(int&nbsp;width,
              int&nbsp;height)</code>
 <div class="block">This method is called before layouting rotatable and fixed view.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setCameraPreview(CameraPreview)">setCameraPreview</a></strong>(CameraPreview&nbsp;cp)</code>
 <div class="block">Sets the camera preview which is the owner of this viewfinder.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setDefaultTarget(int, boolean)">setDefaultTarget</a></strong>(int&nbsp;detectionStatus,
                 boolean&nbsp;showProgress)</code>
@@ -248,7 +255,7 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
  into its default position.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setNewTarget(net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, int, int, boolean)">setNewTarget</a></strong>(<a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uleft,
             <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uright,
@@ -261,13 +268,13 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
  so that it can draw itself around that object.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setOrientation(net.photopay.hardware.orientation.Orientation)">setOrientation</a></strong>(<a href="../../../../net/photopay/hardware/orientation/Orientation.html" title="enum in net.photopay.hardware.orientation">Orientation</a>&nbsp;orientation)</code>
 <div class="block">This method is called whenever view orientation change occurs.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setPointSet(float[], boolean)">setPointSet</a></strong>(float[]&nbsp;points,
            boolean&nbsp;biColorPointSet)</code>
@@ -275,60 +282,60 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
  so that it can draw point of interest for this object.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setProgressModifier(ProgressModifier)">setProgressModifier</a></strong>(ProgressModifier&nbsp;modifier)</code>
 <div class="block">This method is called to set appropriate progress modifier for current
  scan.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setRecognizerMode(int)">setRecognizerMode</a></strong>(int&nbsp;mode)</code>
 <div class="block">This method is called to notify viewfinder in which operating mode is
  scanning started.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setTorchEnabled(boolean)">setTorchEnabled</a></strong>(boolean&nbsp;enabled)</code>
 <div class="block">If torch is supported, set its state to enabled (on), or disabled (off).</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setUsingOnlyBarcode(boolean)">setUsingOnlyBarcode</a></strong>(boolean&nbsp;onlyBarcode)</code>
 <div class="block">This method is called to indicate whether only barcode scanning will be
  performed.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#shouldAnimateRotation()">shouldAnimateRotation</a></strong>()</code>
 <div class="block">You should return true in this method if you want your rotatable UI to be
  animated while performing a rotation.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#shouldPutInsideCameraSurface()">shouldPutInsideCameraSurface</a></strong>()</code>
 <div class="block">If method returns true, views obtained with getFixedView and
  getRotatableView will be layouted inside camera surface.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#showProgress(int)">showProgress</a></strong>(int&nbsp;progress)</code>
 <div class="block">This method is called as a notification about scan progress.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#showRawProgress(int)">showRawProgress</a></strong>(int&nbsp;progress)</code>
 <div class="block">This method is called as a notification about scan progress.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#startProgressAnimation()">startProgressAnimation</a></strong>()</code>
 <div class="block">This method is called to notify viewfinder that it should start drawing
@@ -635,6 +642,18 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 <div class="block">This method is called to nofity viewfinder object that OCR result has become
  available and that you can draw it in your viewfinder.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>result</code> - OCR result to be drawn</dd></dl>
+</li>
+</ul>
+<a name="displayLineDetectionResult(net.photopay.lines.LineDetectionResult)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>displayLineDetectionResult</h4>
+<pre>public&nbsp;void&nbsp;displayLineDetectionResult(net.photopay.lines.LineDetectionResult&nbsp;result)</pre>
+<div class="block">This method is called to nofity viewfinder object that line detection result 
+ has become available and that you can draw it in your viewfinder.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>result</code> - line detection result to be drawn</dd></dl>
 </li>
 </ul>
 <a name="setPointSet(float[], boolean)">

@@ -55,7 +55,7 @@ The package contains two Android projects:
 
 	![Run PDF417 demo](img/12-install.png)
 
-### How to integrate Pdf417MobiSdk into your project using Eclipse
+## How to integrate Pdf417MobiSdk into your project using Eclipse
 
 1. Pdf417MobiSdk is an Android Library project with classes, resources and everything required to function properly. 
 Simply place the project into your workspace and reference it from your application project. 
@@ -64,18 +64,20 @@ Simply place the project into your workspace and reference it from your applicat
  	
 2. Edit your `AndroidManifest.xml`. You should include camera and camera autofocus features:
 
-   		<uses-permission android:name="android.permission.CAMERA" />
+```xml
+<uses-permission android:name="android.permission.CAMERA" />
 
-   		<uses-feature android:name="android.hardware.camera" />
-    	<uses-feature android:name="android.hardware.camera.autofocus" />
-	
-	Also, add Pdf417ScanActivity entry:
-	
-		<activity android:name="mobi.pdf417.activity.Pdf417ScanActivity" android:label="@string/app_name" android:screenOrientation="portrait" />
+<uses-feature android:name="android.hardware.camera" />
+<uses-feature android:name="android.hardware.camera.autofocus" />
+```
 
+Also, add Pdf417ScanActivity entry:
 
+```xml
+<activity android:name="mobi.pdf417.activity.Pdf417ScanActivity" android:label="@string/app_name" android:screenOrientation="portrait" />
+```
 
-### How to integrate Pdf417MobiSdk into your project using Android Studio and Gradle
+## How to integrate Pdf417MobiSdk into your project using Android Studio and Gradle
 
 1. Open your project using Android Studio, open Project structure dialog from File menu and select '+'. Proceed with 'Import existing project', select AndroidStudio/pdf417MobiSdk folder.  
 
@@ -83,257 +85,311 @@ Simply place the project into your workspace and reference it from your applicat
 
 2. Edit your application build.gradle file, add dependency to pdf417MobiSdk library module:
 
-		dependencies {
-    		compile project(':pdf417MobiSdk')
-		}
+    ```
+    dependencies {
+    	compile project(':pdf417MobiSdk')
+    }
+    ```
 
-### How to integrate Pdf417MobiSdk into your project using Maven
+## How to integrate Pdf417MobiSdk into your project using Maven
 
 Maven repository for PDF417.mobi SDK is: [http://pdf417.mobi/maven](http://pdf417.mobi/maven).
 
 Open your pom.xml file and add these directives as appropriate:
 
-	<properties>
-		<pdf417mobi.version>3.0.1</pdf417mobi.version>
-	</properties>
+```xml
+<properties>
+	<pdf417mobi.version>3.0.1</pdf417mobi.version>
+</properties>
+
+<repositories>
+   	<repository>
+       	<id>pdf417repo</id>
+       	<url>http://pdf417.mobi/maven</url>
+   	</repository>
+</repositories>
+
+<dependencies>
+	<dependency>
+		  <groupId>mobi.pdf417</groupId>
+		  <artifactId>sdk-library</artifactId>
+		  <version>${pdf417mobi.version}</version>
+  	</dependency>
+
+  	<dependency>
+		  <groupId>mobi.pdf417</groupId>
+		  <artifactId>sdk-resources</artifactId>
+		  <type>aar</type>
+		  <version>${pdf417mobi.version}</version>
+  	</dependency>
+
+  	<dependency>
+		  <groupId>mobi.pdf417</groupId>
+		  <artifactId>libPhotoPayBarcode</artifactId>
+		  <type>so</type>
+		  <classifier>armeabi</classifier>
+		  <version>${pdf417mobi.version}</version>
+  	</dependency>
 	
-	<repositories>
-       	<repository>
-           	<id>pdf417repo</id>
-           	<url>http://pdf417.mobi/maven</url>
-       	</repository>
-    </repositories>
+	<dependency>
+		  <groupId>mobi.pdf417</groupId>
+		  <artifactId>libPhotoPayBarcode</artifactId>
+		  <type>so</type>
+		  <classifier>armeabi-v7a</classifier>
+		  <version>${pdf417mobi.version}</version>
+  	</dependency>
 
-	<dependencies>
-		<dependency>
-			  <groupId>mobi.pdf417</groupId>
-			  <artifactId>sdk-library</artifactId>
-			  <version>${pdf417mobi.version}</version>
-	  	</dependency>
-
-	  	<dependency>
-			  <groupId>mobi.pdf417</groupId>
-			  <artifactId>sdk-resources</artifactId>
-			  <type>aar</type>
-			  <version>${pdf417mobi.version}</version>
-	  	</dependency>
-
-	  	<dependency>
-			  <groupId>mobi.pdf417</groupId>
-			  <artifactId>libPhotoPayBarcode</artifactId>
-			  <type>so</type>
-			  <classifier>armeabi</classifier>
-			  <version>${pdf417mobi.version}</version>
-	  	</dependency>
-		
-		<dependency>
-			  <groupId>mobi.pdf417</groupId>
-			  <artifactId>libPhotoPayBarcode</artifactId>
-			  <type>so</type>
-			  <classifier>armeabi-v7a</classifier>
-			  <version>${pdf417mobi.version}</version>
-	  	</dependency>
-
-	  	<dependency>
-			  <groupId>mobi.pdf417</groupId>
-			  <artifactId>libPhotoPayBarcode</artifactId>
-			  <type>so</type>
-			  <classifier>x86</classifier>
-			  <version>${pdf417mobi.version}</version>
-	  	</dependency>
-	<dependencies>
-
+  	<dependency>
+		  <groupId>mobi.pdf417</groupId>
+		  <artifactId>libPhotoPayBarcode</artifactId>
+		  <type>so</type>
+		  <classifier>x86</classifier>
+		  <version>${pdf417mobi.version}</version>
+  	</dependency>
+<dependencies>
+```
 
 Maven dependency has been tested on android-maven-plugin version 3.8.2.
 
-### Proguard configuration and starting a scan activity
+## Proguard configuration
 
-3. If you are using ProGuard, add the following lines to your application `proguard-project.txt` file
- 
- 		-keep class net.photopay.** { *; }
+If you are using ProGuard, add the following lines to your application `proguard-project.txt` file
 
-		-keepclassmembers class net.photopay.** {
-    		*;
-		}
-				
-        -keep class mobi.pdf417.** { *; }
-        
-        -keepclassmembers class mobi.pdf417.** { 
-            *; 
+```
+-keep class net.photopay.** { *; }
+
+-keepclassmembers class net.photopay.** {
+    *;
+}
+
+-keep class mobi.pdf417.** { *; }
+
+-keepclassmembers class mobi.pdf417.** { 
+    *; 
+}
+
+-dontwarn android.hardware.**
+
+-dontwarn android.support.v4.**
+```
+
+## Starting a scan activity
+
+You can start scanning process by starting `Pdf417ScanActivity` activity with Intent initialized in the following way:
+    
+```java
+// Intent for Pdf417ScanActivity.class
+Intent intent = new Intent(this, Pdf417ScanActivity.class);
+		
+// Start Activity
+startActivityForResult(intent, MY_REQUEST_CODE);
+```
+
+`Pdf417ScanActivity` will return the result to your activity via intent passed to your `onActivityResult` method after user click `Use` button in dialog shown after successful scan. 
+
+You can use pdf417 SDK free of change and without license key for development and non-commercial projects. Once you obtain a commercial license key from [www.pdf417.mobi](www.pdf417.mobi), you can set it with `EXTRAS_LICENSE_KEY` intent extra like this:
+	
+```java
+// set the license key
+intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
+```
+	
+License key is bound to package name of your application. For example, if you have license key that is bound to `mobi.pdf417` app package, you cannot use the same key in other applications. However, if you purchase Premium license, you will get license key that can be used in multiple applications. This license key will then not be bound to package name of the app. Instead, it will be bound to the license owner string that needs to be provided to the library together with the license key. To provide license owner string, use the `EXTRAS_LICENSE_OWNER` intent extra like this:
+
+```java
+// set the license key
+intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
+intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_OWNER, "Enter_License_Owner_Here");
+```
+
+If you do not provide license owner, license key will be validated against current application package name and will fail to unlock the library.
+
+You can also set additional settings to Intent used for initializing the `Pdf417ScanActivity`:
+
+* If you want sound to be played after the scanning process ends, use `EXTRAS_BEEP_RESOURCE` to set the resource ID of the sound, like this
+   
+    ```java
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
+    ```
+
+* If you want to always use the highest available camera resolution, set `EXTRAS_ALWAYS_USE_HIGH_RES` to true. This is by default enabled for all devices that support at least 720p camera preview frame size. To set this parameter, use the following code snippet:
+	
+    ```java
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_ALWAYS_USE_HIGH_RES, true);
+    ```
+
+* if you want to use front facing camera instead of back facing camera, you should set `EXTRA_CAMERA_TYPE` to `CAMERA_FRONTFACE`, like this:
+
+    ```java
+		intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE)
+    ```
+		
+* if you want to set scanning region, you can do it in the following way:
+
+    ```java
+	// define scanning region
+	// first parameter of rectangle is x-coordinate represented as percentage
+	// of view width*, second parameter is y-coordinate represented as percentage
+	// of view height*, third parameter is region width represented as percentage
+	// of view width* and fourth parameter is region height represented as percentage
+	// of view heigth*
+	//
+	// * view width and height are defined in current context, i.e. they depend on
+	// screen orientation. If you allow your ROI view to be rotated, then in portrait
+	// view width will be smaller than height, whilst in landscape orientation width
+	// will be larger than height. This complies with view designer preview in eclipse ADT.
+	// If you choose not to rotate your ROI view, then your ROI view will be layout either
+	// in portrait or landscape, depending on setting for your camera activity in AndroidManifest.xml
+	Rectangle roi = new Rectangle(0.2f, 0.1f, 0.5f, 0.4f);
+	intent.putExtra(BaseBarcodeActivity.EXTRAS_ROI, roi);
+	// if you intent to rotate your ROI view, you should set the EXTRAS_ROTATE_ROI extra to true
+	// so that PDF417.mobi can adjust ROI coordinates for native library when device orientation
+	// change event occurs
+	intent.putExtra(BaseBarcodeActivity.EXTRAS_ROTATE_ROI, true);
+    ```
+		
+* if you want to optimize camera parameters for near object scanning, you should set `EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING` to `true`. When camera parameters are optimized for near object scanning, macro focus mode will be preferred over autofocus mode. Thus, camera will have easier time focusing on to near objects, but might have harder time focusing on far objects. If you expect that most of your scans will be performed by holding the device very near the object, turn on that parameter. By default, this parameter is set to `false`. Set the parameter like this:
+
+    ```java
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING, true)
+    ```
+		
+* You can use `Pdf417MobiSettings` object to tweak additional scanning parameters. This is entirely optional. If you don't send this object via intent, default scanning parameters will be used - this means both QR and PDF417 codes will be scanned and default camera overlay will be shown. For example, you could set settings as in following example:
+
+    ```java
+	Pdf417MobiSettings sett = new Pdf417MobiSettings();
+	// set this to true to enable PDF417 scanning
+	sett.setPdf417Enabled(true);
+	// Set this to true to scan even barcode not compliant with standards
+	// For example, malformed PDF417 barcodes which were incorrectly encoded
+	// Use only if necessary because it slows down the recognition process
+	sett.setUncertainScanning(true);
+	// Set this to true to scan barcodes which don't have quiet zone (white area) around it
+	// Use only if necessary because it drastically slows down the recognition process 
+	sett.setNullQuietZoneAllowed(true);
+    // Set this to true to enable parsing of data from US Driver's License barcodes
+    // This feature is available only if license key permits it.
+    sett.setDecodeUSDriverLicenseData(true);
+	// set this to true to enable QR code scanning
+	sett.setQrCodeEnabled(true); 
+	// set this to true to prevent showing dialog after successful scan
+	sett.setDontShowDialog(false);
+	// if license permits this, remove Pdf417.mobi logo overlay on scan activity
+	// if license forbids this, this option has no effect
+	sett.setRemoveOverlayEnabled(true);
+	// put settings as intent extra
+	intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
+    ```
+	
+## Obtaining the scanning results
+
+Obtaining the scanned data is done in the `onActivityResult` method. If the recognition returned some results, result code returned will be `BaseBarcodeActivity.RESULT_OK`. Optionally, if user tapped the `Copy` button in dialog, result code returned will be `BaseBarcodeActivity.RESULT_OK_DATA_COPIED` to indicate that barcode data is copied into clipboard. For example, your implementation of this method could look like this:
+
+```java
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	super.onActivityResult(requestCode, resultCode, data);
+	
+    if(requestCode==MY_REQUEST_CODE && resultCode==BaseBarcodeActivity.RESULT_OK) {
+    	// read scan result
+		Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
+    
+        // read scanned barcode type (PDF417 or QR code)	
+        String barcodeType = scanData.getBarcodeType();
+        // read the data contained in barcode
+        String barcodeData = scanData.getBarcodeData();
+        // determine if returned data is uncertain
+        boolean uncertainData = scanData.isResultUncertain();
+
+        // in case US Driver's License data was parsed, you can access the fields
+        // in the following way
+        if(scanData instanceOf USDLScanData) {
+            USDLScanData usdlData = (USDLScanData) scanData;
+            // handle data
         }
         
-        -dontwarn android.hardware.**
+        // ask user what to do with data
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, barcodeType + ": " + barcodeData);
+        startActivity(Intent.createChooser(intent, getString(R.string.UseWith)));
+    }
+}
+```
 
-		-dontwarn android.support.v4.**
- 
-4. You can start scanning process by starting `Pdf417ScanActivity` activity with Intent initialized in the following way:
+You can also obtain the list of all data that have been scanned (if there is more than one). For that matter, you need to use `BaseBarcodeActivity.EXTRAS_RESULT_LIST` key as shown in following example:
+
+```java
+@Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+	
+    if(requestCode==MY_REQUEST_CODE && resultCode==BaseBarcodeActivity.RESULT_OK) {
+        // read scan result
+	    ArrayList<Pdf417MobiScanData> scanDataList = data.getParcelableArrayList(BaseBarcodeActivity.EXTRAS_RESULT_LIST);
     
-		// Intent for Pdf417ScanActivity.class
-		Intent intent = new Intent(this, Pdf417ScanActivity.class);
-				
-		// Start Activity
-		startActivityForResult(intent, MY_REQUEST_CODE);
+        for(Pdf417MobiScanData scanData : scanDataList) {
+            // do whatever you need to do with data
+        }
+    }
+}
+```
+
+If US Driver's License decoding was used, you can also obtain parsed fields by castind `Pdf417MobiScanData` into `USDLScanData` class, and then use its methods to obtain driver's license fields:
+
+```java
+Pdf417MobiScanData scanData;
+if(scanData instanceOf USDLScanData) {
+    USDLScanData usdlData = (USDLScanData) scanData;
+    String aamvaVersion = usdlData.getField(USDLScanData.kAamvaVersionNumber);
+}
+```
+
+To see the list of available keys and their descriptions for obtaining the driver's licenses fields, see [Javadoc](Javadoc/mobi/pdf417/USDLScanData.html).
+
+In order to obtain raw barcode data, you need to obtain `BarcodeDetailedData` structure by calling `getBarcodeRawData` method of `Pdf417ScanData` instance returned via `BaseBarcodeActivity.EXTRAS_RESULT` extra in result intent. This structure will contain list of barcode elements. Each barcode element contains byte array with its raw data and type of that raw data. Type of raw data can be either `ElementType.TEXT_DATA` or `ElementType.BYTE_DATA`. `ElementType.TEXT_DATA` defines that byte array can be interpreted as string, whilst `ElementType.BYTE_DATA` defines that byte array is probably not string. However, you can always convert all data to string and you will then get the same string that you can obtain by calling `getBarcodeData`. For example, you can use that structure like this:
+
+```java
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	super.onActivityResult(requestCode, resultCode, data);
+	
+    if(requestCode==MY_REQUEST_CODE && resultCode==BaseBarcodeActivity.RESULT_OK) {
+   		// read scan result
+		Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
 		
+        // read raw barcode data
+        BarcodeDetailedData rawData = scanData.getBarcodeRawData();				
+        // get list of barcode elements
+    	List<BarcodeElement> elems = rawData.getElements();
+        // log the amount of elements
+        Log.i(TAG, "Number of barcode elements is " + elems.size());
+	    // now iterate over elements
+    	for(int i=0; i<elems.size(); ++i) {
+    		BarcodeElement elem = elems.get(i);
+    		// get the barcode element type
+    		ElementType elemType = elem.getElementType();
+    		// get raw bytes of the element
+    		byte[] rawBytes = elem.getElementBytes();
+    		
+    		// do with that data whatever you want
+    		// for example print it
+    		Log.i(TAG, "Element #" + i + " is of type: " + elemType.name());
+    		StringBuilder sb = new StringBuilder("{");
+    		for(int j=0; j<rawBytes.length; ++j) {
+    			sb.append((int)rawBytes[j] & 0x0FF);
+    			if(j!=rawBytes.length-1) {
+    				sb.append(", ");
+    			}
+    		}
+    		sb.append("}");
+    		Log.i(TAG, sb.toString());
+    	}
+	}
+}
+```
 
-	`Pdf417ScanActivity` will return the result to your activity via intent passed to your `onActivityResult` method after user click `Use` button in dialog shown after successful scan. 
-	
-	You can use pdf417 SDK free of change and without license key for development and non-commercial projects. Once you obtain a commercial license key from [www.pdf417.mobi](www.pdf417.mobi), you can set it with `EXTRAS_LICENSE_KEY` intent extra like this:
-	
-		// set the license key
-		intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
-		
-	License key is bound to package name of your application. For example, if you have license key that is bound to `mobi.pdf417` app package, you cannot use the same key in other applications. However, if you purchase Premium license, you will get license key that can be used in multiple applications. This license key will then not be bound to package name of the app. Instead, it will be bound to the license owner string that needs to be provided to the library together with the license key. To provide license owner string, use the `EXTRAS_LICENSE_OWNER` intent extra like this:
-	
-		// set the license key
-		intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
-		intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_OWNER, "Enter_License_Owner_Here");
-		
-	If you do not provide license owner, license key will be validated against current application package name and will fail to unlock the library.
-	
-	You can also set additional settings to Intent used for initializing the `Pdf417ScanActivity`:
-	
-	* If you want sound to be played after the scanning process ends, use `EXTRAS_BEEP_RESOURCE` to set the resource ID of the sound, like this
-	
-			intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
-			
-	* If you wany to always use the highest available camera resolution, set `EXTRAS_ALWAYS_USE_HIGH_RES` to true. This is by default enabled for all devices that support at least 720p camera preview frame size. To set this parameter, use the following code snippet:
-		
-			intent.putExtra(Pdf417ScanActivity.EXTRAS_ALWAYS_USE_HIGH_RES, true);
-	
-	* if you want to use front facing camera instead of back facing camera, you should set `EXTRA_CAMERA_TYPE` to `CAMERA_FRONTFACE`, like this:
-	
-			intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE)
-			
-	* if you want to set scanning region, you can do it in the following way:
-	
-			// define scanning region
-			// first parameter of rectangle is x-coordinate represented as percentage
-			// of view width*, second parameter is y-coordinate represented as percentage
-			// of view height*, third parameter is region width represented as percentage
-			// of view width* and fourth parameter is region height represented as percentage
-			// of view heigth*
-			//
-			// * view width and height are defined in current context, i.e. they depend on
-			// screen orientation. If you allow your ROI view to be rotated, then in portrait
-			// view width will be smaller than height, whilst in landscape orientation width
-			// will be larger than height. This complies with view designer preview in eclipse ADT.
-			// If you choose not to rotate your ROI view, then your ROI view will be layout either
-			// in portrait or landscape, depending on setting for your camera activity in AndroidManifest.xml
-			Rectangle roi = new Rectangle(0.2f, 0.1f, 0.5f, 0.4f);
-			intent.putExtra(BaseBarcodeActivity.EXTRAS_ROI, roi);
-			// if you intent to rotate your ROI view, you should set the EXTRAS_ROTATE_ROI extra to true
-			// so that PDF417.mobi can adjust ROI coordinates for native library when device orientation
-			// change event occurs
-			intent.putExtra(BaseBarcodeActivity.EXTRAS_ROTATE_ROI, true);
-			
-	* if you want to optimize camera parameters for near object scanning, you should set `EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING` to `true`. When camera parameters are optimized for near object scanning, macro focus mode will be preferred over autofocus mode. Thus, camera will have easier time focusing on to near objects, but might have harder time focusing on far objects. If you expect that most of your scans will be performed by holding the device very near the object, turn on that parameter. By default, this parameter is set to `false`. Set the parameter like this:
-	
-			intent.putExtra(Pdf417ScanActivity.EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING, true)
-			
-	* You can use `Pdf417MobiSettings` object to tweak additional scanning parameters. This is entirely optional. If you don't send this object via intent, default scanning parameters will be used - this means both QR and PDF417 codes will be scanned and default camera overlay will be shown. For example, you could set settings as in following example:
-	
-			Pdf417MobiSettings sett = new Pdf417MobiSettings();
-			// set this to true to enable PDF417 scanning
-			sett.setPdf417Enabled(true);
-			// Set this to true to scan even barcode not compliant with standards
-	    	// For example, malformed PDF417 barcodes which were incorrectly encoded
-	    	// Use only if necessary because it slows down the recognition process
-			sett.setUncertainScanning(true);
-	    	// Set this to true to scan barcodes which don't have quiet zone (white area) around it
-	    	// Use only if necessary because it drastically slows down the recognition process 
-			sett.setNullQuietZoneAllowed(true);
-			// set this to true to enable QR code scanning
-			sett.setQrCodeEnabled(true); 
-			// set this to true to prevent showing dialog after successful scan
-			sett.setDontShowDialog(false);
-			// if license permits this, remove Pdf417.mobi logo overlay on scan activity
-			// if license forbids this, this option has no effect
-			sett.setRemoveOverlayEnabled(true);
-			// put settings as intent extra
-			intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
-	
-5. Obtaining the scanned data is done in the `onActivityResult` method. If the recognition returned some results, result code returned will be `BaseBarcodeActivity.RESULT_OK`. Optionally, if user tapped the `Copy` button in dialog, result code returned will be `BaseBarcodeActivity.RESULT_OK_DATA_COPIED` to indicate that barcode data is copied into clipboard. For example, your implementation of this method could look like this:
-
-		@Override
-		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-			super.onActivityResult(requestCode, resultCode, data);
-			
-            if(requestCode==MY_REQUEST_CODE && resultCode==BaseBarcodeActivity.RESULT_OK) {
-            	// read scan result
-				Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
-            
-                // read scanned barcode type (PDF417 or QR code)	
-                String barcodeType = scanData.getBarcodeType();
-                // read the data contained in barcode
-                String barcodeData = scanData.getBarcodeData();
-                // determine if returned data is uncertain
-                boolean uncertainData = scanData.isResultUncertain();
-                
-                // ask user what to do with data
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, barcodeType + ": " + barcodeData);
-                startActivity(Intent.createChooser(intent, getString(R.string.UseWith)));
-            }
-		}
-
-6. You can also obtain the list of all data that have been scanned (if there is more than one). For that matter, you need to use `BaseBarcodeActivity.EXTRAS_RESULT_LIST` key as shown in following example:
- 		
-        @Override
-		  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		    super.onActivityResult(requestCode, resultCode, data);
-			
-            if(requestCode==MY_REQUEST_CODE && resultCode==BaseBarcodeActivity.RESULT_OK) {
-                // read scan result
-			    ArrayList<Pdf417MobiScanData> scanDataList = data.getParcelableArrayList(BaseBarcodeActivity.EXTRAS_RESULT_LIST);
-            
-                for(Pdf417MobiScanData scanData : scanDataList) {
-                    // do whatever you need to do with data
-                }
-            }
-		}
-
-7. In order to obtain raw barcode data, you need to obtain `BarcodeDetailedData` structure by calling `getBarcodeRawData` method of `Pdf417ScanData` instance returned via `BaseBarcodeActivity.EXTRAS_RESULT` extra in result intent. This structure will contain list of barcode elements. Each barcode element contains byte array with its raw data and type of that raw data. Type of raw data can be either `ElementType.TEXT_DATA` or `ElementType.BYTE_DATA`. `ElementType.TEXT_DATA` defines that byte array can be interpreted as string, whilst `ElementType.BYTE_DATA` defines that byte array is probably not string. However, you can always convert all data to string and you will then get the same string that you can obtain by calling `getBarcodeData`. For example, you can use that structure like this:
-
-		@Override
-		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-			super.onActivityResult(requestCode, resultCode, data);
-			
-            if(requestCode==MY_REQUEST_CODE && resultCode==BaseBarcodeActivity.RESULT_OK) {
-           		// read scan result
-				Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
-				
-                // read raw barcode data
-                BarcodeDetailedData rawData = scanData.getBarcodeRawData();				
-                // get list of barcode elements
-            	List<BarcodeElement> elems = rawData.getElements();
-	            // log the amount of elements
-    	        Log.i(TAG, "Number of barcode elements is " + elems.size());
-        	    // now iterate over elements
-            	for(int i=0; i<elems.size(); ++i) {
-            		BarcodeElement elem = elems.get(i);
-            		// get the barcode element type
-            		ElementType elemType = elem.getElementType();
-            		// get raw bytes of the element
-            		byte[] rawBytes = elem.getElementBytes();
-            		
-            		// do with that data whatever you want
-            		// for example print it
-            		Log.i(TAG, "Element #" + i + " is of type: " + elemType.name());
-            		StringBuilder sb = new StringBuilder("{");
-            		for(int j=0; j<rawBytes.length; ++j) {
-            			sb.append((int)rawBytes[j] & 0x0FF);
-            			if(j!=rawBytes.length-1) {
-            				sb.append(", ");
-            			}
-            		}
-            		sb.append("}");
-            		Log.i(TAG, sb.toString());
-            	}
-			}
-		}
-
-    Additionally, if you don't need the whole per element information, you can just use `getAllData` method of `BarcodeDetailedData` class to obtain byte array of the whole barcode. Note that you need to be able to extract useful information from such a byte array on your own.
+Additionally, if you don't need the whole per element information, you can just use `getAllData` method of `BarcodeDetailedData` class to obtain byte array of the whole barcode. Note that you need to be able to extract useful information from such a byte array on your own.
 
 ## Processor architecture considerations
 

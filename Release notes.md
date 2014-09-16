@@ -1,5 +1,10 @@
 # Release notes
 
+## 3.1.0
+- added API for parsing US Driver's License data from PDF417 barcodes
+- PDF417 scanning improvements
+- bugfixes
+
 ## 3.0.1
 - fixed focusing issue on HTC One V
 
