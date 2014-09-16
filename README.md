@@ -345,7 +345,7 @@ if(scanData instanceOf USDLScanData) {
 }
 ```
 
-To see the list of available keys and their descriptions for obtaining the driver's licenses fields, see [Javadoc](Javadoc/mobi/pdf417/USDLScanData.html).
+To see the list of available keys and their descriptions for obtaining the driver's licenses fields, see [Javadoc](http://htmlpreview.github.com/?https://github.com/PDF417/pdf417-android/Javadoc/mobi/pdf417/USDLScanData.html).
 
 In order to obtain raw barcode data, you need to obtain `BarcodeDetailedData` structure by calling `getBarcodeRawData` method of `Pdf417ScanData` instance returned via `BaseBarcodeActivity.EXTRAS_RESULT` extra in result intent. This structure will contain list of barcode elements. Each barcode element contains byte array with its raw data and type of that raw data. Type of raw data can be either `ElementType.TEXT_DATA` or `ElementType.BYTE_DATA`. `ElementType.TEXT_DATA` defines that byte array can be interpreted as string, whilst `ElementType.BYTE_DATA` defines that byte array is probably not string. However, you can always convert all data to string and you will then get the same string that you can obtain by calling `getBarcodeData`. For example, you can use that structure like this:
 
