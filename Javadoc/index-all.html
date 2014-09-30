@@ -323,12 +323,18 @@
 </dd>
 <dt><span class="strong"><a href="./net/photopay/geometry/Rectangle.html#getHeight()">getHeight()</a></span> - Method in class net.photopay.geometry.<a href="./net/photopay/geometry/Rectangle.html" title="class in net.photopay.geometry">Rectangle</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#getHeight()">getHeight()</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
+<dd>
+<div class="block">Returns the height of the laid out rotatable and fixed view.</div>
+</dd>
 <dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#getInitialOrientation()">getInitialOrientation()</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
 <dd>
 <div class="block">This method is called when rotatable view is being layouted on top of
  camera UI (provided that getRotatableView returns non-null).</div>
 </dd>
 <dt><span class="strong"><a href="./net/photopay/locale/Language.html#getLanguage()">getLanguage()</a></span> - Method in enum net.photopay.locale.<a href="./net/photopay/locale/Language.html" title="enum in net.photopay.locale">Language</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#getOpenedCameraType()">getOpenedCameraType()</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#getRotatableView()">getRotatableView()</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
 <dd>
@@ -350,6 +356,10 @@
 </dd>
 <dt><span class="strong"><a href="./net/photopay/geometry/Rectangle.html#getWidth()">getWidth()</a></span> - Method in class net.photopay.geometry.<a href="./net/photopay/geometry/Rectangle.html" title="class in net.photopay.geometry">Rectangle</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#getWidth()">getWidth()</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
+<dd>
+<div class="block">Returns the width of the laid out rotatable and fixed view.</div>
+</dd>
 <dt><span class="strong"><a href="./net/photopay/geometry/Point.html#getX()">getX()</a></span> - Method in class net.photopay.geometry.<a href="./net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./net/photopay/geometry/Rectangle.html#getX()">getX()</a></span> - Method in class net.photopay.geometry.<a href="./net/photopay/geometry/Rectangle.html" title="class in net.photopay.geometry">Rectangle</a></dt>
@@ -1138,7 +1148,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#onSizeChanged(int, int)">onSizeChanged(int, int)</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
 <dd>
-<div class="block">This method is called before layouting rotatable and fixed view.</div>
+<div class="block">This method is called before laying out rotatable and fixed view.</div>
 </dd>
 <dt><span class="strong"><a href="./net/photopay/base/BaseCameraActivity.html#onStart()">onStart()</a></span> - Method in class net.photopay.base.<a href="./net/photopay/base/BaseCameraActivity.html" title="class in net.photopay.base">BaseCameraActivity</a></dt>
 <dd>&nbsp;</dd>
@@ -1315,7 +1325,9 @@
 <div class="block">Method that will set correct language configuration to given Resources
  object.</div>
 </dd>
-<dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#setNewTarget(net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, int, int)">setNewTarget(Point, Point, Point, Point, int, int)</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
+<dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#setLayoutSize(int, int)">setLayoutSize(int, int)</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#setNewTarget(net.photopay.geometry.Quadrilateral, int)">setNewTarget(Quadrilateral, int)</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
 <dd>
 <div class="block">This method is called to notify viewfinder that object has been detected
  so that it can draw itself around that object.</div>
@@ -1328,10 +1340,10 @@
 </dd>
 <dt><span class="strong"><a href="./mobi/pdf417/Pdf417MobiSettings.html#setPdf417Enabled(boolean)">setPdf417Enabled(boolean)</a></span> - Method in class mobi.pdf417.<a href="./mobi/pdf417/Pdf417MobiSettings.html" title="class in mobi.pdf417">Pdf417MobiSettings</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#setPointSet(float[])">setPointSet(float[])</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
+<dt><span class="strong"><a href="./net/photopay/view/viewfinder/AbstractViewFinder.html#setPointSet(net.photopay.geometry.PointSet)">setPointSet(PointSet)</a></span> - Method in class net.photopay.view.viewfinder.<a href="./net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dt>
 <dd>
 <div class="block">This method is called to notify viewfinder that object has been detected
- so that it can draw point of interest for this object.</div>
+ so that it can draw points of interest for this object.</div>
 </dd>
 <dt><span class="strong"><a href="./mobi/pdf417/Pdf417MobiSettings.html#setQrCodeEnabled(boolean)">setQrCodeEnabled(boolean)</a></span> - Method in class mobi.pdf417.<a href="./mobi/pdf417/Pdf417MobiSettings.html" title="class in mobi.pdf417">Pdf417MobiSettings</a></dt>
 <dd>&nbsp;</dd>

@@ -192,11 +192,21 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getHeight()">getHeight</a></strong>()</code>
+<div class="block">Returns the height of the laid out rotatable and fixed view.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../net/photopay/hardware/orientation/Orientation.html" title="enum in net.photopay.hardware.orientation">Orientation</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getInitialOrientation()">getInitialOrientation</a></strong>()</code>
 <div class="block">This method is called when rotatable view is being layouted on top of
  camera UI (provided that getRotatableView returns non-null).</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>net.photopay.hardware.camera.CameraType</code></td>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getOpenedCameraType()">getOpenedCameraType</a></strong>()</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>android.view.View</code></td>
@@ -212,55 +222,62 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#getWidth()">getWidth</a></strong>()</code>
+<div class="block">Returns the width of the laid out rotatable and fixed view.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#isAnimationInProgress()">isAnimationInProgress</a></strong>()</code>
 <div class="block">This method should return true if it wants to prevent finishing the
  activity while some animation is in progress.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#isCameraFocused()">isCameraFocused</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#isCameraTorchSupported()">isCameraTorchSupported</a></strong>()</code>
 <div class="block">Returns true if camera supports torch flash mode.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#isOnlyBarcode()">isOnlyBarcode</a></strong>()</code>
 <div class="block">Returns true if only barcode scanning will be performed.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#onSizeChanged(int, int)">onSizeChanged</a></strong>(int&nbsp;width,
              int&nbsp;height)</code>
-<div class="block">This method is called before layouting rotatable and fixed view.</div>
+<div class="block">This method is called before laying out rotatable and fixed view.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setCameraPreview(CameraPreview)">setCameraPreview</a></strong>(CameraPreview&nbsp;cp)</code>
 <div class="block">Sets the camera preview which is the owner of this viewfinder.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setDefaultTarget(int)">setDefaultTarget</a></strong>(int&nbsp;detectionStatus)</code>
 <div class="block">This method is called to notify viewfinder that it should position itself
  into its default position.</div>
 </td>
 </tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setLayoutSize(int, int)">setLayoutSize</a></strong>(int&nbsp;width,
+             int&nbsp;height)</code>&nbsp;</td>
+</tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setNewTarget(net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, int, int)">setNewTarget</a></strong>(<a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uleft,
-            <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uright,
-            <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;lleft,
-            <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;lright,
-            int&nbsp;uleftIndex,
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setNewTarget(net.photopay.geometry.Quadrilateral, int)">setNewTarget</a></strong>(net.photopay.geometry.Quadrilateral&nbsp;objPosition,
             int&nbsp;detectionStatus)</code>
 <div class="block">This method is called to notify viewfinder that object has been detected
  so that it can draw itself around that object.</div>
@@ -274,9 +291,9 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setPointSet(float[])">setPointSet</a></strong>(float[]&nbsp;points)</code>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setPointSet(net.photopay.geometry.PointSet)">setPointSet</a></strong>(net.photopay.geometry.PointSet&nbsp;pointSet)</code>
 <div class="block">This method is called to notify viewfinder that object has been detected
- so that it can draw point of interest for this object.</div>
+ so that it can draw points of interest for this object.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -352,6 +369,40 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getWidth()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getWidth</h4>
+<pre>public&nbsp;int&nbsp;getWidth()</pre>
+<div class="block">Returns the width of the laid out rotatable and fixed view. If called
+ before layout has happened method will return 0.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>width of the laid out rotatable and fixed view</dd></dl>
+</li>
+</ul>
+<a name="getHeight()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getHeight</h4>
+<pre>public&nbsp;int&nbsp;getHeight()</pre>
+<div class="block">Returns the height of the laid out rotatable and fixed view. If called
+ before layout has happened method will return 0.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>height of the laid out rotatable and fixed view</dd></dl>
+</li>
+</ul>
+<a name="setLayoutSize(int, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setLayoutSize</h4>
+<pre>public final&nbsp;void&nbsp;setLayoutSize(int&nbsp;width,
+                 int&nbsp;height)</pre>
+</li>
+</ul>
 <a name="onSizeChanged(int, int)">
 <!--   -->
 </a>
@@ -360,11 +411,12 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 <h4>onSizeChanged</h4>
 <pre>public&nbsp;void&nbsp;onSizeChanged(int&nbsp;width,
                  int&nbsp;height)</pre>
-<div class="block">This method is called before layouting rotatable and fixed view. This
+<div class="block">This method is called before laying out rotatable and fixed view. This
  also happens every time view orientation change occurs. The reported
  width and height are corrected for orientation (in landscape mode width
  is actually height and vice versa). You can use this method for example
- for adjusting dynamic margins of your views.</div>
+ for adjusting dynamic margins of your views. Make sure you call super.onSizeChanged
+ when overriding the method.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>width</code> - new width of the layout</dd><dd><code>height</code> - new heigth of the layout</dd></dl>
 </li>
 </ul>
@@ -440,6 +492,15 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 <dl><dt><span class="strong">Returns:</span></dt><dd>true if camera supports torch flash mode.</dd></dl>
 </li>
 </ul>
+<a name="getOpenedCameraType()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOpenedCameraType</h4>
+<pre>public final&nbsp;net.photopay.hardware.camera.CameraType&nbsp;getOpenedCameraType()</pre>
+</li>
+</ul>
 <a name="setTorchEnabled(boolean)">
 <!--   -->
 </a>
@@ -509,43 +570,25 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
             RecognizerSettings.DETECTION_TEST_MODE</dd></dl>
 </li>
 </ul>
-<a name="setNewTarget(net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, int, int)">
+<a name="setNewTarget(net.photopay.geometry.Quadrilateral, int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setNewTarget</h4>
-<pre>public&nbsp;void&nbsp;setNewTarget(<a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uleft,
-                <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uright,
-                <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;lleft,
-                <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;lright,
-                int&nbsp;uleftIndex,
+<pre>public&nbsp;void&nbsp;setNewTarget(net.photopay.geometry.Quadrilateral&nbsp;objPosition,
                 int&nbsp;detectionStatus)</pre>
 <div class="block">This method is called to notify viewfinder that object has been detected
  so that it can draw itself around that object. Corner points of detected
- slip are presented via parameters uleft, uright, lleft and lright. Those
- parameters are corner points of the payment slip that are closest to the
- real edges of the screen. For example, uleft is the corner point of the
- slip that is closest to the (0,0) coordinate - it does not have to be the
- actual upper left corner of the slip. Parameter uleftIndex can be any
- integer from 0 to 3 and defines a real upper-left edge of the slip (if it
- is 0, then upper left is given with uleft parameter, if it is 1, then
- upper left is given with uright parameter etc.).
+ slip are presented via Quadrilateral object.
  
- Points coordinates are normalized (coordinate range is from interval
- [0.0, 1.0]) and placed in image-based coordinate system. The (0,0)
- coordinate in the image-based coordinate system is the coordinate of the
- first pixel in image - first pixel in first row. If you are holding your
- phone in landscape mode, the image-based upper left (coordinate (0,0))
- corner will be the same as device's upper left corner. If you are holding
- your phone in portrait mode, the image-base upper left corner will be the
- same as device's upper right corner.
+ Quadrilateral's corner point coordinates are already prepared for drawing on any fixed view.
+ If you want to draw them on rotatable view, you need to rotate their coordinates accordingly.
  
  Default implementation does nothing. This method is called from
  background thread. Do not perform UI operations directly in this method,
  instead use Handler.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>uleft</code> - Upper left position of the object's box.</dd><dd><code>uright</code> - Upper right position of the object's box.</dd><dd><code>lleft</code> - Lower left position of the object's box.</dd><dd><code>lright</code> - Lower right position of the object's box.</dd><dd><code>uleftIndex</code> - Which of given points is actual upper left point of object (in
-            case of rotated image).</dd><dd><code>detectionStatus</code> - The status of detection as defined in RecognizerDelegate</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>detectionStatus</code> - The status of detection as defined in RecognizerDelegate</dd></dl>
 </li>
 </ul>
 <a name="displayOcrResult(net.photopay.ocr.OcrResult)">
@@ -572,21 +615,23 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>result</code> - line detection result to be drawn</dd></dl>
 </li>
 </ul>
-<a name="setPointSet(float[])">
+<a name="setPointSet(net.photopay.geometry.PointSet)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setPointSet</h4>
-<pre>public&nbsp;void&nbsp;setPointSet(float[]&nbsp;points)</pre>
+<pre>public&nbsp;void&nbsp;setPointSet(net.photopay.geometry.PointSet&nbsp;pointSet)</pre>
 <div class="block">This method is called to notify viewfinder that object has been detected
- so that it can draw point of interest for this object. Default
+ so that it can draw points of interest for this object. Default
  implementation does nothing. This method is called from background
  thread. Do not perform UI operations directly in this method, instead use
  Handler.
 
- Coordinates are in same coordinate system as in method @see{setNewTarget}.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>points</code> - Array of coordinates for points of interest. Coordinates are
+ Point coordinates are already adjusted for drawing on fixed view. In order
+ to draw them in rotatable view, you have to apply appropriate rotation transformation
+ to point coordinates.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>pointSet</code> - Array of coordinates for points of interest. Coordinates are
             packed in following way: x1,y1,x2,y2,...</dd></dl>
 </li>
 </ul>
