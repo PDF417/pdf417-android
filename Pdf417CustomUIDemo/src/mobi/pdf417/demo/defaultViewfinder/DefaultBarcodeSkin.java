@@ -80,21 +80,20 @@ public class DefaultBarcodeSkin extends AbstractViewFinder {
     }
 
     @Override
-    public void setDefaultTarget(int detectionStatus, boolean showProgress) {
+    public void setDefaultTarget(int detectionStatus) {
         mViewFinder.setDefaultTarget();
-        mViewFinder.publishDetectionStatus(detectionStatus, showProgress);
+        mViewFinder.publishDetectionStatus(detectionStatus);
     }
 
     @Override
-    public void setNewTarget(Point uleft, Point uright, Point lleft, Point lright, int uleftIndex,
-            int detectionStatus, boolean showProgress) {
+    public void setNewTarget(Point uleft, Point uright, Point lleft, Point lright, int uleftIndex, int detectionStatus) {
         mViewFinder.setNewTarget(uleft, uright, lleft, lright, uleftIndex);
-        mViewFinder.publishDetectionStatus(detectionStatus, showProgress);
+        mViewFinder.publishDetectionStatus(detectionStatus);
     }
 
     @Override
-    public void setPointSet(float[] points, boolean biColorPointSet) {
-        mViewFinder.setPointSet(points, biColorPointSet);
+    public void setPointSet(float[] points) {
+        mViewFinder.setPointSet(points);
     }
 
     @Override

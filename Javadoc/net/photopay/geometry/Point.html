@@ -201,33 +201,41 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
-<td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#negative()">negative</a></strong>()</code>
+<td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#negative()">negative</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
+<td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#negativeClone()">negativeClone</a></strong>()</code>
 <div class="block">Calculate and return negative of current point.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#norm()">norm</a></strong>()</code>
 <div class="block">Calculate and return norm of the point.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#normalize()">normalize</a></strong>()</code>
 <div class="block">Calculate and return point that has same direction as this point, but norm 1.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#normalize(float)">normalize</a></strong>(float&nbsp;length)</code>
 <div class="block">Calculate and return point that has same direction as this point, but norm as given.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorMinus(net.photopay.geometry.Point)">operatorMinus</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>
 <div class="block">- operator on the point.</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
+<td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorMinusEquals(net.photopay.geometry.Point)">operatorMinusEquals</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
@@ -237,11 +245,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
+<td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorMultiplyEquals(float)">operatorMultiplyEquals</a></strong>(float&nbsp;factor)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorPlus(net.photopay.geometry.Point)">operatorPlus</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>
 <div class="block">+ operator on the point.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorPlusEquals(net.photopay.geometry.Point)">operatorPlusEquals</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>
 <div class="block">+= operator on the point.</div>
@@ -337,6 +349,15 @@ extends java.lang.Object</pre>
 <dt><span class="strong">Returns:</span></dt><dd>new point that is the result of substraction</dd></dl>
 </li>
 </ul>
+<a name="operatorMinusEquals(net.photopay.geometry.Point)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>operatorMinusEquals</h4>
+<pre>public&nbsp;<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;operatorMinusEquals(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</pre>
+</li>
+</ul>
 <a name="operatorMultiply(float)">
 <!--   -->
 </a>
@@ -350,6 +371,27 @@ extends java.lang.Object</pre>
 <dt><span class="strong">Returns:</span></dt><dd>new point that is the result of multiplication</dd></dl>
 </li>
 </ul>
+<a name="operatorMultiplyEquals(float)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>operatorMultiplyEquals</h4>
+<pre>public&nbsp;<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;operatorMultiplyEquals(float&nbsp;factor)</pre>
+</li>
+</ul>
+<a name="negativeClone()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>negativeClone</h4>
+<pre>public&nbsp;<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;negativeClone()</pre>
+<div class="block">Calculate and return negative of current point. Negative point is point mirrored
+ to current point over (0,0) pivot.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>Negative point.</dd></dl>
+</li>
+</ul>
 <a name="negative()">
 <!--   -->
 </a>
@@ -357,9 +399,6 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>negative</h4>
 <pre>public&nbsp;<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;negative()</pre>
-<div class="block">Calculate and return negative of current point. Negative point is point mirrored
- to current point over (0,0) pivot.</div>
-<dl><dt><span class="strong">Returns:</span></dt><dd>Negative point.</dd></dl>
 </li>
 </ul>
 <a name="norm()">

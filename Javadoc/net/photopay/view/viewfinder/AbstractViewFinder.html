@@ -249,21 +249,19 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setDefaultTarget(int, boolean)">setDefaultTarget</a></strong>(int&nbsp;detectionStatus,
-                boolean&nbsp;showProgress)</code>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setDefaultTarget(int)">setDefaultTarget</a></strong>(int&nbsp;detectionStatus)</code>
 <div class="block">This method is called to notify viewfinder that it should position itself
  into its default position.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setNewTarget(net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, int, int, boolean)">setNewTarget</a></strong>(<a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uleft,
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setNewTarget(net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, int, int)">setNewTarget</a></strong>(<a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uleft,
             <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;uright,
             <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;lleft,
             <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;lright,
             int&nbsp;uleftIndex,
-            int&nbsp;detectionStatus,
-            boolean&nbsp;showProgress)</code>
+            int&nbsp;detectionStatus)</code>
 <div class="block">This method is called to notify viewfinder that object has been detected
  so that it can draw itself around that object.</div>
 </td>
@@ -276,70 +274,43 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setPointSet(float[], boolean)">setPointSet</a></strong>(float[]&nbsp;points,
-           boolean&nbsp;biColorPointSet)</code>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setPointSet(float[])">setPointSet</a></strong>(float[]&nbsp;points)</code>
 <div class="block">This method is called to notify viewfinder that object has been detected
  so that it can draw point of interest for this object.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setProgressModifier(ProgressModifier)">setProgressModifier</a></strong>(ProgressModifier&nbsp;modifier)</code>
-<div class="block">This method is called to set appropriate progress modifier for current
- scan.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setRecognizerMode(int)">setRecognizerMode</a></strong>(int&nbsp;mode)</code>
 <div class="block">This method is called to notify viewfinder in which operating mode is
  scanning started.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setTorchEnabled(boolean)">setTorchEnabled</a></strong>(boolean&nbsp;enabled)</code>
 <div class="block">If torch is supported, set its state to enabled (on), or disabled (off).</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#setUsingOnlyBarcode(boolean)">setUsingOnlyBarcode</a></strong>(boolean&nbsp;onlyBarcode)</code>
 <div class="block">This method is called to indicate whether only barcode scanning will be
  performed.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#shouldAnimateRotation()">shouldAnimateRotation</a></strong>()</code>
 <div class="block">You should return true in this method if you want your rotatable UI to be
  animated while performing a rotation.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#shouldPutInsideCameraSurface()">shouldPutInsideCameraSurface</a></strong>()</code>
 <div class="block">If method returns true, views obtained with getFixedView and
  getRotatableView will be layouted inside camera surface.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#showProgress(int)">showProgress</a></strong>(int&nbsp;progress)</code>
-<div class="block">This method is called as a notification about scan progress.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#showRawProgress(int)">showRawProgress</a></strong>(int&nbsp;progress)</code>
-<div class="block">This method is called as a notification about scan progress.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/viewfinder/AbstractViewFinder.html#startProgressAnimation()">startProgressAnimation</a></strong>()</code>
-<div class="block">This method is called to notify viewfinder that it should start drawing
- progress animation.</div>
 </td>
 </tr>
 </table>
@@ -491,7 +462,7 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 <div class="block">This method is called to indicate whether only barcode scanning will be
  performed. With this information, viewfinder can adapt its appearance for
  barcode-only scanning.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>mOnlyBarcode</code> - If true, only barcode scanning will be performed. If false,
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>onlyBarcode</code> - If true, only barcode scanning will be performed. If false,
             both barcode scanning and OCR scanning or only OCR scanning
             will be performed.</dd></dl>
 </li>
@@ -509,72 +480,18 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 <dl><dt><span class="strong">Returns:</span></dt><dd>true if only barcode scanning will be performed</dd></dl>
 </li>
 </ul>
-<a name="setProgressModifier(ProgressModifier)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setProgressModifier</h4>
-<pre>public final&nbsp;void&nbsp;setProgressModifier(ProgressModifier&nbsp;modifier)</pre>
-<div class="block">This method is called to set appropriate progress modifier for current
- scan. Progress modifier can be used to recalculate current progress of
- scan.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>modifier</code> - Progress modifier</dd></dl>
-</li>
-</ul>
-<a name="showRawProgress(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>showRawProgress</h4>
-<pre>public final&nbsp;void&nbsp;showRawProgress(int&nbsp;progress)</pre>
-<div class="block">This method is called as a notification about scan progress. If progress
- modifier is set, it is used to modify scan progress. Finally,
- showProgress is called to display progress.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>progress</code> - Current scan progress from interval [0, 100]</dd></dl>
-</li>
-</ul>
-<a name="showProgress(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>showProgress</h4>
-<pre>protected&nbsp;void&nbsp;showProgress(int&nbsp;progress)</pre>
-<div class="block">This method is called as a notification about scan progress. Default
- implementation does nothing. This method is called from background
- thread. Do not perform UI operations directly in this method, instead use
- Handler.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>progress</code> - Current scan progress from interval [0, 100].</dd></dl>
-</li>
-</ul>
-<a name="setDefaultTarget(int, boolean)">
+<a name="setDefaultTarget(int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setDefaultTarget</h4>
-<pre>public&nbsp;void&nbsp;setDefaultTarget(int&nbsp;detectionStatus,
-                    boolean&nbsp;showProgress)</pre>
+<pre>public&nbsp;void&nbsp;setDefaultTarget(int&nbsp;detectionStatus)</pre>
 <div class="block">This method is called to notify viewfinder that it should position itself
  into its default position. Default implementation does nothing. This
  method is called from background thread. Do not perform UI operations
  directly in this method, instead use Handler.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>detectionStatus</code> - The status of detection as defined in RecognizerDelegate</dd><dd><code>showProgress</code> - True if progress should be displayed on screen.</dd></dl>
-</li>
-</ul>
-<a name="startProgressAnimation()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>startProgressAnimation</h4>
-<pre>public&nbsp;void&nbsp;startProgressAnimation()</pre>
-<div class="block">This method is called to notify viewfinder that it should start drawing
- progress animation. Default implementation does nothing. This method is
- called from background thread. Do not perform UI operations directly in
- this method, instead use Handler.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>detectionStatus</code> - The status of detection as defined in RecognizerDelegate</dd></dl>
 </li>
 </ul>
 <a name="setRecognizerMode(int)">
@@ -592,7 +509,7 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
             RecognizerSettings.DETECTION_TEST_MODE</dd></dl>
 </li>
 </ul>
-<a name="setNewTarget(net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, int, int, boolean)">
+<a name="setNewTarget(net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, net.photopay.geometry.Point, int, int)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -603,8 +520,7 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
                 <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;lleft,
                 <a href="../../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;lright,
                 int&nbsp;uleftIndex,
-                int&nbsp;detectionStatus,
-                boolean&nbsp;showProgress)</pre>
+                int&nbsp;detectionStatus)</pre>
 <div class="block">This method is called to notify viewfinder that object has been detected
  so that it can draw itself around that object. Corner points of detected
  slip are presented via parameters uleft, uright, lleft and lright. Those
@@ -629,7 +545,7 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
  background thread. Do not perform UI operations directly in this method,
  instead use Handler.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>uleft</code> - Upper left position of the object's box.</dd><dd><code>uright</code> - Upper right position of the object's box.</dd><dd><code>lleft</code> - Lower left position of the object's box.</dd><dd><code>lright</code> - Lower right position of the object's box.</dd><dd><code>uleftIndex</code> - Which of given points is actual upper left point of object (in
-            case of rotated image).</dd><dd><code>detectionStatus</code> - The status of detection as defined in RecognizerDelegate</dd><dd><code>showProgress</code> - True if progress should be displayed on screen.</dd></dl>
+            case of rotated image).</dd><dd><code>detectionStatus</code> - The status of detection as defined in RecognizerDelegate</dd></dl>
 </li>
 </ul>
 <a name="displayOcrResult(net.photopay.ocr.OcrResult)">
@@ -656,22 +572,22 @@ implements <a href="../../../../net/photopay/hardware/camera/focus/AutofocusStat
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>result</code> - line detection result to be drawn</dd></dl>
 </li>
 </ul>
-<a name="setPointSet(float[], boolean)">
+<a name="setPointSet(float[])">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setPointSet</h4>
-<pre>public&nbsp;void&nbsp;setPointSet(float[]&nbsp;points,
-               boolean&nbsp;biColorPointSet)</pre>
+<pre>public&nbsp;void&nbsp;setPointSet(float[]&nbsp;points)</pre>
 <div class="block">This method is called to notify viewfinder that object has been detected
  so that it can draw point of interest for this object. Default
  implementation does nothing. This method is called from background
  thread. Do not perform UI operations directly in this method, instead use
- Handler.</div>
+ Handler.
+
+ Coordinates are in same coordinate system as in method @see{setNewTarget}.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>points</code> - Array of coordinates for points of interest. Coordinates are
-            packed in following way: x1,y1,x2,y2,...</dd><dd><code>biColorPointSet</code> - If true, this means the caller requested that odd points
-            should be drawn in one color and even points in another color.</dd></dl>
+            packed in following way: x1,y1,x2,y2,...</dd></dl>
 </li>
 </ul>
 <a name="getRotatableView()">

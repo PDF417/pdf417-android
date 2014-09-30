@@ -20,11 +20,11 @@ public class PointSet {
         }
     }
 
-    public void draw(Canvas canvas, Paint paint, Paint paint2, int pointRadius) {
+    public void draw(Canvas canvas, Paint paint, int pointRadius) {
         if (mPoints != null) {
             int i = 0;
             for (Point p : mPoints) {
-                p.draw(canvas, i % 2 == 0 ? paint : paint2, pointRadius);
+                p.draw(canvas, paint, pointRadius);
                 ++i;
             }
         }

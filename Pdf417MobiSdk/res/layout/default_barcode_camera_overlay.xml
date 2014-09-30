@@ -19,7 +19,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:text="@string/photopayHome"
-        android:textColor="@color/helpButtonForeground"
+        android:textColor="@color/photopayButtonForeground"
         android:textSize="14sp" />
    
    
@@ -38,7 +38,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:text="@string/LightOff"
-        android:textColor="@color/helpButtonForeground"
+        android:textColor="@color/photopayButtonForeground"
         android:textSize="14sp" />
 
 </FrameLayout>

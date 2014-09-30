@@ -51,7 +51,6 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
 
     // paints required for drawing lines, points and text
     private Paint mPaint;
-    private Paint mPaint2;
     private Paint mTextPaint;
 
     // some drawing parameters
@@ -113,9 +112,7 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setXfermode(new PorterDuffXfermode(Mode.SRC));
 
-        mPaint2 = new Paint(mPaint);
         Quadrilateral.defaultQuadColor = mResources.getColor(R.color.default_frame);
-        mPaint2.setColor(mResources.getColor(R.color.formDetect_frame));
 
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(Color.argb(119, 255, 255, 255));
@@ -228,12 +225,11 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
      * 
      * @see net.photopay.view.IViewFinder#setPointSet(float[], boolean)
      */
-    public synchronized void setPointSet(final float[] points, boolean biColorPointSet) {
+    public synchronized void setPointSet(final float[] points) {
         mPointSet = new PointSet(points, mWidth, mHeight);
         if (mAbstractViewFinder != null && mAbstractViewFinder.getCameraType() == CameraType.CAMERA_FRONTFACE) {
             mPointSet.mirror(mWidth, mHeight);
         }
-        mBiColorPointSet = biColorPointSet;
     }
 
     /*
@@ -241,7 +237,7 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
      * 
      * @see net.photopay.view.IViewFinder#publishDetectionStatus(int, boolean)
      */
-    public void publishDetectionStatus(final int detectionStatus, boolean showProgress) {
+    public void publishDetectionStatus(final int detectionStatus) {
         if (detectionStatus == DetectionStatus.DETECTION_STATUS_SUCCESS
                 || detectionStatus == DetectionStatus.DETECTION_STATUS_QR_SUCCESS
                 || detectionStatus == DetectionStatus.DETECTION_STATUS_PDF417_SUCCESS) {
@@ -291,7 +287,7 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
             mCurrent.draw(canvas, mPaint);
             if (mPointSet != null) {
                 mPaint.setColor(mTarget.getColor());
-                mPointSet.draw(canvas, mPaint, mBiColorPointSet ? mPaint2 : mPaint, pointRadius);
+                mPointSet.draw(canvas, mPaint, pointRadius);
             }
         }
 
@@ -366,7 +362,7 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
             public void run() {
                 setDefaultTarget();
                 Log.e("displayAutofocusFailed", "Autofocus fail!!!");
-                publishDetectionStatus(DetectionStatus.DETECTION_STATUS_BLURRY_FRAME, false);
+                publishDetectionStatus(DetectionStatus.DETECTION_STATUS_BLURRY_FRAME);
             }
         });
     }
