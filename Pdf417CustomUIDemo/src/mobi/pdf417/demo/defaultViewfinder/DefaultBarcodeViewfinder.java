@@ -11,9 +11,10 @@
 
 package mobi.pdf417.demo.defaultViewfinder;
 
-import mobi.pdf417.demo.defaultViewfinder.geometry.PointSet;
-import mobi.pdf417.demo.defaultViewfinder.geometry.Quadrilateral;
-import mobi.pdf417.demo.defaultViewfinder.geometry.QuadrilateralEvaluator;
+import net.photopay.geometry.PointSet;
+import net.photopay.geometry.Quadrilateral;
+import net.photopay.geometry.QuadrangleEvaluator;
+import net.photopay.geometry.quadDrawers.QuadrilateralDrawer;
 import mobi.pdf417.demo.R;
 import net.photopay.geometry.Point;
 import net.photopay.hardware.camera.CameraType;
@@ -75,6 +76,8 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
     // quadrilateral animation object
     private ValueAnimator mAnimation = null;
 
+    private QuadrilateralDrawer mQuadDrawer = null;
+
     // for displaying messages
     private AbstractViewFinder mAbstractViewFinder = null;
 
@@ -102,6 +105,8 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
         mResources = getResources();
         mDensity = mResources.getDisplayMetrics().density;
 
+        mQuadDrawer = new QuadrilateralDrawer(context);
+
         // setup paints for drawing
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -111,8 +116,6 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
         mPaint.setStrokeWidth(frameBorderWidth);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setXfermode(new PorterDuffXfermode(Mode.SRC));
-
-        Quadrilateral.defaultQuadColor = mResources.getColor(R.color.default_frame);
 
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(Color.argb(119, 255, 255, 255));
@@ -193,7 +196,7 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
                 if (mAnimation != null) {
                     mAnimation.cancel();
                 }
-                mAnimation = ValueAnimator.ofObject(new QuadrilateralEvaluator(), mCurrent, mTarget);
+                mAnimation = ValueAnimator.ofObject(new QuadrangleEvaluator(), mCurrent, mTarget);
                 mAnimation.setDuration(kAnimationDuration);
                 mAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
                 mAnimation.addUpdateListener(DefaultBarcodeViewfinder.this);
@@ -210,13 +213,8 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
      * net.photopay.geometry.Point, net.photopay.geometry.Point,
      * net.photopay.geometry.Point, int)
      */
-    public synchronized void setNewTarget(final Point uleft, final Point uright, final Point lleft, final Point lright,
-            int uleftIndex) {
-        mTarget = Quadrilateral.fromPointsAndCanvasSize(uleft, uright, lleft, lright, mWidth, mHeight);
-        mTarget.setRealUpperLeftIndex(uleftIndex);
-        if (mAbstractViewFinder != null && mAbstractViewFinder.getCameraType() == CameraType.CAMERA_FRONTFACE) {
-            mTarget.mirror(mWidth, mHeight);
-        }
+    public synchronized void setNewTarget(Quadrilateral quad) {
+        mTarget = quad;
         mPointSet = null;
     }
 
@@ -225,11 +223,8 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
      * 
      * @see net.photopay.view.IViewFinder#setPointSet(float[], boolean)
      */
-    public synchronized void setPointSet(final float[] points) {
-        mPointSet = new PointSet(points, mWidth, mHeight);
-        if (mAbstractViewFinder != null && mAbstractViewFinder.getCameraType() == CameraType.CAMERA_FRONTFACE) {
-            mPointSet.mirror(mWidth, mHeight);
-        }
+    public synchronized void setPointSet(PointSet pointSet) {
+        mPointSet = pointSet;
     }
 
     /*
@@ -284,7 +279,7 @@ public class DefaultBarcodeViewfinder extends View implements ValueAnimator.Anim
         }
 
         synchronized (this) {
-            mCurrent.draw(canvas, mPaint);
+            mQuadDrawer.drawQuad(mCurrent, canvas);
             if (mPointSet != null) {
                 mPaint.setColor(mTarget.getColor());
                 mPointSet.draw(canvas, mPaint, pointRadius);

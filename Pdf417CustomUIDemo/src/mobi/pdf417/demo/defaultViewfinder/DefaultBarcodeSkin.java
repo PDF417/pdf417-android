@@ -2,6 +2,8 @@ package mobi.pdf417.demo.defaultViewfinder;
 
 import mobi.pdf417.demo.R;
 import net.photopay.geometry.Point;
+import net.photopay.geometry.Quadrilateral;
+import net.photopay.geometry.PointSet;
 import net.photopay.view.viewfinder.AbstractViewFinder;
 import android.app.Activity;
 import android.view.View;
@@ -86,14 +88,14 @@ public class DefaultBarcodeSkin extends AbstractViewFinder {
     }
 
     @Override
-    public void setNewTarget(Point uleft, Point uright, Point lleft, Point lright, int uleftIndex, int detectionStatus) {
-        mViewFinder.setNewTarget(uleft, uright, lleft, lright, uleftIndex);
+    public void setNewTarget(Quadrilateral quad, int detectionStatus) {
+        mViewFinder.setNewTarget(quad);
         mViewFinder.publishDetectionStatus(detectionStatus);
     }
 
     @Override
-    public void setPointSet(float[] points) {
-        mViewFinder.setPointSet(points);
+    public void setPointSet(PointSet pointSet) {
+        mViewFinder.setPointSet(pointSet);
     }
 
     @Override
