@@ -1,5 +1,9 @@
 # Release notes
 
+## 3.2.0
+- fixed crash on Samsung Galaxy Tab 10.1
+- removed progress bar callback and simplified creation of custom UI
+
 ## 3.1.0
 - added API for parsing US Driver's License data from PDF417 barcodes
 - PDF417 scanning improvements
