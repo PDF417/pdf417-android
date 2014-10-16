@@ -1,7 +1,11 @@
 # Release notes
 
+## 3.3.0
+- added support for embedding Pdf417MobiView into custom activity 
+- Pdf417MobiView is now just a camera view that can be embedded anywhere, you just need to pass activity's lifecycle events to it, see README for more details
+
 ## 3.2.0
-- fixed crash on Samsung Galaxy Tab 10.1
+- fixed crash on Samsung Galaxy Tab 10.1 and other Tegra 2 SoC (i.e. removed NEON support) - NOTE: this fix is temporary, soon we will drop support for Tegra 2 and other ARMv7-based SoCs that do not support NEON
 - removed progress bar callback and simplified creation of custom UI
 
 ## 3.1.0
