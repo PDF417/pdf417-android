@@ -65,14 +65,15 @@
 <ul class="horizontal">
 <li><a href="mobi/pdf417/package-tree.html">mobi.pdf417</a>, </li>
 <li><a href="mobi/pdf417/activity/package-tree.html">mobi.pdf417.activity</a>, </li>
+<li><a href="net/photopay/activity/package-tree.html">net.photopay.activity</a>, </li>
 <li><a href="net/photopay/barcode/package-tree.html">net.photopay.barcode</a>, </li>
-<li><a href="net/photopay/base/package-tree.html">net.photopay.base</a>, </li>
 <li><a href="net/photopay/geometry/package-tree.html">net.photopay.geometry</a>, </li>
-<li><a href="net/photopay/hardware/camera/focus/package-tree.html">net.photopay.hardware.camera.focus</a>, </li>
+<li><a href="net/photopay/geometry/quadDrawers/package-tree.html">net.photopay.geometry.quadDrawers</a>, </li>
 <li><a href="net/photopay/hardware/orientation/package-tree.html">net.photopay.hardware.orientation</a>, </li>
 <li><a href="net/photopay/locale/package-tree.html">net.photopay.locale</a>, </li>
-<li><a href="net/photopay/recognition/package-tree.html">net.photopay.recognition</a>, </li>
-<li><a href="net/photopay/view/viewfinder/package-tree.html">net.photopay.view.viewfinder</a></li>
+<li><a href="net/photopay/util/package-tree.html">net.photopay.util</a>, </li>
+<li><a href="net/photopay/view/package-tree.html">net.photopay.view</a>, </li>
+<li><a href="net/photopay/view/recognition/package-tree.html">net.photopay.view.recognition</a></li>
 </ul>
 </div>
 <div class="contentContainer">
@@ -80,7 +81,6 @@
 <ul>
 <li type="circle">java.lang.Object
 <ul>
-<li type="circle">net.photopay.view.viewfinder.<a href="net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder"><span class="strong">AbstractViewFinder</span></a> (implements net.photopay.hardware.camera.focus.<a href="net/photopay/hardware/camera/focus/AutofocusStatusView.html" title="interface in net.photopay.hardware.camera.focus">AutofocusStatusView</a>)</li>
 <li type="circle">net.photopay.barcode.<a href="net/photopay/barcode/BarcodeDetailedData.html" title="class in net.photopay.barcode"><span class="strong">BarcodeDetailedData</span></a> (implements android.os.Parcelable)</li>
 <li type="circle">net.photopay.barcode.<a href="net/photopay/barcode/BarcodeElement.html" title="class in net.photopay.barcode"><span class="strong">BarcodeElement</span></a> (implements android.os.Parcelable)</li>
 <li type="circle">android.content.Context
@@ -91,25 +91,22 @@
 <ul>
 <li type="circle">android.app.Activity (implements android.content.ComponentCallbacks2, android.view.KeyEvent.Callback, android.view.LayoutInflater.Factory2, android.view.View.OnCreateContextMenuListener, android.view.Window.Callback)
 <ul>
-<li type="circle">net.photopay.base.<a href="net/photopay/base/BaseCameraActivity.html" title="class in net.photopay.base"><span class="strong">BaseCameraActivity</span></a>
+<li type="circle">net.photopay.activity.<a href="net/photopay/activity/BaseScanActivity.html" title="class in net.photopay.activity"><span class="strong">BaseScanActivity</span></a> (implements net.photopay.view.<a href="net/photopay/view/CameraEventsListener.html" title="interface in net.photopay.view">CameraEventsListener</a>, net.photopay.view.<a href="net/photopay/view/OnSizeChangedListener.html" title="interface in net.photopay.view">OnSizeChangedListener</a>, net.photopay.view.<a href="net/photopay/view/OrientationAllowedListener.html" title="interface in net.photopay.view">OrientationAllowedListener</a>, net.photopay.view.recognition.RecognizerViewDebugListener)
 <ul>
-<li type="circle">net.photopay.base.BaseRecognitionActivity
+<li type="circle">mobi.pdf417.activity.<a href="mobi/pdf417/activity/Pdf417ScanActivity.html" title="class in mobi.pdf417.activity"><span class="strong">Pdf417ScanActivity</span></a> (implements net.photopay.view.recognition.<a href="net/photopay/view/recognition/Pdf417MobiScanResultListener.html" title="interface in net.photopay.view.recognition">Pdf417MobiScanResultListener</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li type="circle">net.photopay.geometry.quadDrawers.<a href="net/photopay/geometry/quadDrawers/FOVQuadDrawer.html" title="class in net.photopay.geometry.quadDrawers"><span class="strong">FOVQuadDrawer</span></a> (implements net.photopay.geometry.quadDrawers.<a href="net/photopay/geometry/quadDrawers/IQuadrilateralDrawer.html" title="interface in net.photopay.geometry.quadDrawers">IQuadrilateralDrawer</a>)
 <ul>
-<li type="circle">net.photopay.base.<a href="net/photopay/base/BaseBarcodeActivity.html" title="class in net.photopay.base"><span class="strong">BaseBarcodeActivity</span></a>
-<ul>
-<li type="circle">mobi.pdf417.activity.<a href="mobi/pdf417/activity/Pdf417ScanActivity.html" title="class in mobi.pdf417.activity"><span class="strong">Pdf417ScanActivity</span></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li type="circle">net.photopay.geometry.quadDrawers.<a href="net/photopay/geometry/quadDrawers/IdQuadDrawer.html" title="class in net.photopay.geometry.quadDrawers"><span class="strong">IdQuadDrawer</span></a></li>
 </ul>
 </li>
 <li type="circle">net.photopay.locale.<a href="net/photopay/locale/LanguageUtils.html" title="class in net.photopay.locale"><span class="strong">LanguageUtils</span></a></li>
@@ -120,14 +117,46 @@
 </li>
 <li type="circle">mobi.pdf417.<a href="mobi/pdf417/Pdf417MobiSettings.html" title="class in mobi.pdf417"><span class="strong">Pdf417MobiSettings</span></a> (implements android.os.Parcelable)</li>
 <li type="circle">net.photopay.geometry.<a href="net/photopay/geometry/Point.html" title="class in net.photopay.geometry"><span class="strong">Point</span></a></li>
+<li type="circle">net.photopay.geometry.quadDrawers.<a href="net/photopay/geometry/quadDrawers/QuadrilateralDrawer.html" title="class in net.photopay.geometry.quadDrawers"><span class="strong">QuadrilateralDrawer</span></a> (implements net.photopay.geometry.quadDrawers.<a href="net/photopay/geometry/quadDrawers/IQuadrilateralDrawer.html" title="interface in net.photopay.geometry.quadDrawers">IQuadrilateralDrawer</a>)</li>
+<li type="circle">net.photopay.recognition.RecognitionData (implements android.os.Parcelable)
+<ul>
+<li type="circle">net.photopay.barcode.<a href="net/photopay/barcode/BarcodeRecognitionData.html" title="class in net.photopay.barcode"><span class="strong">BarcodeRecognitionData</span></a> (implements android.os.Parcelable)</li>
+</ul>
+</li>
+<li type="circle">net.photopay.util.<a href="net/photopay/util/RecognizerCompatibility.html" title="class in net.photopay.util"><span class="strong">RecognizerCompatibility</span></a></li>
 <li type="circle">net.photopay.geometry.<a href="net/photopay/geometry/Rectangle.html" title="class in net.photopay.geometry"><span class="strong">Rectangle</span></a> (implements android.os.Parcelable)</li>
+<li type="circle">android.view.View (implements android.view.accessibility.AccessibilityEventSource, android.graphics.drawable.Drawable.Callback, android.view.KeyEvent.Callback)
+<ul>
+<li type="circle">android.view.ViewGroup (implements android.view.ViewManager, android.view.ViewParent)
+<ul>
+<li type="circle">net.photopay.view.BaseCameraView (implements net.photopay.hardware.camera.CameraListener, net.photopay.hardware.orientation.OrientationChangeListener, android.view.SurfaceHolder.Callback)
+<ul>
+<li type="circle">net.photopay.view.recognition.<a href="net/photopay/view/recognition/BaseRecognizerView.html" title="class in net.photopay.view.recognition"><span class="strong">BaseRecognizerView</span></a> (implements net.photopay.hardware.camera.CameraListener)
+<ul>
+<li type="circle">net.photopay.view.recognition.<a href="net/photopay/view/recognition/Pdf417MobiView.html" title="class in net.photopay.view.recognition"><span class="strong">Pdf417MobiView</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
-<li type="circle">net.photopay.hardware.camera.focus.<a href="net/photopay/hardware/camera/focus/AutofocusStatusView.html" title="interface in net.photopay.hardware.camera.focus"><span class="strong">AutofocusStatusView</span></a></li>
-<li type="circle">net.photopay.recognition.<a href="net/photopay/recognition/DetectionStatus.html" title="interface in net.photopay.recognition"><span class="strong">DetectionStatus</span></a></li>
+<li type="circle">net.photopay.hardware.camera.focus.AutofocusListener
+<ul>
+<li type="circle">net.photopay.view.<a href="net/photopay/view/CameraEventsListener.html" title="interface in net.photopay.view"><span class="strong">CameraEventsListener</span></a></li>
+</ul>
+</li>
+<li type="circle">net.photopay.geometry.quadDrawers.<a href="net/photopay/geometry/quadDrawers/IQuadrilateralDrawer.html" title="interface in net.photopay.geometry.quadDrawers"><span class="strong">IQuadrilateralDrawer</span></a></li>
+<li type="circle">net.photopay.view.<a href="net/photopay/view/OnSizeChangedListener.html" title="interface in net.photopay.view"><span class="strong">OnSizeChangedListener</span></a></li>
+<li type="circle">net.photopay.view.<a href="net/photopay/view/OrientationAllowedListener.html" title="interface in net.photopay.view"><span class="strong">OrientationAllowedListener</span></a></li>
+<li type="circle">net.photopay.view.recognition.<a href="net/photopay/view/recognition/Pdf417MobiScanResultListener.html" title="interface in net.photopay.view.recognition"><span class="strong">Pdf417MobiScanResultListener</span></a></li>
+<li type="circle">net.photopay.view.recognition.<a href="net/photopay/view/recognition/RecognizerViewEventListener.html" title="interface in net.photopay.view.recognition"><span class="strong">RecognizerViewEventListener</span></a></li>
 </ul>
 <h2 title="Enum Hierarchy">Enum Hierarchy</h2>
 <ul>
@@ -138,6 +167,9 @@
 <li type="circle">net.photopay.barcode.<a href="net/photopay/barcode/ElementType.html" title="enum in net.photopay.barcode"><span class="strong">ElementType</span></a></li>
 <li type="circle">net.photopay.hardware.orientation.<a href="net/photopay/hardware/orientation/Orientation.html" title="enum in net.photopay.hardware.orientation"><span class="strong">Orientation</span></a></li>
 <li type="circle">net.photopay.locale.<a href="net/photopay/locale/Language.html" title="enum in net.photopay.locale"><span class="strong">Language</span></a></li>
+<li type="circle">net.photopay.util.<a href="net/photopay/util/RecognizerCompatibilityStatus.html" title="enum in net.photopay.util"><span class="strong">RecognizerCompatibilityStatus</span></a></li>
+<li type="circle">net.photopay.view.<a href="net/photopay/view/NotSupportedReason.html" title="enum in net.photopay.view"><span class="strong">NotSupportedReason</span></a></li>
+<li type="circle">net.photopay.view.recognition.<a href="net/photopay/view/recognition/DetectionStatus.html" title="enum in net.photopay.view.recognition"><span class="strong">DetectionStatus</span></a></li>
 </ul>
 </li>
 </ul>

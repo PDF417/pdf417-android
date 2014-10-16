@@ -146,15 +146,22 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
-<td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#clone()">clone</a></strong>()</code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#clamp(float, float)">clamp</a></strong>(float&nbsp;minLength,
+     float&nbsp;maxLength)</code>
+<div class="block">Calculate and return point clamped to given norm (lengths).</div>
+</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
+<td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#clone()">clone</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#distance(net.photopay.geometry.Point)">distance</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>
 <div class="block">Calculates and returns the distance to given point.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#draw(android.graphics.Canvas, android.graphics.Paint, int)">draw</a></strong>(android.graphics.Canvas&nbsp;canvas,
     android.graphics.Paint&nbsp;paint,
@@ -162,98 +169,98 @@ extends java.lang.Object</pre>
 <div class="block">Draws the point to given canvas with given paint.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#equals(java.lang.Object)">equals</a></strong>(java.lang.Object&nbsp;o)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#getX()">getX</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#getY()">getY</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#log()">log</a></strong>()</code>
 <div class="block">Logs the point coordinates to LOG_DEBUG log.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#mirrorX(float)">mirrorX</a></strong>(float&nbsp;maxXDimension)</code>
 <div class="block">Return point mirrored around X axis.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#mirrorXY(float, float)">mirrorXY</a></strong>(float&nbsp;maxXDimension,
         float&nbsp;maxYDimension)</code>
 <div class="block">Return point mirrored around both X and Y axis</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#mirrorY(float)">mirrorY</a></strong>(float&nbsp;maxYDimension)</code>
 <div class="block">Return point mirrored around Y axis.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#negative()">negative</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#negativeClone()">negativeClone</a></strong>()</code>
 <div class="block">Calculate and return negative of current point.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#norm()">norm</a></strong>()</code>
 <div class="block">Calculate and return norm of the point.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#normalize()">normalize</a></strong>()</code>
 <div class="block">Calculate and return point that has same direction as this point, but norm 1.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#normalize(float)">normalize</a></strong>(float&nbsp;length)</code>
 <div class="block">Calculate and return point that has same direction as this point, but norm as given.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorMinus(net.photopay.geometry.Point)">operatorMinus</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>
 <div class="block">- operator on the point.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorMinusEquals(net.photopay.geometry.Point)">operatorMinusEquals</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorMultiply(float)">operatorMultiply</a></strong>(float&nbsp;factor)</code>
 <div class="block">Multiplication of the point with scalar.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorMultiplyEquals(float)">operatorMultiplyEquals</a></strong>(float&nbsp;factor)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a></code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorPlus(net.photopay.geometry.Point)">operatorPlus</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>
 <div class="block">+ operator on the point.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../net/photopay/geometry/Point.html#operatorPlusEquals(net.photopay.geometry.Point)">operatorPlusEquals</a></strong>(<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;other)</code>
 <div class="block">+= operator on the point.</div>
@@ -447,6 +454,23 @@ extends java.lang.Object</pre>
  than desired length, returns the point that has the same direction as this point, but norm "length".
  If norm of the point is smaller or equal to desired length, returns the clone of this point.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>length</code> - Desired norm to which point should be clamped.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Clamped point.</dd></dl>
+</li>
+</ul>
+<a name="clamp(float, float)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clamp</h4>
+<pre>public&nbsp;<a href="../../../net/photopay/geometry/Point.html" title="class in net.photopay.geometry">Point</a>&nbsp;clamp(float&nbsp;minLength,
+          float&nbsp;maxLength)</pre>
+<div class="block">Calculate and return point clamped to given norm (lengths). If norm of the point is larger
+ than maxLength, returns the point that has the same direction as this point, but norm "maxLength".
+ If norm of the point is smaller than minLength, returns the point that has the same direction
+ as this point, but norm "minLength".
+ If norm of the point is smaller than maxLength and larger than minLength, returns the clone of this point.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>minLength</code> - Minimum desired norm of the point.</dd><dd><code>maxLength</code> - Maximum desired norm of the point.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>Clamped point.</dd></dl>
 </li>
 </ul>

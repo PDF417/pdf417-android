@@ -6,8 +6,8 @@
     
    <Button
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="left|top"
         android:gravity="center"
         android:layout_margin="8dp"
@@ -25,8 +25,8 @@
    
       <Button
         android:id="@+id/torchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
         android:layout_gravity="right|top"
         android:gravity="center"
         android:layout_margin="8dp"
@@ -37,7 +37,9 @@
         android:paddingRight="12dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:text="@string/LightOff"
+        android:text="@string/photopayLightOff"
+        android:drawableLeft="@drawable/lightoff"
+        android:drawablePadding="5dp"
         android:textColor="@color/photopayButtonForeground"
         android:textSize="14sp" />
 

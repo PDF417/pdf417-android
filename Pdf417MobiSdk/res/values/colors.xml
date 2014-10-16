@@ -8,8 +8,8 @@
     <color name="photopayButtonForeground">#FF000000</color>
     
     <!-- Color of the viewfinder in default position (usually red) -->
-    <color name="default_frame">#DDF60C0C</color>
+    <color name="default_frame">#DDFFFFFF</color>
     
     <!-- The color of viewfinder frame when the slip is detected on the image (usually green) -->
-    <color name="recognized_frame">#DD2DEE06</color>
+    <color name="recognized_frame">#DDAAFFAA</color>
 </resources>

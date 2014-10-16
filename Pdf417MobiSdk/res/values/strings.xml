@@ -4,8 +4,8 @@
 <resources>
     <string name="photopay">PhotoPay Barcode</string>
     <string name="photopayHome">Back</string>
-    <string name="LightOff">Light: off</string>
-    <string name="LightOn">Light: on</string>
+    <string name="photopayLightOff">Light</string>
+    <string name="photopayLightOn">Light</string>
     <string name="scanBarcode">Start barcode scanning</string>
     <string name="photopayOK">OK</string>
     <string name="photopayHelpImageDescription">Description</string>

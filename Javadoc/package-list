@@ -1,10 +1,11 @@
 mobi.pdf417
 mobi.pdf417.activity
+net.photopay.activity
 net.photopay.barcode
-net.photopay.base
 net.photopay.geometry
-net.photopay.hardware.camera.focus
+net.photopay.geometry.quadDrawers
 net.photopay.hardware.orientation
 net.photopay.locale
-net.photopay.recognition
-net.photopay.view.viewfinder
+net.photopay.util
+net.photopay.view
+net.photopay.view.recognition

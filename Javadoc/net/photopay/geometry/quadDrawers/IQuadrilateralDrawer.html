@@ -2,13 +2,13 @@
 <!-- NewPage -->
 <html lang="en">
 <head>
-<title>AutofocusStatusView</title>
-<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+<title>IQuadrilateralDrawer</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
 </head>
 <body>
 <script type="text/javascript"><!--
     if (location.href.indexOf('is-external=true') == -1) {
-        parent.document.title="AutofocusStatusView";
+        parent.document.title="IQuadrilateralDrawer";
     }
 //-->
 </script>
@@ -22,26 +22,26 @@
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../../overview-summary.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
-<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
-<li><a href="../../../../../index-all.html">Index</a></li>
-<li><a href="../../../../../help-doc.html">Help</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li>Prev Class</li>
-<li>Next Class</li>
+<li><a href="../../../../net/photopay/geometry/quadDrawers/IdQuadDrawer.html" title="class in net.photopay.geometry.quadDrawers"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../net/photopay/geometry/quadDrawers/QuadrilateralDrawer.html" title="class in net.photopay.geometry.quadDrawers"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../../index.html?net/photopay/hardware/camera/focus/AutofocusStatusView.html" target="_top">Frames</a></li>
-<li><a href="AutofocusStatusView.html" target="_top">No Frames</a></li>
+<li><a href="../../../../index.html?net/photopay/geometry/quadDrawers/IQuadrilateralDrawer.html" target="_top">Frames</a></li>
+<li><a href="IQuadrilateralDrawer.html" target="_top">No Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_top">
-<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
 </ul>
 <div>
 <script type="text/javascript"><!--
@@ -76,8 +76,8 @@
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">net.photopay.hardware.camera.focus</div>
-<h2 title="Interface AutofocusStatusView" class="title">Interface AutofocusStatusView</h2>
+<div class="subTitle">net.photopay.geometry.quadDrawers</div>
+<h2 title="Interface IQuadrilateralDrawer" class="title">Interface IQuadrilateralDrawer</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -85,11 +85,12 @@
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../../net/photopay/view/viewfinder/AbstractViewFinder.html" title="class in net.photopay.view.viewfinder">AbstractViewFinder</a></dd>
+<dd><a href="../../../../net/photopay/geometry/quadDrawers/FOVQuadDrawer.html" title="class in net.photopay.geometry.quadDrawers">FOVQuadDrawer</a>, <a href="../../../../net/photopay/geometry/quadDrawers/IdQuadDrawer.html" title="class in net.photopay.geometry.quadDrawers">IdQuadDrawer</a>, <a href="../../../../net/photopay/geometry/quadDrawers/QuadrilateralDrawer.html" title="class in net.photopay.geometry.quadDrawers">QuadrilateralDrawer</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public interface <span class="strong">AutofocusStatusView</span></pre>
+<pre>public interface <span class="strong">IQuadrilateralDrawer</span></pre>
+<div class="block">Created by dodo on 29/09/14.</div>
 </li>
 </ul>
 </div>
@@ -110,9 +111,8 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../../net/photopay/hardware/camera/focus/AutofocusStatusView.html#displayAutofocusFailed()">displayAutofocusFailed</a></strong>()</code>
-<div class="block">This method will be called when camera focusing has failed.</div>
-</td>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/geometry/quadDrawers/IQuadrilateralDrawer.html#drawQuad(net.photopay.geometry.Quadrilateral, android.graphics.Canvas)">drawQuad</a></strong>(net.photopay.geometry.Quadrilateral&nbsp;quad,
+        android.graphics.Canvas&nbsp;canvas)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -129,18 +129,14 @@
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="displayAutofocusFailed()">
+<a name="drawQuad(net.photopay.geometry.Quadrilateral, android.graphics.Canvas)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>displayAutofocusFailed</h4>
-<pre>void&nbsp;displayAutofocusFailed()</pre>
-<div class="block">This method will be called when camera focusing has failed.
- Camera manager usually tries different focusing strategies
- and this method is called when all those strategies fail to
- indicate that either object on which camera is being focused
- is too close or ambient light conditions are poor.</div>
+<h4>drawQuad</h4>
+<pre>void&nbsp;drawQuad(net.photopay.geometry.Quadrilateral&nbsp;quad,
+            android.graphics.Canvas&nbsp;canvas)</pre>
 </li>
 </ul>
 </li>
@@ -157,26 +153,26 @@
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../../overview-summary.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
-<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
-<li><a href="../../../../../index-all.html">Index</a></li>
-<li><a href="../../../../../help-doc.html">Help</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li>Prev Class</li>
-<li>Next Class</li>
+<li><a href="../../../../net/photopay/geometry/quadDrawers/IdQuadDrawer.html" title="class in net.photopay.geometry.quadDrawers"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../net/photopay/geometry/quadDrawers/QuadrilateralDrawer.html" title="class in net.photopay.geometry.quadDrawers"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../../index.html?net/photopay/hardware/camera/focus/AutofocusStatusView.html" target="_top">Frames</a></li>
-<li><a href="AutofocusStatusView.html" target="_top">No Frames</a></li>
+<li><a href="../../../../index.html?net/photopay/geometry/quadDrawers/IQuadrilateralDrawer.html" target="_top">Frames</a></li>
+<li><a href="IQuadrilateralDrawer.html" target="_top">No Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_bottom">
-<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
 </ul>
 <div>
 <script type="text/javascript"><!--
