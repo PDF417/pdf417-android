@@ -1,5 +1,17 @@
 package mobi.pdf417.demo;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+import net.photopay.barcode.BarcodeDetailedData;
+import net.photopay.barcode.BarcodeElement;
+import net.photopay.barcode.ElementType;
+import net.photopay.geometry.Rectangle;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -7,17 +19,6 @@ import java.util.List;
 import mobi.pdf417.Pdf417MobiScanData;
 import mobi.pdf417.Pdf417MobiSettings;
 import mobi.pdf417.activity.Pdf417ScanActivity;
-import net.photopay.barcode.BarcodeDetailedData;
-import net.photopay.barcode.BarcodeElement;
-import net.photopay.barcode.ElementType;
-import net.photopay.base.BaseBarcodeActivity;
-import net.photopay.geometry.Rectangle;
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 public class Pdf417CustomUIDemo extends Activity {
 
@@ -40,7 +41,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // create intent for scan activity
             Intent intent = new Intent(this, Pdf417ScanActivity.class);
             // add license that allows removing of dialog in default UI
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, LICENSE);
             // create settings object
             Pdf417MobiSettings sett = new Pdf417MobiSettings();
             // set this to true to enable PDF417 scanning
@@ -50,7 +51,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // set this to true to prevent showing dialog after successful scan
             sett.setDontShowDialog(true);
             // put settings as intent extra
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_SETTINGS, sett);
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
         }
@@ -58,7 +59,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // create intent for scan activity
             Intent intent = new Intent(this, Pdf417ScanActivity.class);
             // add license that allows removing of logo in default UI
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, LICENSE);
             // create settings object
             Pdf417MobiSettings sett = new Pdf417MobiSettings();
             // set this to true to enable PDF417 scanning
@@ -69,7 +70,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // if license forbids this, this option has no effect
             sett.setRemoveOverlayEnabled(true);
             // put settings as intent extra
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_SETTINGS, sett);
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
         }
@@ -77,7 +78,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // create intent for custom scan activity
             Intent intent = new Intent(this, DefaultScanActivity.class);
             // add license that allows creating custom camera overlay
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, LICENSE);
             // create settings object
             Pdf417MobiSettings sett = new Pdf417MobiSettings();
             // set this to true to enable PDF417 scanning
@@ -85,15 +86,15 @@ public class Pdf417CustomUIDemo extends Activity {
             // set this to true to enable QR code scanning
             sett.setQrCodeEnabled(true);
             // put settings as intent extra
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_SETTINGS, sett);
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
         }
         case R.id.btnCustomUIROI: {
             // create intent for custom scan activity
-            Intent intent = new Intent(this, CustomScanActivity.class);
+            Intent intent = new Intent(this, DefaultScanActivity.class);
             // add license that allows creating custom camera overlay
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, LICENSE);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, LICENSE);
             // create settings object
             Pdf417MobiSettings sett = new Pdf417MobiSettings();
             // set this to true to enable PDF417 scanning
@@ -101,7 +102,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // set this to true to enable QR code scanning
             sett.setQrCodeEnabled(true);
             // put settings as intent extra
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_SETTINGS, sett);
             // define scanning region
             // first parameter of rectangle is x-coordinate represented as percentage
             // of view width*, second parameter is y-coordinate represented as percentage
@@ -116,11 +117,11 @@ public class Pdf417CustomUIDemo extends Activity {
             // If you choose not to rotate your ROI view, then your ROI view will be layout either
             // in portrait or landscape, depending on setting for your camera activity in AndroidManifest.xml
             Rectangle roi = new Rectangle(0.2f, 0.1f, 0.5f, 0.4f);
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_ROI, roi);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_ROI, roi);
             // if you intent to rotate your ROI view, you should set the EXTRAS_ROTATE_ROI extra to true
             // so that PDF417.mobi can adjust ROI coordinates for native library when device orientation
             // change event occurs
-            intent.putExtra(BaseBarcodeActivity.EXTRAS_ROTATE_ROI, true);
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_ROTATE_ROI, true);
 
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
@@ -133,9 +134,9 @@ public class Pdf417CustomUIDemo extends Activity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == MY_REQUEST_CODE && resultCode == BaseBarcodeActivity.RESULT_OK) {
+        if (requestCode == MY_REQUEST_CODE && resultCode == Pdf417ScanActivity.RESULT_OK) {
             // read scan result
-            Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
+            Pdf417MobiScanData scanData = data.getParcelableExtra(Pdf417ScanActivity.EXTRAS_RESULT);
 
             // read scanned barcode type (PDF417 or QR code)
             String barcodeType = scanData.getBarcodeType();
