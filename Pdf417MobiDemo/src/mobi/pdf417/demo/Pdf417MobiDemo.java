@@ -9,8 +9,7 @@ import mobi.pdf417.Pdf417MobiSettings;
 import mobi.pdf417.USDLScanData;
 import mobi.pdf417.activity.Pdf417ScanActivity;
 import net.photopay.barcode.BarcodeDetailedData;
-import net.photopay.base.BaseBarcodeActivity;
-import net.photopay.base.BaseRecognitionActivity;
+import net.photopay.view.recognition.Pdf417MobiView;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -51,7 +50,7 @@ public class Pdf417MobiDemo extends Activity {
 
     @SuppressWarnings("deprecation")
     private void showVersionString() {
-        String nativeVersionString = BaseRecognitionActivity.getNativeLibraryVersionString();
+        String nativeVersionString = Pdf417MobiView.getNativeLibraryVersionString();
         PackageInfo pInfo;
         try {
             pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -177,14 +176,14 @@ public class Pdf417MobiDemo extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == MY_REQUEST_CODE && resultCode == BaseBarcodeActivity.RESULT_OK) {
+        if (requestCode == MY_REQUEST_CODE && resultCode == Pdf417ScanActivity.RESULT_OK) {
             // obtain scan results
-            ArrayList<Pdf417MobiScanData> scanDataList = data.getParcelableArrayListExtra(BaseBarcodeActivity.EXTRAS_RESULT_LIST);
+            ArrayList<Pdf417MobiScanData> scanDataList = data.getParcelableArrayListExtra(Pdf417ScanActivity.EXTRAS_RESULT_LIST);
             // NOTE: if you are interested in only single scan result, you can obtain the first element of the array list
             //       or you can use the old key EXTRAS_RESULT
             // If you have set allowing of multiple scan results on single image to false (Pdf417MobiSettings.setAllowMultipleScanResultsOnSingleImage method)
             // scanDataList will contain at most one element.
-//            Pdf417MobiScanData scanData = data.getParcelableExtra(BaseBarcodeActivity.EXTRAS_RESULT);
+//            Pdf417MobiScanData scanData = data.getParcelableExtra(Pdf417ScanActivity.EXTRAS_RESULT);
             
             StringBuilder sb = new StringBuilder();
             
