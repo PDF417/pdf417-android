@@ -198,8 +198,8 @@ License key is bound to package name of your application. For example, if you ha
 
 ```java
 // set the license key
-intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
-intent.putExtra(BaseBarcodeActivity.EXTRAS_LICENSE_OWNER, "Enter_License_Owner_Here");
+intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
+intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_OWNER, "Enter_License_Owner_Here");
 ```
 
 If you do not provide license owner, license key will be validated against current application package name and will fail to unlock the library.
@@ -237,15 +237,15 @@ You can also set additional settings to Intent used for initializing the `Pdf417
 	// * view width and height are defined in current context, i.e. they depend on
 	// screen orientation. If you allow your ROI view to be rotated, then in portrait
 	// view width will be smaller than height, whilst in landscape orientation width
-	// will be larger than height. This complies with view designer preview in eclipse ADT.
+	// will be larger than height. This complies with view designer preview in eclipse ADT and android studio.
 	// If you choose not to rotate your ROI view, then your ROI view will be layout either
 	// in portrait or landscape, depending on setting for your camera activity in AndroidManifest.xml
 	Rectangle roi = new Rectangle(0.2f, 0.1f, 0.5f, 0.4f);
-	intent.putExtra(BaseBarcodeActivity.EXTRAS_ROI, roi);
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_ROI, roi);
 	// if you intent to rotate your ROI view, you should set the EXTRAS_ROTATE_ROI extra to true
 	// so that PDF417.mobi can adjust ROI coordinates for native library when device orientation
 	// change event occurs
-	intent.putExtra(BaseBarcodeActivity.EXTRAS_ROTATE_ROI, true);
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_ROTATE_ROI, true);
     ```
 		
 * if you want to optimize camera parameters for near object scanning, you should set `EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING` to `true`. When camera parameters are optimized for near object scanning, macro focus mode will be preferred over autofocus mode. Thus, camera will have easier time focusing on to near objects, but might have harder time focusing on far objects. If you expect that most of your scans will be performed by holding the device very near the object, turn on that parameter. By default, this parameter is set to `false`. Set the parameter like this:
@@ -281,7 +281,7 @@ You can also set additional settings to Intent used for initializing the `Pdf417
 	intent.putExtra(BaseBarcodeActivity.EXTRAS_SETTINGS, sett);
     ```
 	
-## Obtaining the scanning results
+## <a name="obtainScanResults"></a> Obtaining the scanning results
 
 Obtaining the scanned data is done in the `onActivityResult` method. If the recognition returned some results, result code returned will be `BaseBarcodeActivity.RESULT_OK`. Optionally, if user tapped the `Copy` button in dialog, result code returned will be `BaseBarcodeActivity.RESULT_OK_DATA_COPIED` to indicate that barcode data is copied into clipboard. For example, your implementation of this method could look like this:
 
@@ -335,7 +335,7 @@ You can also obtain the list of all data that have been scanned (if there is mor
 }
 ```
 
-If US Driver's License decoding was used, you can also obtain parsed fields by castind `Pdf417MobiScanData` into `USDLScanData` class, and then use its methods to obtain driver's license fields:
+If US Driver's License decoding was used, you can also obtain parsed fields by casting `Pdf417MobiScanData` into `USDLScanData` class, and then use its methods to obtain driver's license fields:
 
 ```java
 Pdf417MobiScanData scanData;
@@ -391,6 +391,160 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 Additionally, if you don't need the whole per element information, you can just use `getAllData` method of `BarcodeDetailedData` class to obtain byte array of the whole barcode. Note that you need to be able to extract useful information from such a byte array on your own.
 
+## Embedding `Pdf417MobiView` into custom scan activity
+This section will discuss how to embed `Pdf417MobiView ` into your scan activity and perform scan.
+
+1. First make sure that `Pdf417MobiView ` is a member field in your activity. This is required because you will need to pass all activity's lifecycle events to `Pdf417MobiView `.
+2. It is recommended to keep your scan activity in one orientation, such as `portrait` or `landscape`. Setting `sensor` as scan activity's orientation will trigger full restart of activity whenever device orientation changes. This will provide very poor user experience because both camera and _PDF417.mobi_ native library will have to be restarted every time. There are measures for this behavious and will be discussed [later](#scanOrientation).
+3. In your activity's `onCreate` method, create a new `Pdf417MobiView `, define its [settings and listeners](#photoPayViewReference) and then call its `create` method. After that, add your views that should be layouted on top of camera view.
+4. Override your activity's `onResume`, `onPause`, `onStart` and `onStop` methods and call `Pdf417MobiView's` lifecycle methods `resume`, `pause`, `start` and `stop`. This will ensure correct camera and native resource management.
+
+Here is the minimum example of integration of `Pdf417MobiView ` as the only view in your activity:
+
+```java
+public class MyScanActivity extends Activity implements Pdf417MobiScanResultListener {
+	private Pdf417MobiView mPdf417MobiView;
+		
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// create PhotoPayView
+		mPdf417MobiView = new Pdf417MobiView(this);
+		   
+		/**
+		* Prepare settings for recognition.
+		*/
+		Pdf417MobiSettings sett = new Pdf417MobiSettings();
+		sett.setPdf417Enabled(true);
+		sett.setDecodeUSDriverLicenseData(true);
+		sett.setQrCodeEnabled(true);
+		// set scanning settings
+		mPdf417MobiView.setScanSettings(sett);
+		// set license key
+		mPdf417MobiView.setLicenseKey("your license key here");
+		   
+		// scan result listener will be notified when scan result gets available
+		mPdf417MobiView.setPdf417MobiScanResultListener(this);
+		   
+		mPdf417MobiView.create();
+		setContentView(mPdf417MobiView);
+	}
+	
+	@Override
+	protected void onResume() {
+	   super.onResume();
+	   // you need to pass all activity's lifecycle methods to Pdf417MobiView
+	   mPdf417MobiView.resume();
+	}
+	    
+	   @Override
+	protected void onStart() {
+	   super.onStart();
+	   // you need to pass all activity's lifecycle methods to Pdf417MobiView
+	   mPdf417MobiView.start();
+	}
+
+	@Override
+	protected void onPause() {
+	   super.onPause();
+	   // you need to pass all activity's lifecycle methods to Pdf417MobiView
+	   mPdf417MobiView.pause();
+	}
+
+	@Override
+	protected void onStop() {
+	   super.onStop();
+	   // you need to pass all activity's lifecycle methods to Pdf417MobiView
+	   mPdf417MobiView.stop();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+	   super.onConfigurationChanged(newConfig);
+	   // you need to pass all activity's lifecycle methods to Pdf417MobiView
+	   mPdf417MobiView.changeConfiguration(newConfig);
+	}
+	
+    @Override
+    public void onScanningDone(ArrayList<Pdf417MobiScanData> scanDataList) {
+    	// this method is from Pdf417MobiScanResultListener and will be called when scanning completes
+    	// multiple scan results may be returned, depending on scanning settings used for initialization of view
+    }
+}
+```
+
+### <a name="scanOrientation"></a> Scan activity's orientation
+
+If activity's `screenOrientation` property in `AndroidManifest.xml` is set to `sensor`, `fullSensor` or similar, activity will be restarted every time device changes orientation from portrait to landscape and vice versa. While restarting activity, its `onPause`, `onStop` and `onDestroy` methods will be called and then new activity will be created anew. This is a potential problem for scan activity because in its lifecycle it controls both camera and native library - restarting the activity will trigger both restart of the camera and native library. This is a problem because changing orientation from landscape to portrait and vice versa will be very slow, thus degrading a user experience. **We do not recommend such setting.**
+
+For that matter, we recommend setting your scan activity to either `portrait` or `landscape` mode and handle device orientation changes manually. To help you with this, `Pdf417MobiView ` supports adding child views to it that will be rotated regardless of activity's `screenOrientation`. You add a view you wish to be rotated (such as view that contains buttons, status messages, etc.) to `Pdf417MobiView ` with `addChildView` method. The second parameter of the method is a boolean that defines whether the view you are adding will be rotated with device. To define allowed orientations, implement [OrientationAllowedListener](Javadoc/net/photopay/view/OrientationAllowedListener.html) interface and add it to `Pdf417MobiView ` with method `setOrientationAllowedListener`. **This is the recommended way of rotating camera overlay.**
+
+However, if you really want to set `screenOrientation` property to `sensor` or similar and want Android to handle orientation changes of your scan activity, then we recommend to set `configChanges` property of your activity to `orientation|screenSize`. This will tell Android not to restart your activity when device orientation changes. Instead, activity's `onConfigurationChanged` method will be called so that activity can be notified of the configuration change. In your implementation of this method, you should call `changeConfiguration` method of `Pdf417MobiView ` so it can adapt its camera surface and child views to new configuration. Note that on Android versions older than 4.0 changing of configuration will require restart of camera, which can be slow.
+
+__Important__
+
+If you use `sensor` or similar screen orientation for your scan activity there is a catch. No matter if your activity is set to be restarted on configuration change or only notified via `onConfigurationChanged` method, if your activity's orientation is changed from `portrait` to `reversePortrait` or from `landscape` to `reverseLandscape` or vice versa, your activity will not be notified of this change in any way - it will not be neither restarted nor `onConfigurationChanged` will be called - the views in your activity will just be rotated by 180 degrees. This is a problem because it will make your camera preview upside down. In order to fix this, you first need to [find a way how to get notified of this change](https://stackoverflow.com/questions/9909037/how-to-detect-screen-rotation-through-180-degrees-from-landscape-to-landscape-or) and then you should call `changeConfiguration` method of `Pdf417MobiView` so it will correct camera preview orientation.
+
+## <a name="photoPayViewReference"></a> `Pdf417MobiView` reference
+The complete reference of `Pdf417MobiView` is available in [Javadoc](Javadoc/net/photopay/view/recognition/Pdf417MobiView.html). The usage example is provided in `Pdf417CustomUIDemo` demo app provided with SDK. This section just gives a quick overview of `PhotoPayView's` most important methods.
+
+### `create()`
+This method should be called in activity's `onCreate` method. It will initialize `Pdf417MobiView's` internal fields. This method must be called after all other settings are already defines, such as listeners and scanning settings. After calling this method, you can add child views to `Pdf417MobiView` with method `addChildView(View, boolean)`.
+
+### `start()`
+This method should be called in activity's `onStart` method. It will initialize background processing thread and start native library initialization on that thread.
+
+### `resume()`
+This method should be called in activity's `onResume` method. It will trigger background initialization of camera.
+
+### `pause()`
+This method should be called in activity's `onPause` method. It will stop the camera, but will keep native library loaded.
+
+### `stop()`
+This method should be called in activity's `onStop` method. It will deinitialize native library and free all resources that are no longer necessary.
+
+### `changeConfiguration(Configuration)`
+This method should be called in activity's `onConfigurationChanged` method. It will adapt camera surface to new configuration without the restart of the activity. See [Scan activity's orientation](#scanOrientation) for more information.
+
+### `setCameraType(CameraType)`
+With this method you can define which camera on device will be used. Default camera used is back facing camera.
+
+### `setScanSettings(Pdf417MobiSettings)`
+With this method you can set the `Pdf417MobiSettings` object. This object contains information about what and how will scan be performed. For more information about methods of that object, consult [Javadoc](Javadoc/mobi/pdf417/Pdf417MobiSettings.html).
+
+### `setOrientationAllowedListener(OrientationAllowedListener)`
+With this method you can set a [OrientationAllowedListener](Javadoc/net/photopay/view/OrientationAllowedListener.html) which will be asked if current orientation is allowed. If orientation is allowed, it will be used to rotate rotatable views to it and it will be passed to native library so that recognizers can be aware of the new orientation.
+
+### `setRecognizerViewEventListener(RecognizerViewEventListener)`
+With this method you can set a [RecognizerViewEventListener](Javadoc/net/photopay/view/recognition/RecognizerViewEventListener.html) which will be notified when certain recognition events occur, such as when object has been detected.
+
+### `setPdf417MobiScanResultListener(Pdf417MobiScanResultListener)`
+With this method you can set a [Pdf417MobiScanResultListener](Javadoc/net/photopay/view/recognition/Pdf417MobiScanResultListener.html) which will be notified when recognition completes. After recognition completes, `Pdf417MobiView` will pause its scanning loop and to continue the scanning you will have to call `resumeScanning` method. In this method you can obtain data from scanning results. For more information see [Obtaining the scanning results](#obtainScanResults).
+
+### `setCameraEventsListener(CameraEventsListener)`
+With this method you can set a [CameraEventsListener](Javadoc/net/photopay/view/CameraEventsListener.html) which will be notified when various camera events occur, such as when camera preview has started, autofocus has failed or there has been an error while starting the camera.
+
+### `pauseScanning()`
+This method pauses the scanning loop, but keeps both camera and native library initialized. This method is called internally when scan completes.
+
+### `resumeScanning()`
+With this method you can resume the paused scanning loop.
+
+### `addChildView(View, boolean)`
+With this method you can add your own view on top of `PhotoPayView`. `PhotoPayView` will ensure that your view will be layouted exactly above camera preview surface (which can be letterboxed if aspect ratio of camera preview size does not match the aspect ratio of `PhotoPayView`). Boolean parameter defines whether your view should be rotated with device orientation changes. The rotation is independent of host activity's orientation changes and allowed orientations will be determined from [OrientationAllowedListener](Javadoc/net/photopay/view/OrientationAllowedListener.html). See also [Scan activity's orientation](#scanOrientation) for more information why you should rotate your views independently of activity.
+
+### `isCameraFocused()` 
+This method returns `true` if camera thinks it has focused on object. Note that camera has to be loaded for this method to work.
+
+### `focusCamera()` 
+This method requests camera to perform autofocus. If camera does not support autofocus feature, method does nothing. Note that camera has to be loaded for this method to work.
+
+### `isCameraTorchSupported()` 
+This method returns `true` if camera supports torch flash mode. Note that camera has to be loaded for this method to work.
+
+### `setTorchState(boolean)` 
+If torch flash mode is supported on camera, this method can be used to enable/disable torch flash mode. If operation is successful, method returns true. Note that camera has to be loaded for this method to work.
+
+
 ## Processor architecture considerations
 
 Since version 3.0.0, Pdf417.mobi is distributed with both ARMv6, ARMv7 and x86 native library binaries. Older versions were built only for ARM architectures.
@@ -445,58 +599,10 @@ If you are combining PDF417.mobi library with some other libraries that contain 
 
 - Modifying other resources.
 
-	You can also modify other resources, such as colours and camera overlay layouts. To change a colour, simply open res/values/colors.xml and change the values of colours. Changing camera overlay layout is explained in demo application called `Pdf417CustomUIDemo`. In order to be able to change camera overlay, you must buy a commercial license.
+	You can also modify other resources, such as colours and camera overlay layouts. To change a colour, simply open res/values/colors.xml and change the values of colours. Creating custom camera overlay in your own scan activity is explained in demo application called `Pdf417CustomUIDemo`. In order to be able to directly use `Pdf417MobiView`, you must buy a commercial license.
 	
 	License key is bound to package name of application which integrates the library. Demo license key works for package name `mobi.pdf417`. To integrate library properly into your application, obtain a license from [PDF417.mobi web]. 
-	
-## Creating custom camera user interface
-As mentioned earlier, you need a commercial license to be able to create custom camera user interface. Example of how this can be done can be found in `Pdf417CustomUIDemo` demo project. The basis of implementing custom camera user interface is in extending `BaseBarcodeActivity` and extending `AbstractViewFinder` classes. Logically, derived class of `BaseBarcodeActivity` will be the activity to which you will have to send initialisation Intent which has the same required extras as described earlier. This activity needs to implement method `onCreateViewFinder` that has to return an implementation of `AbstractViewFinder` abstract class. Now let's explain a bit more about what method you can implement in your derived classes.
-
-### Extending `BaseBarcodeActivity`
-Class that extends `BaseBarcodeActivity` must implement method `onCreateViewFinder`. This method is called inside `onCreate` method before building `CameraPreview` View. This method should build and return a class extending `AbstractViewFinder` class that will handle various recognition events, such as detection position, and similar. If you return null, no overlay will be put on camera preview.
-
-Additionally, there are several method you might want to override in your derived activity:
-
-* `onBeforeLoadingCamera` - this method is called inside base activity's `onResume` method just before loading camera. You can use it to perform your own initialisations here. If method returns `true`, camera will be loaded and initialised. If method returns `false`, camera will not be loaded. You might need that behaviour if you want, for example, to display a help activity to user on the first run. Since in that case your scanning activity will exit as soon as it has been started, you can evade camera and native recognizer initalization to save resources and time.
-* `onAfterPause` - this method is called as last thing in base activity's `onPause` method. You can use it to perform terminations of your objects before activity goes to pause.
-* `isOrientationAllowed` - whenever device orientation change occurs, this method is called to determine if given device orientation is allowed. If method returns true and your implementation of `AbstractViewFinder` has returned a non-null rotatable view, it will be rotated to that orientation.
-* `onScanningDone` - this method is called every time a scan operation finishes with result. The list of scanning results is given as a parameter of the method. If you want to return the result to the calling activity, you should set the activity's result with method `setResult` and call `finish`. If you want to perform more scanning without the need for restarting the activity, you can call `resumeScanning` method from here. `Pdf417CustomUIDemo` application shows an example how to perform 5 consecutive scans with 2 seconds pause between them.
-* `onConfigureWindow` - This method is called inside `onCreate` method. You can use it to configure activity window. Default implementation sets the FLAG_SECURE flag on activity windows to prevent taking screenshots of camera activity.
-
-Besides methods that you are allowed to override, there are several protected final utility methods you can use for your needs.
-
-* `resumeScanning` - this method will perform all required steps for performing a new scan. You will probably need to call this method from overriden `onScanningDone` method.
-* `pauseScanning` - this method will perform all required steps for pausing the scanning loop.
-
-### Extending `AbstractViewFinder`
-Although all methods in this class have default implementation, the class is kept abstract to prevent instatiations. Class derived from this class is responsible for managing the UI that will be drawn on top of camera preview surface. When you inflate your custom UI from xml or build it in code, you should return it either in method `getRotatableView` or in method `getFixedView`. If you return your View in method `getRotatableView`, your view will be rotated on top of camera surface as device orientation changes occur. If you return your view in method `getFixedView`, your view will always remain in portrait orientation mode (camera activity will always be in portrait mode, regardless of setting in AndroidManifest.xml). If you return both fixed and rotatable views, rotatable view will be layouted on top of fixed view, but touch events will be firstly dispatched to fixed view and then to rotatable view.
-
-Besides mentioned methods there are more methods you might want to override:
-
-* `onSizeChanged` - This method is called before layouting rotatable and fixed views. This also happens every time view orientation change occurs. The reported view and height are corrected for orientation (in landscape mode width is actually height and vice versa). You can use this method for example for adjusting dynamic margins of your views.
-* `setOrientation` - This method is called whenever view orientation change occurs. Although you don't need to adapt rotation of the view you return with `getRotatableView`, this method is kept for backward compatibility and for cases when you want to be aware of device orientation change even in your fixed view.
-* `setDefaultTarget` - This method is called to notify viewfinder that it should position itself into its default position. It also gives a hint how to display your viewfinder. Detection status parameter is an integer that can be any constant as defined in `net.photopay.recognition.DetectionStatus`. This method is called from non-UI thread.
-* `setNewTarget` - This method is called to notify viewfinder that object has been detected so that it can draw itself around that object and gives you a hint how to display your viewfinder. Detection status hint is the same as in method `setDefaultTarget`. Corner points of detected object are presented via Quadrilateral object. Quadrilateral's corner point coordinates are already prepared for drawing on any fixed view. If you want to draw them on rotatable view, you need to rotate their coordinates accordingly.
-* `setPointSet` - This method is called to notify viewfinder that object has been detected so that it can draw interesting points for this object. This method is called from non-UI thread.
-* `getRotatableView` - This method is called when adding viewfinder on top of camera surface. This method should return view that will be overlayed on camera. The view returned in this method will be automatically rotated when device orientation changes. If you do not want to rotate your UI, simply return `null` here and return your fixed UI in method `getFixedView`. Of course, you can return both fixed and rotatable view - in this case, rotatable view will be overlayed on top of fixed view which will be overlayed on top of camera surface. Default implementation returns null.
-* `shouldAnimateRotation` - You should return true in this method if you want your rotatable UI to be animated while performing a rotation. Default value is false. Note that on some devices animating the rotation sometimes causes draw corruption - this is the reason why is the default return value false.
-* `getRotationAnimationDuration` - If you have rotatable view and have enabled rotation animation, you can return animation duration in miliseconds by overriding this method. Default value is 500.
-* `getFixedView` - This method is called when adding viewfinder on top of camera surface. This method should return view that will be overlayed on camera. The view returned in this method will not be rotated when device orientation changes. If you want to rotate your UI, simply return `null` here and returned your rotatable UI in method `getRotatableView`. Of course, you can return both fixed and rotatable view - in this case, rotatable view will be overlayed on top of fixed view which will be overlayed on top of camera surface. Default implementation returns null.
-* `getInitialOrientation` - This method is called when rotatable view is being layouted on top of camera UI (provided that `getRotatableView` returns non-null). Method should return the initial orientation to which rotatable view will be rotated when initializing the view for the first time.
-* `shouldPutInsideCameraSurface` - If method returns `true`, views obtained with `getFixedView` and `getRotatableView` will be layouted inside camera surface. If method returns `false`, views will be layouted over whole `CameraPreview` view. Default implementation returns `true`.
-* `displayMessage` - This method is called to notify viewfinder that it should display given message. This method is called from non-UI thread. Default implementation uses `Handler` to invoke `displayMessageImmediately` on UI thread.
-* `displayMessageImmediately` - This method is called to notify viewfinder that it should display given message. Unlike `displayMessage`, this method is called on UI thread.
-* `displayAutofocusFailed` - This method will be called when camera focusing has failed. Camera manager usually tries different focusing strategies and this method is called when all those strategies fail to indicate that either object on which camera is being focused is too close or ambient light conditions are poor.
-* `isAnimationInProgress` -  This method should return `true` if it wants to prevent finishing the activity while some animation is in progress. Default implementation returns `false`.
-
-Besides methods that you are allowed to override, there are several protected final utility methods you can use for your needs.
-
-* `isCameraFocused` - returns `true` if camera thinks it has focused on object. Note that camera has to be loaded for this method to work.
-* `focusCamera` - requests camera to perform autofocus. If camera does not support autofocus feature, method does nothing. Note that camera has to be loaded for this method to work.
-* `isCameraTorchSupported` - returns `true` if camera supports torch flash mode. Note that camera has to be loaded for this method to work.
-* `setTorchEnabled` - if torch flash mode is supported on camera, this method can be used to enable/disable torch flash mode. If operation is successful, method returns true. Note that camera has to be loaded for this method to work.
-* `getCameraType` - returns the type of currently opened camera (either back facing or front facing). If no camera is currently in use, method return `null`. This information is useful for adapting UI to mirrored camera preview when front facing camera is used.
-	
+		
 ## Troubleshooting
 
 In case of problems with using the SDK, you should do as follows:
