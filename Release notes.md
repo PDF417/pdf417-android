@@ -1,5 +1,8 @@
 # Release notes
 
+## 3.3.1
+- fixed race condition at camera initialization on some Android devices (HTC One M8)
+
 ## 3.3.0
 - added support for embedding Pdf417MobiView into custom activity 
 - Pdf417MobiView is now just a camera view that can be embedded anywhere, you just need to pass activity's lifecycle events to it, see README for more details
