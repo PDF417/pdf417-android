@@ -1,5 +1,8 @@
 # Release notes
 
+## 3.4.0
+- support for aspect fill camera mode, check README for instructions
+
 ## 3.3.1
 - fixed race condition at camera initialization on some Android devices (HTC One M8)
 
