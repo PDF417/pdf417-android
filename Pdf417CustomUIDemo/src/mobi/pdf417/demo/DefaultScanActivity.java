@@ -16,6 +16,7 @@ import net.photopay.geometry.PointSet;
 import net.photopay.geometry.Quadrilateral;
 import net.photopay.geometry.Rectangle;
 import net.photopay.geometry.quadDrawers.QuadrilateralDrawer;
+import net.photopay.view.CameraAspectMode;
 import net.photopay.view.CameraEventsListener;
 import net.photopay.view.NotSupportedReason;
 import net.photopay.view.recognition.DetectionStatus;
@@ -73,6 +74,9 @@ public class DefaultScanActivity extends Activity implements Pdf417MobiScanResul
 
         // animate rotatable views on top of scanner view
         mPdf417MobiView.setAnimateRotation(true);
+
+        // zoom and crop camera instead of fitting it into view
+        mPdf417MobiView.setAspectMode(CameraAspectMode.ASPECT_FILL);
 
         // create scanner (make sure scan settings and listeners were set prior calling create)
         mPdf417MobiView.create();
