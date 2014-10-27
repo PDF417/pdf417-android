@@ -421,6 +421,11 @@ public class MyScanActivity extends Activity implements Pdf417MobiScanResultList
 		mPdf417MobiView.setScanSettings(sett);
 		// set license key
 		mPdf417MobiView.setLicenseKey("your license key here");
+		// set camera aspect mode
+		// ASPECT_FIT will fit the camera preview inside the view
+		// ASPECT_FILL will zoom and crop the camera preview, but will use the
+		// entire view surface
+		mPdf417MobiView.setAspectMode(CameraAspectMode.ASPECT_FILL);
 		   
 		// scan result listener will be notified when scan result gets available
 		mPdf417MobiView.setPdf417MobiScanResultListener(this);
@@ -505,8 +510,17 @@ This method should be called in activity's `onStop` method. It will deinitialize
 ### `changeConfiguration(Configuration)`
 This method should be called in activity's `onConfigurationChanged` method. It will adapt camera surface to new configuration without the restart of the activity. See [Scan activity's orientation](#scanOrientation) for more information.
 
+### `setLicenseKey(String licenseKey)`
+This method sets the license key that will unlock all features of the native library. You can obtain your license key from [pdf417.mobi website](http://pdf417.mobi/).
+
+### `setLicenseKey(String licenseKey, String licenseOwner)`
+Use this method to set a license key that is bound to a license owner, not the application package name. You will use this method when you obtain a license key that allows you to use PDF417.mobi SDK in multiple applications. You can obtain your license key from [pdf417.mobi website](http://pdf417.mobi/).
+
 ### `setCameraType(CameraType)`
 With this method you can define which camera on device will be used. Default camera used is back facing camera.
+
+### `setAspectMode(CameraAspectMode)`
+Define the aspect mode of camera. If set to `ASPECT_FIT` (default), then camera preview will be fit inside available view space. If set to `ASPECT_FILL`, camera preview will be zoomed and cropped to use the entire view space.
 
 ### `setScanSettings(Pdf417MobiSettings)`
 With this method you can set the `Pdf417MobiSettings` object. This object contains information about what and how will scan be performed. For more information about methods of that object, consult [Javadoc](Javadoc/mobi/pdf417/Pdf417MobiSettings.html).
