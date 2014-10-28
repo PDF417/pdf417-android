@@ -1,5 +1,8 @@
 # Release notes
 
+## 3.4.1
+- support for tablets that have inverse landscape natural display orientation (currently only Sprint Optik 2 supported)
+
 ## 3.4.0
 - support for aspect fill camera mode, check README for instructions
 
