@@ -1,5 +1,8 @@
 # Release notes
 
+## 3.4.2
+- fixed camera orientation bug for Samsung Galaxy Ace GT-S5830M
+
 ## 3.4.1
 - support for tablets that have inverse landscape natural display orientation (currently only Sprint Optik 2 supported)
 
