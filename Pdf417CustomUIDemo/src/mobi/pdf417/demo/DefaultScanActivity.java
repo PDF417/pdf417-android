@@ -16,6 +16,7 @@ import net.photopay.geometry.PointSet;
 import net.photopay.geometry.Quadrilateral;
 import net.photopay.geometry.Rectangle;
 import net.photopay.geometry.quadDrawers.QuadrilateralDrawer;
+import net.photopay.hardware.SuccessCallback;
 import net.photopay.view.CameraAspectMode;
 import net.photopay.view.CameraEventsListener;
 import net.photopay.view.NotSupportedReason;
@@ -233,15 +234,24 @@ public class DefaultScanActivity extends Activity implements Pdf417MobiScanResul
                 @Override
                 public void onClick(View v) {
                     // setTorchEnabled returns true if torch turning off/on has succeeded
-                    boolean success = mPdf417MobiView.setTorchState(!mTorchEnabled);
-                    if(success) {
-                        mTorchEnabled = !mTorchEnabled;
-                        if(mTorchEnabled) {
-                            mTorchButton.setText(R.string.LightOn);
-                        } else {
-                            mTorchButton.setText(R.string.LightOff);
+                    mPdf417MobiView.setTorchState(!mTorchEnabled, new SuccessCallback() {
+                        @Override
+                        public void onOperationDone(final boolean success) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(success) {
+                                        mTorchEnabled = !mTorchEnabled;
+                                        if(mTorchEnabled) {
+                                            mTorchButton.setText(R.string.LightOn);
+                                        } else {
+                                            mTorchButton.setText(R.string.LightOff);
+                                        }
+                                    }
+                                }
+                            });
                         }
-                    }
+                    });
                 }
             });
         }
@@ -281,6 +291,16 @@ public class DefaultScanActivity extends Activity implements Pdf417MobiScanResul
     public void onAutofocusFailed() {
         // this method is called when camera autofocus fails
         Toast.makeText(this, "Autofocus failed", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAutofocusStarted() {
+        // draw here focusing animation
+    }
+
+    @Override
+    public void onAutofocusStopped() {
+        // remove focusing animation
     }
 
     @Override

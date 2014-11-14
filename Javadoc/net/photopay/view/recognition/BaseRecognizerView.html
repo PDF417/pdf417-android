@@ -172,7 +172,7 @@ implements net.photopay.hardware.camera.CameraListener</pre>
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;net.photopay.view.BaseCameraView</h3>
-<code>IIlIIlIllI, llIIlIlIIl</code></li>
+<code>IIllIIllll, llIIlIlIIl</code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="fields_inherited_from_class_android.view.ViewGroup">
@@ -235,48 +235,52 @@ implements net.photopay.hardware.camera.CameraListener</pre>
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#destroy()">destroy</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>protected java.util.ArrayList&lt;net.photopay.recognition.RecognitionData&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#filterDataList(java.util.ArrayList, boolean)">filterDataList</a></strong>(java.util.ArrayList&lt;net.photopay.recognition.RecognitionData&gt;&nbsp;origData,
               boolean&nbsp;allowInvalid)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>protected net.photopay.hardware.camera.CameraDataFormat</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#getLastRecognitionDataFormat()">getLastRecognitionDataFormat</a></strong>()</code>
 <div class="block">Returns the format of last frame that went to recognition</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#getNativeLibraryVersionString()">getNativeLibraryVersionString</a></strong>()</code>
 <div class="block">Methods returns the version string of native library, if it has been
  loaded.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../net/photopay/view/recognition/RecognizerViewEventListener.html" title="interface in net.photopay.view.recognition">RecognizerViewEventListener</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#getRecognizerViewEventListener()">getRecognizerViewEventListener</a></strong>()</code>
 <div class="block">Returns the RecognizerViewEventListener as set by setRecognizerViewEventListener.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>protected net.photopay.recognition.RightsManager</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#getRightsManager()">getRightsManager</a></strong>()</code>
 <div class="block">Returns an object that contains usage rights for library.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../net/photopay/geometry/Rectangle.html" title="class in net.photopay.geometry">Rectangle</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#getScanningRegion()">getScanningRegion</a></strong>()</code>
 <div class="block">Returns the current scanning region or null if entire image is scanned.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#isRecognitionPaused()">isRecognitionPaused</a></strong>()</code>
 <div class="block">Returns true if recognizer is currently paused (camera preview may still be active).</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#onCameraImage(byte[], net.photopay.hardware.camera.CameraDataFormat, android.hardware.Camera.Size, boolean)">onCameraImage</a></strong>(byte[]&nbsp;imgData,
              net.photopay.hardware.camera.CameraDataFormat&nbsp;dataFormat,
@@ -285,13 +289,9 @@ implements net.photopay.hardware.camera.CameraListener</pre>
 <div class="block">Callback which is called when camera frame is ready.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#onCameraPreviewStarted()">onCameraPreviewStarted</a></strong>()</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#onCameraSurfaceReady()">onCameraSurfaceReady</a></strong>()</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -393,12 +393,16 @@ implements net.photopay.hardware.camera.CameraListener</pre>
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#shouldStartCamera()">shouldStartCamera</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#start()">start</a></strong>()</code>
 <div class="block">This method must be called from activity's onStart.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../net/photopay/view/recognition/BaseRecognizerView.html#stop()">stop</a></strong>()</code>
 <div class="block">This method must be called from activity's onStop.</div>
@@ -410,7 +414,7 @@ implements net.photopay.hardware.camera.CameraListener</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;net.photopay.view.BaseCameraView</h3>
-<code>addChildView, addView, addView, addView, addView, addView, changeConfiguration, dispatchTouchEvent, focusCamera, getAspectMode, getCameraEventsListener, getCameraPreviewHeight, getCameraPreviewWidth, getHostScreenOrientation, getInitialOrientation, getOpenedCameraType, getOrientationChangeListener, getRotationAnimationDuration, getVisiblePart, isCameraActive, isCameraFocused, isCameraTorchSupported, isDeviceShaking, isOrientationAllowed, lIIIIIllll, lIllIIlIIl, llIIlIIlll, llIIlIlIIl, llIIlIlIIl, llIIlIlIIl, onAutofocusFailed, onLayout, onMeasure, setAnimateRotation, setAspectMode, setCameraEventsListener, setCameraType, setInitialOrientation, setOnSizeChangedListener, setOptimizeCameraForNearScan, setOrientationAllowedListener, setOrientationChangeListener, setPhotoMode, setRotationAnimationDuration, setShouldAlwaysUseHighestPossibleResolution, setTorchState, shouldAnimateRotation, surfaceChanged, surfaceCreated, surfaceDestroyed</code></li>
+<code>addChildView, addView, addView, addView, addView, addView, changeConfiguration, dispatchTouchEvent, focusCamera, getAspectMode, getCameraEventsListener, getCameraPreviewHeight, getCameraPreviewWidth, getHostScreenOrientation, getInitialOrientation, getOpenedCameraType, getOrientationChangeListener, getRotationAnimationDuration, getVisiblePart, IlIllIlIIl, isCameraActive, isCameraFocused, isCameraTorchSupported, isDeviceShaking, isOrientationAllowed, lIIIIIllll, lIllIIlIIl, llIIlIIlll, llIIlIlIIl, llIIlIlIIl, onAutofocusFailed, onAutofocusStarted, onAutofocusStopped, onLayout, onMeasure, setAnimateRotation, setAspectMode, setCameraEventsListener, setCameraType, setInitialOrientation, setOnSizeChangedListener, setOptimizeCameraForNearScan, setOrientationAllowedListener, setOrientationChangeListener, setPhotoMode, setRotationAnimationDuration, setShouldAlwaysUseHighestPossibleResolution, setTorchState, shouldAnimateRotation, surfaceChanged, surfaceCreated, surfaceDestroyed</code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods_inherited_from_class_android.view.ViewGroup">
@@ -438,7 +442,7 @@ implements net.photopay.hardware.camera.CameraListener</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;net.photopay.hardware.camera.focus.AutofocusListener</h3>
-<code>onAutofocusFailed</code></li>
+<code>onAutofocusFailed, onAutofocusStarted, onAutofocusStopped</code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods_inherited_from_class_android.view.ViewParent">
@@ -574,6 +578,19 @@ implements net.photopay.hardware.camera.CameraListener</pre>
 </dl>
 </li>
 </ul>
+<a name="destroy()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>destroy</h4>
+<pre>public final&nbsp;void&nbsp;destroy()</pre>
+<dl>
+<dt><strong>Overrides:</strong></dt>
+<dd><code>destroy</code>&nbsp;in class&nbsp;<code>net.photopay.view.BaseCameraView</code></dd>
+</dl>
+</li>
+</ul>
 <a name="resumeScanning()">
 <!--   -->
 </a>
@@ -596,16 +613,16 @@ implements net.photopay.hardware.camera.CameraListener</pre>
 <div class="block">Pauses the scanning loop.</div>
 </li>
 </ul>
-<a name="onCameraSurfaceReady()">
+<a name="shouldStartCamera()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onCameraSurfaceReady</h4>
-<pre>public final&nbsp;boolean&nbsp;onCameraSurfaceReady()</pre>
+<h4>shouldStartCamera</h4>
+<pre>public final&nbsp;boolean&nbsp;shouldStartCamera()</pre>
 <dl>
 <dt><strong>Overrides:</strong></dt>
-<dd><code>onCameraSurfaceReady</code>&nbsp;in class&nbsp;<code>net.photopay.view.BaseCameraView</code></dd>
+<dd><code>shouldStartCamera</code>&nbsp;in class&nbsp;<code>net.photopay.view.BaseCameraView</code></dd>
 </dl>
 </li>
 </ul>

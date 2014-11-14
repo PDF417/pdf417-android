@@ -1,1 +1,1 @@
-Built from core repository commit v3.4.1
+Built from core repository commit photomath-1.1.1-RC1-39-gc2284681ded799e5e88a06bd786a750bda4b423b-dirty

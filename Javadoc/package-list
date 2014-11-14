@@ -4,6 +4,7 @@ net.photopay.activity
 net.photopay.barcode
 net.photopay.geometry
 net.photopay.geometry.quadDrawers
+net.photopay.hardware
 net.photopay.hardware.orientation
 net.photopay.locale
 net.photopay.util
