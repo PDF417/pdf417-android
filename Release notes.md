@@ -1,5 +1,10 @@
 # Release notes
 
+## 3.5.0
+- Fixed very obscure issue with decoding pdf417 barcodes
+- fixed crash with missing AutofocusFail string
+- AutofocusListener now has callbacks onAutofocusStarted and onAutofocusStopped that allow you to draw focus animation on your custom UI
+
 ## 3.4.2
 - fixed camera orientation bug for Samsung Galaxy Ace GT-S5830M
 
