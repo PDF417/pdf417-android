@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.0.0
+- completely rewritten API for defining settings and obtaining results which is easier to use; see README for details
+
 ## 3.5.0
 - Fixed very obscure issue with decoding pdf417 barcodes
 - fixed crash with missing AutofocusFail string
