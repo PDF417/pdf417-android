@@ -1,0 +1,15 @@
+com.microblink.activity
+com.microblink.geometry
+com.microblink.hardware.camera.focus
+com.microblink.recognizers
+com.microblink.recognizers.barcode
+com.microblink.recognizers.barcode.bardecoder
+com.microblink.recognizers.barcode.pdf417
+com.microblink.recognizers.barcode.usdl
+com.microblink.recognizers.barcode.zxing
+com.microblink.recognizers.settings
+com.microblink.results.barcode
+com.microblink.results.lines
+com.microblink.results.ocr
+com.microblink.view
+com.microblink.view.recognition

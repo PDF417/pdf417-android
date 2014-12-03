@@ -1,1 +1,0 @@
-../../../Pdf417MobiDemo/proguard-project.txt

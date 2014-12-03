@@ -1,0 +1,1 @@
+include ':pdf417MobiDemo', ':pdf417MobiDemoCustomUI', ':LibRecognizer'
