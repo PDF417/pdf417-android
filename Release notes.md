@@ -1,5 +1,9 @@
 # Release notes
 
+## 3.5.1
+- fixed scanning of QR codes on camera ASPECT_FILL mode on some devices
+- in custom UI overlay is not shown anymore
+
 ## 3.5.0
 - Fixed very obscure issue with decoding pdf417 barcodes
 - fixed crash with missing AutofocusFail string
