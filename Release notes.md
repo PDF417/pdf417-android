@@ -2,6 +2,10 @@
 
 ## 4.0.0
 - completely rewritten API for defining settings and obtaining results which is easier to use; see README for details
+- optimized library size - native library is now 2 MB per platform smaller than before
+- `Pdf417MobiView` renamed to `RecognizerView`
+- added support for Nvidia Tegra 2 devices, whilst preserving NEON acceleration on other ARMv7 devices
+- Android studio and gradle are now recommended - demo apps are now only provided for Android studio, Eclipse is supported only via documentation, see README for details
 
 ## 3.5.0
 - Fixed very obscure issue with decoding pdf417 barcodes
