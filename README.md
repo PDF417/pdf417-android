@@ -83,13 +83,28 @@ You’ve already created the project that contains almost everything you need. N
 
 Maven repository for _PDF417.mobi_ SDK is: [http://pdf417.mobi/maven](http://pdf417.mobi/maven).
 
+### Using gradle
+In your build.gradle you first need to add _PDF417.mobi_ maven repository to repositories list:
+
+```
+repositories {
+	maven { url 'http://pdf417.mobi/maven' }
+}
+```
+
+After that, you just need to add _PDF417.mobi_ as a dependency to your application:
+
+```
+dependencies {
+    compile 'com.microblink:pdf417.mobi:4.0.0'
+}
+```
+
+### Using android-maven-plugin
+
 Open your pom.xml file and add these directives as appropriate:
 
 ```xml
-<properties>
-	<pdf417mobi.version>3.0.1</pdf417mobi.version>
-</properties>
-
 <repositories>
    	<repository>
        	<id>pdf417repo</id>
@@ -99,45 +114,14 @@ Open your pom.xml file and add these directives as appropriate:
 
 <dependencies>
 	<dependency>
-		  <groupId>mobi.pdf417</groupId>
-		  <artifactId>sdk-library</artifactId>
-		  <version>${pdf417mobi.version}</version>
-  	</dependency>
-
-  	<dependency>
-		  <groupId>mobi.pdf417</groupId>
-		  <artifactId>sdk-resources</artifactId>
-		  <type>aar</type>
-		  <version>${pdf417mobi.version}</version>
-  	</dependency>
-
-  	<dependency>
-		  <groupId>mobi.pdf417</groupId>
-		  <artifactId>libPhotoPayBarcode</artifactId>
-		  <type>so</type>
-		  <classifier>armeabi</classifier>
-		  <version>${pdf417mobi.version}</version>
-  	</dependency>
-	
-	<dependency>
-		  <groupId>mobi.pdf417</groupId>
-		  <artifactId>libPhotoPayBarcode</artifactId>
-		  <type>so</type>
-		  <classifier>armeabi-v7a</classifier>
-		  <version>${pdf417mobi.version}</version>
-  	</dependency>
-
-  	<dependency>
-		  <groupId>mobi.pdf417</groupId>
-		  <artifactId>libPhotoPayBarcode</artifactId>
-		  <type>so</type>
-		  <classifier>x86</classifier>
-		  <version>${pdf417mobi.version}</version>
+		  <groupId>com.microblink</groupId>
+		  <artifactId>pdf417.mobi</artifactId>
+		  <version>4.0.0</version>
   	</dependency>
 <dependencies>
 ```
 
-Maven dependency has been tested on android-maven-plugin version 3.8.2.
+Maven dependency requires android-maven-plugin version 4.0.0 (AAR support is required).
 
 ## <a name="quickScan"></a> Performing your first scan
 1. You can start recognition process by starting `Pdf417ScanActivity` activity with Intent initialized in the following way:
@@ -571,8 +555,11 @@ public class DirectAPIActivity extends Activity implements ScanResultListener {
 	   boolean success = mRecognizer.setLicenseKey(this, "your license key");
 	   if (!success) {
 	   		return;
-	   	}
+	   }
 
+		// setupSettingsArray method is described in chapter "Recognition 
+		// settings and results")
+		mRecognizer.initialize(this, null, setupSettingsArray());
 	}
 	
 	@Override

@@ -200,7 +200,7 @@ public class Pdf417CustomUIDemo extends Activity {
                             sb.append("}\n\n\n");
                         }
                     }
-                } else if(p instanceof ZXingRecognizerSettings) { // check if scan result is result of ZXing recognizer
+                } else if(p instanceof ZXingScanResult) { // check if scan result is result of ZXing recognizer
                     ZXingScanResult result= (ZXingScanResult) p;
                     // with getBarcodeType you can obtain barcode type enum that tells you the type of decoded barcode
                     BarcodeType type = result.getBarcodeType();
