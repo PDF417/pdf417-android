@@ -6,6 +6,7 @@
 - `Pdf417MobiView` renamed to `RecognizerView`
 - added support for Nvidia Tegra 2 devices, whilst preserving NEON acceleration on other ARMv7 devices
 - Android studio and gradle are now recommended - demo apps are now only provided for Android studio, Eclipse is supported only via documentation, see README for details
+- added direct API for direct recognition of Bitmap images, without the need for camera
 
 ## 3.5.0
 - Fixed very obscure issue with decoding pdf417 barcodes
