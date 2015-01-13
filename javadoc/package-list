@@ -1,5 +1,7 @@
 com.microblink.activity
+com.microblink.directApi
 com.microblink.geometry
+com.microblink.hardware
 com.microblink.hardware.camera.focus
 com.microblink.recognizers
 com.microblink.recognizers.barcode

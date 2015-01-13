@@ -870,17 +870,37 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#getField(java.lang.String)">getField</a></strong>(java.lang.String&nbsp;key)</code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#getField(java.lang.String)">getField</a></strong>(java.lang.String&nbsp;key)</code>
+<div class="block">Returns a field inside US Driver's licence.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../com/microblink/results/barcode/BarcodeDetailedData.html" title="class in com.microblink.results.barcode">BarcodeDetailedData</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#getRawData()">getRawData</a></strong>()</code>
+<div class="block">Returns the raw barcode data.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#getStringData()">getStringData</a></strong>()</code>
+<div class="block">Returns the string representation of barcode data (not parsed).</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#getTitle()">getTitle</a></strong>()</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#isUncertain()">isUncertain</a></strong>()</code>
+<div class="block">Returns true if returned data is uncertain, only applicable if used with Pdf417RecognizerSettings.setUncertainScanning(true)</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#toString()">toString</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#writeToParcel(android.os.Parcel, int)">writeToParcel</a></strong>(android.os.Parcel&nbsp;dest,
              int&nbsp;flags)</code>
@@ -2336,6 +2356,43 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
 <li class="blockList">
 <h4>getField</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getField(java.lang.String&nbsp;key)</pre>
+<div class="block">Returns a field inside US Driver's licence. Available Keys are listed as public static String fields
+ in this class.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - Key representing the required information.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>required information (if it exists), or null if it does not</dd></dl>
+</li>
+</ul>
+<a name="isUncertain()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isUncertain</h4>
+<pre>public&nbsp;boolean&nbsp;isUncertain()</pre>
+<div class="block">Returns true if returned data is uncertain, only applicable if used with Pdf417RecognizerSettings.setUncertainScanning(true)</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>true if returned data is uncertain</dd></dl>
+</li>
+</ul>
+<a name="getRawData()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRawData</h4>
+<pre>public&nbsp;<a href="../../../../../com/microblink/results/barcode/BarcodeDetailedData.html" title="class in com.microblink.results.barcode">BarcodeDetailedData</a>&nbsp;getRawData()</pre>
+<div class="block">Returns the raw barcode data.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the raw barcode data.</dd></dl>
+</li>
+</ul>
+<a name="getStringData()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStringData</h4>
+<pre>public&nbsp;java.lang.String&nbsp;getStringData()</pre>
+<div class="block">Returns the string representation of barcode data (not parsed).</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the string representation of barcode data (not parsed).</dd></dl>
 </li>
 </ul>
 <a name="getTitle()">

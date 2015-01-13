@@ -33,7 +33,7 @@
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../com/microblink/recognizers/BaseRecognitionResult.html" title="class in com.microblink.recognizers"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../com/microblink/recognizers/LibraryInfoResult.html" title="class in com.microblink.recognizers"><span class="strong">Prev Class</span></a></li>
 <li>Next Class</li>
 </ul>
 <ul class="navList">
@@ -119,20 +119,30 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#AUTHORITY">AUTHORITY</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#BANK_CODE">BANK_CODE</a></strong></code>
 <div class="block">Key for accessing Bank code element.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#BANK_NAME">BANK_NAME</a></strong></code>
 <div class="block">Key for accessing Bank name element.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#BARCODE_DATA">BARCODE_DATA</a></strong></code>
 <div class="block">Key for accessing generic barcode data</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#BARCODE_EXTENDED_DATA">BARCODE_EXTENDED_DATA</a></strong></code>
+<div class="block">Key for accessing extended barcode data for code39 barcode</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -173,21 +183,29 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#CREDITOR_ID">CREDITOR_ID</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#CURRENCY">CURRENCY</a></strong></code>
 <div class="block">Key for accessing Currency element.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#CUSTOMER_DATA">CUSTOMER_DATA</a></strong></code>
 <div class="block">Key for accessing Tax number element.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#CUSTOMER_NUMBER">CUSTOMER_NUMBER</a></strong></code>
 <div class="block">Key for accessing customer number result</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#DATE_OF_SIGNATURE">DATE_OF_SIGNATURE</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
@@ -203,9 +221,25 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#EXECUTION_DATE">EXECUTION_DATE</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#FORM_FUNCTION">FORM_FUNCTION</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#FORM_ID">FORM_ID</a></strong></code>
 <div class="block">Key for accessing Form ID element.</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#FORM_TYPE">FORM_TYPE</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#FORM_VERSION">FORM_VERSION</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
@@ -221,75 +255,99 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#MANDATE_ID">MANDATE_ID</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYBULL_URL">PAYBULL_URL</a></strong></code>
 <div class="block">Key for accessing PayBull URL element.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYER_ACCOUNT_NUMBER">PAYER_ACCOUNT_NUMBER</a></strong></code>
 <div class="block">Key for accessing Payer Account number element.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYER_BANK_CODE">PAYER_BANK_CODE</a></strong></code>
 <div class="block">Key for accessing Payer bank code element.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYER_IBAN">PAYER_IBAN</a></strong></code>
 <div class="block">Key for accessing Payer IBAN element.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYER_ID">PAYER_ID</a></strong></code>
 <div class="block">Key for accessing Payer ID element.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYER_NAME">PAYER_NAME</a></strong></code>
 <div class="block">Key for accessing Payer name element.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYER_REFERENCE">PAYER_REFERENCE</a></strong></code>
 <div class="block">Key for accessing Payer reference element.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYER_REFERENCE_MODEL">PAYER_REFERENCE_MODEL</a></strong></code>
 <div class="block">Key for accessing Payer reference model element.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYMENT_DESCRIPTION">PAYMENT_DESCRIPTION</a></strong></code>
 <div class="block">Key for accessing PaymentDescription element.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PAYMENT_DESCRIPTION_CODE">PAYMENT_DESCRIPTION_CODE</a></strong></code>
 <div class="block">Key for accessing Payment Description code element.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PDF417_RESULT">PDF417_RESULT</a></strong></code>
 <div class="block">Key for accessing the pdf417 2D barcode result in USDL</div>
 </td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PERIODIC_FIRST_EXECUTION_DATE">PERIODIC_FIRST_EXECUTION_DATE</a></strong></code>&nbsp;</td>
+</tr>
 <tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PERIODIC_LAST_EXECUTION_DATE">PERIODIC_LAST_EXECUTION_DATE</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PERIODIC_TIME_UNIT">PERIODIC_TIME_UNIT</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PERIODIC_TIME_UNIT_ROTATION">PERIODIC_TIME_UNIT_ROTATION</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#PHOTOMATH_DATA">PHOTOMATH_DATA</a></strong></code>
 <div class="block">Key for string PhotoMath data</div>
 </td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#POSTING_KEY">POSTING_KEY</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
@@ -308,6 +366,16 @@
 <td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#RAW_BARCODE_DATA">RAW_BARCODE_DATA</a></strong></code>
 <div class="block">Key for accessing raw barcode data.</div>
 </td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#RAW_BARCODE_EXTENDED_DATA">RAW_BARCODE_EXTENDED_DATA</a></strong></code>
+<div class="block">Key for accessing extended raw barcode data for code39 barcode.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../com/microblink/recognizers/RecognitionResultConstants.html#RAW_PDF417_RESULT">RAW_PDF417_RESULT</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
@@ -852,6 +920,17 @@
 <dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.BARCODE_DATA">Constant Field Values</a></dd></dl>
 </li>
 </ul>
+<a name="BARCODE_EXTENDED_DATA">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BARCODE_EXTENDED_DATA</h4>
+<pre>static final&nbsp;java.lang.String BARCODE_EXTENDED_DATA</pre>
+<div class="block">Key for accessing extended barcode data for code39 barcode</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.BARCODE_EXTENDED_DATA">Constant Field Values</a></dd></dl>
+</li>
+</ul>
 <a name="RAW_BARCODE_DATA">
 <!--   -->
 </a>
@@ -861,6 +940,17 @@
 <pre>static final&nbsp;java.lang.String RAW_BARCODE_DATA</pre>
 <div class="block">Key for accessing raw barcode data.</div>
 <dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.RAW_BARCODE_DATA">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="RAW_BARCODE_EXTENDED_DATA">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_BARCODE_EXTENDED_DATA</h4>
+<pre>static final&nbsp;java.lang.String RAW_BARCODE_EXTENDED_DATA</pre>
+<div class="block">Key for accessing extended raw barcode data for code39 barcode.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.RAW_BARCODE_EXTENDED_DATA">Constant Field Values</a></dd></dl>
 </li>
 </ul>
 <a name="BILL_NUMBER">
@@ -943,11 +1033,151 @@
 <a name="UNCERTAIN">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>UNCERTAIN</h4>
 <pre>static final&nbsp;java.lang.String UNCERTAIN</pre>
 <dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.UNCERTAIN">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="RAW_PDF417_RESULT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_PDF417_RESULT</h4>
+<pre>static final&nbsp;java.lang.String RAW_PDF417_RESULT</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.RAW_PDF417_RESULT">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="FORM_FUNCTION">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FORM_FUNCTION</h4>
+<pre>static final&nbsp;java.lang.String FORM_FUNCTION</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.FORM_FUNCTION">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="FORM_VERSION">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FORM_VERSION</h4>
+<pre>static final&nbsp;java.lang.String FORM_VERSION</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.FORM_VERSION">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="FORM_TYPE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FORM_TYPE</h4>
+<pre>static final&nbsp;java.lang.String FORM_TYPE</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.FORM_TYPE">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="POSTING_KEY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>POSTING_KEY</h4>
+<pre>static final&nbsp;java.lang.String POSTING_KEY</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.POSTING_KEY">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="AUTHORITY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>AUTHORITY</h4>
+<pre>static final&nbsp;java.lang.String AUTHORITY</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.AUTHORITY">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="EXECUTION_DATE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EXECUTION_DATE</h4>
+<pre>static final&nbsp;java.lang.String EXECUTION_DATE</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.EXECUTION_DATE">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="CREDITOR_ID">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CREDITOR_ID</h4>
+<pre>static final&nbsp;java.lang.String CREDITOR_ID</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.CREDITOR_ID">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="MANDATE_ID">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MANDATE_ID</h4>
+<pre>static final&nbsp;java.lang.String MANDATE_ID</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.MANDATE_ID">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="DATE_OF_SIGNATURE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DATE_OF_SIGNATURE</h4>
+<pre>static final&nbsp;java.lang.String DATE_OF_SIGNATURE</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.DATE_OF_SIGNATURE">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="PERIODIC_TIME_UNIT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PERIODIC_TIME_UNIT</h4>
+<pre>static final&nbsp;java.lang.String PERIODIC_TIME_UNIT</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.PERIODIC_TIME_UNIT">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="PERIODIC_TIME_UNIT_ROTATION">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PERIODIC_TIME_UNIT_ROTATION</h4>
+<pre>static final&nbsp;java.lang.String PERIODIC_TIME_UNIT_ROTATION</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.PERIODIC_TIME_UNIT_ROTATION">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="PERIODIC_FIRST_EXECUTION_DATE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PERIODIC_FIRST_EXECUTION_DATE</h4>
+<pre>static final&nbsp;java.lang.String PERIODIC_FIRST_EXECUTION_DATE</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.PERIODIC_FIRST_EXECUTION_DATE">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="PERIODIC_LAST_EXECUTION_DATE">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>PERIODIC_LAST_EXECUTION_DATE</h4>
+<pre>static final&nbsp;java.lang.String PERIODIC_LAST_EXECUTION_DATE</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../constant-values.html#com.microblink.recognizers.RecognitionResultConstants.PERIODIC_LAST_EXECUTION_DATE">Constant Field Values</a></dd></dl>
 </li>
 </ul>
 </li>
@@ -975,7 +1205,7 @@
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../com/microblink/recognizers/BaseRecognitionResult.html" title="class in com.microblink.recognizers"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../com/microblink/recognizers/LibraryInfoResult.html" title="class in com.microblink.recognizers"><span class="strong">Prev Class</span></a></li>
 <li>Next Class</li>
 </ul>
 <ul class="navList">

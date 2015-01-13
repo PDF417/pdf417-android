@@ -236,7 +236,9 @@ extends <a href="../../../../com/microblink/recognizers/settings/RecognizerSetti
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../../com/microblink/recognizers/settings/GenericRecognizerSettings.html#setRecognitionMode(int)">setRecognitionMode</a></strong>(int&nbsp;recognitionMode)</code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../../../com/microblink/recognizers/settings/GenericRecognizerSettings.html#setRecognitionMode(int)">setRecognitionMode</a></strong>(int&nbsp;recognitionMode)</code>
+<div class="block">This method is for debugging and testing purposes only.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -362,6 +364,11 @@ extends <a href="../../../../com/microblink/recognizers/settings/RecognizerSetti
 <li class="blockList">
 <h4>setRecognitionMode</h4>
 <pre>public&nbsp;void&nbsp;setRecognitionMode(int&nbsp;recognitionMode)</pre>
+<div class="block">This method is for debugging and testing purposes only. Please do not use it because calling it with
+ wrong parameter might cause scanning loop to never terminate.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>recognitionMode</code> - Mode of recognition. Allowed values are RECOGNITION_MODE (default),
+                        RECOGNITION_TEST_MODE (recognition in the loop) and
+                        DETECTION_TEST_MODE (detection in the loop, recognition disabled).</dd></dl>
 </li>
 </ul>
 <a name="shouldAllowMultipleScanResultsOnSingleImage()">
@@ -385,12 +392,10 @@ extends <a href="../../../../com/microblink/recognizers/settings/RecognizerSetti
 <pre>public&nbsp;void&nbsp;setAllowMultipleScanResultsOnSingleImage(boolean&nbsp;multiScan)</pre>
 <div class="block">Sets whether or not outputting of multiple scan results from same image
  is allowed. If that is true, it is possible to return multiple
- recognition results from same image (e.g. both PDF417 and QR code from
- same image can be decoded). By default, this option is false. If you turn
- it off, then list of RecognitionData obtained via intent will contain at
- most 1 element. The upside of turning that option off is the speed - if
- you enable lots of recognizers, as soon as the first recognizer succeeds
- in reading the barcode or slip, function will return and other
+ recognition results from same image. By default, this option is false, i.e. the array
+ of BaseRecognitionResults will contain at most 1 element. The upside of setting that option
+ to false is the speed - if you enable lots of recognizers, as soon as the first recognizer
+ succeeds in scanning, recognition chain will be terminated and other
  recognizers will not get a chance to analyze the image. The downside is
  that you are then unable to obtain multiple results from single image.</div>
 </li>

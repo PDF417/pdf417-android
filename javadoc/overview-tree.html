@@ -64,7 +64,9 @@
 <span class="strong">Package Hierarchies:</span>
 <ul class="horizontal">
 <li><a href="com/microblink/activity/package-tree.html">com.microblink.activity</a>, </li>
+<li><a href="com/microblink/directApi/package-tree.html">com.microblink.directApi</a>, </li>
 <li><a href="com/microblink/geometry/package-tree.html">com.microblink.geometry</a>, </li>
+<li><a href="com/microblink/hardware/package-tree.html">com.microblink.hardware</a>, </li>
 <li><a href="com/microblink/hardware/camera/focus/package-tree.html">com.microblink.hardware.camera.focus</a>, </li>
 <li><a href="com/microblink/recognizers/package-tree.html">com.microblink.recognizers</a>, </li>
 <li><a href="com/microblink/recognizers/barcode/package-tree.html">com.microblink.recognizers.barcode</a>, </li>
@@ -90,6 +92,7 @@
 <li type="circle">com.microblink.recognizers.<a href="com/microblink/recognizers/BaseRecognitionResult.html" title="class in com.microblink.recognizers"><span class="strong">BaseRecognitionResult</span></a> (implements android.os.Parcelable)
 <ul>
 <li type="circle">com.microblink.recognizers.barcode.bardecoder.<a href="com/microblink/recognizers/barcode/bardecoder/BarDecoderScanResult.html" title="class in com.microblink.recognizers.barcode.bardecoder"><span class="strong">BarDecoderScanResult</span></a></li>
+<li type="circle">com.microblink.recognizers.<a href="com/microblink/recognizers/LibraryInfoResult.html" title="class in com.microblink.recognizers"><span class="strong">LibraryInfoResult</span></a></li>
 <li type="circle">com.microblink.recognizers.barcode.pdf417.<a href="com/microblink/recognizers/barcode/pdf417/Pdf417ScanResult.html" title="class in com.microblink.recognizers.barcode.pdf417"><span class="strong">Pdf417ScanResult</span></a></li>
 <li type="circle">com.microblink.recognizers.barcode.usdl.<a href="com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl"><span class="strong">USDLScanResult</span></a></li>
 <li type="circle">com.microblink.recognizers.barcode.zxing.<a href="com/microblink/recognizers/barcode/zxing/ZXingScanResult.html" title="class in com.microblink.recognizers.barcode.zxing"><span class="strong">ZXingScanResult</span></a></li>
@@ -123,6 +126,7 @@
 <li type="circle">com.microblink.results.ocr.<a href="com/microblink/results/ocr/OcrResult.html" title="class in com.microblink.results.ocr"><span class="strong">OcrResult</span></a> (implements android.os.Parcelable)</li>
 <li type="circle">com.microblink.geometry.<a href="com/microblink/geometry/Point.html" title="class in com.microblink.geometry"><span class="strong">Point</span></a></li>
 <li type="circle">com.microblink.geometry.<a href="com/microblink/geometry/Quadrilateral.html" title="class in com.microblink.geometry"><span class="strong">Quadrilateral</span></a></li>
+<li type="circle">com.microblink.directApi.<a href="com/microblink/directApi/Recognizer.html" title="class in com.microblink.directApi"><span class="strong">Recognizer</span></a></li>
 <li type="circle">com.microblink.recognizers.settings.<a href="com/microblink/recognizers/settings/RecognizerSettings.html" title="class in com.microblink.recognizers.settings"><span class="strong">RecognizerSettings</span></a> (implements android.os.Parcelable)
 <ul>
 <li type="circle">com.microblink.recognizers.barcode.bardecoder.<a href="com/microblink/recognizers/barcode/bardecoder/BarDecoderRecognizerSettings.html" title="class in com.microblink.recognizers.barcode.bardecoder"><span class="strong">BarDecoderRecognizerSettings</span></a></li>
@@ -133,6 +137,7 @@
 </ul>
 </li>
 <li type="circle">com.microblink.recognizers.settings.<a href="com/microblink/recognizers/settings/RecognizerSettingsUtils.html" title="class in com.microblink.recognizers.settings"><span class="strong">RecognizerSettingsUtils</span></a></li>
+<li type="circle">com.microblink.geometry.<a href="com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry"><span class="strong">Rectangle</span></a> (implements android.os.Parcelable)</li>
 <li type="circle">com.microblink.recognizers.settings.<a href="com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings"><span class="strong">SettingsKeys</span></a></li>
 <li type="circle">android.view.View (implements android.view.accessibility.AccessibilityEventSource, android.graphics.drawable.Drawable.Callback, android.view.KeyEvent.Callback)
 <ul>
@@ -167,6 +172,7 @@
 <li type="circle">com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers"><span class="strong">RecognitionResultConstants</span></a></li>
 <li type="circle">com.microblink.view.recognition.<a href="com/microblink/view/recognition/RecognizerViewEventListener.html" title="interface in com.microblink.view.recognition"><span class="strong">RecognizerViewEventListener</span></a></li>
 <li type="circle">com.microblink.view.recognition.<a href="com/microblink/view/recognition/ScanResultListener.html" title="interface in com.microblink.view.recognition"><span class="strong">ScanResultListener</span></a></li>
+<li type="circle">com.microblink.hardware.<a href="com/microblink/hardware/SuccessCallback.html" title="interface in com.microblink.hardware"><span class="strong">SuccessCallback</span></a></li>
 </ul>
 <h2 title="Enum Hierarchy">Enum Hierarchy</h2>
 <ul>
@@ -174,6 +180,7 @@
 <ul>
 <li type="circle">java.lang.Enum&lt;E&gt; (implements java.lang.Comparable&lt;T&gt;, java.io.Serializable)
 <ul>
+<li type="circle">com.microblink.directApi.<a href="com/microblink/directApi/Recognizer.State.html" title="enum in com.microblink.directApi"><span class="strong">Recognizer.State</span></a></li>
 <li type="circle">com.microblink.recognizers.settings.<a href="com/microblink/recognizers/settings/RecognizerSettingsStatus.html" title="enum in com.microblink.recognizers.settings"><span class="strong">RecognizerSettingsStatus</span></a></li>
 <li type="circle">com.microblink.view.<a href="com/microblink/view/CameraAspectMode.html" title="enum in com.microblink.view"><span class="strong">CameraAspectMode</span></a> (implements android.os.Parcelable)</li>
 <li type="circle">com.microblink.view.<a href="com/microblink/view/NotSupportedReason.html" title="enum in com.microblink.view"><span class="strong">NotSupportedReason</span></a></li>

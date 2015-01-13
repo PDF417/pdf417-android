@@ -21,7 +21,7 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 
 ### <a name="020601"></a> Determining AAMVA version
 
- - `USDLScanData.kAamvaVersionNumber` - Mandatory on all AAMVA driver's license versions. Specifies the version level of the PDF417 bar code format. Possible values are "0", "1", "2", "3", "4", "5", "6", "7", "8", and "Compact". 
+ - `USDLScanResult.kAamvaVersionNumber` - Mandatory on all AAMVA driver's license versions. Specifies the version level of the PDF417 bar code format. Possible values are "0", "1", "2", "3", "4", "5", "6", "7", "8", and "Compact". 
 
 ### <a name="020602"></a> Keys existing on all standard barcode versions
 
@@ -29,17 +29,17 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 
 #### <a name="02060211"></a> Personal data
 
- - `USDLScanData.kCustomerFamilyName` - Family name of the cardholder. 
+ - `USDLScanResult.kCustomerFamilyName` - Family name of the cardholder. 
  	- Mandatory on all barcode versions, including compact encoding.
- - `USDLScanData.kCustomerFirstName` - First name of the cardholder. 
+ - `USDLScanResult.kCustomerFirstName` - First name of the cardholder. 
  	- Mandatory on all barcode versions, including compact encoding.
- - `USDLScanData.kDateOfBirth` - Date on which the cardholder was born. (MMDDCCYY format). 
+ - `USDLScanResult.kDateOfBirth` - Date on which the cardholder was born. (MMDDCCYY format). 
  	- Mandatory on all barcode versions, including compact encoding.
- - `USDLScanData.kSex` - Gender of the cardholder. 
+ - `USDLScanResult.kSex` - Gender of the cardholder. 
  	- Mandatory on all barcode versions, including compact encoding.
  	- 1 = male, 
  	- 2 = female.
- - `USDLScanData.kEyeColor` - Color of cardholder's eyes. 
+ - `USDLScanResult.kEyeColor` - Color of cardholder's eyes. 
  	- Mandatory on all barcode versions, including compact encoding. (ANSI D-20 codes)
  	- BLK = Black
  	- BLU = Blue
@@ -51,51 +51,51 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
  	- PNK = Pink
  	- DIC = Dichromatic 
  	- UNK = Unknown
- - `USDLScanData.kHeight` - Height of cardholder. Possible values are either in inches or in centimeters.
+ - `USDLScanResult.kHeight` - Height of cardholder. Possible values are either in inches or in centimeters.
 	- Mandatory on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact encoding. Optional on 01.
-	- See also `USDLScanData.kHeightIn`, `USDLScanData.kHeightCm`
+	- See also `USDLScanResult.kHeightIn`, `USDLScanResult.kHeightCm`
 	- Inches (in): number of inches followed by " in" or " IN". Example. 6'1'' = "073 in"
 	- Centimeters (cm): number of centimeters followed by " cm" or " CM". Example. 181 centimeters = "181 cm"
- - `USDLScanData.kAddressStreet` - Street portion of the cardholder address. The place where the registered driver of a vehicle (individual or corporation) may be contacted such as a house number, street address etc. 
- 	- Mandatory on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanData.kFullAddress`.
- - `USDLScanData.kAddressCity` - City portion of the cardholder address. 
- 	- Mandatory on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanData.kFullAddress`.
- - `USDLScanData.kAddressJurisdictionCode` - State portion of the cardholder address. 
- 	- Mandatory on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanData.kFullAddress`.
- - `USDLScanData.kAddressPostalCode` - Postal code portion of the cardholder address in the U.S. and Canada. If the trailing portion of the postal code in the U.S. is not known, zeros will be used to fill the trailing set of numbers up to nine (9) digits. 
- 	- Mandatory on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanData.kFullAddress`.
+ - `USDLScanResult.kAddressStreet` - Street portion of the cardholder address. The place where the registered driver of a vehicle (individual or corporation) may be contacted such as a house number, street address etc. 
+ 	- Mandatory on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanResult.kFullAddress`.
+ - `USDLScanResult.kAddressCity` - City portion of the cardholder address. 
+ 	- Mandatory on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanResult.kFullAddress`.
+ - `USDLScanResult.kAddressJurisdictionCode` - State portion of the cardholder address. 
+ 	- Mandatory on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanResult.kFullAddress`.
+ - `USDLScanResult.kAddressPostalCode` - Postal code portion of the cardholder address in the U.S. and Canada. If the trailing portion of the postal code in the U.S. is not known, zeros will be used to fill the trailing set of numbers up to nine (9) digits. 
+ 	- Mandatory on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanResult.kFullAddress`.
 
 #### <a name="02060212"></a> License data
 
-- `USDLScanData.kDocumentIssueDate` - Date on which the document was issued. (MMDDCCYY format). 
+- `USDLScanResult.kDocumentIssueDate` - Date on which the document was issued. (MMDDCCYY format). 
  	- Mandatory on all barcode versions, including compact encoding.
-- `USDLScanData.kDocumentExpirationDate` - Date on which the driving and identification privileges granted by the document are
+- `USDLScanResult.kDocumentExpirationDate` - Date on which the driving and identification privileges granted by the document are
  no longer valid. (MMDDCCYY format). 
  	- Mandatory on all barcode versions, including compact encoding.
-- `USDLScanData.kIssuerIdentificationNumber` - This number uniquely identifies the issuing jurisdiction and can
+- `USDLScanResult.kIssuerIdentificationNumber` - This number uniquely identifies the issuing jurisdiction and can
  be obtained by contacting the ISO Issuing Authority (AAMVA). 
  	- Mandatory on all standard barcode formats, optional on compact encoding.
-- `USDLScanData.kJurisdictionVersionNumber` - Jurisdiction Version Number: This is a number value between "0" and "99" that
+- `USDLScanResult.kJurisdictionVersionNumber` - Jurisdiction Version Number: This is a number value between "0" and "99" that
  specifies the jurisdiction version level of the PDF417 bar code format. 
  	- Mandatory on all barcode versions, including compact encoding.
-- `USDLScanData.kJurisdictionVehicleClass` - Jurisdiction-specific vehicle class / group code, designating the type
+- `USDLScanResult.kJurisdictionVehicleClass` - Jurisdiction-specific vehicle class / group code, designating the type
  of vehicle the cardholder has privilege to drive. 
  	- Mandatory on all standard barcode versions. Not defined on Compact encoding, which has no compatible field.
-- `USDLScanData.kJurisdictionRestrictionCodes` - Jurisdiction-specific codes that represent restrictions to driving
+- `USDLScanResult.kJurisdictionRestrictionCodes` - Jurisdiction-specific codes that represent restrictions to driving
  privileges (such as airbrakes, automatic transmission, daylight only, etc.). 
  	- Mandatory on all standard barcode versions. Not defined on Compact encoding, which has no compatible field.
-- `USDLScanData.kJurisdictionEndorsementCodes` - Jurisdiction-specific codes that represent additional privileges
+- `USDLScanResult.kJurisdictionEndorsementCodes` - Jurisdiction-specific codes that represent additional privileges
  granted to the cardholder beyond the vehicle class (such as transportation of
  passengers, hazardous materials, operation of motorcycles, etc.). 
  	- Mandatory on all standard barcode versions. Not defined on Compact encoding, which has no compatible field.
-- `USDLScanData.kCustomerIdNumber` - The number assigned or calculated by the issuing authority. 
+- `USDLScanResult.kCustomerIdNumber` - The number assigned or calculated by the issuing authority. 
 	- Mandatory on all barcode versions, including compact encoding.
 
 #### <a name="0206022"></a> Optional values
 
 #### <a name="02060221"></a> Personal data
 
-- `USDLScanData.kHairColor` - Bald, black, blonde, brown, gray, red/auburn, sandy, white, unknown. If the issuing
+- `USDLScanResult.kHairColor` - Bald, black, blonde, brown, gray, red/auburn, sandy, white, unknown. If the issuing
  jurisdiction wishes to abbreviate colors, the three-character codes provided in ANSI D20 must be
  used. 
  	- Optional on all barcode versions, including compact encoding.
@@ -109,7 +109,7 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 	- WHI = White 
 	- UNK = Unknown
  
-- `USDLScanData.kNameSuffix` - Name Suffix (If jurisdiction participates in systems requiring name suffix (PDPS, CDLIS, etc.), the suffix must be collected and displayed on the DL/ID). 
+- `USDLScanResult.kNameSuffix` - Name Suffix (If jurisdiction participates in systems requiring name suffix (PDPS, CDLIS, etc.), the suffix must be collected and displayed on the DL/ID). 
 	- Optional on all barcode versions, including compact encoding.
  	- JR (Junior)
  	- SR (Senior)
@@ -122,26 +122,26 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
  	- 7TH or VII (Seventh)
  	- 8TH or VIII (Eighth)
  	- 9TH or IX (Ninth). 
-- `USDLScanData.kAddressStreet2` - Second line of street portion of the cardholder address. 
-	- Optional on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanData.kFullAddress`.
+- `USDLScanResult.kAddressStreet2` - Second line of street portion of the cardholder address. 
+	- Optional on all standard barcode versions. Not defined on Compact encoding, where you must use `USDLScanResult.kFullAddress`.
 
 
 #### <a name="02060222"></a> License data
 
-- `USDLScanData.kIssuingJurisdiction` - Jurisdictions may define a subfile to contain jurisdiction-specific information.
+- `USDLScanResult.kIssuingJurisdiction` - Jurisdictions may define a subfile to contain jurisdiction-specific information.
  These subfiles are designated with the first character of “Z” and the second
  character is the first letter of the jurisdiction's name. For example, "ZC" would
  be the designator for a California or Colorado jurisdiction-defined subfile; "ZQ"
  would be the designator for a Quebec jurisdiction-defined subfile. In the case of
  a jurisdiction-defined subfile that has a first letter that could be more than
  one jurisdiction (e.g. California, Colorado, Connecticut) then other data, like
- the `USDLScanData.kIssuerIdentificationNumber`, `USDLScanData.kAddressJurisdictionCode` or `USDLScanData.kFullAddress` must be examined to determine the jurisdiction. 
+ the `USDLScanResult.kIssuerIdentificationNumber`, `USDLScanResult.kAddressJurisdictionCode` or `USDLScanResult.kFullAddress` must be examined to determine the jurisdiction. 
  	- Optional on all barcode versions, mandatory on Compact Encoding
  
-- `USDLScanData.kStandardVehicleClassification` -  Standard vehicle classification code(s) for cardholder. This data element is a
+- `USDLScanResult.kStandardVehicleClassification` -  Standard vehicle classification code(s) for cardholder. This data element is a
  placeholder for future efforts to standardize vehicle classifications.
  	- Optional on all barcode versions, including compact encoding.
-- `USDLScanData.kStandardEndorsementCode` - Standard endorsement code(s) for cardholder. This data element is a placeholder for future efforts to standardize endorsement codes.
+- `USDLScanResult.kStandardEndorsementCode` - Standard endorsement code(s) for cardholder. This data element is a placeholder for future efforts to standardize endorsement codes.
 	- Optional on all barcode versions, including compact encoding.
  	- H = Hazardous Material - This endorsement is required for the operation of any vehicle
  transporting hazardous materials requiring placarding, as defined by U.S.
@@ -161,7 +161,7 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
  referred to as a double or triple.
 	- X = Combined Tank/HAZ-MAT - This endorsement may be issued to any driver who qualifies for
  both the N and H endorsements.
-- `USDLScanData.kStandardRestrictionCode` - Standard restriction code(s) for cardholder. This data element is a placeholder
+- `USDLScanResult.kStandardRestrictionCode` - Standard restriction code(s) for cardholder. This data element is a placeholder
  for future efforts to standardize restriction codes.
  	- Optional on all standard barcode versions. Not defined on Compact encoding, which has no compatible field.
  	- B = Corrective Lenses
@@ -187,18 +187,18 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 
 #### <a name="02060311"></a> Personal data
 
-- `USDLScanData.kCustomerMiddleName` - Middle name(s) of the cardholder. In the case of multiple middle names they
+- `USDLScanResult.kCustomerMiddleName` - Middle name(s) of the cardholder. In the case of multiple middle names they
  shall be separated by a comma ",".-
  	- Mandatory on AAMVA version 04, 05, 06, 07, 08, optional on 01. On other standards middle 
- name is included into value of USDLScanData.kFirstName.
-- `USDLScanData.kHeightIn` - Height of cardholder. (FT/IN)
+ name is included into value of USDLScanResult.kFirstName.
+- `USDLScanResult.kHeightIn` - Height of cardholder. (FT/IN)
  	- FEET (1st char); Inches (2nd and 3rd char). Example: 509 = 5 ft., 9 in.
  	- Optional on 01.
- 	- See also USDLScanData.kHeight, USDLScanData.kHeightCm
-- `USDLScanData.kHeightCm` - Height of cardholder in centimeters. 
+ 	- See also USDLScanResult.kHeight, USDLScanResult.kHeightCm
+- `USDLScanResult.kHeightCm` - Height of cardholder in centimeters. 
 	- Optional on 01.
-	- See also USDLScanData.kHeight, USDLScanData.kHeightIn
-- `USDLScanData.kCustomerFullName` - Full name of the individual holding the Driver License or ID as defined in
+	- See also USDLScanResult.kHeight, USDLScanResult.kHeightIn
+- `USDLScanResult.kCustomerFullName` - Full name of the individual holding the Driver License or ID as defined in
  ANSI D20 Data Dictionary. (Lastname,Firstname,MI,suffix if any). This field contains four portions, separated with the "," delimiter: 
  	- Last Name (required)
  	- , (required)
@@ -208,32 +208,32 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
  	- , (required if other name portions follow, otherwise optional)
  	- Suffix Code (optional)
  	- , (optional)
-- `USDLScanData.kFullAddress` - Cardholder address.
+- `USDLScanResult.kFullAddress` - Cardholder address.
 	- Mandatory on compact encoding.
-- `USDLScanData.kFamilyNameTruncation` - A code that indicates whether a field has been truncated (T), has not been
+- `USDLScanResult.kFamilyNameTruncation` - A code that indicates whether a field has been truncated (T), has not been
  truncated (N), or – unknown whether truncated (U).
  	- Mandatory on AAMVA 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kFirstNameTruncation` - A code that indicates whether a field has been truncated (T), has not been
+- `USDLScanResult.kFirstNameTruncation` - A code that indicates whether a field has been truncated (T), has not been
  truncated (N), or – unknown whether truncated (U).
  	- Mandatory on AAMVA 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kMiddleNameTruncation` - A code that indicates whether a field has been truncated (T), has not been
+- `USDLScanResult.kMiddleNameTruncation` - A code that indicates whether a field has been truncated (T), has not been
  truncated (N), or – unknown whether truncated (U).
  	- Mandatory on AAMVA 04, 05, 06, 07, 08
 
 #### <a name="02060312"></a> License data
 
-- `USDLScanData.kCountryIdentification` - Country in which DL/ID is issued. U.S. = USA, Canada = CAN.
+- `USDLScanResult.kCountryIdentification` - Country in which DL/ID is issued. U.S. = USA, Canada = CAN.
 	- Mandatory on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kDocumentDiscriminator` - Number must uniquely identify a particular document issued to that customer from others that may have been issued in the past. This number may serve multiple purposes of document discrimination, audit information number, and/or inventory control.
+- `USDLScanResult.kDocumentDiscriminator` - Number must uniquely identify a particular document issued to that customer from others that may have been issued in the past. This number may serve multiple purposes of document discrimination, audit information number, and/or inventory control.
 	- Mandatory on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kFederalCommercialVehicleCodes` - Federally established codes for vehicle categories, endorsements, and restrictions that are generally applicable to commercial motor vehicles. If the vehicle is not a commercial vehicle, "NONE" is to be entered.
+- `USDLScanResult.kFederalCommercialVehicleCodes` - Federally established codes for vehicle categories, endorsements, and restrictions that are generally applicable to commercial motor vehicles. If the vehicle is not a commercial vehicle, "NONE" is to be entered.
 	- Mandatory on AAMVA versions 02 and 03.
 
 #### <a name="0206032"></a> Optional values
 
 #### <a name="02060321"></a> Personal data
 
-- `USDLScanData.kRaceEthnicity` - Codes for race or ethnicity of the cardholder, as defined in ANSI D20.
+- `USDLScanResult.kRaceEthnicity` - Codes for race or ethnicity of the cardholder, as defined in ANSI D20.
 	- Optional on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
 	- **Race**
  	- AI = Alaskan or American Indian (Having Origins in Any of The Original Peoples of North America, and Maintaining Cultural Identification Through Tribal Affiliation of Community Recognition)
@@ -245,9 +245,9 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 	- H = Hispanic Origin (A Person of Mexican, Puerto Rican, Cuban, Central or South American or Other Spanish Culture or Origin, Regardless of Race)
 	- O = Not of Hispanic Origin (Any Person Other Than Hispanic) 
 	- U = Unknown
-- `USDLScanData.kPlaceOfBirth` - Country and municipality and/or state/province
+- `USDLScanResult.kPlaceOfBirth` - Country and municipality and/or state/province
 	- Optional on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kWeightRange` - Indicates the approximate weight range of the cardholder:
+- `USDLScanResult.kWeightRange` - Indicates the approximate weight range of the cardholder:
 	- Optional on AAMVA 02, 03, 04, 05, 06, 07, 08
 	- 0 = up to 31 kg (up to 70 lbs)
 	- 1 = 32 – 45 kg (71 – 100 lbs)
@@ -259,33 +259,33 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 	- 7 = 114 - 127 kg (251 – 280 lbs)
 	- 8 = 128 – 145 kg (281 – 320 lbs)
 	- 9 = 146+ kg (321+ lbs)
-- `USDLScanData.kWeightPounds` - Cardholder weight in pounds Ex. 185 lb = "185"
+- `USDLScanResult.kWeightPounds` - Cardholder weight in pounds Ex. 185 lb = "185"
 	- Optional on AAMVA 01, 04, 05, 06, 07, 08
-- `USDLScanData.kWeightKilograms` - Cardholder weight in kilograms Ex. 84 kg = "084"
+- `USDLScanResult.kWeightKilograms` - Cardholder weight in kilograms Ex. 84 kg = "084"
 	- Optional on AAMVA 01, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kNamePrefix` - PREFIX to Driver Name. Freeform as defined by issuing jurisdiction.
+- `USDLScanResult.kNamePrefix` - PREFIX to Driver Name. Freeform as defined by issuing jurisdiction.
 	- Optional on AAMVA 01
-- `USDLScanData.kResidenceStreetAddress` - Driver Residence Street Address.
+- `USDLScanResult.kResidenceStreetAddress` - Driver Residence Street Address.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kResidenceStreetAddress2` - Driver Residence Street Address 2.
+- `USDLScanResult.kResidenceStreetAddress2` - Driver Residence Street Address 2.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kResidenceCity` - Driver Residence City
+- `USDLScanResult.kResidenceCity` - Driver Residence City
 	- Optional on AAMVA version 01.
-- `USDLScanData.kResidenceJurisdictionCode` - Driver Residence Jurisdiction Code.
+- `USDLScanResult.kResidenceJurisdictionCode` - Driver Residence Jurisdiction Code.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kResidencePostalCode` - Driver Residence Postal Code.
+- `USDLScanResult.kResidencePostalCode` - Driver Residence Postal Code.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kUnder18` - Date on which the cardholder turns 18 years old. (MMDDCCYY format)
+- `USDLScanResult.kUnder18` - Date on which the cardholder turns 18 years old. (MMDDCCYY format)
 	- Optional on AAMVA 05, 06, 07, 08
-- `USDLScanData.kUnder19` - Date on which the cardholder turns 19 years old. (MMDDCCYY format)
+- `USDLScanResult.kUnder19` - Date on which the cardholder turns 19 years old. (MMDDCCYY format)
 	- Optional on AAMVA 05, 06, 07, 08
-- `USDLScanData.kUnder21` - Date on which the cardholder turns 21 years old. (MMDDCCYY format)
+- `USDLScanResult.kUnder21` - Date on which the cardholder turns 21 years old. (MMDDCCYY format)
 	- Optional on AAMVA 05, 06, 07, 08
-- `USDLScanData.kSocialSecurityNumber` - The number assigned to an individual by the Social Security Administration.
+- `USDLScanResult.kSocialSecurityNumber` - The number assigned to an individual by the Social Security Administration.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kAKASocialSecurityNumber` - Driver "AKA" Social Security Number. FORMAT SAME AS DRIVER SOC SEC NUM. ALTERNATIVE NUMBERS(S) used as SS NUM.
+- `USDLScanResult.kAKASocialSecurityNumber` - Driver "AKA" Social Security Number. FORMAT SAME AS DRIVER SOC SEC NUM. ALTERNATIVE NUMBERS(S) used as SS NUM.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kAKAFullName` - Other name by which cardholder is known. ALTERNATIVE NAME(S) of the individual holding
+- `USDLScanResult.kAKAFullName` - Other name by which cardholder is known. ALTERNATIVE NAME(S) of the individual holding
  the Driver License or ID. FORMAT same as defined in ANSI D20 Data Dictionary. (Lastname,Firstname,MI, suffix if any.) This field contains four portions, separated with the "," delimiter: Last Name (required)
 	- , (required)
 	- First Name (required)
@@ -294,15 +294,15 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 	- , (required if other name portions follow, otherwise optional)
 	- Suffix Code (optional)
 	- , (optional)
-- `USDLScanData.kAKAFamilyName` - Other family name by which cardholder is known.
+- `USDLScanResult.kAKAFamilyName` - Other family name by which cardholder is known.
 	- Optional on AAMVA 01, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kAKAMiddleName` - ALTERNATIVE MIDDLE NAME(s) or INITIALS of the individual holding the Driver License or ID. Hyphenated names acceptable, spaces between names acceptable, but no other use of special symbols
+- `USDLScanResult.kAKAMiddleName` - ALTERNATIVE MIDDLE NAME(s) or INITIALS of the individual holding the Driver License or ID. Hyphenated names acceptable, spaces between names acceptable, but no other use of special symbols
 	- Optional on AAMVA 01
-- `USDLScanData.kAKAGivenName` - Other given name by which cardholder is known
+- `USDLScanResult.kAKAGivenName` - Other given name by which cardholder is known
 	- Optional on AAMVA 01, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kAKAPrefixName` - ALTERNATIVE PREFIX to Driver Name. Freeform as defined by issuing jurisdiction.
+- `USDLScanResult.kAKAPrefixName` - ALTERNATIVE PREFIX to Driver Name. Freeform as defined by issuing jurisdiction.
 	- Optional on AAMVA 01
-- `USDLScanData.kAKASuffixName` - Other suffix by which cardholder is known. The Suffix Code Portion, if submitted, can contain only the Suffix Codes shown in the following table (e.g., Andrew Johnson, III = JOHNSON,ANDREW,,3RD):
+- `USDLScanResult.kAKASuffixName` - Other suffix by which cardholder is known. The Suffix Code Portion, if submitted, can contain only the Suffix Codes shown in the following table (e.g., Andrew Johnson, III = JOHNSON,ANDREW,,3RD):
 	- JR = Junior
 	- SR = Senior or Esquire 1ST First
 	- 2ND = Second
@@ -313,71 +313,71 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 	- 7TH = Seventh
 	- 8TH = Eighth
 	- 9TH = Ninth
-- `USDLScanData.kOrganDonor` - Field that indicates that the cardholder is an organ donor = "1".
+- `USDLScanResult.kOrganDonor` - Field that indicates that the cardholder is an organ donor = "1".
 	- Optional on AAMVA 06, 07, 08
-- `USDLScanData.kVeteran` - Field that indicates that the cardholder is a veteran = "1"
+- `USDLScanResult.kVeteran` - Field that indicates that the cardholder is a veteran = "1"
 	- Optional on AAMVA 07, 08
-- `USDLScanData.kAKADateOfBirth` - ALTERNATIVE DATES(S) given as date of birth. (MMDDCCYY format)
+- `USDLScanResult.kAKADateOfBirth` - ALTERNATIVE DATES(S) given as date of birth. (MMDDCCYY format)
 	- Optional on AAMVA 01
-- `USDLScanData.kImageTimestamp` - Portrait image timestamp
+- `USDLScanResult.kImageTimestamp` - Portrait image timestamp
 	- Optional on compact encoding.
-- `USDLScanData.kImageType` - Type of image
+- `USDLScanResult.kImageType` - Type of image
 	- Optional on compact encoding.
-- `USDLScanData.kPortraitImage` - Portrait image
+- `USDLScanResult.kPortraitImage` - Portrait image
 	- Optional on compact encoding.
-- `USDLScanData.kBDBFormatOwner` - BDB format owner
+- `USDLScanResult.kBDBFormatOwner` - BDB format owner
 	- Optional on compact encoding.
-- `USDLScanData.kBDBFormatType` - BDB format type
+- `USDLScanResult.kBDBFormatType` - BDB format type
 	- Optional on compact encoding.
-- `USDLScanData.kBiometricData` - Biometric data block
+- `USDLScanResult.kBiometricData` - Biometric data block
 	- Optional on compact encoding.
 
 #### <a name="02060322"></a> License data
 
-- `USDLScanData.kJurisdictionVehicleClassificationDescription` - Text that explains the jurisdiction-specific code(s) for classifications of vehicles cardholder is authorized to drive.
+- `USDLScanResult.kJurisdictionVehicleClassificationDescription` - Text that explains the jurisdiction-specific code(s) for classifications of vehicles cardholder is authorized to drive.
 	- Optional on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kJurisdictionEndorsmentCodeDescription` - Text that explains the jurisdiction-specific code(s) that indicates additional driving privileges granted to the cardholder beyond the vehicle class.
+- `USDLScanResult.kJurisdictionEndorsmentCodeDescription` - Text that explains the jurisdiction-specific code(s) that indicates additional driving privileges granted to the cardholder beyond the vehicle class.
 	- Optional on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kJurisdictionRestrictionCodeDescription` - Text describing the jurisdiction-specific restriction code(s) that curtail driving privileges.
+- `USDLScanResult.kJurisdictionRestrictionCodeDescription` - Text describing the jurisdiction-specific restriction code(s) that curtail driving privileges.
 	- Optional on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kInventoryControlNumber` - A string of letters and/or numbers that is affixed to the raw materials (card stock,
+- `USDLScanResult.kInventoryControlNumber` - A string of letters and/or numbers that is affixed to the raw materials (card stock,
  laminate, etc.) used in producing driver licenses and ID cards. (DHS recommended field)
 	- Optional on AAMVA 02, 03, 04, 05, 06, 07, 08
-- `USDLScanData.kCardRevisionDate` - DHS required field that indicates date of the most recent version change or
+- `USDLScanResult.kCardRevisionDate` - DHS required field that indicates date of the most recent version change or
  modification to the visible format of the DL/ID (MMDDCCYY format)
 	- Optional on AAMVA 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kLimitedDurationDocument` - DHS required field that indicates that the cardholder has temporary lawful status = "1".
+- `USDLScanResult.kLimitedDurationDocument` - DHS required field that indicates that the cardholder has temporary lawful status = "1".
 	- Optional on AAMVA 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kIssueTimestamp` - Issue Timestamp. A string used by some jurisdictions to validate the document against their data base.
+- `USDLScanResult.kIssueTimestamp` - Issue Timestamp. A string used by some jurisdictions to validate the document against their data base.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kPermitExpirationDate` - Driver Permit Expiration Date. MMDDCCYY format. Date permit expires.
+- `USDLScanResult.kPermitExpirationDate` - Driver Permit Expiration Date. MMDDCCYY format. Date permit expires.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kPermitIdentifier` - Type of permit.
+- `USDLScanResult.kPermitIdentifier` - Type of permit.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kPermitIssueDate` - Driver Permit Issue Date. MMDDCCYY format. Date permit was issued.
+- `USDLScanResult.kPermitIssueDate` - Driver Permit Issue Date. MMDDCCYY format. Date permit was issued.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kNumberOfDuplicates` - Number of duplicate cards issued for a license or ID if any.
+- `USDLScanResult.kNumberOfDuplicates` - Number of duplicate cards issued for a license or ID if any.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kAuditInformation` - A string of letters and/or numbers that identifies when, where, and by whom a driver license/ID card was made. If audit information is not used on the card or the MRT, it must be included in the driver record.
+- `USDLScanResult.kAuditInformation` - A string of letters and/or numbers that identifies when, where, and by whom a driver license/ID card was made. If audit information is not used on the card or the MRT, it must be included in the driver record.
 	- Optional on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kComplianceType` - DHS required field that indicates compliance: "M" = materially compliant; "F" = fully compliant; and, "N" = non-compliant.
+- `USDLScanResult.kComplianceType` - DHS required field that indicates compliance: "M" = materially compliant; "F" = fully compliant; and, "N" = non-compliant.
 	- Optional on AAMVA 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kHAZMATExpirationDate` - Date on which the hazardous material endorsement granted by the document is no longer valid. (MMDDCCYY format)
+- `USDLScanResult.kHAZMATExpirationDate` - Date on which the hazardous material endorsement granted by the document is no longer valid. (MMDDCCYY format)
 	- Optional on AAMVA 04, 05, 06, 07, 08 and Compact Encoding
-- `USDLScanData.kMedicalIndicator` - Medical Indicator/Codes. STATE SPECIFIC. Freeform; Standard "TBD"
+- `USDLScanResult.kMedicalIndicator` - Medical Indicator/Codes. STATE SPECIFIC. Freeform; Standard "TBD"
 	- Optional on AAMVA version 01.
-- `USDLScanData.kNonResident` - Non-Resident Indicator. "Y". Used by some jurisdictions to indicate holder of the document is a non-resident.
+- `USDLScanResult.kNonResident` - Non-Resident Indicator. "Y". Used by some jurisdictions to indicate holder of the document is a non-resident.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kUniqueCustomerId` - A number or alphanumeric string used by some jurisdictions to identify a "customer" across multiple data bases.
+- `USDLScanResult.kUniqueCustomerId` - A number or alphanumeric string used by some jurisdictions to identify a "customer" across multiple data bases.
 	- Optional on AAMVA version 01.
-- `USDLScanData.kDataDiscriminator` - Document discriminator.
+- `USDLScanResult.kDataDiscriminator` - Document discriminator.
 	- Optional on compact encoding.
 
 ### <a name="020604"></a> Keys for accessing raw barcode results
 
-- `USDLScanData.kPdf417` - Raw pdf417 result
+- `USDLScanResult.kPdf417` - Raw pdf417 result
 	- Mandatory for all USDL data
-- `USDLScanData.kCode128` - Raw code128 result
+- `USDLScanResult.kCode128` - Raw code128 result
 	- Optional, on US driver's licenses which have Code128 barcode printed
-- `USDLScanData.kCode39` - Raw code39 result
+- `USDLScanResult.kCode39` - Raw code39 result
 	- Optional, on US driver's licenses which have Code39 barcode printed

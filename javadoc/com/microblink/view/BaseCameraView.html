@@ -368,7 +368,7 @@ extends android.view.ViewGroup</pre>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>Rectangle</code></td>
+<td class="colFirst"><code><a href="../../../com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry">Rectangle</a></code></td>
 <td class="colLast"><code><strong><a href="../../../com/microblink/view/BaseCameraView.html#getVisiblePart()">getVisiblePart</a></strong>()</code>
 <div class="block">Returns the rectangle that which part of camera frame is visible in view</div>
 </td>
@@ -514,7 +514,7 @@ extends android.view.ViewGroup</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../com/microblink/view/BaseCameraView.html#setFocusAreaRaw(Rectangle)">setFocusAreaRaw</a></strong>(Rectangle&nbsp;focusArea)</code>
+<td class="colLast"><code><strong><a href="../../../com/microblink/view/BaseCameraView.html#setFocusAreaRaw(com.microblink.geometry.Rectangle)">setFocusAreaRaw</a></strong>(<a href="../../../com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry">Rectangle</a>&nbsp;focusArea)</code>
 <div class="block">Sets the area where camera will search for</div>
 </td>
 </tr>
@@ -564,8 +564,8 @@ extends android.view.ViewGroup</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../../com/microblink/view/BaseCameraView.html#setTorchState(boolean, SuccessCallback)">setTorchState</a></strong>(boolean&nbsp;on,
-             SuccessCallback&nbsp;successCallback)</code>
+<td class="colLast"><code><strong><a href="../../../com/microblink/view/BaseCameraView.html#setTorchState(boolean, com.microblink.hardware.SuccessCallback)">setTorchState</a></strong>(boolean&nbsp;on,
+             <a href="../../../com/microblink/hardware/SuccessCallback.html" title="interface in com.microblink.hardware">SuccessCallback</a>&nbsp;successCallback)</code>
 <div class="block">Turns the torch on the camera on or off.</div>
 </td>
 </tr>
@@ -1037,14 +1037,14 @@ extends android.view.ViewGroup</pre>
 <dl><dt><span class="strong">Returns:</span></dt><dd>true if camera has got torch.</dd></dl>
 </li>
 </ul>
-<a name="setTorchState(boolean, SuccessCallback)">
+<a name="setTorchState(boolean, com.microblink.hardware.SuccessCallback)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setTorchState</h4>
 <pre>public final&nbsp;void&nbsp;setTorchState(boolean&nbsp;on,
-                 SuccessCallback&nbsp;successCallback)</pre>
+                 <a href="../../../com/microblink/hardware/SuccessCallback.html" title="interface in com.microblink.hardware">SuccessCallback</a>&nbsp;successCallback)</pre>
 <div class="block">Turns the torch on the camera on or off. Returns true on success, false on failure.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>on</code> - If true, torch will be turned on, if false, torch will be turned off.</dd><dd><code>successCallback</code> - callback that will receive information if torch was successfully put in desired state</dd></dl>
 </li>
@@ -1172,13 +1172,13 @@ extends android.view.ViewGroup</pre>
 <pre>public final&nbsp;void&nbsp;onAutofocusFailed()</pre>
 </li>
 </ul>
-<a name="setFocusAreaRaw(Rectangle)">
+<a name="setFocusAreaRaw(com.microblink.geometry.Rectangle)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setFocusAreaRaw</h4>
-<pre>public&nbsp;void&nbsp;setFocusAreaRaw(Rectangle&nbsp;focusArea)</pre>
+<pre>public&nbsp;void&nbsp;setFocusAreaRaw(<a href="../../../com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry">Rectangle</a>&nbsp;focusArea)</pre>
 <div class="block">Sets the area where camera will search for</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>focusArea</code> - </dd></dl>
 </li>
@@ -1410,7 +1410,7 @@ extends android.view.ViewGroup</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getVisiblePart</h4>
-<pre>public&nbsp;Rectangle&nbsp;getVisiblePart()</pre>
+<pre>public&nbsp;<a href="../../../com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry">Rectangle</a>&nbsp;getVisiblePart()</pre>
 <div class="block">Returns the rectangle that which part of camera frame is visible in view</div>
 <dl><dt><span class="strong">Returns:</span></dt><dd>the rectangle that which part of camera frame is visible in view</dd></dl>
 </li>
