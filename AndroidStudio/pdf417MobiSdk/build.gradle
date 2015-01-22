@@ -5,7 +5,6 @@ android {
     buildToolsVersion "21.1.1"
 
     defaultConfig {
-        applicationId "mobi.pdf417.sdk"
         minSdkVersion 8
         targetSdkVersion 21
     }
