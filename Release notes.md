@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.0.1
+- added support for Mississippi driver's licenses
+
 ## 4.0.0
 - completely rewritten API for defining settings and obtaining results which is easier to use; see README for details
 - optimized library size - native library is now 2 MB per platform smaller than before
