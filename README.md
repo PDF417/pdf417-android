@@ -96,7 +96,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile 'com.microblink:pdf417.mobi:4.0.0'
+    compile 'com.microblink:pdf417.mobi:4.0.1'
 }
 ```
 
@@ -116,7 +116,7 @@ Open your pom.xml file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>4.0.0</version>
+		  <version>4.0.1</version>
   	</dependency>
 <dependencies>
 ```
@@ -220,8 +220,10 @@ This section will discuss possible parameters that can be sent over `Intent` for
 * **`Pdf417ScanActivity.EXTRAS_GENERIC_SETTINGS`** - with this extra you can define additional settings that affect all recognizers or whole recognition process. More information about generic settings can be found in chapter [Generic settings](#genericSettings). To set the extra to intent, use the following code snippet:
 	
 	```java
-	// set timeout to 10 seconds
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_GENERIC_SETTINGS, 10000);
+	GenericRecognizerSettings genSett = new GenericRecognizerSettings();
+	// define additional settings; e.g set timeout to 10 seconds
+	genSett.setNumMsBeforeTimeout(10000);
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_GENERIC_SETTINGS, genSett);
 	```
 	
 * **`Pdf417ScanActivity.EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING`** - with this extra you can give a hint to _PDF417.mobi_ to optimize camera parameters for near object scanning. When camera parameters are optimized for near object scanning, macro focus mode will be preferred over autofocus mode. Thus, camera will have easier time focusing on to near objects, but might have harder time focusing on far objects. If you expect that most of your scans will be performed by holding the device very near the object, turn on that parameter. By default, this parameter is set to false.
