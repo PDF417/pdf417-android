@@ -5,6 +5,7 @@
   * [Quick start with demo app](#quickDemo)
   * [Quick integration of _PDF417.mobi_ into your app](#quickIntegration)
   * [Eclipse integration instructions](#eclipseIntegration)
+  * [How to integrate _PDF417.mobi_ into your project using Maven](#mavenIntegration)
   * [Performing your first scan](#quickScan)
 * [Advanced _PDF417.mobi_ integration instructions](#advancedIntegration)
   * [Checking if _PDF417.mobi_ is supported](#supportCheck)
@@ -79,7 +80,7 @@ You’ve already created the project that contains almost everything you need. N
 2. Open the `AndroidManifest.xml` file inside `LibRecognizer.aar` file and make sure to copy all permissions, features and activities to the `AndroidManifest.xml` file of the target project.
 3. Clean and Rebuild your target project
 
-## How to integrate _PDF417.mobi_ into your project using Maven
+## <a name="mavenIntegration"></a> How to integrate _PDF417.mobi_ into your project using Maven
 
 Maven repository for _PDF417.mobi_ SDK is: [http://pdf417.mobi/maven](http://pdf417.mobi/maven).
 
@@ -88,7 +89,7 @@ In your build.gradle you first need to add _PDF417.mobi_ maven repository to rep
 
 ```
 repositories {
-	maven { url 'http://pdf417.mobi/maven' }
+	maven { url 'http://maven.microblink.com' }
 }
 ```
 
@@ -108,7 +109,7 @@ Open your pom.xml file and add these directives as appropriate:
 <repositories>
    	<repository>
        	<id>pdf417repo</id>
-       	<url>http://pdf417.mobi/maven</url>
+       	<url>http://maven.microblink.com</url>
    	</repository>
 </repositories>
 
