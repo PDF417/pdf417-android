@@ -69,9 +69,9 @@ We do not provide Eclipse integration demo apps. We encourage you to use Android
 1. In Eclipse, create a new _Android library project_ in your workspace.
 2. Clear the `src` and `res` folders.
 3. Unzip the `LibRecognizer.aar` file. You can rename it to zip and then unzip it or use any tool.
-4. Copy the `classes.jar` to `lib` folder of your Eclipse library project. If `lib` folder does not exist, create it.
-5. Copy `android-support-v4.jar` to `lib` folder of your Eclipse library project. You can find `android-support-v4.jar` in `/path/to/your/android/SDK/extras/android/support/v4/android-support-v4.jar`.
-6. Copy the contents of `jni` folder to `libs` folder of your Eclipse library project. If `libs` folder does not exist, create it.
+4. Copy the `classes.jar` to `libs` folder of your Eclipse library project. If `libs` folder does not exist, create it.
+5. Copy `android-support-v4.jar` to `libs` folder of your Eclipse library project. You can find `android-support-v4.jar` in `/path/to/your/android/SDK/extras/android/support/v4/android-support-v4.jar`.
+6. Copy the contents of `jni` folder to `libs` folder of your Eclipse library project.
 7. Replace the `res` folder on library project with the `res` folder of the `LibRecognizer.aar` file.
 
 You’ve already created the project that contains almost everything you need. Now let’s see how to configure your project to reference this library project.
