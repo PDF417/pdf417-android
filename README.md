@@ -177,7 +177,7 @@ This section will cover more advanced details in _PDF417.mobi_ integration. Firs
 ### _PDF417.mobi_ requirements
 Even before starting the scan activity, you should check if _PDF417.mobi_ is supported on current device. In order to be supported, device needs to have camera. 
 
-Android 2.2 is the minimum android version on which _PDF417.mobi_ is supported, but if required we may support even Android 2.1 devices, however additional testing on those devices will be required.
+Android 2.3 is the minimum android version on which _PDF417.mobi_ is supported, but if required we may support even Android 2.2 devices, however additional testing on those devices will be required.
 
 _PDF417.mobi_ is native application, written in C++ and available for multiple platforms. Because of this, _PDF417.mobi_ cannot work on devices that have obscure hardware architectures. We have compiled _PDF417.mobi_ native code for `armeabi`, `armeabi-v7a` and `x86` [ABIs](https://en.wikipedia.org/wiki/Application_binary_interface) because those architectures cover almost entire Android device market (actually more than 98% of devices use `armeabi-v7a` ABI). See [Processor architecture considerations](#archConsider) for more information about native libraries in _PDF417.mobi_ and instructions how to disable certain architectures in order to reduce the size of final app.
 
