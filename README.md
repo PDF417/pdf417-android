@@ -82,7 +82,7 @@ You’ve already created the project that contains almost everything you need. N
 
 ## <a name="mavenIntegration"></a> How to integrate _PDF417.mobi_ into your project using Maven
 
-Maven repository for _PDF417.mobi_ SDK is: [http://pdf417.mobi/maven](http://pdf417.mobi/maven).
+Maven repository for _PDF417.mobi_ SDK is: [http://maven.microblink.com](http://maven.microblink.com).
 
 ### Using gradle
 In your build.gradle you first need to add _PDF417.mobi_ maven repository to repositories list:
