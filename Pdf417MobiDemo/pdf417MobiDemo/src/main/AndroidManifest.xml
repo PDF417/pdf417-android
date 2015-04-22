@@ -31,15 +31,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="mobi.pdf417.activity.Pdf417ScanActivity"
+            android:name="com.microblink.activity.Pdf417ScanActivity"
             tools:replace="android:theme"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="mobi.pdf417.activity.Pdf417ScanActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
     </application>
 

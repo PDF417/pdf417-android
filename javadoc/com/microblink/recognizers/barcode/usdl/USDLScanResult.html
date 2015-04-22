@@ -384,10 +384,28 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kDocumentExpirationMonth">kDocumentExpirationMonth</a></strong></code>
+<div class="block">Optional on AAMVA Magnetic Stripe Encoding
+
+     Date on which the driving and identification privileges granted by the document are
+     no longer valid.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kDocumentIssueDate">kDocumentIssueDate</a></strong></code>
 <div class="block">Mandatory on AAMVA 01, 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
 
      Date on which the document was issued.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kDocumentNonexpiring">kDocumentNonexpiring</a></strong></code>
+<div class="block">Optional on AAMVA Magnetic Stripe Encoding
+
+     Field that indicates that the driving and identification privileges granted by the
+     document are nonexpiring = "1".</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -713,19 +731,27 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kSecurityVersion">kSecurityVersion</a></strong></code>
+<div class="block">Mandatory on AMMVA Magnetic Stripe Encoding
+
+     Security version beeing used.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kSex">kSex</a></strong></code>
 <div class="block">Mandatory on AAMVA 01, 02, 03, 04, 05, 06, 07, 08 and Compact encoding
 
      Gender of the cardholder.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kSocialSecurityNumber">kSocialSecurityNumber</a></strong></code>
 <div class="block">Optional on AAMVA version 01.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kStandardEndorsementCode">kStandardEndorsementCode</a></strong></code>
 <div class="block">Optional on AAMVA 01, 02, 03, 04, 05, 06, 07 and 08
@@ -733,7 +759,7 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Standard endorsement code(s) for cardholder.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kStandardRestrictionCode">kStandardRestrictionCode</a></strong></code>
 <div class="block">Optional on AAMVA 01, 02, 03, 04, 05, 06, 07 and 08
@@ -741,7 +767,7 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Standard restriction code(s) for cardholder.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kStandardVehicleClassification">kStandardVehicleClassification</a></strong></code>
 <div class="block">Optional on AAMVA 01, 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
@@ -749,7 +775,7 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Standard vehicle classification code(s) for cardholder.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kUnder18">kUnder18</a></strong></code>
 <div class="block">Optional on AAMVA 05, 06, 07, 08
@@ -757,7 +783,7 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Date on which the cardholder turns 18 years old.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kUnder19">kUnder19</a></strong></code>
 <div class="block">Optional on AAMVA 05, 06, 07, 08
@@ -765,7 +791,7 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Date on which the cardholder turns 19 years old.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kUnder21">kUnder21</a></strong></code>
 <div class="block">Optional on AAMVA 05, 06, 07, 08
@@ -773,13 +799,13 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Date on which the cardholder turns 21 years old.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kUniqueCustomerId">kUniqueCustomerId</a></strong></code>
 <div class="block">Optional on AAMVA version 01.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kVeteran">kVeteran</a></strong></code>
 <div class="block">Optional on AAMVA 07, 08
@@ -787,7 +813,7 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Field that indicates that the cardholder is a veteran = "1"</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kWeightKilograms">kWeightKilograms</a></strong></code>
 <div class="block">Optional on AAMVA 01, 04, 05, 06, 07, 08 and Compact Encoding
@@ -795,7 +821,7 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Cardholder weight in kilograms Ex.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kWeightPounds">kWeightPounds</a></strong></code>
 <div class="block">Optional on AAMVA 01, 04, 05, 06, 07, 08
@@ -803,7 +829,7 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Cardholder weight in pounds Ex.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../../../../com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kWeightRange">kWeightRange</a></strong></code>
 <div class="block">Optional on AAMVA 02, 03, 04, 05, 06, 07, 08
@@ -1146,6 +1172,34 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      Date on which the driving and identification privileges granted by the document are
      no longer valid. (MMDDCCYY format)</div>
 <dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#com.microblink.recognizers.barcode.usdl.USDLScanResult.kDocumentExpirationDate">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="kDocumentExpirationMonth">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>kDocumentExpirationMonth</h4>
+<pre>public static final&nbsp;java.lang.String kDocumentExpirationMonth</pre>
+<div class="block">Optional on AAMVA Magnetic Stripe Encoding
+
+     Date on which the driving and identification privileges granted by the document are
+     no longer valid. (MMYY format)</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#com.microblink.recognizers.barcode.usdl.USDLScanResult.kDocumentExpirationMonth">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="kDocumentNonexpiring">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>kDocumentNonexpiring</h4>
+<pre>public static final&nbsp;java.lang.String kDocumentNonexpiring</pre>
+<div class="block">Optional on AAMVA Magnetic Stripe Encoding
+
+     Field that indicates that the driving and identification privileges granted by the
+     document are nonexpiring = "1".</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#com.microblink.recognizers.barcode.usdl.USDLScanResult.kDocumentNonexpiring">Constant Field Values</a></dd></dl>
 </li>
 </ul>
 <a name="kJurisdictionVersionNumber">
@@ -1513,6 +1567,19 @@ extends <a href="../../../../../com/microblink/recognizers/BaseRecognitionResult
      that are generally applicable to commercial motor vehicles. If the vehicle is not a
      commercial vehicle, "NONE" is to be entered.</div>
 <dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#com.microblink.recognizers.barcode.usdl.USDLScanResult.kFederalCommercialVehicleCodes">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="kSecurityVersion">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>kSecurityVersion</h4>
+<pre>public static final&nbsp;java.lang.String kSecurityVersion</pre>
+<div class="block">Mandatory on AMMVA Magnetic Stripe Encoding
+
+     Security version beeing used.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#com.microblink.recognizers.barcode.usdl.USDLScanResult.kSecurityVersion">Constant Field Values</a></dd></dl>
 </li>
 </ul>
 <a name="kPlaceOfBirth">

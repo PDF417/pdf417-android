@@ -24,7 +24,7 @@ public class Pdf417CustomUIDemo extends Activity {
 
     public static final String TAG = "MainActivity";
 
-    public static final String LICENSE = "BTH7-L4JO-UI5T-JAFP-YSKX-BXZT-SDKE-LKIZ";
+    public static final String LICENSE = "R3P2TG6U-O4CBA7TV-JLYGRAKQ-QIQQG2Z2-YLVAIBAE-AQCAIBAE-AQCAIBAE-AQCFKMFM";
 
     private static final int MY_REQUEST_CODE = 1337;
 

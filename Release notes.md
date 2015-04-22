@@ -1,5 +1,9 @@
 # Release notes
 
+## 4.1.0
+- added new format of licence key
+- support for magnetic stripe standard in USDL barcodes
+
 ## 4.0.1
 - added support for Mississippi driver's licenses
 

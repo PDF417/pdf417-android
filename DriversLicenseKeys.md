@@ -72,6 +72,12 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 - `USDLScanResult.kDocumentExpirationDate` - Date on which the driving and identification privileges granted by the document are
  no longer valid. (MMDDCCYY format). 
  	- Mandatory on all barcode versions, including compact encoding.
+- `USDLScanResult.kDocumentExpirationMonth` - Date on which the driving and identification privileges granted by the document are
+     no longer valid. (MMYY format)
+     - Optional on AAMVA Magnetic Stripe Encoding
+- `USDLScanResult.kDocumentNonexpiring` - Field that indicates that the driving and identification privileges granted by the
+     document are nonexpiring = "1".
+     - Optional on AAMVA Magnetic Stripe Encoding
 - `USDLScanResult.kIssuerIdentificationNumber` - This number uniquely identifies the issuing jurisdiction and can
  be obtained by contacting the ISO Issuing Authority (AAMVA). 
  	- Mandatory on all standard barcode formats, optional on compact encoding.
@@ -228,6 +234,8 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 	- Mandatory on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
 - `USDLScanResult.kFederalCommercialVehicleCodes` - Federally established codes for vehicle categories, endorsements, and restrictions that are generally applicable to commercial motor vehicles. If the vehicle is not a commercial vehicle, "NONE" is to be entered.
 	- Mandatory on AAMVA versions 02 and 03.
+- `USDLScanResult.kSecurityVersion` - Security version beeing used.
+	-  Mandatory on AMMVA Magnetic Stripe Encoding
 
 #### <a name="0206032"></a> Optional values
 

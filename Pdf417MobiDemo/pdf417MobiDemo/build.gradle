@@ -19,8 +19,9 @@ android {
 
     // to reduce the size of the final app, we recommend building 3 versions of your app, each
     // built with single native architecture.
+    // If size is not problem, then it's easier to pack all architectures into a single apk.
 
-    productFlavors {
+/*    productFlavors {
         x86 {
             ndk {
                 abiFilter "x86"
@@ -37,6 +38,7 @@ android {
             }
         }
     }
+    */
 }
 
 dependencies {

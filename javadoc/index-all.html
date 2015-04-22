@@ -255,6 +255,8 @@
 <dd>&nbsp;</dd>
 <dt><a href="./com/microblink/hardware/package-summary.html">com.microblink.hardware</a> - package com.microblink.hardware</dt>
 <dd>&nbsp;</dd>
+<dt><a href="./com/microblink/hardware/accelerometer/package-summary.html">com.microblink.hardware.accelerometer</a> - package com.microblink.hardware.accelerometer</dt>
+<dd>&nbsp;</dd>
 <dt><a href="./com/microblink/hardware/camera/focus/package-summary.html">com.microblink.hardware.camera.focus</a> - package com.microblink.hardware.camera.focus</dt>
 <dd>&nbsp;</dd>
 <dt><a href="./com/microblink/locale/package-summary.html">com.microblink.locale</a> - package com.microblink.locale</dt>
@@ -333,9 +335,7 @@
 <div class="block">Parcelable creator object</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/BaseRecognitionResult.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.recognizers.<a href="./com/microblink/recognizers/BaseRecognitionResult.html" title="class in com.microblink.recognizers">BaseRecognitionResult</a></dt>
-<dd>
-<div class="block">Parcelable creator object</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/LibraryInfoResult.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.recognizers.<a href="./com/microblink/recognizers/LibraryInfoResult.html" title="class in com.microblink.recognizers">LibraryInfoResult</a></dt>
 <dd>
 <div class="block">Parcelable creator object</div>
@@ -1029,6 +1029,10 @@
 <dd>
 <div class="block">barcode try harder</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kAmount">kAmount</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Amount parser</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kAuditInformation">kAuditInformation</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
 <dd>
 <div class="block">Optional on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
@@ -1124,6 +1128,10 @@
 <dd>
 <div class="block">enable reading of payment description</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kCroReference">kCroReference</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Croatian reference parser</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kCroSlip">kCroSlip</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">scan Croatian slip</div>
@@ -1171,6 +1179,8 @@
 
      Date on which the cardholder was born.</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kDefaultParserGroup">kDefaultParserGroup</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kDeQRCode">kDeQRCode</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">scan German QR code</div>
@@ -1193,11 +1203,25 @@
      Date on which the driving and identification privileges granted by the document are
      no longer valid.</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kDocumentExpirationMonth">kDocumentExpirationMonth</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
+<dd>
+<div class="block">Optional on AAMVA Magnetic Stripe Encoding
+
+     Date on which the driving and identification privileges granted by the document are
+     no longer valid.</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kDocumentIssueDate">kDocumentIssueDate</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
 <dd>
 <div class="block">Mandatory on AAMVA 01, 02, 03, 04, 05, 06, 07, 08 and Compact Encoding
 
      Date on which the document was issued.</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kDocumentNonexpiring">kDocumentNonexpiring</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
+<dd>
+<div class="block">Optional on AAMVA Magnetic Stripe Encoding
+
+     Field that indicates that the driving and identification privileges granted by the
+     document are nonexpiring = "1".</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kEAN13">kEAN13</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
@@ -1206,6 +1230,10 @@
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kEAN8">kEAN8</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">scan EAN8 barcode</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kEMail">kEMail</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">E-Mail parser</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kEnabled">kEnabled</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>&nbsp;</dd>
@@ -1289,6 +1317,10 @@
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kHuSlipFloodFill">kHuSlipFloodFill</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kIBAN">kIBAN</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">IBAN parser</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kImageTimestamp">kImageTimestamp</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
 <dd>
 <div class="block">Optional on compact encoding.</div>
@@ -1460,6 +1492,12 @@
 
      Field that indicates that the cardholder is an organ donor = "1".</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kParserGroups">kParserGroups</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kParserType">kParserType</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Parser type.</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kPayBull">kPayBull</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">scan PayBull QR code</div>
@@ -1504,6 +1542,10 @@
 
      Codes for race or ethnicity of the cardholder, as defined in ANSI D20.</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kRaw">kRaw</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Raw parser</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kRecognitionMode">kRecognitionMode</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">Mode of the PhotoPay</div>
@@ -1511,6 +1553,10 @@
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kRecognizerType">kRecognizerType</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">Recognizer type.</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kRegex">kRegex</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Generic Regex parser</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kResidenceCity">kResidenceCity</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
 <dd>
@@ -1543,6 +1589,12 @@
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kScanUncertain">kScanUncertain</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">scan uncertain barcodes</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kSecurityVersion">kSecurityVersion</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
+<dd>
+<div class="block">Mandatory on AMMVA Magnetic Stripe Encoding
+
+     Security version beeing used.</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kSex">kSex</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
 <dd>
@@ -1580,6 +1632,22 @@
 
      Standard vehicle classification code(s) for cardholder.</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kSwedishAmount">kSwedishAmount</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Swedish amount parser</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kSwedishBankGiro">kSwedishBankGiro</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Swedish Bank giro parser</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kSwedishReference">kSwedishReference</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Swedish Reference parser</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kSwedishSlipCode">kSwedishSlipCode</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Swedish slip code parser</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kSwissSlip">kSwissSlip</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">scan Swiss slip</div>
@@ -1589,6 +1657,10 @@
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kUkBarcodes">kUkBarcodes</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
 <div class="block">scan UK barcodes</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kUKDL">kUKDL</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
+<dd>
+<div class="block">scan UK driver's license</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kUkGiroSlip">kUkGiroSlip</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
@@ -1798,6 +1870,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/RecognitionResultConstants.html#MRTD_PRIMARY_ID">MRTD_PRIMARY_ID</a></span> - Static variable in interface com.microblink.recognizers.<a href="./com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/RecognitionResultConstants.html#MRTD_RAW">MRTD_RAW</a></span> - Static variable in interface com.microblink.recognizers.<a href="./com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/RecognitionResultConstants.html#MRTD_SECONDARY_ID">MRTD_SECONDARY_ID</a></span> - Static variable in interface com.microblink.recognizers.<a href="./com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/RecognitionResultConstants.html#MRTD_SEX">MRTD_SEX</a></span> - Static variable in interface com.microblink.recognizers.<a href="./com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
@@ -1860,6 +1934,8 @@
 </a>
 <h2 class="title">O</h2>
 <dl>
+<dt><span class="strong"><a href="./com/microblink/recognizers/RecognitionResultConstants.html#OCR_RESULT">OCR_RESULT</a></span> - Static variable in interface com.microblink.recognizers.<a href="./com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="./com/microblink/results/ocr/OcrBlock.html" title="class in com.microblink.results.ocr"><span class="strong">OcrBlock</span></a> - Class in <a href="./com/microblink/results/ocr/package-summary.html">com.microblink.results.ocr</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/results/ocr/OcrBlock.html#OcrBlock(com.microblink.results.ocr.OcrLine[], com.microblink.geometry.Rectangle)">OcrBlock(OcrLine[], Rectangle)</a></span> - Constructor for class com.microblink.results.ocr.<a href="./com/microblink/results/ocr/OcrBlock.html" title="class in com.microblink.results.ocr">OcrBlock</a></dt>
@@ -1982,6 +2058,14 @@
 <dd>
 <div class="block">This method is called when slip has been scanned.</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/hardware/accelerometer/ShakeCallback.html#onShakingStarted()">onShakingStarted()</a></span> - Method in interface com.microblink.hardware.accelerometer.<a href="./com/microblink/hardware/accelerometer/ShakeCallback.html" title="interface in com.microblink.hardware.accelerometer">ShakeCallback</a></dt>
+<dd>
+<div class="block">Called when device starts to shake/move.</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/hardware/accelerometer/ShakeCallback.html#onShakingStopped()">onShakingStopped()</a></span> - Method in interface com.microblink.hardware.accelerometer.<a href="./com/microblink/hardware/accelerometer/ShakeCallback.html" title="interface in com.microblink.hardware.accelerometer">ShakeCallback</a></dt>
+<dd>
+<div class="block">Called when device stops shaking/moving.</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/activity/BaseScanActivity.html#onSizeChanged(int, int)">onSizeChanged(int, int)</a></span> - Method in class com.microblink.activity.<a href="./com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/view/OnSizeChangedListener.html#onSizeChanged(int, int)">onSizeChanged(int, int)</a></span> - Method in interface com.microblink.view.<a href="./com/microblink/view/OnSizeChangedListener.html" title="interface in com.microblink.view">OnSizeChangedListener</a></dt>
@@ -2034,6 +2118,12 @@
 </a>
 <h2 class="title">P</h2>
 <dl>
+<dt><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings"><span class="strong">ParserSettingsKeys</span></a> - Class in <a href="./com/microblink/recognizers/settings/package-summary.html">com.microblink.recognizers.settings</a></dt>
+<dd>
+<div class="block">Created by dodo on 02/03/15.</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#ParserSettingsKeys()">ParserSettingsKeys()</a></span> - Constructor for class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#pause()">pause()</a></span> - Method in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
 <div class="block">This method must be called from activity's onPause.</div>
@@ -2189,10 +2279,6 @@
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/RecognitionResultConstants.html#RAW_PDF417_RESULT">RAW_PDF417_RESULT</a></span> - Static variable in interface com.microblink.recognizers.<a href="./com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="strong"><a href="./com/microblink/recognizers/RecognitionResultConstants.html#RAW_PHOTOMATH_DATA">RAW_PHOTOMATH_DATA</a></span> - Static variable in interface com.microblink.recognizers.<a href="./com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
-<dd>
-<div class="block">Key for raw PhotoMath data</div>
-</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/RecognitionResultConstants.html#RAW_RESULT">RAW_RESULT</a></span> - Static variable in interface com.microblink.recognizers.<a href="./com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>
 <div class="block">Key for accessing the raw result of OCR/barcode decode.</div>
@@ -2271,6 +2357,10 @@
 <dd>
 <div class="block">Use this method to reconfigure available recognizers.</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/view/recognition/RecognizerView.html#reconfigureRecognizers(com.microblink.recognizers.settings.RecognizerSettings[])">reconfigureRecognizers(RecognizerSettings[])</a></span> - Method in class com.microblink.view.recognition.<a href="./com/microblink/view/recognition/RecognizerView.html" title="class in com.microblink.view.recognition">RecognizerView</a></dt>
+<dd>
+<div class="block">Use this method to reconfigure available recognizers.</div>
+</dd>
 <dt><a href="./com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry"><span class="strong">Rectangle</span></a> - Class in <a href="./com/microblink/geometry/package-summary.html">com.microblink.geometry</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/geometry/Rectangle.html#Rectangle(float, float, float, float)">Rectangle(float, float, float, float)</a></span> - Constructor for class com.microblink.geometry.<a href="./com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry">Rectangle</a></dt>
@@ -2328,6 +2418,10 @@
 <div class="block">Resumes the frame grabbing loop.</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/view/recognition/RecognizerView.html#resumeScanning()">resumeScanning()</a></span> - Method in class com.microblink.view.recognition.<a href="./com/microblink/view/recognition/RecognizerView.html" title="class in com.microblink.view.recognition">RecognizerView</a></dt>
+<dd>
+<div class="block">This method resumes scanning loop.</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/view/recognition/RecognizerView.html#resumeScanningWithoutStateReset()">resumeScanningWithoutStateReset()</a></span> - Method in class com.microblink.view.recognition.<a href="./com/microblink/view/recognition/RecognizerView.html" title="class in com.microblink.view.recognition">RecognizerView</a></dt>
 <dd>
 <div class="block">This method resumes scanning loop.</div>
 </dd>
@@ -2464,6 +2558,10 @@
 </dd>
 <dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#setOptimizeCameraForNearScan(boolean)">setOptimizeCameraForNearScan(boolean)</a></span> - Method in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./com/microblink/directApi/Recognizer.html#setOrientation(Orientation)">setOrientation(Orientation)</a></span> - Method in class com.microblink.directApi.<a href="./com/microblink/directApi/Recognizer.html" title="class in com.microblink.directApi">Recognizer</a></dt>
+<dd>
+<div class="block">Define orientation of the image that will be recognized next.</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#setOrientationAllowedListener(com.microblink.view.OrientationAllowedListener)">setOrientationAllowedListener(OrientationAllowedListener)</a></span> - Method in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
 <div class="block">Sets the listener that will be asked if device orientation is allowed prior rotating
@@ -2545,6 +2643,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/zxing/ZXingRecognizerSettings.html#setScanUPCECode(boolean)">setScanUPCECode(boolean)</a></span> - Method in class com.microblink.recognizers.barcode.zxing.<a href="./com/microblink/recognizers/barcode/zxing/ZXingRecognizerSettings.html" title="class in com.microblink.recognizers.barcode.zxing">ZXingRecognizerSettings</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#setShakeListener(com.microblink.hardware.accelerometer.ShakeCallback)">setShakeListener(ShakeCallback)</a></span> - Method in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>
+<div class="block">Sets the shake callback that will be notified about device shake events.</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#setShouldAlwaysUseHighestPossibleResolution(boolean)">setShouldAlwaysUseHighestPossibleResolution(boolean)</a></span> - Method in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings"><span class="strong">SettingsKeys</span></a> - Class in <a href="./com/microblink/recognizers/settings/package-summary.html">com.microblink.recognizers.settings</a></dt>
@@ -2568,6 +2670,8 @@
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLRecognizerSettings.html#setUncertainScanning(boolean)">setUncertainScanning(boolean)</a></span> - Method in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLRecognizerSettings.html" title="class in com.microblink.recognizers.barcode.usdl">USDLRecognizerSettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/results/ocr/OcrChar.html#setValue(char)">setValue(char)</a></span> - Method in class com.microblink.results.ocr.<a href="./com/microblink/results/ocr/OcrChar.html" title="class in com.microblink.results.ocr">OcrChar</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="./com/microblink/hardware/accelerometer/ShakeCallback.html" title="interface in com.microblink.hardware.accelerometer"><span class="strong">ShakeCallback</span></a> - Interface in <a href="./com/microblink/hardware/accelerometer/package-summary.html">com.microblink.hardware.accelerometer</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/GenericRecognizerSettings.html#shouldAllowMultipleScanResultsOnSingleImage()">shouldAllowMultipleScanResultsOnSingleImage()</a></span> - Method in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/GenericRecognizerSettings.html" title="class in com.microblink.recognizers.settings">GenericRecognizerSettings</a></dt>
 <dd>

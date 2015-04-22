@@ -28,21 +28,23 @@
 
 # <a name="intro"></a> Android _PDF417.mobi_ integration instructions
 
-The package contains Android Archive (AAR) that contains everything you need to use _PDF417.mobi_ library. Besides AAR, package also contains a demo project that contains two modules:
+The package contains Android Archive (AAR) that contains everything you need to use _PDF417.mobi_ library. Besides AAR, package also contains a demo project that contains following modules:
 
  - pdf417MobiDemo module demonstrates quick and simple integration of _PDF417.mobi_ library
- - pdf417MobiDemoCustomUI demonstrates advanced integration within custom scan activity
+- pdf417MobiDemoCustomUI demonstrates advanced integration within custom scan activity
+
  
-_PDF417.mobi_ is supported on Android SDK version 8 (Android 2.2) or later.
- 
-The library contains one activity: `Pdf417ScanActivity`. It is responsible for camera control and barcode recognition. If you create your own scanning UI, you will need to embed `RecognizerView` into your activity and pass activity's lifecycle events to it and it will control the camera and recognition process.
+_PDF417.mobi_ is supported on Android SDK version 10 (Android 2.3) or later.
+
+
+The library contains one activity: `Pdf417ScanActivity`. It is responsible for camera control and recognition. If you create your own scanning UI, you will need to embed `RecognizerView` into your activity and pass activity's lifecycle events to it and it will control the camera and recognition process.
 
 # <a name="quickStart"></a> Quick Start
 
 ## <a name="quickDemo"></a> Quick start with demo app
 
 1. Open Android Studio.
-2. In Quick Start dialog choose _Import Non-Android Studio project_.
+2. In Quick Start dialog choose _Import project (Eclipse ADT, Gradle, etc.)_.
 3. In File dialog select _Pdf417MobiDemo_ folder.
 4. Wait for project to load. If Android studio asks you to reload project on startup, select `Yes`.
 
@@ -97,7 +99,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile 'com.microblink:pdf417.mobi:4.0.1'
+    compile 'com.microblink:pdf417.mobi:4.1.0'
 }
 ```
 
@@ -108,7 +110,7 @@ Open your pom.xml file and add these directives as appropriate:
 ```xml
 <repositories>
    	<repository>
-       	<id>pdf417repo</id>
+       	<id>MicroblinkRepo</id>
        	<url>http://maven.microblink.com</url>
    	</repository>
 </repositories>
@@ -117,7 +119,7 @@ Open your pom.xml file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>4.0.1</version>
+		  <version>4.1.0</version>
   	</dependency>
 <dependencies>
 ```
@@ -130,6 +132,11 @@ Maven dependency requires android-maven-plugin version 4.0.0 (AAR support is req
 	```java
 	// Intent for Pdf417ScanActivity Activity
 	Intent intent = new Intent(this, Pdf417ScanActivity.class);
+	
+	// set your licence key
+	// obtain your licence key at http://microblink.com/login or
+	// contact us at http://help.microblink.com
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Add your licence key here");
 
 	// setup array of recognition settings (described in chapter "Recognition 
 	// settings and results")
@@ -179,6 +186,8 @@ Even before starting the scan activity, you should check if _PDF417.mobi_ is sup
 
 Android 2.3 is the minimum android version on which _PDF417.mobi_ is supported, but if required we may support even Android 2.2 devices, however additional testing on those devices will be required.
 
+Camera video preview resolution also matters. In order to perform successful scans, camera preview resolution cannot be too low. _PDF417.mobi_ requires minimum 320p camera preview resolution in order to perform scan. It must be noted that camera preview resolution is not the same as the video record resolution, although on most devices those are the same. However, there are some devices that allow recording of HD video (720p resolution), but do not allow high enough camera preview resolution (for example, [Sony Xperia Go](http://www.gsmarena.com/sony_xperia_go-4782.php) supports video record resolution at 720p, but camera preview resolution is only 320p - _PDF417.mobi_ does not work on that device).
+
 _PDF417.mobi_ is native application, written in C++ and available for multiple platforms. Because of this, _PDF417.mobi_ cannot work on devices that have obscure hardware architectures. We have compiled _PDF417.mobi_ native code for `armeabi`, `armeabi-v7a` and `x86` [ABIs](https://en.wikipedia.org/wiki/Application_binary_interface) because those architectures cover almost entire Android device market (actually more than 98% of devices use `armeabi-v7a` ABI). See [Processor architecture considerations](#archConsider) for more information about native libraries in _PDF417.mobi_ and instructions how to disable certain architectures in order to reduce the size of final app.
 
 ### Checking for _PDF417.mobi_ support in your app
@@ -191,6 +200,17 @@ if(status == RecognizerCompatibilityStatus.RECOGNIZER_SUPPORTED) {
 	Toast.makeText(this, "PDF417.mobi is supported!", Toast.LENGTH_LONG).show();
 } else {
 	Toast.makeText(this, "PDF417.mobi is not supported! Reason: " + supportStatus.name(), Toast.LENGTH_LONG).show();
+}
+```
+
+However, some recognizers require camera with autofocus. If you try to start recognition with those recognizers on a device that does not have camera with autofocus, you will get an error. To prevent that, when you prepare the array with recognition settings (see [Recognition settings and results](#recognitionSettingsAndResults) for settings reference), you can easily filter out all settings that require autofocus from array using the following code snippet:
+
+```java
+// setup array of recognition settings (described in chapter "Recognition 
+// settings and results")
+RecognizerSettings[] settArray = setupSettingsArray();
+if(!RecognizerCompatibility.cameraHasAutofocus(CameraType.CAMERA_BACKFACE, this)) {
+	setarr = RecognizerSettingsUtils.filterOutRecognizersThatRequireAutofocus(setarr);
 }
 ```
 
@@ -236,14 +256,14 @@ This section will discuss possible parameters that can be sent over `Intent` for
     ```
 	
 
-* **`Pdf417ScanActivity.EXTRAS_LICENSE_KEY`** - with this extra you can set the license key for _PDF417.mobi_. You can use _PDF417.mobi_ free of charge and without license key for development and non-commercial projects. Once you obtain a license key from [pdf417.mobi website](http://pdf417.mobi/), you can set it with following snippet:
+* **`Pdf417ScanActivity.EXTRAS_LICENSE_KEY`** - with this extra you can set the license key for _PDF417.mobi_. You can obtain your licence key from [Microblink website](http://microblink.com/login) or you can contact us at [http://help.microblink.com](http://help.microblink.com). Once you obtain a license key, you can set it with following snippet:
 
 	```java
 	// set the license key
 	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
 	```
 	
-	License key is bound to package name of your application. For example, if you have license key that is bound to `mobi.pdf417.demo` app package, you cannot use the same key in other applications. However, if you purchase Premium license, you will get license key that can be used in multiple applications. This license key will then not be bound to package name of the app. Instead, it will be bound to the licensee string that needs to be provided to the library together with the license key. To provide license owner string, use the `EXTRAS_LICENSEE` intent extra like this:
+	Licence key is bound to package name of your application. For example, if you have licence key that is bound to `mobi.pdf417.demo` app package, you cannot use the same key in other applications. However, if you purchase Premium licence, you will get licence key that can be used in multiple applications. This licence key will then not be bound to package name of the app. Instead, it will be bound to the licencee string that needs to be provided to the library together with the licence key. To provide licencee string, use the `EXTRAS_LICENSEE` intent extra like this:
 
 	```java
 	// set the license key
@@ -443,7 +463,7 @@ __Important__
 If you use `sensor` or similar screen orientation for your scan activity there is a catch. No matter if your activity is set to be restarted on configuration change or only notified via `onConfigurationChanged` method, if your activity's orientation is changed from `portrait` to `reversePortrait` or from `landscape` to `reverseLandscape` or vice versa, your activity will not be notified of this change in any way - it will not be neither restarted nor `onConfigurationChanged` will be called - the views in your activity will just be rotated by 180 degrees. This is a problem because it will make your camera preview upside down. In order to fix this, you first need to [find a way how to get notified of this change](https://stackoverflow.com/questions/9909037/how-to-detect-screen-rotation-through-180-degrees-from-landscape-to-landscape-or) and then you should call `changeConfiguration` method of `RecognizerView` so it will correct camera preview orientation.
 
 ## <a name="recognizerViewReference"></a> `RecognizerView` reference
-The complete reference of `RecognizerView` is available in [Javadoc](javadoc/com/microblink/view/recognition/RecognizerView.html). The usage example is provided in `pdf417MobiDemoCustomUI` demo app provided with SDK. This section just gives a quick overview of `RecognizerView's` most important methods.
+The complete reference of `RecognizerView` is available in [Javadoc](javadoc/com/microblink/view/recognition/RecognizerView.html). The usage example is provided in `- pdf417MobiDemoCustomUI demonstrates advanced integration within custom scan activity` demo app provided with SDK. This section just gives a quick overview of `RecognizerView's` most important methods.
 
 ##### `create()`
 This method should be called in activity's `onCreate` method. It will initialize `RecognizerView's` internal fields and will initialize camera control thread. This method must be called after all other settings are already defined, such as listeners and recognition settings. After calling this method, you can add child views to `RecognizerView` with method `addChildView(View, boolean)`.
@@ -481,6 +501,9 @@ With this method you can set the generic settings that will be affect all enable
 ##### `reconfigureRecognizers(RecognizerSettings[], GenericRecognizerSettings)`
 With this method you can reconfigure the recognition process while recognizer is active. Unlike `setRecognitionSettings` and `setGenericRecognizerSettings`, this method can be called while recognizer is active (i.e. after `resume` was called), but paused (either `pauseScanning` was called or `onScanningDone` callback is being handled). For more information about recognition settings see [Recognition settings and results](#recognitionSettingsAndResults).
 
+##### `reconfigureRecognizers(RecognizerSettings[])`
+With this method you can reconfigure the recognition process while recognizer is active. Unlike `setRecognitionSettings`, this method can be called while recognizer is active (i.e. after `resume` was called), but paused (either `pauseScanning` was called or `onScanningDone` callback is being handled). For more information about recognition settings see [Recognition settings and results](#recognitionSettingsAndResults).
+
 ##### `setOrientationAllowedListener(OrientationAllowedListener)`
 With this method you can set a [OrientationAllowedListener](javadoc/com/microblink/view/OrientationAllowedListener.html) which will be asked if current orientation is allowed. If orientation is allowed, it will be used to rotate rotatable views to it and it will be passed to native library so that recognizers can be aware of the new orientation.
 
@@ -497,7 +520,13 @@ With this method you can set a [CameraEventsListener](javadoc/com/microblink/vie
 This method pauses the scanning loop, but keeps both camera and native library initialized. This method is called internally when scan completes before `onScanningDone` is called.
 
 ##### `resumeScanning()`
-With this method you can resume the paused scanning loop.
+With this method you can resume the paused scanning loop. This method implicitly calls `resetRecognitionState()`.
+
+##### `resumeScanningWithoutStateReset()`
+With this method you can resume the paused scanning loop without resetting recognition state. Be aware that after resuming, old recognition state might be reused for boosting recognition result. This may not be always a desired behaviour.
+
+##### `resetRecognitionState()`
+With this method you can reset internal recognition state. State is usually kept to improve recognition quality over time, but without resetting recognition state sometimes you might get poorer results (for example if you scan one object and then another without resetting state you might end up with result that contains properties from both scanned objects).
 
 ##### `addChildView(View, boolean)`
 With this method you can add your own view on top of `RecognizerView`. `RecognizerView` will ensure that your view will be layouted exactly above camera preview surface (which can be letterboxed if aspect ratio of camera preview size does not match the aspect ratio of `RecognizerView` and camera aspect mode is set to `ASPECT_FIT`). Boolean parameter defines whether your view should be rotated with device orientation changes. The rotation is independent of host activity's orientation changes and allowed orientations will be determined from [OrientationAllowedListener](javadoc/com/microblink/view/OrientationAllowedListener.html). See also [Scan activity's orientation](#scanOrientation) for more information why you should rotate your views independently of activity.
@@ -524,10 +553,10 @@ View width and height are defined in current context, i.e. they depend on screen
 Note that scanning region only reflects to native code - it does not have any impact on user interface. You are required to create a matching user interface that will visualize the same scanning region you set here.
 
 ##### `setLicenseKey(String licenseKey)`
-This method sets the license key that will unlock all features of the native library. You can obtain your license key from [pdf417.mobi website](http://pdf417.mobi/).
+This method sets the license key that will unlock all features of the native library. You can obtain your license key from [Microblink website](http://microblink.com/login).
 
 ##### `setLicenseKey(String licenseKey, String licenseOwner)`
-Use this method to set a license key that is bound to a license owner, not the application package name. You will use this method when you obtain a license key that allows you to use _PDF417.mobi_ SDK in multiple applications. You can obtain your license key from [pdf417.mobi website](http://pdf417.mobi/).
+Use this method to set a license key that is bound to a license owner, not the application package name. You will use this method when you obtain a license key that allows you to use _PDF417.mobi_ SDK in multiple applications. You can obtain your license key from [Microblink website](http://microblink.com/login).
 
 ## <a name="directAPI"></a> Using direct API for recognition of android Bitmaps
 
@@ -1054,8 +1083,8 @@ In case of problems with using the SDK, you should do as follows:
 
 After this line, library will display as much information about its work as possible. Make sure to remove this line in your production code as lots of log outputs may slow down the performance of library.
 
-If you cannot solve problems by yourself, do not hesitate to contact us at <support@microblink.com>. Make sure you include the logs when contacting us to minimize the time to find and correct a bug. Also, if having misrecognitions, please send us high resolution images that are not scanned correctly.
+If you cannot solve problems by yourself, do not hesitate to contact us at [help.microblink.com](http://help.microblink.com). Make sure you include the logs when contacting us to minimize the time to find and correct a bug. Also, if having misrecognitions, please send us high resolution images that are not scanned correctly.
 
 # <a name="info"></a> Additional info
-For any other questions, feel free to contact us at <support@microblink.com>.
+For any other questions, feel free to contact us at [help.microblink.com](http://help.microblink.com).
 

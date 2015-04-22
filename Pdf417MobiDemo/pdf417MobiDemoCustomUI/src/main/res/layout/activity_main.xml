@@ -12,19 +12,19 @@
     tools:context=".Pdf417CustomUIDemo" >
 
     <Button
+        android:id="@+id/btnDefaultUINoLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:onClick="onClick"
+        android:text="@string/default_ui_no_logo" />
+
+    <Button
         android:id="@+id/btnDefaultUINoDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:text="@string/default_ui_no_dialog" />
-
-    <Button
-        android:id="@+id/btnDefaultUINoLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:onClick="onClick"
-        android:text="@string/default_ui_no_logo" />
 
     <Button
         android:id="@+id/btnCustomUI"
