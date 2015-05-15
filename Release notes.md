@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.1.1
+- improved parsing of some problematic US Driver's Licence barcodes
+
 ## 4.1.0
 - added new format of licence key
 - support for magnetic stripe standard in USDL barcodes
