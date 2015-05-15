@@ -99,7 +99,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile 'com.microblink:pdf417.mobi:4.1.0'
+    compile 'com.microblink:pdf417.mobi:4.1.1'
 }
 ```
 
@@ -119,7 +119,7 @@ Open your pom.xml file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>4.1.0</version>
+		  <version>4.1.1</version>
   	</dependency>
 <dependencies>
 ```
