@@ -274,7 +274,7 @@ This section will discuss possible parameters that can be sent over `Intent` for
 * **`Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN`** - with this extra you can prevent showing of dialog after each barcode scan. By default, each time scanner finds and decodes a barcode, a dialog with barcode's contents will be shown. To prevent this, use the following snippet:
 	
 	```java
-	// set the license key
+	// disable showing of dialog after scan
 	intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN, false);
 	```
 
