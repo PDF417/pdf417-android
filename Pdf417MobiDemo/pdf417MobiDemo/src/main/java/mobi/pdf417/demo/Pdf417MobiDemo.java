@@ -182,6 +182,13 @@ public class Pdf417MobiDemo extends Activity {
         // to intent
 //        intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN, false);
 
+        // if you want to enable pinch to zoom gesture, add following extra to intent
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_ALLOW_PINCH_TO_ZOOM, true);
+
+        // if you want Pdf417ScanActivity to display rectangle where camera is focusing,
+        // add following extra to intent
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_FOCUS_RECTANGLE, true);
+
         // Start Activity
         startActivityForResult(intent, MY_REQUEST_CODE);
     }
