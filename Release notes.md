@@ -1,5 +1,9 @@
 # Release notes
 
+## 4.2.0
+- ability to control camera zoom level
+- fixed NPE when null SuccessCallback was given
+
 ## 4.1.1
 - improved parsing of some problematic US Driver's Licence barcodes
 
