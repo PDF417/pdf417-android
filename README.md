@@ -13,7 +13,7 @@
   * [Customization of `Pdf417ScanActivity` activity](#scanActivityCustomization)
   * [Embedding `RecognizerView` into custom scan activity](#recognizerView)
   * [`RecognizerView` reference](#recognizerViewReference)
-  * [Using direct API for recognition of android Bitmaps](#directAPI)
+  * [Using direct API for recognition of Android Bitmaps](#directAPI)
 * [Recognition settings and results](#recognitionSettingsAndResults)
   * [Generic settings](#genericSettings)
   * [Scanning PDF417 barcodes](#pdf417Recognizer)
@@ -106,7 +106,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile 'com.microblink:pdf417.mobi:4.2.0'
+    compile 'com.microblink:pdf417.mobi:4.3.0'
 }
 ```
 
@@ -128,7 +128,7 @@ Open your pom.xml file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>4.2.0</version>
+		  <version>4.3.0</version>
   	</dependency>
 <dependencies>
 ```
@@ -239,6 +239,12 @@ This section will discuss possible parameters that can be sent over `Intent` for
 	
 	```java
 	intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE);
+	```
+	
+* **`Pdf417ScanActivity.EXTRAS_CAMERA_ASPECT_MODE`** - with this extra you can define which [camera aspect mode](javadoc/com/microblink/view/CameraAspectMode.html) will be used. If set to `ASPECT_FIT` (default), then camera preview will be letterboxed inside available view space. If set to `ASPECT_FILL`, camera preview will be zoomed and cropped to use the entire view space. To set the extra to intent, use the following code snippet:
+
+	```java
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_ASPECT_MODE, (Parcelable)CameraAspectMode.ASPECT_FIT);
 	```
 	
 * **`Pdf417ScanActivity.EXTRAS_RECOGNIZER_SETTINGS_ARRAY`** - with this extra you must set the array of `RecognizerSettings` objects. Each `RecognizerSettings` object will define settings for specific recognizer object. Each recognizer object then creates its version of `BaseRecognitionResult` object in array returned via `Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULT_LIST` extra. For more information about recognition settings and result, see [Recognition settings and results](#recognitionSettingsAndResults).  After defining recognition settings array, you need to put them into intent extra with following code snippet:
@@ -518,7 +524,7 @@ This method should be called in activity's `onConfigurationChanged` method. It w
 With this method you can define which camera on device will be used. Default camera used is back facing camera.
 
 ##### <a name="recognizerView_setAspectMode"></a> `setAspectMode(CameraAspectMode)`
-Define the aspect mode of camera. If set to `ASPECT_FIT` (default), then camera preview will be fit inside available view space. If set to `ASPECT_FILL`, camera preview will be zoomed and cropped to use the entire view space.
+Define the [aspect mode of camera](javadoc/com/microblink/view/CameraAspectMode.html). If set to `ASPECT_FIT` (default), then camera preview will be letterboxed inside available view space. If set to `ASPECT_FILL`, camera preview will be zoomed and cropped to use the entire view space.
 
 ##### <a name="recognizerView_setRecognitionSettings"></a> `setRecognitionSettings(RecognizerSettings[])`
 With this method you can set the array of `RecognizerSettings` objects. Those objects will contain information about what will be scanned and how will scan be performed. For more information about recognition settings and results see [Recognition settings and results](#recognitionSettingsAndResults). This method must be called before `create()`.
@@ -589,7 +595,7 @@ This method sets the license key that will unlock all features of the native lib
 ##### `setLicenseKey(String licenseKey, String licenseOwner)`
 Use this method to set a license key that is bound to a license owner, not the application package name. You will use this method when you obtain a license key that allows you to use _PDF417.mobi_ SDK in multiple applications. You can obtain your license key from [Microblink website](http://microblink.com/login).
 
-## <a name="directAPI"></a> Using direct API for recognition of android Bitmaps
+## <a name="directAPI"></a> Using direct API for recognition of Android Bitmaps
 
 This section will describe how to use direct API to recognize android Bitmaps without the need for camera. You can use direct API anywhere from your application, not just from activities.
 
@@ -661,7 +667,7 @@ This chapter will discuss various recognition settings used to configure differe
 Generic settings affect all enabled recognizers and the whole recognition process. The complete reference can be found in [javadoc](javadoc/com/microblink/recognizers/settings/GenericRecognizerSettings.html). Here is the list of methods that are most relevant:
 
 ##### `setAllowMultipleScanResultsOnSingleImage(boolean)`
-Sets whether or not outputting of multiple scan results from same image is allowed. If that is `true`, it is possible to return multiple recognition results from same image. By default, this option is `false`, i.e. the array of `BaseRecognitionResults` will contain at most 1 element. The upside of setting that option to `false` is the speed - if you enable lots of recognizers, as soon as the first recognizer succeeds in scanning, recognition chain will be terminated and other recognizers will not get a chance to analyze the image. The downside is that you are then unable to obtain multiple results from single image.
+Sets whether or not outputting of multiple scan results from same image is allowed. If that is `true`, it is possible to return multiple recognition results produced by different recognizers from same image. However, single recognizer can still produce only a single result from single image. By default, this option is `false`, i.e. the array of `BaseRecognitionResults` will contain at most 1 element. The upside of setting that option to `false` is the speed - if you enable lots of recognizers, as soon as the first recognizer succeeds in scanning, recognition chain will be terminated and other recognizers will not get a chance to analyze the image. The downside is that you are then unable to obtain multiple results from different recognizers from single image.
 
 ##### `setNumMsBeforeTimeout(int)`
 Sets the number of miliseconds _PDF417.mobi_ will attempt to perform the scan it exits with timeout error. On timeout returned array of `BaseRecognitionResults` might be null, empty or may contain only elements that are not valid (`isValid` returns `false`) or are empty (`isEmpty` returns `true`).
@@ -703,9 +709,6 @@ By setting this to `true`, you will allow scanning barcodes which don't have qui
 
 ##### `setInverseScanning(boolean)`
 By setting this to `true`, you will enable scanning of barcodes with inverse intensity values (i.e. white barcodes on dark background). This option can significantly increase recognition time. Default is `false`.
-
-##### `setAutoScaleDetection(boolean)`
-If set to `true`, prior reading barcode, image scale will be corrected. This enables correct reading of barcodes on high resolution images but slows down the recognition process. Default is `false`.
 
 ### Obtaining results from PDF417 recognizer
 PDF417 recognizer produces [Pdf417ScanResult](javadoc/com/microblink/recognizers/barcode/pdf417/Pdf417ScanResult.html). You can use `instanceof` operator to check if element in results array is instance of `Pdf417ScanResult` class. See the following snippet for an example:

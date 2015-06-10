@@ -30,6 +30,7 @@ import com.microblink.recognizers.barcode.zxing.ZXingScanResult;
 import com.microblink.recognizers.settings.GenericRecognizerSettings;
 import com.microblink.recognizers.settings.RecognizerSettings;
 import com.microblink.results.barcode.BarcodeDetailedData;
+import com.microblink.view.CameraAspectMode;
 import com.microblink.view.recognition.RecognizerView;
 
 import java.net.MalformedURLException;
@@ -188,6 +189,14 @@ public class Pdf417MobiDemo extends Activity {
         // if you want Pdf417ScanActivity to display rectangle where camera is focusing,
         // add following extra to intent
         intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_FOCUS_RECTANGLE, true);
+
+        // if you want to use camera fit aspect mode to letterbox the camera preview inside
+        // available activity space instead of cropping camera frame (default), add following
+        // extra to intent.
+        // Camera Fit mode does not look as nice as Camera Fill mode on all devices, especially on
+        // devices that have very different aspect ratios of screens and cameras. However, it allows
+        // all camera frame pixels to be processed - this is useful when reading very large barcodes.
+//        intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_ASPECT_MODE, (Parcelable) CameraAspectMode.ASPECT_FIT);
 
         // Start Activity
         startActivityForResult(intent, MY_REQUEST_CODE);
