@@ -119,7 +119,7 @@ public class Pdf417MobiDemo extends Activity {
         // set the license key (for commercial versions only) - obtain your key at
         // http://pdf417.mobi
         // after setting the correct license key,
-        intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "R3P2TG6U-O4CBA7TV-JLYGRAKQ-QIQQG2Z2-YLVAIBAE-AQCAIBAE-AQCAIBAE-AQCFKMFM"); // demo license key for package mobi.pdf417.demo
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "UDPICR2T-RA2LGTSD-YTEONPSJ-LE4WWOWC-5ICAIBAE-AQCAIBAE-AQCAIBAE-AQCFKMFM"); // demo license key for package mobi.pdf417.demo
 //
         // If you want to open front facing camera, uncomment the following line.
         // Note that front facing cameras do not have autofocus support, so it will not
