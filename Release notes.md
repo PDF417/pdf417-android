@@ -1,5 +1,9 @@
 # Release notes
 
+## 4.3.0
+- support for defining camera aspect mode via intent
+- removed autoscale setting from USDL and PDF417 recognizers - autoscale is now always used in those recognizers
+
 ## 4.2.0
 - ability to control camera zoom level
 - fixed NPE when null SuccessCallback was given
