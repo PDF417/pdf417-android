@@ -687,8 +687,6 @@ private RecognizerSettings[] setupSettingsArray() {
 	sett.setInverseScanning(false);
 	// allow scanning of barcodes that have invalid checksum
 	sett.setUncertainScanning(true);
-	// disable automatic scale detection
-	sett.setAutoScaleDetection(false);
 	// disable scanning of barcodes that do not have quiet zone
 	// as defined by the standard
 	sett.setNullQuietZoneAllowed(false);
