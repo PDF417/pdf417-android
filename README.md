@@ -755,8 +755,6 @@ private RecognizerSettings[] setupSettingsArray() {
 	USDLRecognizerSettings sett = new USDLRecognizerSettings();
 	// disallow scanning of barcodes that have invalid checksum
 	sett.setUncertainScanning(false);
-	// disable automatic scale detection
-	sett.setAutoScaleDetection(false);
 	// disable scanning of barcodes that do not have quiet zone
 	// as defined by the standard
 	sett.setNullQuietZoneAllowed(false);
