@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.3.1
+- fixed decoding error of certain PDF417 barcodes
+
 ## 4.3.0
 - support for defining camera aspect mode via intent
 - removed autoscale setting from USDL and PDF417 recognizers - autoscale is now always used in those recognizers
