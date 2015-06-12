@@ -1048,26 +1048,39 @@ However, there are some issues to be considered:
 If your final app is too large because of _PDF417.mobi_, you can decide to create multiple flavors of your app - one flavor for ARMv6, one for ARMv7 and one for x86 devices. With gradle and Android studio this is very easy - just add the following code to `build.gradle` file of your app:
 
 ```
-productFlavors {
-   x86 {
-       ndk {
-           abiFilter "x86"
-       }
-   }
-   armv7 {
-       ndk {
-           abiFilter "armeabi-v7a"
-       }
-   }
-   arm {
-       ndk {
-           abiFilter "armeabi"
-       }
-   }
+android {
+  ...
+  splits {
+    abi {
+      enable true
+      reset()
+      include 'x86', 'armeabi-v7a', 'armeabi'
+      universalApk true
+    }
+  }
 }
 ```
 
-With that build instructions, gradle will build three different APK files for your app. Each APK will contain only native library for one processor architecture. You can find more information about multiple APK support in Google Play Store on [this link](https://developer.android.com/google/play/publishing/multiple-apks.html).
+With that build instructions, gradle will build four different APK files for your app. Each APK will contain only native library for one processor architecture and one APK will contain all architectures. In order for Google Play to accept multiple APKs of the same app, you need to ensure that each APK has different version code. This can easily be done by defining a version code prefix that is dependent on architecture and adding real version code number to it in following gradle script:
+
+```
+// map for the version code
+def abiVersionCodes = ['armeabi':1, 'armeabi-v7a':2, 'x86':3]
+
+android.applicationVariants.all { variant ->
+    // assign different version code for each output
+    variant.outputs.each { output ->
+        def filter = output.getFilter(OutputFile.ABI)
+        if(filter != null) {
+            output.versionCodeOverride = abiVersionCodes.get(output.getFilter(OutputFile.ABI)) * 1000000 + android.defaultConfig.versionCode
+        }
+    }
+}
+```
+
+For more information about creating APK splits with gradle, check [this article from Google](https://sites.google.com/a/android.com/tools/tech-docs/new-build-system/user-guide/apk-splits#TOC-ABIs-Splits).
+
+After generating multiple APK's, you need to upload them to Google Play. For tutorial and rules about uploading multiple APK's to Google Play, please read the [official Google article about multiple APKs](https://developer.android.com/google/play/publishing/multiple-apks.html).
 
 However, if you are using Eclipse, things get complicated. Eclipse does not support build flavors and you will either need to remove support for some processors or create three different library projects from `LibRecognizer.aar` - each one for specific processor architecture. In the next section, we will discuss how to remove processor architecture support from Eclipse library project.
 
