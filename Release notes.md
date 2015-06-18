@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.3.2
+- fixed camera orientation detection when RecognizerView is not initialized with Activity context
+
 ## 4.3.1
 - fixed decoding error of certain PDF417 barcodes
 
