@@ -162,6 +162,7 @@ public class Pdf417MobiDemo extends Activity {
         ZXingRecognizerSettings zXingRecognizerSettings = new ZXingRecognizerSettings();
         // set this to true to enable scanning of QR codes
         zXingRecognizerSettings.setScanQRCode(true);
+        zXingRecognizerSettings.setScanITFCode(true);
 
         // finally, when you have defined your scanning settings, you should put them into array
         // and send that array over intent to scan activity

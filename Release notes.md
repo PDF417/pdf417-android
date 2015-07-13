@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.3.3
+- fixed bug in ITF barcode decoder
+
 ## 4.3.2
 - fixed camera orientation detection when RecognizerView is not initialized with Activity context
 
