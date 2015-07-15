@@ -21,6 +21,7 @@ import com.microblink.geometry.Quadrilateral;
 import com.microblink.geometry.Rectangle;
 import com.microblink.geometry.quadDrawers.QuadrilateralDrawer;
 import com.microblink.hardware.SuccessCallback;
+import com.microblink.recognition.InvalidLicenceKeyException;
 import com.microblink.recognizers.BaseRecognitionResult;
 import com.microblink.recognizers.settings.RecognizerSettings;
 import com.microblink.view.CameraAspectMode;
@@ -66,7 +67,13 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             // setup scanner parameters
-            mRecognizerView.setLicenseKey(extras.getString(Pdf417ScanActivity.EXTRAS_LICENSE_KEY));
+            try {
+                mRecognizerView.setLicenseKey(extras.getString(Pdf417ScanActivity.EXTRAS_LICENSE_KEY));
+            } catch (InvalidLicenceKeyException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Invalid licence key", Toast.LENGTH_SHORT).show();
+                finish();
+            }
             Parcelable[] settingsArrayRaw = extras.getParcelableArray(Pdf417ScanActivity.EXTRAS_RECOGNIZER_SETTINGS_ARRAY);
             // unfortunately, direct cast is not allowed, instead we need to cast each and every parcelable element from parcelable array
             // RecognizerSettings is abstract recognizer settings class. Every settings class described in pdf417MobiDemo inherits that class.

@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.4.0
+- added support for arm64, x86_64, mips and mip64 processor architectures
+
 ## 4.3.3
 - fixed bug in ITF barcode decoder
 

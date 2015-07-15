@@ -70,6 +70,8 @@
 </dd>
 <dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#addChildView(android.view.View, boolean)">addChildView(View, boolean)</a></span> - Method in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#addChildView(android.view.View, boolean, int)">addChildView(View, boolean, int)</a></span> - Method in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/activity/BaseScanActivity.html#addChildViews(com.microblink.view.recognition.RecognizerView)">addChildViews(RecognizerView)</a></span> - Method in class com.microblink.activity.<a href="./com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>
 <div class="block">adds fixed and rotatable views to given PhotoPayView</div>
@@ -263,6 +265,8 @@
 <dd>&nbsp;</dd>
 <dt><a href="./com/microblink/locale/package-summary.html">com.microblink.locale</a> - package com.microblink.locale</dt>
 <dd>&nbsp;</dd>
+<dt><a href="./com/microblink/recognition/package-summary.html">com.microblink.recognition</a> - package com.microblink.recognition</dt>
+<dd>&nbsp;</dd>
 <dt><a href="./com/microblink/recognizers/package-summary.html">com.microblink.recognizers</a> - package com.microblink.recognizers</dt>
 <dd>&nbsp;</dd>
 <dt><a href="./com/microblink/recognizers/barcode/package-summary.html">com.microblink.recognizers.barcode</a> - package com.microblink.recognizers.barcode</dt>
@@ -431,6 +435,10 @@
 <dt><a href="./com/microblink/view/recognition/DetectionStatus.html" title="enum in com.microblink.view.recognition"><span class="strong">DetectionStatus</span></a> - Enum in <a href="./com/microblink/view/recognition/package-summary.html">com.microblink.view.recognition</a></dt>
 <dd>
 <div class="block">Created by dodo on 07/10/14.</div>
+</dd>
+<dt><a href="./com/microblink/directApi/DirectApiErrorListener.html" title="interface in com.microblink.directApi"><span class="strong">DirectApiErrorListener</span></a> - Interface in <a href="./com/microblink/directApi/package-summary.html">com.microblink.directApi</a></dt>
+<dd>
+<div class="block">Created by dodo on 29/06/15.</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#dispatchTouchEvent(android.view.MotionEvent)">dispatchTouchEvent(MotionEvent)</a></span> - Method in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
@@ -934,10 +942,18 @@
 </dd>
 <dt><span class="strong"><a href="./com/microblink/activity/BaseScanActivity.html#initDebugStatus()">initDebugStatus()</a></span> - Method in class com.microblink.activity.<a href="./com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="strong"><a href="./com/microblink/directApi/Recognizer.html#initialize(android.content.Context, com.microblink.recognizers.settings.GenericRecognizerSettings, com.microblink.recognizers.settings.RecognizerSettings[])">initialize(Context, GenericRecognizerSettings, RecognizerSettings[])</a></span> - Method in class com.microblink.directApi.<a href="./com/microblink/directApi/Recognizer.html" title="class in com.microblink.directApi">Recognizer</a></dt>
+<dt><span class="strong"><a href="./com/microblink/directApi/Recognizer.html#initialize(android.content.Context, com.microblink.recognizers.settings.GenericRecognizerSettings, com.microblink.recognizers.settings.RecognizerSettings[], com.microblink.directApi.DirectApiErrorListener)">initialize(Context, GenericRecognizerSettings, RecognizerSettings[], DirectApiErrorListener)</a></span> - Method in class com.microblink.directApi.<a href="./com/microblink/directApi/Recognizer.html" title="class in com.microblink.directApi">Recognizer</a></dt>
 <dd>
 <div class="block">Initialize native library for recognition.</div>
 </dd>
+<dt><a href="./com/microblink/recognition/InvalidLicenceKeyException.html" title="class in com.microblink.recognition"><span class="strong">InvalidLicenceKeyException</span></a> - Exception in <a href="./com/microblink/recognition/package-summary.html">com.microblink.recognition</a></dt>
+<dd>
+<div class="block">Thrown when invalid licence key is set to library.</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognition/InvalidLicenceKeyException.html#InvalidLicenceKeyException(java.lang.String)">InvalidLicenceKeyException(String)</a></span> - Constructor for exception com.microblink.recognition.<a href="./com/microblink/recognition/InvalidLicenceKeyException.html" title="class in com.microblink.recognition">InvalidLicenceKeyException</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./com/microblink/recognition/InvalidLicenceKeyException.html#InvalidLicenceKeyException(java.lang.String, java.lang.Throwable)">InvalidLicenceKeyException(String, Throwable)</a></span> - Constructor for exception com.microblink.recognition.<a href="./com/microblink/recognition/InvalidLicenceKeyException.html" title="class in com.microblink.recognition">InvalidLicenceKeyException</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/bardecoder/BarDecoderRecognizerSettings.html#isAutoScaleDetectionEnabled()">isAutoScaleDetectionEnabled()</a></span> - Method in class com.microblink.recognizers.barcode.bardecoder.<a href="./com/microblink/recognizers/barcode/bardecoder/BarDecoderRecognizerSettings.html" title="class in com.microblink.recognizers.barcode.bardecoder">BarDecoderRecognizerSettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/results/ocr/OcrChar.html#isBold()">isBold()</a></span> - Method in class com.microblink.results.ocr.<a href="./com/microblink/results/ocr/OcrChar.html" title="class in com.microblink.results.ocr">OcrChar</a></dt>
@@ -1268,6 +1284,10 @@
 <dd>
 <div class="block">scan DataMatrix 2D barcode</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kDate">kDate</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Date parser</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html#kDateOfBirth">kDateOfBirth</a></span> - Static variable in class com.microblink.recognizers.barcode.usdl.<a href="./com/microblink/recognizers/barcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.barcode.usdl">USDLScanResult</a></dt>
 <dd>
 <div class="block">Mandatory on AAMVA 01, 02, 03, 04, 05, 06, 07, 08 and Compact encoding
@@ -1529,6 +1549,14 @@
 <div class="block">Optional on AAMVA 04, 05, 06, 07, 08 and Compact Encoding
 
      DHS required field that indicates that the cardholder has temporary lawful status = "1".</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kMacedonianAccount">kMacedonianAccount</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Macedonian account parser</div>
+</dd>
+<dt><span class="strong"><a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html#kMacedonianReference">kMacedonianReference</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/ParserSettingsKeys.html" title="class in com.microblink.recognizers.settings">ParserSettingsKeys</a></dt>
+<dd>
+<div class="block">Macedonian reference parser</div>
 </dd>
 <dt><span class="strong"><a href="./com/microblink/recognizers/settings/SettingsKeys.html#kMaxImageSize">kMaxImageSize</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="./com/microblink/recognizers/settings/SettingsKeys.html" title="class in com.microblink.recognizers.settings">SettingsKeys</a></dt>
 <dd>
@@ -1925,6 +1953,10 @@
 <dd>
 <div class="block">This text field contains debug status messages</div>
 </dd>
+<dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#mDeviceManager">mDeviceManager</a></span> - Variable in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>
+<div class="block">Device manager that will load device list from resources</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/view/BaseCameraView.html#mErrorState">mErrorState</a></span> - Variable in class com.microblink.view.<a href="./com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
 <div class="block">Flag indicating there has been an unrecoverable error</div>
@@ -2179,6 +2211,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/activity/BaseScanActivity.html#onPause()">onPause()</a></span> - Method in class com.microblink.activity.<a href="./com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="strong"><a href="./com/microblink/directApi/DirectApiErrorListener.html#onRecognizerError(java.lang.Throwable)">onRecognizerError(Throwable)</a></span> - Method in interface com.microblink.directApi.<a href="./com/microblink/directApi/DirectApiErrorListener.html" title="interface in com.microblink.directApi">DirectApiErrorListener</a></dt>
+<dd>
+<div class="block">Called when error occurs in recognizer initialization.</div>
+</dd>
 <dt><span class="strong"><a href="./com/microblink/activity/BaseScanActivity.html#onResume()">onResume()</a></span> - Method in class com.microblink.activity.<a href="./com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="strong"><a href="./com/microblink/activity/BaseScanActivity.html#onScanningDone(com.microblink.recognizers.BaseRecognitionResult[], RecognitionType)">onScanningDone(BaseRecognitionResult[], RecognitionType)</a></span> - Method in class com.microblink.activity.<a href="./com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
