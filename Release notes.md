@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.4.2
+- fixed camera orientation bug on Samsung GT-S5570I (regression from version 3.3.0)
+
 ## 4.4.1
 - fixed crash in Direct API when recognizer was terminated in the middle of recognition process
 
@@ -181,7 +184,7 @@
 ## 0.9.0
 - support for reading PDF417 with error correction 0 and 1
 - better support for Sony Xperia S
-- fixed 'invalid license key' bug when resumin application from background
+- fixed 'invalid license key' bug when resuming application from background
 
 ## 0.8.0
 - Initial release

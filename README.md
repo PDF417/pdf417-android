@@ -128,7 +128,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile 'com.microblink:pdf417.mobi:4.4.1'
+    compile 'com.microblink:pdf417.mobi:4.4.2'
 }
 ```
 
@@ -150,7 +150,7 @@ Open your pom.xml file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>4.4.1</version>
+		  <version>4.4.2</version>
   	</dependency>
 <dependencies>
 ```
@@ -1108,6 +1108,8 @@ With that build instructions, gradle will build four different APK files for you
 ```
 // map for the version code
 def abiVersionCodes = ['armeabi':1, 'armeabi-v7a':2, 'x86':3, 'arm64-v8a':4, 'mips':5, 'mips64':6, 'x86_64':7]
+
+import com.android.build.OutputFile
 
 android.applicationVariants.all { variant ->
     // assign different version code for each output
