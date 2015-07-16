@@ -1,5 +1,8 @@
 # Release notes
 
+## 4.4.1
+- fixed crash in Direct API when recognizer was terminated in the middle of recognition process
+
 ## 4.4.0
 - added support for arm64, x86_64, mips and mip64 processor architectures
 
