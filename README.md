@@ -78,7 +78,14 @@ The library contains one activity: `Pdf417ScanActivity`. It is responsible for c
 1. In Android Studio menu, click _File_, select _New_ and then select _Module_.
 2. In new window, select _Import .JAR or .AAR Package_, and click _Next_.
 3. In _File name_ field, enter the path to _LibRecognizer.aar_ and click _Finish_.
-4. If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
+4. In your app's `build.gradle`, add dependency to `LibRecognizer`:
+
+	```
+	dependencies {
+   		compile project(':LibRecognizer')
+	}
+	```
+5. If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
 	
 	```
 	-keep class com.microblink.** { *; }
@@ -88,7 +95,7 @@ The library contains one activity: `Pdf417ScanActivity`. It is responsible for c
 	-dontwarn android.hardware.**
 	-dontwarn android.support.v4.**
 	```
-5. Add _PDF417.mobi's_ dependencies. See [_PDF417.mobi's_ dependencies](#dependencies) section for more information.
+6. Add _PDF417.mobi's_ dependencies. See [_PDF417.mobi's_ dependencies](#dependencies) section for more information.
 	
 ## <a name="eclipseIntegration"></a> Eclipse integration instructions
 
@@ -233,7 +240,7 @@ To check whether the _PDF417.mobi_ is supported on the device, you can do it in 
 ```java
 // check if PDF417.mobi is supported on the device
 RecognizerCompatibilityStatus supportStatus = RecognizerCompatibility.getRecognizerCompatibilityStatus(this);
-if(status == RecognizerCompatibilityStatus.RECOGNIZER_SUPPORTED) {
+if(supportStatus == RecognizerCompatibilityStatus.RECOGNIZER_SUPPORTED) {
 	Toast.makeText(this, "PDF417.mobi is supported!", Toast.LENGTH_LONG).show();
 } else {
 	Toast.makeText(this, "PDF417.mobi is not supported! Reason: " + supportStatus.name(), Toast.LENGTH_LONG).show();
