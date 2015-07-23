@@ -33,6 +33,18 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
  	- Mandatory on all barcode versions, including compact encoding.
  - `USDLScanResult.kCustomerFirstName` - First name of the cardholder. 
  	- Mandatory on all barcode versions, including compact encoding.
+ - `USDLScanResult.kCustomerFullName` - 
+	- Mandatory on all barcode versions, including compact encoding. 	
+	- Full name of the individual holding the Driver License or ID as defined in
+ ANSI D20 Data Dictionary. (Lastname,Firstname,MI,suffix if any). This field contains four portions, separated with the "," delimiter: 
+ 	- Last Name (required)
+ 	- , (required)
+ 	- First Name (required)
+ 	- , (required if other name portions follow, otherwise optional)
+ 	- Middle Name(s) (optional)
+ 	- , (required if other name portions follow, otherwise optional)
+ 	- Suffix Code (optional)
+ 	- , (optional)
  - `USDLScanResult.kDateOfBirth` - Date on which the cardholder was born. (MMDDCCYY format). 
  	- Mandatory on all barcode versions, including compact encoding.
  - `USDLScanResult.kSex` - Gender of the cardholder. 
@@ -196,7 +208,7 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 - `USDLScanResult.kCustomerMiddleName` - Middle name(s) of the cardholder. In the case of multiple middle names they
  shall be separated by a comma ",".-
  	- Mandatory on AAMVA version 04, 05, 06, 07, 08, optional on 01. On other standards middle 
- name is included into value of USDLScanResult.kFirstName.
+ name is included into value of USDLScanResult.kCustomerFirstName.
 - `USDLScanResult.kHeightIn` - Height of cardholder. (FT/IN)
  	- FEET (1st char); Inches (2nd and 3rd char). Example: 509 = 5 ft., 9 in.
  	- Optional on 01.
@@ -204,16 +216,6 @@ Standard for US Driver's Licenses defines 9 different barcode standards (AAMVA v
 - `USDLScanResult.kHeightCm` - Height of cardholder in centimeters. 
 	- Optional on 01.
 	- See also USDLScanResult.kHeight, USDLScanResult.kHeightIn
-- `USDLScanResult.kCustomerFullName` - Full name of the individual holding the Driver License or ID as defined in
- ANSI D20 Data Dictionary. (Lastname,Firstname,MI,suffix if any). This field contains four portions, separated with the "," delimiter: 
- 	- Last Name (required)
- 	- , (required)
- 	- First Name (required)
- 	- , (required if other name portions follow, otherwise optional)
- 	- Middle Name(s) (optional)
- 	- , (required if other name portions follow, otherwise optional)
- 	- Suffix Code (optional)
- 	- , (optional)
 - `USDLScanResult.kFullAddress` - Cardholder address.
 	- Mandatory on compact encoding.
 - `USDLScanResult.kFamilyNameTruncation` - A code that indicates whether a field has been truncated (T), has not been
