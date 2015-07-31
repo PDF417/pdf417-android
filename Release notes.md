@@ -1,5 +1,9 @@
 # Release notes
 
+## 4.4.3
+- fixed extraction of street address and customer name from some US Driver Licenses
+- fixed crash when scanning specific PDF417 barcodes
+
 ## 4.4.2
 - fixed camera orientation bug on Samsung GT-S5570I (regression from version 3.3.0)
 
