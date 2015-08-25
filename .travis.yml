@@ -3,4 +3,6 @@ android:
     components:
         - build-tools-22.0.0
         - android-22
-script: ./travis/script.sh
+script:
+    - cd Pdf417MobiDemo
+    - ./gradlew clean assembleRelease
