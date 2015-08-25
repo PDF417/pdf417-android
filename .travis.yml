@@ -1,0 +1,5 @@
+language: android
+android:
+    - build-tools-22.0.0
+    - android-22
+script: ./travis/script.sh

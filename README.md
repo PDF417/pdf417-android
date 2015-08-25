@@ -1,5 +1,7 @@
 # _PDF417.mobi_ SDK for Android
 
+[![Build Status](https://travis-ci.org/PDF417/pdf417-android.png)](https://travis-ci.org/PDF417/pdf417-android)
+
 _PDF417.mobi_ SDK for Android is SDK that enables you to perform scans of various barcodes in your app. You can simply integrate the SDK into your app by following the instructions below and your app will be able to benefit the scanning feature for following barcode standards:
 
 * [PDF417 barcode](https://en.wikipedia.org/wiki/PDF417)
