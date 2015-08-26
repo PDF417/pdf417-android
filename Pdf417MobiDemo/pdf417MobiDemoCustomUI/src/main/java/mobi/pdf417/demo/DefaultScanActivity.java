@@ -239,7 +239,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
 
                 @Override
                 public void run() {
-                    mRecognizerView.resumeScanning();
+                    mRecognizerView.resumeScanning(true);
                 }
             }, 2000);
         }
@@ -278,6 +278,11 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
                 }
             });
         }
+    }
+
+    @Override
+    public void onCameraPreviewStopped() {
+
     }
 
     @Override
