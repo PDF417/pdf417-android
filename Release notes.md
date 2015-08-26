@@ -1,5 +1,17 @@
 # Release notes
 
+## 4.5.0
+- utilize Camera2 API on devices that support it to achieve much better frame grabbing performance
+- new algorithm for determining which video frame is of good enough quality to be processed - it uses much less memory than last one and works in separate thread so it does not impact image recognition thread
+	- this results in much better and faster scanning performance
+- support for [defining camera metering areas](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#setMeteringAreas(com.microblink.geometry.Rectangle[])) that will camera use to perform focus, exposure and white balance measurement.
+- bitmaps can now be processed while [RecognizerView](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html) is active using method [recognizeBitmap](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#recognizeBitmap(android.graphics.Bitmap, com.microblink.hardware.orientation.Orientation, com.microblink.view.recognition.ScanResultListener))
+- removed method `resumeScanningWithoutStateReset` - method [resumeScanning](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#resumeScanning(boolean)) now receives `boolean` indicating whether internal state should be reset
+- by default, null quiet zone is now set to `true` in US Driver's License recognizer
+- fixed rare crash when scanning PDF417 barcodes
+- added support for returning location of detected PDF417 barcode with [getPositionOnImage](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/barcode/pdf417/Pdf417ScanResult.html#getPositionOnImage())
+- in [ZXingRecognizer](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/barcode/zxing/ZXingRecognizerSettings.html) added [option](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/barcode/zxing/ZXingRecognizerSettings.html#setSlowThoroughScan(boolean)) to use slower, but more thorough scan algorithm
+
 ## 4.4.3
 - fixed extraction of street address and customer name from some US Driver Licenses
 - fixed crash when scanning specific PDF417 barcodes
