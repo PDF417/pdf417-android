@@ -54,7 +54,7 @@ public class Pdf417MobiDemo extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.layout.menu, menu);
+        menuInflater.inflate(R.menu.menu, menu);
         return true;
     }
 
