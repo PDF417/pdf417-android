@@ -1,5 +1,9 @@
 # Release notes
 
+## 4.5.2
+- fixed segfault in USDL parser
+- fixed parsing of some Canadian driver's licenses
+
 ## 4.5.1
 - fixed NullPointerException when RecognizerSettings array element was `null`
 
