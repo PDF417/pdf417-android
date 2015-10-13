@@ -1,5 +1,25 @@
 # Release notes
 
+## 4.6.0
+- improved USDL barcode parsing
+	- better handling of FullName, FullAddress, Height and Weight of cardholder
+- fixed race condition causing memory leak or rare crashes
+- fixed `NullPointerException` in `BaseCameraView.dispatchTouchEvent`
+- fixed bug that caused returning scan result from old video frame
+- fixed `NullPointerException` in camera2 management
+- fixed rare race condition in gesture recognizer
+- fixed segmentation fault on recognizer reconfiguration operation
+- fixed freeze when camera was being quickly turned on and off
+- ensured `RecognizerView` lifecycle methods are called on UI thread
+- ensure `onCameraPreviewStarted` is not called if camera is immediately closed after start before the call should have taken place
+- ensure `onScanningDone` is not called after `RecognizerView` has been paused, even if it had result ready just before pausing
+- added support for using _PDF417.mobi_ as camera capture API. To do that, implement following:
+	- when using `RecognizerView` do not call `setRecognitionSettings` or call it with `null` or empty array
+	- implement `ImageListener` interface and set the listener with `setImageListener`
+	- as a reminder - you can process video frames obtained that way using DirectAPI method `recognizeImageWithSettings`
+- added `Pdf417MobiDirectAPIDemo ` demo app that demonstrates how to perform scanning of [Android Bitmaps](https://developer.android.com/reference/android/graphics/Bitmap.html)
+- all demo apps now use Maven integration method because it is much easier than importing AAR manually
+
 ## 4.5.2
 - fixed segfault in USDL parser
 - fixed parsing of some Canadian driver's licenses
