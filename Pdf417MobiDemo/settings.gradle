@@ -1,1 +1,1 @@
-include ':pdf417MobiDemo', ':pdf417MobiDemoCustomUI', ':LibRecognizer'
+include ':pdf417MobiDemo', ':pdf417MobiDemoCustomUI', ':pdf417MobiDirectAPIDemo', ':LibRecognizer'

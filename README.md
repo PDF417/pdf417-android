@@ -27,9 +27,9 @@ See below for more information about how to integrate _PDF417.mobi_ SDK into you
 * [Android _PDF417.mobi_ integration instructions](#intro)
 * [Quick Start](#quickStart)
   * [Quick start with demo app](#quickDemo)
-  * [Quick integration of _PDF417.mobi_ into your app](#quickIntegration)
+  * [Integrating _PDF417.mobi_ into your project using Maven](#mavenIntegration)
+  * [Android studio integration instructions](#quickIntegration)
   * [Eclipse integration instructions](#eclipseIntegration)
-  * [How to integrate _PDF417.mobi_ into your project using Maven](#mavenIntegration)
   * [_PDF417.mobi's_ dependencies](#dependencies)
   * [Performing your first scan](#quickScan)
 * [Advanced _PDF417.mobi_ integration instructions](#advancedIntegration)
@@ -60,14 +60,13 @@ See below for more information about how to integrate _PDF417.mobi_ SDK into you
 
 The package contains Android Archive (AAR) that contains everything you need to use _PDF417.mobi_ library. Besides AAR, package also contains a demo project that contains following modules:
 
- - pdf417MobiDemo module demonstrates quick and simple integration of _PDF417.mobi_ library
- - pdf417MobiDemoCustomUI demonstrates advanced integration within custom scan activity
-
+- _Pdf417MobiDemo_ shows how to use simple Intent-based API to scan single barcode.
+- _Pdf417MobiDemoCustomUI_ demonstrates advanced integration within custom scan activity.
+- _Pdf417MobiDirectAPIDemo_ demonstrates how to perform scanning of [Android Bitmaps](https://developer.android.com/reference/android/graphics/Bitmap.html)
  
-_PDF417.mobi_ is supported on Android SDK version 10 (Android 2.3) or later.
+_PDF417.mobi_ is supported on Android SDK version 10 (Android 2.3.3) or later.
 
-
-The library contains one activity: `Pdf417ScanActivity`. It is responsible for camera control and recognition. If you create your own scanning UI, you will need to embed `RecognizerView` into your activity and pass activity's lifecycle events to it and it will control the camera and recognition process.
+The library contains one activity: `Pdf417ScanActivity`. It is responsible for camera control and recognition. You can also create your own scanning UI - you just need to embed `RecognizerView` into your activity and pass activity's lifecycle events to it and it will control the camera and recognition process. For more information, see [Embedding `RecognizerView` into custom scan activity](#recognizerView).
 
 # <a name="quickStart"></a> Quick Start
 
@@ -78,7 +77,66 @@ The library contains one activity: `Pdf417ScanActivity`. It is responsible for c
 3. In File dialog select _Pdf417MobiDemo_ folder.
 4. Wait for project to load. If Android studio asks you to reload project on startup, select `Yes`.
 
-## <a name="quickIntegration"></a> Quick integration of _PDF417.mobi_ into your app
+## <a name="mavenIntegration"></a> Integrating _PDF417.mobi_ into your project using Maven
+
+Maven repository for _PDF417.mobi_ SDK is: [http://maven.microblink.com](http://maven.microblink.com). If you do not want to perform integration via Maven, simply skip to [Android Studio integration instructions](#quickIntegration) or [Eclipse integration instructions](#eclipseIntegration).
+
+### Using gradle or Android Studio
+
+In your `build.gradle` you first need to add _PDF417.mobi_ maven repository to repositories list:
+
+```
+repositories {
+	maven { url 'http://maven.microblink.com' }
+}
+```
+
+After that, you just need to add _PDF417.mobi_ as a dependency to your application:
+
+```
+dependencies {
+    compile 'com.microblink:pdf417.mobi:4.6.0'
+}
+```
+
+If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
+	
+```
+-keep class com.microblink.** { *; }
+-keepclassmembers class com.microblink.** { *; }
+-dontwarn android.hardware.**
+-dontwarn android.support.v4.**
+```
+
+Finally, add _PDF417.mobi's_ dependencies. See [_PDF417.mobi's_ dependencies](#dependencies) section for more information.
+
+### Using android-maven-plugin
+
+[Android Maven Plugin](https://simpligility.github.io/android-maven-plugin/) v4.0.0 or newer is required.
+
+Open your `pom.xml` file and add these directives as appropriate:
+
+```xml
+<repositories>
+   	<repository>
+       	<id>MicroblinkRepo</id>
+       	<url>http://maven.microblink.com</url>
+   	</repository>
+</repositories>
+
+<dependencies>
+	<dependency>
+		  <groupId>com.microblink</groupId>
+		  <artifactId>pdf417.mobi</artifactId>
+		  <version>4.6.0</version>
+		  <type>aar</type>
+  	</dependency>
+</dependencies>
+```
+
+Do not forget to add _PDF417.mobi's_ dependencies to your app's dependencies. To see what are dependencies of _PDF417.mobi_, check section [_PDF417.mobi's_ dependencies](#dependencies).
+
+## <a name="quickIntegration"></a> Android studio integration instructions
 
 1. In Android Studio menu, click _File_, select _New_ and then select _Module_.
 2. In new window, select _Import .JAR or .AAR Package_, and click _Next_.
@@ -94,9 +152,7 @@ The library contains one activity: `Pdf417ScanActivity`. It is responsible for c
 	
 	```
 	-keep class com.microblink.** { *; }
-	-keepclassmembers class com.microblink.** {
-		*;
-	}
+	-keepclassmembers class com.microblink.** { *; }
 	-dontwarn android.hardware.**
 	-dontwarn android.support.v4.**
 	```
@@ -112,64 +168,16 @@ However, if you still want to use Eclipse, you will need to convert AAR archive 
 2. Clear the `src` and `res` folders.
 3. Unzip the `LibRecognizer.aar` file. You can rename it to zip and then unzip it or use any tool.
 4. Copy the `classes.jar` to `libs` folder of your Eclipse library project. If `libs` folder does not exist, create it.
-5. Copy `android-support-v4.jar` to `libs` folder of your Eclipse library project. You can find `android-support-v4.jar` in `/path/to/your/android/SDK/extras/android/support/v4/android-support-v4.jar`.
-6. Copy the contents of `jni` folder to `libs` folder of your Eclipse library project.
-7. Replace the `res` folder on library project with the `res` folder of the `LibRecognizer.aar` file.
+5. Copy the contents of `jni` folder to `libs` folder of your Eclipse library project.
+6. Replace the `res` folder on library project with the `res` folder of the `LibRecognizer.aar` file.
 
 You’ve already created the project that contains almost everything you need. Now let’s see how to configure your project to reference this library project.
 
 1. In the project you want to use the library (henceforth, "target project") add the library project as a dependency
 2. Open the `AndroidManifest.xml` file inside `LibRecognizer.aar` file and make sure to copy all permissions, features and activities to the `AndroidManifest.xml` file of the target project.
 3. Clean and Rebuild your target project
-4. Add _PDF417.mobi's_ dependencies. See [_PDF417.mobi's_ dependencies](#dependencies) section for more information.
-
-## <a name="mavenIntegration"></a> How to integrate _PDF417.mobi_ into your project using Maven
-
-Maven repository for _PDF417.mobi_ SDK is: [http://maven.microblink.com](http://maven.microblink.com).
-
-### Using gradle
-In your build.gradle you first need to add _PDF417.mobi_ maven repository to repositories list:
-
-```
-repositories {
-	maven { url 'http://maven.microblink.com' }
-}
-```
-
-After that, you just need to add _PDF417.mobi_ as a dependency to your application:
-
-```
-dependencies {
-    compile 'com.microblink:pdf417.mobi:4.5.2'
-}
-```
-
-Do not forget to add _PDF417.mobi's_ dependencies to your app's dependencies. To see what are dependencies of _PDF417.mobi_, check section [_PDF417.mobi's_ dependencies](#dependencies).
-
-### Using android-maven-plugin
-
-Open your pom.xml file and add these directives as appropriate:
-
-```xml
-<repositories>
-   	<repository>
-       	<id>MicroblinkRepo</id>
-       	<url>http://maven.microblink.com</url>
-   	</repository>
-</repositories>
-
-<dependencies>
-	<dependency>
-		  <groupId>com.microblink</groupId>
-		  <artifactId>pdf417.mobi</artifactId>
-		  <version>4.5.2</version>
-  	</dependency>
-<dependencies>
-```
-
-Maven dependency requires android-maven-plugin version 4.0.0 (AAR support is required).
-
-Do not forget to add _PDF417.mobi's_ dependencies to your app's dependencies. To see what are dependencies of _PDF417.mobi_, check section [_PDF417.mobi's_ dependencies](#dependencies).
+4. If you plan to use ProGuard, add same statements as in [Android studio guide](#quickIntegration) to your ProGuard configuration file.
+5. Add _PDF417.mobi's_ dependencies. See [_PDF417.mobi's_ dependencies](#dependencies) section for more information.
 
 ## <a name="dependencies"></a> _PDF417.mobi's_ dependencies
 
@@ -233,7 +241,7 @@ This section will cover more advanced details in _PDF417.mobi_ integration. Firs
 ### _PDF417.mobi_ requirements
 Even before starting the scan activity, you should check if _PDF417.mobi_ is supported on current device. In order to be supported, device needs to have camera. 
 
-Android 2.3 is the minimum android version on which _PDF417.mobi_ is supported, but if required we may support even Android 2.2 devices, however additional testing on those devices will be required.
+Android 2.3 is the minimum android version on which _PDF417.mobi_ is supported.
 
 Camera video preview resolution also matters. In order to perform successful scans, camera preview resolution cannot be too low. _PDF417.mobi_ requires minimum 320p camera preview resolution in order to perform scan. It must be noted that camera preview resolution is not the same as the video record resolution, although on most devices those are the same. However, there are some devices that allow recording of HD video (720p resolution), but do not allow high enough camera preview resolution (for example, [Sony Xperia Go](http://www.gsmarena.com/sony_xperia_go-4782.php) supports video record resolution at 720p, but camera preview resolution is only 320p - _PDF417.mobi_ does not work on that device).
 
@@ -337,7 +345,7 @@ This section will discuss possible parameters that can be sent over `Intent` for
 	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSEE, "Enter_Licensee_Here");
 	```
 
-* **`Pdf417ScanActivity.EXTRAS_IMAGE_LISTENER`** - with this extra you can set your implementation of [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) that will obtain images that are being processed. Make sure that your [ImageListener](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) implementation correctly implements [Parcelable](https://developer.android.com/reference/android/os/Parcelable.html) interface with static [CREATOR](https://developer.android.com/reference/android/os/Parcelable.Creator.html) field. Without this, you might encounter a runtime error. For more information and example, see [Using ImageListener to obtain images that are being processed](#imageListener)
+* **`Pdf417ScanActivity.EXTRAS_IMAGE_LISTENER`** - with this extra you can set your implementation of [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) that will obtain images that are being processed. Make sure that your [ImageListener](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) implementation correctly implements [Parcelable](https://developer.android.com/reference/android/os/Parcelable.html) interface with static [CREATOR](https://developer.android.com/reference/android/os/Parcelable.Creator.html) field. Without this, you might encounter a runtime error. For more information and example, see [Using ImageListener to obtain images that are being processed](#imageListener). Please make sure that images that you obtained with ImageListener given over Intent cannot be used for processing via [DirectAPI](#directAPI). If you are interested in using [DirectAPI](#directAPI) together with [RecognizerView](#recognizerView), please [check this section](#directAPIWithRecognizer).
 
 * **`Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN`** - with this extra you can prevent showing of dialog after each barcode scan. By default, each time scanner finds and decodes a barcode, a dialog with barcode's contents will be shown. To prevent this, use the following snippet:
 	
@@ -542,7 +550,7 @@ __Important__
 If you use `sensor` or similar screen orientation for your scan activity there is a catch. No matter if your activity is set to be restarted on configuration change or only notified via `onConfigurationChanged` method, if your activity's orientation is changed from `portrait` to `reversePortrait` or from `landscape` to `reverseLandscape` or vice versa, your activity will not be notified of this change in any way - it will not be neither restarted nor `onConfigurationChanged` will be called - the views in your activity will just be rotated by 180 degrees. This is a problem because it will make your camera preview upside down. In order to fix this, you first need to [find a way how to get notified of this change](https://stackoverflow.com/questions/9909037/how-to-detect-screen-rotation-through-180-degrees-from-landscape-to-landscape-or) and then you should call `changeConfiguration` method of `RecognizerView` so it will correct camera preview orientation.
 
 ## <a name="recognizerViewReference"></a> `RecognizerView` reference
-The complete reference of `RecognizerView` is available in [Javadoc](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html). The usage example is provided in ` - pdf417MobiDemoCustomUI demonstrates advanced integration within custom scan activity` demo app provided with SDK. This section just gives a quick overview of `RecognizerView's` most important methods.
+The complete reference of `RecognizerView` is available in [Javadoc](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html). The usage example is provided in `pdf417MobiDemoCustomUI` demo app provided with SDK. This section just gives a quick overview of `RecognizerView's` most important methods.
 
 ##### <a name="recognizerView_create"></a> `create()`
 This method should be called in activity's `onCreate` method. It will initialize `RecognizerView's` internal fields and will initialize camera control thread. This method must be called after all other settings are already defined, such as listeners and recognition settings. After calling this method, you can add child views to `RecognizerView` with method `addChildView(View, boolean)`.
@@ -974,6 +982,9 @@ By setting this to `true`, you will enable scanning of non-standard elements, bu
 ##### `setNullQuietZoneAllowed(boolean)`
 By setting this to `true`, you will allow scanning barcodes which don't have quiet zone surrounding it (e.g. text concatenated with barcode). This option can significantly increase recognition time. Default is `true`.
 
+##### `setScan1DBarcodes(boolean)`
+Some driver's licenses contain 1D Code39 and Code128 barcodes alongside PDF417 barcode. These barcodes usually contain only reduntant information and are therefore not read by default. However, if you feel that some information is missing, you can enable scanning of those barcodes by setting this to `true`.
+
 ### Obtaining results from USDL recognizer
 
 USDL recognizer produces [USDLScanResult](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/barcode/usdl/USDLScanResult.html). You can use `instanceof` operator to check if element in results array is instance of `USDLScanResult`. See the following snippet for an example:
@@ -1278,7 +1289,7 @@ With that build instructions, gradle will build four different APK files for you
 
 ```
 // map for the version code
-def abiVersionCodes = ['armeabi':1, 'armeabi-v7a':2, 'x86':3, 'arm64-v8a':4, 'mips':5, 'mips64':6, 'x86_64':7]
+def abiVersionCodes = ['armeabi':1, 'armeabi-v7a':2, 'arm64-v8a':3, 'mips':4, 'mips64':5, 'x86':6, 'x86_64':7]
 
 import com.android.build.OutputFile
 

@@ -11,5 +11,13 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url 'http://maven.microblink.com' }
+//        mavenLocal()
     }
+}
+
+// versions of libraries that all modules require
+
+project.ext {
+    pdf417MobiVersion = '4.6.0'
 }
