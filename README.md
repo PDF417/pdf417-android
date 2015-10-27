@@ -95,7 +95,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile 'com.microblink:pdf417.mobi:4.6.0'
+    compile 'com.microblink:pdf417.mobi:4.7.0'
 }
 ```
 
@@ -128,7 +128,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>4.6.0</version>
+		  <version>4.7.0</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>
@@ -328,6 +328,11 @@ This section will discuss possible parameters that can be sent over `Intent` for
 
 	```java
 	intent.putExtra(Pdf417ScanActivity.EXTRAS_ALLOW_PINCH_TO_ZOOM, true);
+	```
+* **`Pdf417ScanActivity.EXTRAS_CAMERA_VIDEO_PRESET`** - with this extra you can set the video resolution preset that will be used when choosing camera resolution for scanning. For more information, see [javadoc](https://pdf417.github.io/pdf417-android/com/microblink/hardware/camera/VideoResolutionPreset.html). For example, to use 720p video resolution preset, use the following code snippet:
+
+	```java
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_VIDEO_PRESET, (Parcelable)VideoResolutionPreset.VIDEO_RESOLUTION_720p);
 	```
 
 * **`Pdf417ScanActivity.EXTRAS_LICENSE_KEY`** - with this extra you can set the license key for _PDF417.mobi_. You can obtain your licence key from [Microblink website](http://microblink.com/login) or you can contact us at [http://help.microblink.com](http://help.microblink.com). Once you obtain a license key, you can set it with following snippet:
@@ -578,6 +583,9 @@ With this method you can define which camera on device will be used. Default cam
 
 ##### <a name="recognizerView_setAspectMode"></a> `setAspectMode(CameraAspectMode)`
 Define the [aspect mode of camera](https://pdf417.github.io/pdf417-android/com/microblink/view/CameraAspectMode.html). If set to `ASPECT_FIT` (default), then camera preview will be letterboxed inside available view space. If set to `ASPECT_FILL`, camera preview will be zoomed and cropped to use the entire view space.
+
+##### <a name="recognizerView_setVideoResolutionPreset"></a> `setVideoResolutionPreset(VideoResolutionPreset)`
+Define the [video resolution preset](https://pdf417.github.io/pdf417-android/com/microblink/hardware/camera/VideoResolutionPreset.html) that will be used when choosing camera resolution for scanning.
 
 ##### <a name="recognizerView_setRecognitionSettings"></a> `setRecognitionSettings(RecognizerSettings[])`
 With this method you can set the array of `RecognizerSettings` objects. Those objects will contain information about what will be scanned and how will scan be performed. For more information about recognition settings and results see [Recognition settings and results](#recognitionSettingsAndResults). This method must be called before `create()`.

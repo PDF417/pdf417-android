@@ -19,5 +19,5 @@ allprojects {
 // versions of libraries that all modules require
 
 project.ext {
-    pdf417MobiVersion = '4.6.0'
+    pdf417MobiVersion = '4.7.0'
 }
