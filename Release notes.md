@@ -1,5 +1,11 @@
 # Release notes
 
+## 4.7.0
+- fixed autofocus issue on devices that do not support continuous autofocus
+- support for defining camera video resolution preset
+	- to define video resolution preset via Intent, use `Pdf417ScanActivity.EXTRAS_CAMERA_VIDEO_PRESET`
+	- to define video resolution preset on `RecognizerView`, use method `setVideoResolutionPreset`
+
 ## 4.6.0
 - improved USDL barcode parsing
 	- better handling of FullName, FullAddress, Height and Weight of cardholder
