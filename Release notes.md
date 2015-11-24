@@ -1,5 +1,13 @@
 # Release notes
 
+## 5.0.0
+- new API which is easier to understand, but is not backward compatible. Please check [README](README.md) and updated demo applications for more information.
+- added official support for Android 6.0 and it's runtime camera permissions
+	- if using provided _Pdf417ScanActivity_, the logic behind asking user to give camera permission is handled internally
+	- if integrating using custom UI, you are required to ask user to give you permission to use camera. To make this easier, we have provided a _CameraPermissionManager_ class which does all heavylifting code about managing states when asking user for camera permission. Refer to demo apps to see how it is used.
+- PDF417.mobi SDK now depends on appcompat-v7 library
+
+
 ## 4.7.0
 - fixed autofocus issue on devices that do not support continuous autofocus
 - support for defining camera video resolution preset
