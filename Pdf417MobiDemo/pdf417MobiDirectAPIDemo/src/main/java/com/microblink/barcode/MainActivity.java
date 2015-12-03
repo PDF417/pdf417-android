@@ -16,13 +16,15 @@ import android.widget.Toast;
 import com.microblink.directApi.DirectApiErrorListener;
 import com.microblink.directApi.Recognizer;
 import com.microblink.hardware.orientation.Orientation;
+import com.microblink.recognition.FeatureNotSupportedException;
 import com.microblink.recognition.InvalidLicenceKeyException;
 import com.microblink.recognizers.BaseRecognitionResult;
-import com.microblink.recognizers.barcode.pdf417.Pdf417RecognizerSettings;
-import com.microblink.recognizers.barcode.pdf417.Pdf417ScanResult;
-import com.microblink.recognizers.barcode.zxing.ZXingRecognizerSettings;
-import com.microblink.recognizers.barcode.zxing.ZXingScanResult;
-import com.microblink.recognizers.settings.GenericRecognizerSettings;
+import com.microblink.recognizers.RecognitionResults;
+import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417RecognizerSettings;
+import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417ScanResult;
+import com.microblink.recognizers.blinkbarcode.zxing.ZXingRecognizerSettings;
+import com.microblink.recognizers.blinkbarcode.zxing.ZXingScanResult;
+import com.microblink.recognizers.settings.RecognitionSettings;
 import com.microblink.recognizers.settings.RecognizerSettings;
 import com.microblink.view.recognition.RecognitionType;
 import com.microblink.view.recognition.ScanResultListener;
@@ -32,6 +34,10 @@ import java.io.InputStream;
 
 
 public class MainActivity extends Activity {
+
+    // obtain your licence key at http://microblink.com/login or
+    // contact us at http://help.microblink.com
+    private static final String LICINSE_KEY = "LF4HOK6C-2CBLHLKC-2W32Z7CV-Z5Y5Z644-XIDIRD7F-ZFRKASEV-MTUXMWH6-7BSYYAS4";
 
     private static final String TAG = "DirectApiDemo";
 
@@ -50,11 +56,26 @@ public class MainActivity extends Activity {
     protected void onStart() {
         super.onStart();
 
-        mRecognizer = Recognizer.getSingletonInstance();
-
-        // set license key
+        // get the recognizer instance
         try {
-            mRecognizer.setLicenseKey(this, "LF4HOK6C-2CBLHLKC-2W32Z7CV-Z5Y5Z644-XIDIRD7F-ZFRKASEV-MTUXMWH6-7BSYYAS4");
+            mRecognizer = Recognizer.getSingletonInstance();
+        } catch (FeatureNotSupportedException e) {
+            Toast.makeText(this, "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
+        // In order for scanning to work, you must enter a valid licence key. Without licence key,
+        // scanning will not work. Licence key is bound the the package name of your app, so when
+        // obtaining your licence key from Microblink make sure you give us the correct package name
+        // of your app. You can obtain your licence key at http://microblink.com/login or contact us
+        // at http://help.microblink.com.
+        // Licence key also defines which recognizers are enabled and which are not. Since the licence
+        // key validation is performed on image processing thread in native code, all enabled recognizers
+        // that are disallowed by licence key will be turned off without any error and information
+        // about turning them off will be logged to ADB logcat.
+        try {
+            mRecognizer.setLicenseKey(this, LICINSE_KEY);
         } catch (InvalidLicenceKeyException e) {
             Log.e(TAG, "Failed to set licence key!");
             Toast.makeText(this, "Failed to set licence key!", Toast.LENGTH_LONG).show();
@@ -62,17 +83,26 @@ public class MainActivity extends Activity {
             return;
         }
 
-        // activate PDF417 and ZXing QR code recognition
+        // prepare settings for PDF417 and ZXing QR code recognition
         Pdf417RecognizerSettings pdf417Sett = new Pdf417RecognizerSettings();
         ZXingRecognizerSettings zxingSett = new ZXingRecognizerSettings();
         zxingSett.setScanQRCode(true);
 
+        // prepare recognition settings
+        RecognitionSettings recognitionSettings = new RecognitionSettings();
+        // add settings objects to recognizer settings array
+        // Pdf417Recognizer and ZXingRecognizer will be used in the recognition process
+        recognitionSettings.setRecognizerSettingsArray(
+                new RecognizerSettings[]{pdf417Sett, zxingSett});
+
+        // additionally, there are generic settings that are used by all recognizers or the
+        // whole recognition process
+
         // allow returning multiple scan results from single image
-        GenericRecognizerSettings genSett = new GenericRecognizerSettings();
-        genSett.setAllowMultipleScanResultsOnSingleImage(true);
+        recognitionSettings.setAllowMultipleScanResultsOnSingleImage(true);
 
         // initialize recognizer singleton
-        mRecognizer.initialize(this, genSett, new RecognizerSettings[] {pdf417Sett, zxingSett}, new DirectApiErrorListener() {
+        mRecognizer.initialize(this, recognitionSettings, new DirectApiErrorListener() {
             @Override
             public void onRecognizerError(Throwable throwable) {
                 Log.e(TAG, "Failed to initialize recognizer.", throwable);
@@ -102,7 +132,6 @@ public class MainActivity extends Activity {
         }
 
         if(bitmap != null) {
-            mRecognizer.setOrientation(Orientation.ORIENTATION_LANDSCAPE_RIGHT);
             // disable button
             mScanAssetBtn.setEnabled(false);
             // show progress dialog
@@ -112,10 +141,10 @@ public class MainActivity extends Activity {
             pd.setCancelable(false);
             pd.show();
             // recognize image
-            mRecognizer.recognize(bitmap, new ScanResultListener() {
+            mRecognizer.recognizeBitmap(bitmap, Orientation.ORIENTATION_LANDSCAPE_RIGHT, new ScanResultListener() {
                 @Override
-                public void onScanningDone(BaseRecognitionResult[] resultArray, RecognitionType recognitionType) {
-
+                public void onScanningDone(RecognitionResults results) {
+                    BaseRecognitionResult[] resultArray = results.getRecognitionResults();
                     if (resultArray != null && resultArray.length > 0) {
                         StringBuilder totalResult = new StringBuilder();
 
