@@ -1,42 +1,41 @@
 package mobi.pdf417.demo;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.microblink.activity.Pdf417ScanActivity;
-import com.microblink.recognizers.barcode.BarcodeType;
-import com.microblink.recognizers.barcode.bardecoder.BarDecoderRecognizerSettings;
-import com.microblink.recognizers.barcode.bardecoder.BarDecoderScanResult;
-import com.microblink.recognizers.barcode.pdf417.Pdf417RecognizerSettings;
-import com.microblink.recognizers.barcode.pdf417.Pdf417ScanResult;
-import com.microblink.recognizers.barcode.usdl.USDLRecognizerSettings;
-import com.microblink.recognizers.barcode.usdl.USDLScanResult;
-import com.microblink.recognizers.barcode.zxing.ZXingRecognizerSettings;
-import com.microblink.recognizers.barcode.zxing.ZXingScanResult;
-import com.microblink.recognizers.settings.GenericRecognizerSettings;
+import com.microblink.recognizers.BaseRecognitionResult;
+import com.microblink.recognizers.RecognitionResults;
+import com.microblink.recognizers.blinkbarcode.BarcodeType;
+import com.microblink.recognizers.blinkbarcode.bardecoder.BarDecoderRecognizerSettings;
+import com.microblink.recognizers.blinkbarcode.bardecoder.BarDecoderScanResult;
+import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417RecognizerSettings;
+import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417ScanResult;
+import com.microblink.recognizers.blinkbarcode.usdl.USDLRecognizerSettings;
+import com.microblink.recognizers.blinkbarcode.usdl.USDLScanResult;
+import com.microblink.recognizers.blinkbarcode.zxing.ZXingRecognizerSettings;
+import com.microblink.recognizers.blinkbarcode.zxing.ZXingScanResult;
+import com.microblink.recognizers.settings.RecognitionSettings;
 import com.microblink.recognizers.settings.RecognizerSettings;
 import com.microblink.results.barcode.BarcodeDetailedData;
-import com.microblink.view.CameraAspectMode;
+import com.microblink.util.Log;
 import com.microblink.view.recognition.RecognizerView;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Pdf417MobiDemo extends Activity {
+
+    // demo license key for package com.microblink.barcode
+    // obtain your licence key at http://microblink.com/login or
+    // contact us at http://help.microblink.com
+    private static final String LICENSE_KEY = "LF4HOK6C-2CBLHLKC-2W32Z7CV-Z5Y5Z644-XIDIRD7F-ZFRKASEV-MTUXMWH6-7BSYYAS4";
 
     private static final int MY_REQUEST_CODE = 1337;
 
@@ -45,21 +44,16 @@ public class Pdf417MobiDemo extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /** request full screen window without title bar (looks better :-) ) */
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        TextView tvVersion = (TextView) findViewById(R.id.tvVersion);
+        tvVersion.setText(buildVersionString());
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @SuppressWarnings("deprecation")
-    private void showVersionString() {
+    /**
+     * Builds string which contains information about application version and library version.
+     * @return String which contains information about application version and library version.
+     */
+    private String buildVersionString() {
         String nativeVersionString = RecognizerView.getNativeLibraryVersionString();
         PackageInfo pInfo;
         try {
@@ -74,37 +68,10 @@ public class Pdf417MobiDemo extends Activity {
             infoStr.append(appVersionCode);
             infoStr.append("\nLibrary version: ");
             infoStr.append(nativeVersionString);
-
-            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle("Version info");
-            alertDialog.setMessage(infoStr.toString());
-
-            alertDialog.setButton(this.getString(R.string.photopayOK), new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (dialog != null) {
-                        dialog.dismiss();
-                    }
-                }
-            });
-
-            alertDialog.setCancelable(false);
-            alertDialog.show();
+            return infoStr.toString();
         } catch (NameNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            return "";
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case R.id.menu_version:
-            showVersionString();
-            return true;
-        }
-        return false;
     }
 
     public void btnScan_click(View v) {
@@ -116,15 +83,20 @@ public class Pdf417MobiDemo extends Activity {
         // put here the resource ID of your sound file. (optional)
         intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
 
-        // set the license key (for commercial versions only) - obtain your key at
-        // http://pdf417.mobi
-        // after setting the correct license key,
-        intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "LF4HOK6C-2CBLHLKC-2W32Z7CV-Z5Y5Z644-XIDIRD7F-ZFRKASEV-MTUXMWH6-7BSYYAS4"); // demo license key for package com.microblink.barcode
-//
+        // In order for scanning to work, you must enter a valid licence key. Without licence key,
+        // scanning will not work. Licence key is bound the the package name of your app, so when
+        // obtaining your licence key from Microblink make sure you give us the correct package name
+        // of your app. You can obtain your licence key at http://microblink.com/login or contact us
+        // at http://help.microblink.com.
+        // Licence key also defines which recognizers are enabled and which are not. Since the licence
+        // key validation is performed on image processing thread in native code, all enabled recognizers
+        // that are disallowed by licence key will be turned off without any error and information
+        // about turning them off will be logged to ADB logcat.
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, LICENSE_KEY);
         // If you want to open front facing camera, uncomment the following line.
         // Note that front facing cameras do not have autofocus support, so it will not
         // be possible to scan denser and smaller codes.
-//        intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE);
+//        intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable) CameraType.CAMERA_FRONTFACE);
 
         // You need to define array of recognizer settings. There are 4 types of recognizers available
         // in PDF417.mobi SDK.
@@ -164,21 +136,28 @@ public class Pdf417MobiDemo extends Activity {
         zXingRecognizerSettings.setScanQRCode(true);
         zXingRecognizerSettings.setScanITFCode(true);
 
-        // finally, when you have defined your scanning settings, you should put them into array
-        // and send that array over intent to scan activity
+        // finally, when you have defined settings for each recognizer you want to use,
+        // you should put them into array held by global settings object
 
-        RecognizerSettings[] settArray = new RecognizerSettings[] {pdf417RecognizerSettings, oneDimensionalRecognizerSettings, zXingRecognizerSettings, usdlRecognizerSettings};
-        // use Pdf417ScanActivity.EXTRAS_RECOGNIZER_SETTINGS_ARRAY to set array of recognizer settings
-        intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNIZER_SETTINGS_ARRAY, settArray);
+        RecognitionSettings recognitionSettings = new RecognitionSettings();
+        // add settings objects to recognizer settings array
+        // Pdf417Recognizer, BarDecoderRecognizer, USDLRecognizer and ZXingRecognizer
+        //  will be used in the recognition process
+        recognitionSettings.setRecognizerSettingsArray(
+                new RecognizerSettings[]{pdf417RecognizerSettings, oneDimensionalRecognizerSettings,
+                        usdlRecognizerSettings, zXingRecognizerSettings});
 
         // additionally, there are generic settings that are used by all recognizers or the
         // whole recognition process
-        GenericRecognizerSettings genericSettings = new GenericRecognizerSettings();
+
         // set this to true to enable returning of multiple scan results from single camera frame
         // default is false, which means that as soon as first barcode is found (no matter which type)
         // its contents will be returned.
-        genericSettings.setAllowMultipleScanResultsOnSingleImage(true);
-        intent.putExtra(Pdf417ScanActivity.EXTRAS_GENERIC_SETTINGS, genericSettings);
+        recognitionSettings.setAllowMultipleScanResultsOnSingleImage(true);
+
+        // finally send that settings object over intent to scan activity
+        // use Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS to set recognizer settings
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS, recognitionSettings);
 
         // if you do not want the dialog to be shown when scanning completes, add following extra
         // to intent
@@ -203,31 +182,15 @@ public class Pdf417MobiDemo extends Activity {
         startActivityForResult(intent, MY_REQUEST_CODE);
     }
 
-    public void btnInfo_click(View v) {
-        int vid = v.getId();
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        switch (vid) {
-        case R.id.btnGitHub: {
-            intent.setData(Uri.parse("https://github.com/PDF417/Android"));
-            break;
-        }
-        case R.id.btnFacebook: {
-            intent.setData(Uri.parse("https://www.facebook.com/pdf417mobi"));
-            break;
-        }
-        case R.id.btnInfo: {
-            intent.setData(Uri.parse("http://pdf417.mobi"));
-            break;
-        }
-        }
-        startActivity(intent);
-    }
-
+    /**
+     * Checks whether data is URL and in case of URL data creates intent and starts activity.
+     * @param data String to check.
+     * @return If data is URL returns {@code true}, else returns {@code false}.
+     */
     private boolean checkIfDataIsUrlAndCreateIntent(String data) {
         // if barcode contains URL, create intent for browser
         // else, contain intent for message
         boolean barcodeDataIsUrl;
-
         try {
             @SuppressWarnings("unused")
             URL url = new URL(data);
@@ -242,17 +205,17 @@ public class Pdf417MobiDemo extends Activity {
             intent.setData(Uri.parse(data));
             startActivity(intent);
         }
-
         return barcodeDataIsUrl;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == MY_REQUEST_CODE && resultCode == Pdf417ScanActivity.RESULT_OK) {
-            // First, obtain scan results array. If scan was successful, array will contain at least one element.
+            // First, obtain recognition result
+            RecognitionResults results = data.getParcelableExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULTS);
+            // Get scan results array. If scan was successful, array will contain at least one element.
             // Multiple element may be in array if multiple scan results from single image were allowed in settings.
-
-            Parcelable[] resultArray = data.getParcelableArrayExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULT_LIST);
+            BaseRecognitionResult[] resultArray = results.getRecognitionResults();
 
             // Each recognition result corresponds to active recognizer. As stated earlier, there are 4 types of
             // recognizers available (PDF417, Bardecoder, ZXing and USDL), so there are 4 types of results
@@ -260,9 +223,9 @@ public class Pdf417MobiDemo extends Activity {
 
             StringBuilder sb = new StringBuilder();
 
-            for(Parcelable p : resultArray) {
-                if(p instanceof Pdf417ScanResult) { // check if scan result is result of Pdf417 recognizer
-                    Pdf417ScanResult result = (Pdf417ScanResult) p;
+            for(BaseRecognitionResult res : resultArray) {
+                if(res instanceof Pdf417ScanResult) { // check if scan result is result of Pdf417 recognizer
+                    Pdf417ScanResult result = (Pdf417ScanResult) res;
                     // getStringData getter will return the string version of barcode contents
                     String barcodeData = result.getStringData();
                     // isUncertain getter will tell you if scanned barcode contains some uncertainties
@@ -300,8 +263,8 @@ public class Pdf417MobiDemo extends Activity {
                             sb.append("}\n\n\n");
                         }
                     }
-                } else if(p instanceof BarDecoderScanResult) { // check if scan result is result of BarDecoder recognizer
-                    BarDecoderScanResult result = (BarDecoderScanResult) p;
+                } else if(res instanceof BarDecoderScanResult) { // check if scan result is result of BarDecoder recognizer
+                    BarDecoderScanResult result = (BarDecoderScanResult) res;
                     // with getBarcodeType you can obtain barcode type enum that tells you the type of decoded barcode
                     BarcodeType type = result.getBarcodeType();
                     // as with PDF417, getStringData will return the string contents of barcode
@@ -314,8 +277,8 @@ public class Pdf417MobiDemo extends Activity {
                         sb.append(barcodeData);
                         sb.append("\n\n\n");
                     }
-                } else if(p instanceof ZXingScanResult) { // check if scan result is result of ZXing recognizer
-                    ZXingScanResult result= (ZXingScanResult) p;
+                } else if(res instanceof ZXingScanResult) { // check if scan result is result of ZXing recognizer
+                    ZXingScanResult result= (ZXingScanResult) res;
                     // with getBarcodeType you can obtain barcode type enum that tells you the type of decoded barcode
                     BarcodeType type = result.getBarcodeType();
                     // as with PDF417, getStringData will return the string contents of barcode
@@ -328,8 +291,8 @@ public class Pdf417MobiDemo extends Activity {
                         sb.append(barcodeData);
                         sb.append("\n\n\n");
                     }
-                } else if(p instanceof USDLScanResult) { // check if scan result is result of US Driver's Licence recognizer
-                    USDLScanResult result = (USDLScanResult) p;
+                } else if(res instanceof USDLScanResult) { // check if scan result is result of US Driver's Licence recognizer
+                    USDLScanResult result = (USDLScanResult) res;
 
                     // USDLScanResult can contain lots of information extracted from driver's licence
                     // you can obtain information using the getField method with keys defined in
