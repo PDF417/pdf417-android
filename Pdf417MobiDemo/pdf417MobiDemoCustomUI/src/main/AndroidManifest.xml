@@ -37,7 +37,7 @@
         <activity
             android:name="com.microblink.activity.Pdf417ScanActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".DefaultScanActivity"

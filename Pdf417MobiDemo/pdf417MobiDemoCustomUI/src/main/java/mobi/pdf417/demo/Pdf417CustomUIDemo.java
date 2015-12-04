@@ -4,16 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 
 import com.microblink.activity.Pdf417ScanActivity;
 import com.microblink.geometry.Rectangle;
-import com.microblink.recognizers.barcode.BarcodeType;
-import com.microblink.recognizers.barcode.pdf417.Pdf417RecognizerSettings;
-import com.microblink.recognizers.barcode.pdf417.Pdf417ScanResult;
-import com.microblink.recognizers.barcode.zxing.ZXingRecognizerSettings;
-import com.microblink.recognizers.barcode.zxing.ZXingScanResult;
+import com.microblink.recognizers.BaseRecognitionResult;
+import com.microblink.recognizers.RecognitionResults;
+import com.microblink.recognizers.blinkbarcode.BarcodeType;
+import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417RecognizerSettings;
+import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417ScanResult;
+import com.microblink.recognizers.blinkbarcode.zxing.ZXingRecognizerSettings;
+import com.microblink.recognizers.blinkbarcode.zxing.ZXingScanResult;
+import com.microblink.recognizers.settings.RecognitionSettings;
 import com.microblink.recognizers.settings.RecognizerSettings;
 import com.microblink.results.barcode.BarcodeDetailedData;
 
@@ -24,6 +26,9 @@ public class Pdf417CustomUIDemo extends Activity {
 
     public static final String TAG = "MainActivity";
 
+    // demo license key for package com.microblink.barcode
+    // obtain your licence key at http://microblink.com/login or
+    // contact us at http://help.microblink.com
     public static final String LICENSE = "LF4HOK6C-2CBLHLKC-2W32Z7CV-Z5Y5Z644-XIDIRD7F-ZFRKASEV-MTUXMWH6-7BSYYAS4";
 
     private static final int MY_REQUEST_CODE = 1337;
@@ -34,8 +39,24 @@ public class Pdf417CustomUIDemo extends Activity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * Handles button clicks.
+     */
     public void onClick(View v) {
         int id = v.getId();
+
+        // prepare recognition settings
+        // enable PDF417 recognizer and QR code recognizer from ZXing
+        ZXingRecognizerSettings zxingSettings = new ZXingRecognizerSettings();
+        zxingSettings.setScanQRCode(true);
+
+        RecognitionSettings recognitionSettings = new RecognitionSettings();
+        // add settings objects to recognizer settings array
+        // Pdf417Recognizer and ZXingRecognizer will be used in the recognition process
+        recognitionSettings.setRecognizerSettingsArray(
+                new RecognizerSettings[]{new Pdf417RecognizerSettings(), zxingSettings});
+
+
         switch (id) {
         case R.id.btnDefaultUINoDialog: {
             // create intent for scan activity
@@ -45,11 +66,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // disable showing of dialog after scan
             intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN, false);
 
-            // enable PDF417 recognizer and QR code from ZXing recognizer
-            ZXingRecognizerSettings zxingSettings = new ZXingRecognizerSettings();
-            zxingSettings.setScanQRCode(true);
-
-            intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNIZER_SETTINGS_ARRAY, new RecognizerSettings[] {new Pdf417RecognizerSettings(), zxingSettings});
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS, recognitionSettings);
 
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
@@ -57,16 +74,12 @@ public class Pdf417CustomUIDemo extends Activity {
         case R.id.btnDefaultUINoLogo: {
             // create intent for scan activity
             Intent intent = new Intent(this, Pdf417ScanActivity.class);
-            // add license that allows removing of dialog in default UI
+            // add license
             intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, LICENSE);
             // enable showing of dialog after scan
             intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN, true);
 
-            // enable PDF417 recognizer and QR code from ZXing recognizer
-            ZXingRecognizerSettings zxingSettings = new ZXingRecognizerSettings();
-            zxingSettings.setScanQRCode(true);
-
-            intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNIZER_SETTINGS_ARRAY, new RecognizerSettings[]{new Pdf417RecognizerSettings(), zxingSettings});
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS, recognitionSettings);
 
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
@@ -77,11 +90,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // add license that allows creating custom camera overlay
             intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, LICENSE);
 
-            // enable PDF417 recognizer and QR code from ZXing recognizer
-            ZXingRecognizerSettings zxingSettings = new ZXingRecognizerSettings();
-            zxingSettings.setScanQRCode(true);
-
-            intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNIZER_SETTINGS_ARRAY, new RecognizerSettings[] {new Pdf417RecognizerSettings(), zxingSettings});
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS, recognitionSettings);
 
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
@@ -92,11 +101,7 @@ public class Pdf417CustomUIDemo extends Activity {
             // add license that allows creating custom camera overlay
             intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, LICENSE);
 
-            // enable PDF417 recognizer and QR code from ZXing recognizer
-            ZXingRecognizerSettings zxingSettings = new ZXingRecognizerSettings();
-            zxingSettings.setScanQRCode(true);
-
-            intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNIZER_SETTINGS_ARRAY, new RecognizerSettings[] {new Pdf417RecognizerSettings(), zxingSettings});
+            intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS, recognitionSettings);
 
             // define scanning region
             // first parameter of rectangle is x-coordinate represented as percentage
@@ -124,9 +129,14 @@ public class Pdf417CustomUIDemo extends Activity {
         }
     }
 
+    /**
+     * Checks whether data is URL and in case of URL data creates intent for browser and starts
+     * activity.
+     * @param data String to check.
+     * @return If data is URL returns {@code true}, else returns {@code false}.
+     */
     private boolean checkIfDataIsUrlAndCreateIntent(String data) {
         // if barcode contains URL, create intent for browser
-        // else, contain intent for message
         boolean barcodeDataIsUrl;
 
         try {
@@ -153,16 +163,17 @@ public class Pdf417CustomUIDemo extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == MY_REQUEST_CODE && resultCode == Pdf417ScanActivity.RESULT_OK) {
-            // First, obtain scan results array. If scan was successful, array will contain at least one element.
+            // First, obtain recognition result
+            RecognitionResults results = data.getParcelableExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULTS);
+            // Get scan results array. If scan was successful, array will contain at least one element.
             // Multiple element may be in array if multiple scan results from single image were allowed in settings.
-
-            Parcelable[] resultArray = data.getParcelableArrayExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULT_LIST);
+            BaseRecognitionResult[] resultArray = results.getRecognitionResults();
 
             StringBuilder sb = new StringBuilder();
 
-            for(Parcelable p : resultArray) {
-                if(p instanceof Pdf417ScanResult) { // check if scan result is result of Pdf417 recognizer
-                    Pdf417ScanResult result = (Pdf417ScanResult) p;
+            for(BaseRecognitionResult res : resultArray) {
+                if(res instanceof Pdf417ScanResult) { // check if scan result is result of Pdf417 recognizer
+                    Pdf417ScanResult result = (Pdf417ScanResult) res;
                     // getStringData getter will return the string version of barcode contents
                     String barcodeData = result.getStringData();
                     // isUncertain getter will tell you if scanned barcode contains some uncertainties
@@ -200,8 +211,8 @@ public class Pdf417CustomUIDemo extends Activity {
                             sb.append("}\n\n\n");
                         }
                     }
-                } else if(p instanceof ZXingScanResult) { // check if scan result is result of ZXing recognizer
-                    ZXingScanResult result= (ZXingScanResult) p;
+                } else if(res instanceof ZXingScanResult) { // check if scan result is result of ZXing recognizer
+                    ZXingScanResult result= (ZXingScanResult) res;
                     // with getBarcodeType you can obtain barcode type enum that tells you the type of decoded barcode
                     BarcodeType type = result.getBarcodeType();
                     // as with PDF417, getStringData will return the string contents of barcode
