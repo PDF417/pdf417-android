@@ -189,10 +189,6 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         if(mRecognizerView != null) {
             mRecognizerView.start();
         }
-        // ask user to give a camera permission. Provided manager asks for
-        // permission only if it has not been already granted.
-        // on API level < 23, this method does nothing
-        mCameraPermissionManager.askForCameraPermission();
     }
 
     @Override
@@ -200,10 +196,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         super.onResume();
         // all activity lifecycle events must be passed on to RecognizerView
         if(mRecognizerView != null) {
-            if (mCameraPermissionManager.hasCameraPermission()) {
-                // resume only if camera permission has been granted
-                mRecognizerView.resume();
-            }
+            mRecognizerView.resume();
         }
     }
 
@@ -213,7 +206,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         // all activity lifecycle events must be passed on to RecognizerView
         // if permission was not given, RecognizerView was not resumed so we
         // cannot pause it
-        if(mRecognizerView != null && mRecognizerView.getCameraViewState() == BaseCameraView.CameraViewState.RESUMED) {
+        if(mRecognizerView != null) {
             mRecognizerView.pause();
         }
     }
@@ -373,12 +366,19 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         }
         sb.append(" barcode!");
         Toast.makeText(this, sb.toString(), Toast.LENGTH_SHORT).show();
+        // pause scanning to prevent scan results to come while
+        // activity is being finished or while we wait for delayed task
+        // that will resume scanning
+        mRecognizerView.pauseScanning();
         if (mScanCount >= 5) {
+            // if we have 5 scans, return most recent result via Intent
             Intent intent = new Intent();
             intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULTS, results);
             setResult(Pdf417ScanActivity.RESULT_OK, intent);
             finish();
         } else {
+            // if we still do not have 5 scans, wait 2 seconds and then resume
+            // scanning and reset recognition state
             mHandler.postDelayed(new Runnable() {
 
                 @Override
@@ -410,6 +410,18 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
                         finish();
                     }
                 }).create().show();
+    }
+
+    @Override
+    @TargetApi(23)
+    public void onCameraPermissionDenied() {
+        // this method is called on Android 6.0 and newer if camera permission was not given
+        // by user
+
+        // ask user to give a camera permission. Provided manager asks for
+        // permission only if it has not been already granted.
+        // on API level < 23, this method does nothing
+        mCameraPermissionManager.askForCameraPermission();
     }
 
     @Override
