@@ -2,10 +2,23 @@
 
 ## 5.0.0
 - new API which is easier to understand, but is not backward compatible. Please check [README](README.md) and updated demo applications for more information.
-- added official support for Android 6.0 and it's runtime camera permissions
-	- if using provided _Pdf417ScanActivity_, the logic behind asking user to give camera permission is handled internally
-	- if integrating using custom UI, you are required to ask user to give you permission to use camera. To make this easier, we have provided a _CameraPermissionManager_ class which does all heavylifting code about managing states when asking user for camera permission. Refer to demo apps to see how it is used.
+- added support for Android 6.0 and it's runtime camera permissions
+	- if using provided [_Pdf417ScanActivity_](https://pdf417.github.io/pdf417-android/com/microblink/activity/Pdf417ScanActivity.html), the logic behind asking user to give camera permission is handled internally
+	- if integrating using custom UI, you are required to ask user to give you permission to use camera. To make this easier, we have provided a [_CameraPermissionManager_](https://pdf417.github.io/pdf417-android/com/microblink/util/CameraPermissionManager.html) class which does all heavylifting code about managing states when asking user for camera permission. Refer to demo apps to see how it is used.
 - PDF417.mobi SDK now depends on appcompat-v7 library
+- completely rewritten JNI bridge between native code and Java which resulted in big performance improvement
+- fixed camera orientation bug on Nexus 5X
+- Bitmap processed by DirectAPI is not recycled anymore after use
+	- this gives you ability to reuse existing Bitmap
+- fixed bug that caused rare irrational stop of scanning while keeping camera active
+- in [RecognizerView](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html), there is now method [setInitialScanningPaused](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#setInitialScanningPaused(boolean)) which allows defining whether initial start of camera will prevent automatic start of scanning
+	- this is useful if you want to display onboarding help over camera
+- [pauseScanning](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#pauseScanning()) and [resumeScanning](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#resumeScanning(boolean)) methods are now counted, i.e. if you call `pauseScanning` twice, you also need to call `resumeScanning` twice to actually resume scanning
+	- this is very useful if you have multiple onboarding views where each wants to pause scanning while it is being displayed and wants to resume scanning after it is dismissed
+- **IMPORTANT** [onScanningDone](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html#onScanningDone(com.microblink.recognizers.RecognitionResults)) does not automatically pause scanning anymore. Scanning is resumed automatically immediately after `onScanningDone` method ends.
+	- if you want to prevent such behaviour, you need to call `pauseScanning` in your implementation of `onScanningDone`
+	- automatic resume does not reset internal scanning state. If you need that, call [resetRecognitionState](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#resetRecognitionState()) in your implementation of `onScanningDone`.
+- fixed ZXing recognizer not obeying scanning region when recognising 1D barcodes in portrait orientation
 
 
 ## 4.7.0
