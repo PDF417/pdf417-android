@@ -658,7 +658,7 @@ Each region is defined as [Rectangle](https://pdf417.github.io/pdf417-android/co
 
 View width and height are defined in current context, i.e. they depend on screen orientation, as defined in `AndroidManifest.xml`. In portrait orientation view width will be smaller than height, whilst in landscape orientation width will be larger than height. This complies with view designer preview.
 
-##### <a name="recognizerView_setMetadataListener"></a> [`setMetadadaListener(MetadataListener, MetadataSettings)`](https://pdf417.github.io/pdf417-androidcom/microblink/view/recognition/RecognizerView.html#setMetadataListener(com.microblink.metadata.MetadataListener, com.microblink.metadata.MetadataSettings))
+##### <a name="recognizerView_setMetadataListener"></a> [`setMetadadaListener(MetadataListener, MetadataSettings)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#setMetadataListener(com.microblink.metadata.MetadataListener, com.microblink.metadata.MetadataSettings))
 You can use this method to define [metadata listener](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataListener.html) that will obtain various metadata
 from the current recognition process. Which metadata will be available depends on [metadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.html). For more information and examples, check demo applications.
 
