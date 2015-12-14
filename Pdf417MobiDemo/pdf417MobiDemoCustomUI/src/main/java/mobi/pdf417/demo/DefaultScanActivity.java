@@ -204,8 +204,6 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
     protected void onPause() {
         super.onPause();
         // all activity lifecycle events must be passed on to RecognizerView
-        // if permission was not given, RecognizerView was not resumed so we
-        // cannot pause it
         if(mRecognizerView != null) {
             mRecognizerView.pause();
         }
