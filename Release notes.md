@@ -1,5 +1,13 @@
 # Release notes
 
+## 5.1.0
+- improved performance of conversion of `Image` object into `Bitmap`
+- fixed crash that could be caused by quickly restarting camera activity
+- fixed bug in camera layout in certain aspect ratios of camera view
+- fixed bug in handling `setMeteringAreas`
+- `setMeteringAreas` now receives boolean indicating whether set areas should be rotated with device
+- added support for specifying camera aspect mode from XML
+
 ## 5.0.0
 - new API which is easier to understand, but is not backward compatible. Please check [README](README.md) and updated demo applications for more information.
 - added support for Android 6.0 and it's runtime camera permissions
