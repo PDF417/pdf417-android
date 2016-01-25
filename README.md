@@ -94,7 +94,7 @@ After that, you just need to add _PDF417.mobi_ and appCompat-v7 as a dependencie
 
 ```
 dependencies {
-    compile 'com.microblink:pdf417.mobi:5.1.0'
+    compile 'com.microblink:pdf417.mobi:5.2.0'
     compile "com.android.support:appcompat-v7:23.1.1"
 }
 ```
@@ -126,7 +126,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>5.1.0</version>
+		  <version>5.2.0</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>

@@ -203,7 +203,7 @@ public class Pdf417MobiDemo extends Activity {
             // create intent for browser
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(data));
-            startActivity(intent);
+            startActivity(Intent.createChooser(intent, getString(R.string.UseWith)));
         }
         return barcodeDataIsUrl;
     }
