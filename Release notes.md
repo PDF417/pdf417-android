@@ -1,5 +1,10 @@
 # Release notes
 
+## 5.2.0
+- support detecting on activity flip event
+- added RecognizerCompatibility to javadoc
+- fixed NPE in BarcodeDetailedData
+
 ## 5.1.0
 - improved performance of conversion of `Image` object into `Bitmap`
 - fixed crash that could be caused by quickly restarting camera activity
