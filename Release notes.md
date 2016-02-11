@@ -1,5 +1,11 @@
 # Release notes
 
+## 5.3.0
+- reconfigureRecognizers method now throws an error if phone does not have autofocus and at least one of new recognizers require it
+- raw resources are now packed as assets
+- fixed bug with `isScanningPaused` which sometimes returned bogus value and caused scanning to work even if initial scanning was set to be paused
+- support for scanning custom camera frames via DirectAPI
+
 ## 5.2.0
 - support detecting on activity flip event
 - added RecognizerCompatibility to javadoc
