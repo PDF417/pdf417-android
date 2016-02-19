@@ -5,6 +5,8 @@
 - raw resources are now packed as assets
 - fixed bug with `isScanningPaused` which sometimes returned bogus value and caused scanning to work even if initial scanning was set to be paused
 - support for scanning custom camera frames via DirectAPI
+- fixed bug on some devices causing it to never start scanning if device was not shaken
+- improved Frame Quality Estimation on low-end devices (fixed regression introduced in v4.5.0)
 
 ## 5.2.0
 - support detecting on activity flip event
