@@ -1,5 +1,11 @@
 # Release notes
 
+## 5.4.0
+- FailedDetectionMetadata, PointsDetectionMetadata and QuadDetectionMetadata have been replaced with DetectionMetadata which now holds a DetectorResult
+    - DetectorResult is more flexible as it allows more different detection types to be added in future
+- fixed several possible crashes in camera management
+- fixed autofocus bug on LG devices when metering areas or non-default zoom level were set
+
 ## 5.3.0
 - reconfigureRecognizers method now throws an error if phone does not have autofocus and at least one of new recognizers require it
 - raw resources are now packed as assets
