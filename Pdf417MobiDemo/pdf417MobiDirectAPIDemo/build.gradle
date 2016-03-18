@@ -21,6 +21,7 @@ android {
 }
 
 dependencies {
-    compile "com.microblink:pdf417.mobi:${rootProject.ext.pdf417MobiVersion}@aar"
-    compile "com.android.support:appcompat-v7:${rootProject.ext.appCompatVersion}"
+    compile ("com.microblink:pdf417.mobi:${rootProject.ext.pdf417MobiVersion}@aar") {
+        transitive = true
+    }
 }

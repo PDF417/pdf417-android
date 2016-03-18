@@ -15,15 +15,16 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.microblink.activity.Pdf417ScanActivity;
+import com.microblink.detectors.DetectorResult;
+import com.microblink.detectors.points.PointsDetectorResult;
+import com.microblink.detectors.quad.QuadDetectorResult;
 import com.microblink.geometry.Rectangle;
 import com.microblink.hardware.SuccessCallback;
 import com.microblink.hardware.orientation.Orientation;
+import com.microblink.metadata.DetectionMetadata;
 import com.microblink.metadata.Metadata;
 import com.microblink.metadata.MetadataListener;
 import com.microblink.metadata.MetadataSettings;
-import com.microblink.metadata.detection.FailedDetectionMetadata;
-import com.microblink.metadata.detection.PointsDetectionMetadata;
-import com.microblink.metadata.detection.QuadrilateralDetectionMetadata;
 import com.microblink.recognition.InvalidLicenceKeyException;
 import com.microblink.recognizers.RecognitionResults;
 import com.microblink.recognizers.settings.RecognitionSettings;
@@ -138,7 +139,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         mQvManager= QuadViewManagerFactory.createQuadViewFromPreset(mRecognizerView, QuadViewPreset.DEFAULT_CORNERS_FROM_PDF417_SCAN_ACTIVITY);
 
         // create PointSetView
-        mPointSetView = new PointSetView(this, null);
+        mPointSetView = new PointSetView(this, null, mRecognizerView.getHostScreenOrientation());
 
         // add point set view to scanner view as fixed (non-rotatable) view
         mRecognizerView.addChildView(mPointSetView, false);
@@ -310,30 +311,35 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         // This method will be called when metadata becomes available during recognition process.
         // Here, for every metadata type that is allowed through metadata settings,
         // desired actions can be performed.
-        if (metadata instanceof FailedDetectionMetadata) {
-            // this metadata object indicates that during recognition process nothing was detected.
-            if (mPointSetView != null) {
-                // clear points
-                mPointSetView .setPointSet(null);
-            }
-            if (mQvManager != null) {
-                // begin quadrilateral animation to its default position
-                // (internally displays FAIL status)
-                mQvManager.animateQuadToDefaultPosition();
-            }
-        } else if (mPointSetView != null && metadata instanceof PointsDetectionMetadata) {
-            // this metadata object is passed when recognizer detects an object that is represented by
-            // points of interest (e.g. QR code)
-            // show the points of interest inside points view
-            mPointSetView.setPointSet(((PointsDetectionMetadata) metadata).getPoints());
-        } else if (mQvManager != null && metadata instanceof QuadrilateralDetectionMetadata) {
-            // this metadata object is passed when recognizer detects an object that is represented by quadrilateral
-            // update detection position
-            QuadrilateralDetectionMetadata quadMetadata = (QuadrilateralDetectionMetadata) metadata;
-            // begin quadrilateral animation to detected quadrilateral
-            mQvManager.animateQuadToDetectionPosition(quadMetadata.getQuadrilateral(), quadMetadata.getDetectionStatus());
-            if (mPointSetView != null) {
-                mPointSetView.setPointSet(null);
+
+        // detection metadata contains detection locations
+        if (metadata instanceof DetectionMetadata) {
+            // detection location is written inside DetectorResult
+            DetectorResult detectorResult = ((DetectionMetadata) metadata).getDetectionResult();
+            // DetectorResult can be null - this means that detection has failed
+            if (detectorResult == null) {
+                // this metadata object indicates that during recognition process nothing was detected.
+                if (mPointSetView != null) {
+                    // clear points
+                    mPointSetView.setPointsDetectionResult(null);
+                }
+                if (mQvManager != null) {
+                    // begin quadrilateral animation to its default position
+                    // (internally displays FAIL status)
+                    mQvManager.animateQuadToDefaultPosition();
+                }
+            // when points of interested have been detected (e.g. QR code), this will be returned as PointsDetectorResult
+            } else if (detectorResult instanceof PointsDetectorResult) {
+                // show the points of interest inside points view
+                mPointSetView.setPointsDetectionResult((PointsDetectorResult) detectorResult);
+            // when object represented by quadrilateral is detected, this will be returned as QuadDetectorResult
+            } else if (detectorResult instanceof QuadDetectorResult) {
+                // begin quadrilateral animation to detected quadrilateral
+                mQvManager.animateQuadToDetectionPosition((QuadDetectorResult) detectorResult);
+                if (mPointSetView != null) {
+                    // clear points
+                    mPointSetView.setPointsDetectionResult(null);
+                }
             }
         }
     }
