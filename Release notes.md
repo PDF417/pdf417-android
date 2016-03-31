@@ -1,5 +1,9 @@
 # Release notes
 
+## 5.4.1
+- fixed autofocus bug on LG G4
+- fixed blinking torch problem on SGS6, Nexus 5X, LG G4 and similar new devices that use camera2 API
+
 ## 5.4.0
 - FailedDetectionMetadata, PointsDetectionMetadata and QuadDetectionMetadata have been replaced with DetectionMetadata which now holds a DetectorResult
     - DetectorResult is more flexible as it allows more different detection types to be added in future
