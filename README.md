@@ -1,6 +1,6 @@
 # _PDF417.mobi_ SDK for Android
 
-[![Build Status](https://travis-ci.org/PDF417/pdf417-android.png)](https://travis-ci.org/PDF417/pdf417-android)
+[![Build Status](https://travis-ci.org/PDF417/pdf417-android.svg?branch=master)](https://travis-ci.org/PDF417/pdf417-android)
 
 _PDF417.mobi_ SDK for Android is SDK that enables you to perform scans of various barcodes in your app. You can simply integrate the SDK into your app by following the instructions below and your app will be able to benefit the scanning feature for following barcode standards:
 
@@ -67,6 +67,8 @@ The package contains Android Archive (AAR) that contains everything you need to 
 - _Pdf417MobiDemoCustomUI_ demonstrates advanced integration within custom scan activity.
 - _Pdf417MobiDirectAPIDemo_ demonstrates how to perform scanning of [Android Bitmaps](https://developer.android.com/reference/android/graphics/Bitmap.html)
  
+Source code of all demo apps is given to you to show you how to perform integration of _PDF417.mobi_ SDK into your app. You can use this source code and all resources as you wish. You can use demo apps as basis for creating your own app, or you can copy/paste code and/or resources from demo apps into your app and use them as you wish without even asking us for permission.
+
 _PDF417.mobi_ is supported on Android SDK version 10 (Android 2.3.3) or later.
 
 The library contains one activity: `Pdf417ScanActivity`. It is responsible for camera control and recognition. You can also create your own scanning UI - you just need to embed `RecognizerView` into your activity and pass activity's lifecycle events to it and it will control the camera and recognition process. For more information, see [Embedding `RecognizerView` into custom scan activity](#recognizerView).
@@ -98,7 +100,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile('com.microblink:pdf417.mobi:5.4.0@aar') {
+    compile('com.microblink:pdf417.mobi:5.4.1@aar') {
     	transitive = true
     }
 }
@@ -131,7 +133,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>5.4.0</version>
+		  <version>5.4.1</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>
@@ -352,7 +354,9 @@ This section will discuss possible parameters that can be sent over `Intent` for
 	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSEE, "Enter_Licensee_Here");
 	```
 
-* **`Pdf417ScanActivity.EXTRAS_IMAGE_LISTENER`** - with this extra you can set your implementation of [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) that will obtain images that are being processed. Make sure that your [ImageListener](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) implementation correctly implements [Parcelable](https://developer.android.com/reference/android/os/Parcelable.html) interface with static [CREATOR](https://developer.android.com/reference/android/os/Parcelable.Creator.html) field. Without this, you might encounter a runtime error. For more information and example, see [Using ImageListener to obtain images that are being processed](#imageListener).
+* **`Pdf417ScanActivity.EXTRAS_IMAGE_LISTENER`** - with this extra you can set your implementation of [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) that will obtain images that are being processed. Make sure that your [ImageListener](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) implementation correctly implements [Parcelable](https://developer.android.com/reference/android/os/Parcelable.html) interface with static [CREATOR](https://developer.android.com/reference/android/os/Parcelable.Creator.html) field. Without this, you might encounter a runtime error. For more information and example, see [Using ImageListener to obtain images that are being processed](#imageListener). By default, _ImageListener_ will receive all possible images that become available during recognition process. This will introduce performance penalty because most of those images will probably not be used so sending them will just waste time. To control which images should become available to _ImageListener_, you can also set [ImageMetadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.ImageMetadataSettings.html) with `Pdf417ScanActivity.EXTRAS_IMAGE_METADATA_SETTINGS`
+
+* **`Pdf417ScanActivity.EXTRAS_IMAGE_METADATA_SETTINGS`** - with this extra you can set [ImageMetadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.ImageMetadataSettings.html) which will define which images will be sent to [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) given via `Pdf417ScanActivity.EXTRAS_IMAGE_LISTENER` extra. If _ImageListener_ is not given via Intent, then this extra has no effect. You can see example usage of _ImageMetadata Settings_ in chapter [Obtaining various metadata with _MetadataListener_](#metadataListener) and in provided demo apps.
 
 * **`Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN`** - with this extra you can prevent showing of dialog after each barcode scan. By default, each time scanner finds and decodes a barcode, a dialog with barcode's contents will be shown. To prevent this, use the following snippet:
 	
@@ -828,11 +832,16 @@ public class MyMetadataListener implements MetadataListener {
         // images will be available inside ImageMetadata
         } else if (metadata instanceof ImageMetadata) {
         	// obtain image
+        	
         	// Please note that Image's internal buffers are valid only
         	// until this method ends. If you want to save image for later,
         	// obtained a cloned image with image.clone().
+        	
             Image image = ((ImageMetadata) metadata).getImage();
             // to convert the image to Bitmap, call image.convertToBitmap()
+            
+            // after this line, image gets disposed. If you want to save it
+            // for later, you need to clone it with image.clone()
         }
     }
 }
@@ -852,7 +861,7 @@ Here are javadoc links to all classes that appeared in previous code snippet:
 
 There are two ways of obtaining images that are being processed:
 
-- if _Pdf417ScanActivity_ is being used to perform scanning, then you need to implement [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) and send your implementation via Intent to _Pdf417ScanActivity_. Note that while this seems easier, this actually introduces a large performance penalty because _ImageListener_ will receive all images, including ones you do not actually need. If you need more control over which images will be received and which not, see point below.
+- if _Pdf417ScanActivity_ is being used to perform scanning, then you need to implement [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) and send your implementation via Intent to _Pdf417ScanActivity_. Note that while this seems easier, this actually introduces a large performance penalty because _ImageListener_ will receive all images, including ones you do not actually need, except in cases when you also provide [ImageMetadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.ImageMetadataSettings.html) with `Pdf417ScanActivity.EXTRAS_IMAGE_METADATA_SETTINGS` extra.
 - if [RecognizerView](#recognizerView) is directly embedded into your scanning activity, then you should initialise it with [Metadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.html) and your implementation of [Metadata listener interface](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataListener.html). The _MetadataSettings_ will define which metadata will be reported to _MetadataListener_. The metadata can contain various data, such as images, object detection location etc. To see documentation and example how to use _MetadataListener_ to obtain images and other metadata, see section [Obtaining various metadata with _MetadataListener_](#metadataListener).
 
 This section will give an example how to implement [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) that will obtain images that are being processed. `ImageListener` has only one method that needs to be implemented: `onImageAvailable(Image)`. This method is called whenever library has available image for current processing step. [Image](https://pdf417.github.io/pdf417-android/com/microblink/image/Image.html) is class that contains all information about available image, including buffer with image pixels. Image can be in several format and of several types. [ImageFormat](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageFormat.html) defines the pixel format of the image, while [ImageType](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageType.html) defines the type of the image. `ImageListener` interface extends android's [Parcelable interface](https://developer.android.com/reference/android/os/Parcelable.html) so it is possible to send implementations via [intents](https://developer.android.com/reference/android/content/Intent.html).
@@ -918,6 +927,8 @@ public class MyImageListener implements ImageListener {
                 }
             }
         }
+        // after this line, image gets disposed. If you want to save it
+        // for later, you need to clone it with image.clone()
     }
 
     /**
@@ -1454,11 +1465,36 @@ For more information about creating APK splits with gradle, check [this article 
 
 After generating multiple APK's, you need to upload them to Google Play. For tutorial and rules about uploading multiple APK's to Google Play, please read the [official Google article about multiple APKs](https://developer.android.com/google/play/publishing/multiple-apks.html).
 
-However, if you are using Eclipse, things get really complicated. Eclipse does not support build flavors and you will either need to remove support for some processors or create three different library projects from `LibRecognizer.aar` - each one for specific processor architecture. In the next section, we will discuss how to remove processor architecture support from Eclipse library project.
+### Removing processor architecture support in gradle without using APK splits
+
+If you will not be distributing your app via Google Play or for some other reasons you want to have single APK of smaller size, you can completely remove support for certaing CPU architecture from your APK. **This is not recommended as this has [consequences](#archConsequences)**.
+
+To remove certain CPU arhitecture, add following statement to your `android` block inside `build.gradle`:
+
+```
+android {
+	...
+	exclude 'lib/<ABI>/libBlinkBarcode.so'
+}
+```
+
+where `<ABI>` represents the CPU architecture you want to remove:
+
+- to remove ARMv6 support, use `exclude 'lib/armeabi/libBlinkBarcode.so'`
+- to remove ARMv7 support, use `exclude 'lib/armeabi-v7a/libBlinkBarcode.so'`
+- to remove x86 support, use `exclude 'lib/x86/libBlinkBarcode.so'`
+- to remove ARM64 support, use `exclude 'lib/arm64-v8a/libBlinkBarcode.so'`
+- to remove x86_64 support, use `exclude 'lib/x86_64/libBlinkBarcode.so'`
+- to remove MIPS support, use `exclude 'lib/mips/libBlinkBarcode.so'`
+- to remove MIPS64 support, use `exclude 'lib/mips64/libBlinkBarcode.so'`
+
+You can also remove multiple processor architectures by specifying `exclude` directive multiple times. Just bear in mind that removing processor architecture will have sideeffects on performance and stability of your app. Please read [this](#archConsequences) for more information.
 
 ### Removing processor architecture support in Eclipse
 
 This section assumes that you have set up and prepared your Eclipse project from `LibRecognizer.aar` as described in chapter [Eclipse integration instructions](#eclipseIntegration).
+
+If you are using Eclipse, removing processor architecture support gets really complicated. Eclipse does not support build flavors and you will either need to remove support for some processors or create several different library projects from `LibRecognizer.aar` - each one for specific processor architecture. 
 
 Native libraryies in eclipse library project are located in subfolder `libs`:
 
@@ -1480,7 +1516,7 @@ To remove a support for processor architecture, you should simply delete appropr
 - to remove MIPS support, delete folder `libs/mips`
 - to remove MIPS64 support, delete folder `libs/mips64`
 
-### Consequences of removing processor architecture
+### <a name="archConsequences"></a> Consequences of removing processor architecture
 
 However, removing a processor architecture has some consequences:
 
@@ -1492,7 +1528,7 @@ However, removing a processor architecture has some consequences:
 - by removing MIPS support, _PDF417.mobi_ will not work on MIPS processors
 - by removing MIPS64 support, _PDF417.mobi_ will not utilize MIPS64 optimizations on MIPS64 processor, but if MIPS support is not removed, _PDF417.mobi_ should work
 
-Our recommendation is to include all architectures into your app - it will work on all devices and will provide best user experience. However, if you really need to reduce the size of your app, we recommend releasing separate version of your app for each processor architecture.
+Our recommendation is to include all architectures into your app - it will work on all devices and will provide best user experience. However, if you really need to reduce the size of your app, we recommend releasing separate version of your app for each processor architecture. It is easiest to do that with [APK splits](#reduceSize).
 
 ## <a name="combineNativeLibraries"></a> Combining _PDF417.mobi_ with other native libraries
 
