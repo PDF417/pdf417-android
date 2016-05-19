@@ -76,6 +76,9 @@ public class MenuActivity extends Activity {
     }
 
     private void buildRecognitionSettings() {
+        // Don't enable recognizers and barcode types which you don't actually use because this will
+        // significantly decrease the scanning speed.
+
         // Pdf417RecognizerSettings define the settings for scanning plain PDF417 barcodes.
         Pdf417RecognizerSettings pdf417RecognizerSettings = new Pdf417RecognizerSettings();
         // Set this to true to scan barcodes which don't have quiet zone (white area) around it

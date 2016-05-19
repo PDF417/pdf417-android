@@ -100,6 +100,8 @@ public class Pdf417MobiDemo extends Activity {
 
         // You need to define array of recognizer settings. There are 4 types of recognizers available
         // in PDF417.mobi SDK.
+        // Don't enable recognizers and barcode types which you don't actually use because this will
+        // significantly decrease the scanning speed.
 
         // Pdf417RecognizerSettings define the settings for scanning plain PDF417 barcodes.
         Pdf417RecognizerSettings pdf417RecognizerSettings = new Pdf417RecognizerSettings();
