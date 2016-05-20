@@ -1,5 +1,10 @@
 # Release notes
 
+## 5.5.0
+- small camera fixes
+- support for North Carolina driver licenses
+- default value for `RecognitionSettings` option `allowMultipleScanResultsOnSingleImage` is now `true`, which means that it is by default possible to obtain multiple recognition results from the same image, produced by different recognizers 
+
 ## 5.4.1
 - fixed autofocus bug on LG G4
 - fixed blinking torch problem on SGS6, Nexus 5X, LG G4 and similar new devices that use camera2 API
