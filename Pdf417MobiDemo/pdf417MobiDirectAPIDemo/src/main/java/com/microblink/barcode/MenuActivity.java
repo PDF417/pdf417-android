@@ -128,10 +128,12 @@ public class MenuActivity extends Activity {
         // additionally, there are generic settings that are used by all recognizers or the
         // whole recognition process
 
-        // set this to true to enable returning of multiple scan results from single camera frame
-        // default is false, which means that as soon as first barcode is found (no matter which type)
-        // its contents will be returned.
-        mRecognitionSettings.setAllowMultipleScanResultsOnSingleImage(true);
+        // by default, this option is true, which means that it is possible to obtain multiple
+        // recognition results from the same image.
+        // if you want to obtain one result from the first successful recognizer
+        // (when first barcode is found, no matter which type) set this option to false
+//        recognitionSettings.setAllowMultipleScanResultsOnSingleImage(false);
+
     }
 
     /**
