@@ -1,5 +1,9 @@
 # Release notes
 
+## 5.5.1
+- improved autofocus support on SGS6 and SGS7
+- fixed memory leak in RecognitionProcessCallback (https://github.com/PDF417/pdf417-android/issues/17)
+
 ## 5.5.0
 - small camera fixes
 - support for North Carolina driver licenses
