@@ -1,5 +1,9 @@
 # Release notes
 
+## 5.5.2
+- added support for Alberta (Canada) DL
+- enabled reading of longer ITF barcodes
+
 ## 5.5.1
 - improved autofocus support on SGS6 and SGS7
 - fixed memory leak in RecognitionProcessCallback (https://github.com/PDF417/pdf417-android/issues/17)
