@@ -1,5 +1,16 @@
 # Release notes
 
+## 6.0.0
+
+- removed support for parsing US Driver's license barcodes
+    - if you need USDL parsing feature, please upgrade to our [BlinkID product](https://github.com/BlinkID/blinkid-android)
+    - you are still able to scan PDF417 barcodes using the [PDF417 recognizer](https://github.com/PDF417/pdf417-android#pdf417Recognizer), but it will only raw barcode contents, not the parsed license data
+- _LibRecognizer.aar_ renamed to _LibPdf417Mobi.aar_
+- _libBlinkBarcode.so_ renamed to _libPdf417Mobi.so_
+- workaround for camera bug on some samsung devices
+- migrated to libc++ native runtime and used clang from NDKr13b for building the native code
+    - this enabled c++14 features which will help us yield much better performance in the future
+
 ## 5.5.2
 - added support for Alberta (Canada) DL
 - enabled reading of longer ITF barcodes
