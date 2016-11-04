@@ -16,8 +16,6 @@ _PDF417.mobi_ SDK for Android is SDK that enables you to perform scans of variou
 * [Data Matrix](https://en.wikipedia.org/wiki/Data_Matrix)
 * [Aztec](https://en.wikipedia.org/wiki/Aztec_Code)
 
-Additionaly, _PDF417.mobi_ supports scanning and parsing barcodes from [United States' Driver's License](https://en.wikipedia.org/wiki/Driver%27s_license_in_the_United_States).
-
 Using _PDF417.mobi_ in your app requires a valid license key. You can obtain a trial license key by registering to [Microblink dashboard](https://microblink.com/login). After registering, you will be able to generate a license key for your app. License key is bound to [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename) of your app, so please make sure you enter the correct package name when asked.
 
 See below for more information about how to integrate _PDF417.mobi_ SDK into your app and also check latest [Release notes](Release notes.md).
@@ -44,7 +42,6 @@ See below for more information about how to integrate _PDF417.mobi_ SDK into you
 * [Recognition settings and results](#recognitionSettingsAndResults)
   * [[Recognition settings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/settings/RecognitionSettings.html)](#recognitionSettings)
   * [Scanning PDF417 barcodes](#pdf417Recognizer)
-  * [Scanning US Driver's licence barcodes](#usdl)
   * [Scanning one dimensional barcodes with _PDF417.mobi_'s implementation](#custom1DBarDecoder)
   * [Scanning barcodes with ZXing implementation](#zxing)
 * [Translation and localization](#translation)
@@ -100,7 +97,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile('com.microblink:pdf417.mobi:5.5.2@aar') {
+    compile('com.microblink:pdf417.mobi:6.0.0@aar') {
     	transitive = true
     }
 }
@@ -121,7 +118,7 @@ Current version of Android Studio will not automatically import javadoc from mav
 
 1. In Android Studio project sidebar, ensure [project view is enabled](https://developer.android.com/sdk/installing/studio-androidview.html)
 2. Expand `External Libraries` entry (usually this is the last entry in project view)
-3. Locate `pdf417.mobi-5.5.2` entry, right click on it and select `Library Properties...`
+3. Locate `pdf417.mobi-6.0.0` entry, right click on it and select `Library Properties...`
 4. A `Library Properties` pop-up window will appear
 5. Click the second `+` button in bottom left corner of the window (the one that contains `+` with little globe)
 6. Window for definining documentation URL will appear
@@ -146,7 +143,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>5.5.2</version>
+		  <version>6.0.0</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>
@@ -156,13 +153,13 @@ Open your `pom.xml` file and add these directives as appropriate:
 
 1. In Android Studio menu, click _File_, select _New_ and then select _Module_.
 2. In new window, select _Import .JAR or .AAR Package_, and click _Next_.
-3. In _File name_ field, enter the path to _LibRecognizer.aar_ and click _Finish_.
+3. In _File name_ field, enter the path to _LibPdf417Mobi.aar_ and click _Finish_.
 4. In your app's `build.gradle`, add dependency to `LibRecognizer` and appcompat-v7:
 
 	```
 	dependencies {
    		compile project(':LibRecognizer')
- 		compile "com.android.support:appcompat-v7:24.0.0"
+ 		compile "com.android.support:appcompat-v7:25.0.0"
 	}
 	```
 5. If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
@@ -193,16 +190,16 @@ However, if you still want to use Eclipse, you will need to convert AAR archive 
 
 1. In Eclipse, create a new _Android library project_ in your workspace.
 2. Clear the `src` and `res` folders.
-3. Unzip the `LibRecognizer.aar` file. You can rename it to zip and then unzip it using any tool.
+3. Unzip the `LibPdf417Mobi.aar` file. You can rename it to zip and then unzip it using any tool.
 4. Copy the `classes.jar` to `libs` folder of your Eclipse library project. If `libs` folder does not exist, create it.
 5. Copy the contents of `jni` folder to `libs` folder of your Eclipse library project.
-6. Replace the `res` folder on library project with the `res` folder of the `LibRecognizer.aar` file.
+6. Replace the `res` folder on library project with the `res` folder of the `LibPdf417Mobi.aar` file.
 
 You’ve already created the project that contains almost everything you need. Now let’s see how to configure your project to reference this library project.
 
 1. In the project you want to use the library (henceforth, "target project") add the library project as a dependency
-2. Open the `AndroidManifest.xml` file inside `LibRecognizer.aar` file and make sure to copy all permissions, features and activities to the `AndroidManifest.xml` file of the target project.
-3. Copy the contents of `assets` folder from `LibRecognizer.aar` into `assets` folder of target project. If `assets` folder in target project does not exist, create it.
+2. Open the `AndroidManifest.xml` file inside `LibPdf417Mobi.aar` file and make sure to copy all permissions, features and activities to the `AndroidManifest.xml` file of the target project.
+3. Copy the contents of `assets` folder from `LibPdf417Mobi.aar` into `assets` folder of target project. If `assets` folder in target project does not exist, create it.
 4. Clean and Rebuild your target project
 5. If you plan to use ProGuard, add same statements as in [Android studio guide](#quickIntegration) to your ProGuard configuration file.
 6. Add appcompat-v7 library to your workspace and reference it by target project (modern ADT plugin for Eclipse does this automatically for all new android projects).
@@ -361,6 +358,11 @@ This section will discuss possible parameters that can be sent over `Intent` for
 
 	```java
 	intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_VIDEO_PRESET, (Parcelable)VideoResolutionPreset.VIDEO_RESOLUTION_720p);
+	```
+* <a name="intent_EXTRAS_SET_FLAG_SECURE" href="#intent_EXTRAS_SET_FLAG_SECURE">#</a> **`Pdf417ScanActivity.EXTRAS_SET_FLAG_SECURE`** - with this extra you can request setting of `FLAG_SECURE` on activity window which indicates that the display has a secure video output and supports compositing secure surfaces. Use this to prevent taking screenshots of the activity window content and to prevent content from being viewed on non-secure displays. To set `FLAG_SECURE` on camera activity, use the following code snippet:
+
+	```java
+	intent.putExtra(Pdf417ScanActivity.EXTRAS_SET_FLAG_SECURE, true);
 	```
 
 * <a name="intent_EXTRAS_LICENSE_KEY" href="#intent_EXTRAS_LICENSE_KEY">#</a> **`Pdf417ScanActivity.EXTRAS_LICENSE_KEY`** - with this extra you can set the license key for _PDF417.mobi_. You can obtain your licence key from [Microblink website](http://microblink.com/login) or you can contact us at [http://help.microblink.com](http://help.microblink.com). Once you obtain a license key, you can set it with following snippet:
@@ -1088,82 +1090,6 @@ This method will return the object that contains information about barcode's bin
 ##### `Quadrilateral getPositionOnImage()`
 Returns the position of barcode on image. Note that returned coordinates are in image's coordinate system which is not related to view coordinate system used for UI.
 
-## <a name="usdl"></a> Scanning US Driver's licence barcodes
-
-This section discusses the settings for setting up USDL recognizer and explains how to obtain results from it.
-
-### Setting up USDL recognizer
-To activate USDL recognizer, you need to create [USDLRecognizerSettings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/usdl/USDLRecognizerSettings.html) and add it to `RecognizerSettings` array. You can do this using following code snippet:
-
-```java
-private RecognizerSettings[] setupSettingsArray() {
-	USDLRecognizerSettings sett = new USDLRecognizerSettings();
-	// disallow scanning of barcodes that have invalid checksum
-	sett.setUncertainScanning(false);
-	// disable scanning of barcodes that do not have quiet zone
-	// as defined by the standard
-	sett.setNullQuietZoneAllowed(false);
-       
-	// now add sett to recognizer settings array that is used to configure
-	// recognition
-	return new RecognizerSettings[] { sett };
-}
-```
-
-As can be seen from example, you can tweak USDL recognition parameters with methods of `USDLRecognizerSettings`.
-
-##### `setUncertainScanning(boolean)`
-By setting this to `true`, you will enable scanning of non-standard elements, but there is no guarantee that all data will be read. This option is used when multiple rows are missing (e.g. not whole barcode is printed). Default is `false`.
-
-##### `setNullQuietZoneAllowed(boolean)`
-By setting this to `true`, you will allow scanning barcodes which don't have quiet zone surrounding it (e.g. text concatenated with barcode). This option can significantly increase recognition time. Default is `true`.
-
-##### `setScan1DBarcodes(boolean)`
-Some driver's licenses contain 1D Code39 and Code128 barcodes alongside PDF417 barcode. These barcodes usually contain only reduntant information and are therefore not read by default. However, if you feel that some information is missing, you can enable scanning of those barcodes by setting this to `true`.
-
-### Obtaining results from USDL recognizer
-
-USDL recognizer produces [USDLScanResult](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/usdl/USDLScanResult.html). You can use `instanceof` operator to check if element in results array is instance of `USDLScanResult`. See the following snippet for an example:
-
-```java
-@Override
-public void onScanningDone(RecognitionResults results) {
-	BaseRecognitionResult[] dataArray = results.getRecognitionResults();
-	for(BaseRecognitionResult baseResult : dataArray) {
-		if(baseResult instanceof USDLScanResult) {
-			USDLScanResult result = (USDLScanResult) baseResult;
-			
-	        // getStringData getter will return the string version of barcode contents (not parsed)
-			String barcodeData = result.getStringData();
-			// isUncertain getter will tell you if scanned barcode is uncertain
-			boolean uncertainData = result.isUncertain();
-			// getRawData getter will return the raw data information object of barcode contents
-			BarcodeDetailedData rawData = result.getRawData();
-			// BarcodeDetailedData contains information about barcode's binary layout, if you
-			// are only interested in raw bytes, you can obtain them with getAllData getter
-			byte[] rawDataBuffer = rawData.getAllData();
-			
-			// if you need specific parsed driver's licence element, you can
-			// use getField method
-			// for example, to obtain AAMVA version, you should use:
-			String aamvaVersion = result.getField(USDLScanResult.kAamvaVersionNumber);
-		}
-	}
-}
-```
-
-##### `String getStringData()`
-This method will return the string representation of barcode contents (not parsed). Note that PDF417 barcode can contain binary data so sometimes it makes little sense to obtain only string representation of barcode data.
-
-##### `boolean isUncertain()`
-This method will return the boolean indicating if scanned barcode is uncertain. This can return `true` only if scanning of uncertain barcodes is allowed, as explained earlier.
-
-##### `BarcodeDetailedData getRawData()`
-This method will return the object that contains information about barcode's binary layout. You can see information about that object in [javadoc](https://pdf417.github.io/pdf417-android/com/microblink/results/barcode/BarcodeDetailedData.html). However, if you only need to access byte array containing, you can call method `getAllData` of `BarcodeDetailedData` object.
-
-##### `getField(String)`
-This method will return a parsed US Driver's licence element. The method requires a key that defines which element should be returned and returns either a string representation of that element or `null` if that element does not exist in barcode. To see a list of available keys, refer to [Keys for obtaining US Driver's license data](DriversLicenseKeys.md)
-
 ## <a name="custom1DBarDecoder"></a> Scanning one dimensional barcodes with _PDF417.mobi_'s implementation
 
 This section discusses the settings for setting up 1D barcode recognizer that uses _PDF417.mobi_'s implementation of scanning algorithms and explains how to obtain results from that recognizer. Henceforth, the 1D barcode recognizer that uses _PDF417.mobi_'s implementation of scanning algorithms will be refered as "Bardecoder recognizer".
@@ -1362,14 +1288,14 @@ To use a language, you have to enable it from the code:
 
 ### <a name="addLanguage"></a> Adding new language
 
-_PDF417.mobi_ can easily be translated to other languages. The `res` folder in `LibRecognizer.aar` archive has folder `values` which contains `strings.xml` - this file contains english strings. In order to make e.g. croatian translation, create a folder `values-hr` in your project and put the copy of `strings.xml` inside it (you might need to extract `LibRecognizer.aar` archive to get access to those files). Then, open that file and change the english version strings into croatian version. 
+_PDF417.mobi_ can easily be translated to other languages. The `res` folder in `LibPdf417Mobi.aar` archive has folder `values` which contains `strings.xml` - this file contains english strings. In order to make e.g. croatian translation, create a folder `values-hr` in your project and put the copy of `strings.xml` inside it (you might need to extract `LibPdf417Mobi.aar` archive to get access to those files). Then, open that file and change the english version strings into croatian version. 
 
 ### <a name="stringChanging"></a> Changing strings in the existing language
 	
 To modify an existing string, the best approach would be to:
 
 1. choose a language which you want to modify. For example Croatia ('hr').
-2. find strings.xml in `LibRecognizer.aar` archive folder `res/values-hr`
+2. find strings.xml in `LibPdf417Mobi.aar` archive folder `res/values-hr`
 3. choose a string key which you want to change. For example, ```<string name="PhotoPayHelp">Help</string>```
 4. in your project create a file `strings.xml` in the folder `res/values-hr`, if it doesn't already exist
 5. create an entry in the file with the value for the string which you want. For example ```<string name="PhotoPayHelp">Pomoć</string>```
@@ -1418,7 +1344,7 @@ At the time of writing this documentation, [Android does not have support for co
 This problem is usually solved with transitive Maven dependencies, i.e. when publishing your AAR to Maven you specify dependencies of your AAR so they are automatically referenced by app using your AAR. Besides this, there are also several other approaches you can try:
 
 - you can ask your clients to reference _PDF417.mobi_ in their app when integrating your SDK
-- since the problem lies in resource merging part you can try avoiding this step by ensuring your library will not use any component from _PDF417.mobi_ that uses resources (i.e. _Pdf417ScanActivity_). You can perform [custom UI integration](#recognizerView) while taking care that all resources (strings, layouts, images, ...) used are solely from your AAR, not from _PDF417.mobi_. Then, in your AAR you should not reference `LibRecognizer.aar` as gradle dependency, instead you should unzip it and copy its assets to your AAR’s assets folder, its classes.jar to your AAR’s lib folder (which should be referenced by gradle as jar dependency) and contents of its jni folder to your AAR’s src/main/jniLibs folder.
+- since the problem lies in resource merging part you can try avoiding this step by ensuring your library will not use any component from _PDF417.mobi_ that uses resources (i.e. _Pdf417ScanActivity_). You can perform [custom UI integration](#recognizerView) while taking care that all resources (strings, layouts, images, ...) used are solely from your AAR, not from _PDF417.mobi_. Then, in your AAR you should not reference `LibPdf417Mobi.aar` as gradle dependency, instead you should unzip it and copy its assets to your AAR’s assets folder, its classes.jar to your AAR’s lib folder (which should be referenced by gradle as jar dependency) and contents of its jni folder to your AAR’s src/main/jniLibs folder.
 - Another approach is to use [3rd party unofficial gradle script](https://github.com/adwiv/android-fat-aar) that aim to combine multiple AARs into single fat AAR. Use this script at your own risk.
 
 # <a name="archConsider"></a> Processor architecture considerations
@@ -1450,7 +1376,7 @@ However, there are some issues to be considered:
 - if x86_64 processor executes x86 code, it does not take advantage of 64-bit registers and use two instructions instead of one for 64-bit operations
 - MIPS processors understand only MIPS instruction set, while MIPS64 processors understand both MIPS and MIPS64 instruction sets
 
-`LibRecognizer.aar` archive contains builds of native library for all available architectures. By default, when you integrate _PDF417.mobi_ into your app, your app will contain native builds for all processor architectures. Thus, _PDF417.mobi_ will work on all devices and will use specific processor features where it can, e.g. ARMv7 features on ARMv7 devices and ARM64 features on ARM64 devices. However, the size of your application will be rather large.
+`LibPdf417Mobi.aar` archive contains builds of native library for all available architectures. By default, when you integrate _PDF417.mobi_ into your app, your app will contain native builds for all processor architectures. Thus, _PDF417.mobi_ will work on all devices and will use specific processor features where it can, e.g. ARMv7 features on ARMv7 devices and ARM64 features on ARM64 devices. However, the size of your application will be rather large.
 
 ## <a name="reduceSize"></a> Reducing the final size of your app
 
@@ -1503,28 +1429,28 @@ To remove certain CPU arhitecture, add following statement to your `android` blo
 android {
 	...
 	packagingOptions {
-		exclude 'lib/<ABI>/libBlinkBarcode.so'
+		exclude 'lib/<ABI>/libPdf417Mobi.so'
 	}
 }
 ```
 
 where `<ABI>` represents the CPU architecture you want to remove:
 
-- to remove ARMv6 support, use `exclude 'lib/armeabi/libBlinkBarcode.so'`
-- to remove ARMv7 support, use `exclude 'lib/armeabi-v7a/libBlinkBarcode.so'`
-- to remove x86 support, use `exclude 'lib/x86/libBlinkBarcode.so'`
-- to remove ARM64 support, use `exclude 'lib/arm64-v8a/libBlinkBarcode.so'`
-- to remove x86_64 support, use `exclude 'lib/x86_64/libBlinkBarcode.so'`
-- to remove MIPS support, use `exclude 'lib/mips/libBlinkBarcode.so'`
-- to remove MIPS64 support, use `exclude 'lib/mips64/libBlinkBarcode.so'`
+- to remove ARMv6 support, use `exclude 'lib/armeabi/libPdf417Mobi.so'`
+- to remove ARMv7 support, use `exclude 'lib/armeabi-v7a/libPdf417Mobi.so'`
+- to remove x86 support, use `exclude 'lib/x86/libPdf417Mobi.so'`
+- to remove ARM64 support, use `exclude 'lib/arm64-v8a/libPdf417Mobi.so'`
+- to remove x86_64 support, use `exclude 'lib/x86_64/libPdf417Mobi.so'`
+- to remove MIPS support, use `exclude 'lib/mips/libPdf417Mobi.so'`
+- to remove MIPS64 support, use `exclude 'lib/mips64/libPdf417Mobi.so'`
 
 You can also remove multiple processor architectures by specifying `exclude` directive multiple times. Just bear in mind that removing processor architecture will have sideeffects on performance and stability of your app. Please read [this](#archConsequences) for more information.
 
 ### Removing processor architecture support in Eclipse
 
-This section assumes that you have set up and prepared your Eclipse project from `LibRecognizer.aar` as described in chapter [Eclipse integration instructions](#eclipseIntegration).
+This section assumes that you have set up and prepared your Eclipse project from `LibPdf417Mobi.aar` as described in chapter [Eclipse integration instructions](#eclipseIntegration).
 
-If you are using Eclipse, removing processor architecture support gets really complicated. Eclipse does not support build flavors and you will either need to remove support for some processors or create several different library projects from `LibRecognizer.aar` - each one for specific processor architecture. 
+If you are using Eclipse, removing processor architecture support gets really complicated. Eclipse does not support build flavors and you will either need to remove support for some processors or create several different library projects from `LibPdf417Mobi.aar` - each one for specific processor architecture. 
 
 Native libraryies in eclipse library project are located in subfolder `libs`:
 

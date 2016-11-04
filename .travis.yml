@@ -1,9 +1,11 @@
 language: android
+jdk:
+    - oraclejdk8
 sudo: false
 android:
     components:
         - tools
-        - build-tools-23.0.3
+        - build-tools-24.0.3
         - android-23
         - extra-android-m2repository
 script:

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mvn install:install-file -Dfile=LibRecognizer.aar -DpomFile=pom.xml -DcreateChecksum=true -Djavadoc=LibRecognizer-javadoc.jar
+mvn install:install-file -Dfile=LibPdf417Mobi.aar -DpomFile=pom.xml -DcreateChecksum=true -Djavadoc=LibPdf417Mobi-javadoc.jar
