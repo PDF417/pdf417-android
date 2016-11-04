@@ -17,8 +17,6 @@ import com.microblink.recognizers.blinkbarcode.bardecoder.BarDecoderRecognizerSe
 import com.microblink.recognizers.blinkbarcode.bardecoder.BarDecoderScanResult;
 import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417RecognizerSettings;
 import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417ScanResult;
-import com.microblink.recognizers.blinkbarcode.usdl.USDLRecognizerSettings;
-import com.microblink.recognizers.blinkbarcode.usdl.USDLScanResult;
 import com.microblink.recognizers.blinkbarcode.zxing.ZXingRecognizerSettings;
 import com.microblink.recognizers.blinkbarcode.zxing.ZXingScanResult;
 import com.microblink.recognizers.settings.RecognitionSettings;
@@ -124,12 +122,6 @@ public class Pdf417MobiDemo extends Activity {
         // those algorithms are slower, but can scan lower resolution barcodes
 //        oneDimensionalRecognizerSettings.setTryHarder(true);
 
-        // USDLRecognizerSettings define settings for scanning US Driver's Licence barcodes
-        // options available in that settings are similar to those in Pdf417RecognizerSettings
-        // if license key does not allow scanning of US Driver's License, this settings will
-        // be thrown out from settings array and error will be logged to logcat.
-        USDLRecognizerSettings usdlRecognizerSettings = new USDLRecognizerSettings();
-
         // ZXingRecognizerSettings define settings for scanning barcodes with ZXing library
         // We use modified version of ZXing library to support scanning of barcodes for which
         // we still haven't implemented our own algorithms.
@@ -143,11 +135,9 @@ public class Pdf417MobiDemo extends Activity {
 
         RecognitionSettings recognitionSettings = new RecognitionSettings();
         // add settings objects to recognizer settings array
-        // Pdf417Recognizer, BarDecoderRecognizer, USDLRecognizer and ZXingRecognizer
+        // Pdf417Recognizer, BarDecoderRecognizer and ZXingRecognizer
         //  will be used in the recognition process
-        recognitionSettings.setRecognizerSettingsArray(
-                new RecognizerSettings[]{pdf417RecognizerSettings, oneDimensionalRecognizerSettings,
-                        usdlRecognizerSettings, zXingRecognizerSettings});
+        recognitionSettings.setRecognizerSettingsArray(new RecognizerSettings[]{pdf417RecognizerSettings, oneDimensionalRecognizerSettings, zXingRecognizerSettings});
 
         // additionally, there are generic settings that are used by all recognizers or the
         // whole recognition process
@@ -220,8 +210,8 @@ public class Pdf417MobiDemo extends Activity {
             // Multiple element may be in array if multiple scan results from single image were allowed in settings.
             BaseRecognitionResult[] resultArray = results.getRecognitionResults();
 
-            // Each recognition result corresponds to active recognizer. As stated earlier, there are 4 types of
-            // recognizers available (PDF417, Bardecoder, ZXing and USDL), so there are 4 types of results
+            // Each recognition result corresponds to active recognizer. As stated earlier, there are 3 types of
+            // recognizers available (PDF417, Bardecoder and ZXing), so there are 3 types of results
             // available.
 
             StringBuilder sb = new StringBuilder();
@@ -294,19 +284,6 @@ public class Pdf417MobiDemo extends Activity {
                         sb.append(barcodeData);
                         sb.append("\n\n\n");
                     }
-                } else if(res instanceof USDLScanResult) { // check if scan result is result of US Driver's Licence recognizer
-                    USDLScanResult result = (USDLScanResult) res;
-
-                    // USDLScanResult can contain lots of information extracted from driver's licence
-                    // you can obtain information using the getField method with keys defined in
-                    // USDLScanResult class
-
-                    String name = result.getField(USDLScanResult.kCustomerFullName);
-                    Log.i(TAG, "Customer full name is " + name);
-
-                    sb.append(result.getTitle());
-                    sb.append("\n\n");
-                    sb.append(result.toString());
                 }
             }
 
