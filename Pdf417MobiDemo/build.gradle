@@ -19,8 +19,8 @@ allprojects {
 // versions of libraries that all modules require
 
 project.ext {
-    pdf417MobiVersion = '6.0.0'
+    pdf417MobiVersion = '6.0.1'
     compileSdkVersion = 23
     targetSdkVersion = 23
-    buildToolsVersion = '24.0.3'
+    buildToolsVersion = '25.0.0'
 }
