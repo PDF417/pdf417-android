@@ -1,5 +1,9 @@
 # Release notes
 
+## 6.0.1
+- fixed camera management on LG X Cam
+- fixed crash on some devices when using `ImageListener`
+
 ## 6.0.0
 
 - removed support for parsing US Driver's license barcodes
