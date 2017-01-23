@@ -38,7 +38,7 @@ public class MenuActivity extends Activity {
 
     // obtain your licence key at http://microblink.com/login or
     // contact us at http://help.microblink.com
-    private static final String LICENSE_KEY = "LF4HOK6C-2CBLHLKC-2W32Z7CV-Z5Y5Z644-XIDIRD7F-ZFRKASEV-MTUXMWH6-7BSYYAS4";
+    private static final String LICENSE_KEY = "BKEBQ4LY-V4GNRCKE-2CGDYLRI-H4HHHUWZ-7EFI7ZOJ-MKQERFLE-5F3FR7XY-MXORWT6N";
 
     private static final int MY_REQUEST_CODE = 1337;
     private static final String TAG = "DirectApiDemo";
