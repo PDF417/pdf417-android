@@ -4,7 +4,6 @@ com.microblink.detectors.mrz
 com.microblink.detectors.points
 com.microblink.detectors.quad
 com.microblink.directApi
-com.microblink.directApi.frame
 com.microblink.geometry
 com.microblink.hardware
 com.microblink.hardware.accelerometer

@@ -5,8 +5,8 @@ sudo: false
 android:
     components:
         - tools
-        - build-tools-25.0.0
-        - android-23
+        - build-tools-25.0.2
+        - android-25
         - extra-android-m2repository
 script:
     - cd Pdf417MobiDemo

@@ -1,5 +1,15 @@
 # Release notes
 
+## 6.1.0
+
+- removed `RecognizerView` method `setInitialScanningPaused`. For achieving the same functionality, method `pauseScanning` should be used.
+- added support for cancelling ongoing DirectAPI recognition call
+- added support for Android 7 multi-window mode
+- fixed autofocus bug on Huawei Honor 8
+- fixed black camera on Motorola Moto Z
+- made camera focusing more stable on some devices
+    - _stable_ means less "jumpy" when searching for focused image
+
 ## 6.0.1
 - fixed camera management on LG X Cam
 - fixed crash on some devices when using `ImageListener`
