@@ -1,6 +1,8 @@
-# _PDF417.mobi_ SDK for Android
+# _PDF417.mobi_ SDK for Android with Commcare Integration
 
 [![Build Status](https://travis-ci.org/PDF417/pdf417-android.svg?branch=master)](https://travis-ci.org/PDF417/pdf417-android)
+
+Forked from [This Repo](https://github.com/PDF417/pdf417-android)
 
 _PDF417.mobi_ SDK for Android is SDK that enables you to perform scans of various barcodes in your app. You can simply integrate the SDK into your app by following the instructions below and your app will be able to benefit the scanning feature for following barcode standards:
 
