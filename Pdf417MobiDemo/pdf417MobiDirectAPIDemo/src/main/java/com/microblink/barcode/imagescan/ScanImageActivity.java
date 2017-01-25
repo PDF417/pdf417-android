@@ -166,7 +166,7 @@ public class ScanImageActivity extends Activity {
             // disable button
             mScanButton.setEnabled(false);
             // show progress dialog
-            final ProgressDialog pd = new1 ProgressDialog(this);
+            final ProgressDialog pd = new ProgressDialog(this);
             pd.setIndeterminate(true);
             pd.setMessage("Performing recognition");
             pd.setCancelable(false);

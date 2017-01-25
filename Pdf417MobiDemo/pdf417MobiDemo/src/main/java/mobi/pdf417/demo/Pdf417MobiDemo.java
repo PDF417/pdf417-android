@@ -45,7 +45,7 @@ public class Pdf417MobiDemo extends Activity {
         setContentView(R.layout.activity_main);
         TextView tvVersion = (TextView) findViewById(R.id.tvVersion);
         tvVersion.setText(buildVersionString());
-        startStuff();
+        startScanning();
     }
 
     /**
@@ -73,7 +73,7 @@ public class Pdf417MobiDemo extends Activity {
         }
     }
 
-    public void startStuff() {
+    public void startScanning() {
         Log.i(TAG, "scan will be performed");
         // Intent for ScanActivity
         Intent intent = new Intent(this, Pdf417ScanActivity.class);
