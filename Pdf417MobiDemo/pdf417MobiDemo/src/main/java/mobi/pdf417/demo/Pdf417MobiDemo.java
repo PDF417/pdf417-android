@@ -290,12 +290,6 @@ public class Pdf417MobiDemo extends Activity {
             }
 
             Intent dataToReturn = new Intent();
-
-            //this is how you would add responses to the default bundle.
-            //Bundle responses = new Bundle();
-            //responses.putString("example_id", "Example text");
-            //dataToReturn.putExtra("odk_intent_bundle", responses);
-
             // this is the value that CommCare will use as the result of the intent question
             dataToReturn.putExtra("SCAN_RESULT", barcodeData);
             setResult(Activity.RESULT_OK, dataToReturn);
