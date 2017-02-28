@@ -370,6 +370,8 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/recognizers/blinkbarcode/pdf417/package-summary.html">com.microblink.recognizers.blinkbarcode.pdf417</a> - package com.microblink.recognizers.blinkbarcode.pdf417</dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/microblink/recognizers/blinkbarcode/simnumber/package-summary.html">com.microblink.recognizers.blinkbarcode.simnumber</a> - package com.microblink.recognizers.blinkbarcode.simnumber</dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/microblink/recognizers/blinkbarcode/usdl/package-summary.html">com.microblink.recognizers.blinkbarcode.usdl</a> - package com.microblink.recognizers.blinkbarcode.usdl</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/recognizers/blinkbarcode/zxing/package-summary.html">com.microblink.recognizers.blinkbarcode.zxing</a> - package com.microblink.recognizers.blinkbarcode.zxing</dt>
@@ -468,6 +470,10 @@
 <dd>
 <div class="block">Parcelable creator object</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.recognizers.blinkbarcode.simnumber.<a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber">SimNumberRecognizerSettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.recognizers.blinkbarcode.simnumber.<a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber">SimNumberScanResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/usdl/USDLRecognizerSettings.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.recognizers.blinkbarcode.usdl.<a href="com/microblink/recognizers/blinkbarcode/usdl/USDLRecognizerSettings.html" title="class in com.microblink.recognizers.blinkbarcode.usdl">USDLRecognizerSettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/usdl/USDLScanResult.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.recognizers.blinkbarcode.usdl.<a href="com/microblink/recognizers/blinkbarcode/usdl/USDLScanResult.html" title="class in com.microblink.recognizers.blinkbarcode.usdl">USDLScanResult</a></dt>
@@ -551,6 +557,8 @@
 <div class="block">Describe the kinds of special objects contained in this Parcelable's
  marshalled representation.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html#describeContents--">describeContents()</a></span> - Method in class com.microblink.recognizers.blinkbarcode.simnumber.<a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber">SimNumberScanResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResults.html#describeContents--">describeContents()</a></span> - Method in class com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResults.html" title="class in com.microblink.recognizers">RecognitionResults</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/settings/RecognitionSettings.html#describeContents--">describeContents()</a></span> - Method in class com.microblink.recognizers.settings.<a href="com/microblink/recognizers/settings/RecognitionSettings.html" title="class in com.microblink.recognizers.settings">RecognitionSettings</a></dt>
@@ -1099,6 +1107,10 @@
 <dt><span class="memberNameLink"><a href="com/microblink/view/recognition/RecognizerView.html#getScanResultListener--">getScanResultListener()</a></span> - Method in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/RecognizerView.html" title="class in com.microblink.view.recognition">RecognizerView</a></dt>
 <dd>
 <div class="block">Returns the listener that will obtain the results of the scanning.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html#getSimNumber--">getSimNumber()</a></span> - Method in class com.microblink.recognizers.blinkbarcode.simnumber.<a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber">SimNumberScanResult</a></dt>
+<dd>
+<div class="block">Returns the scanned sim number</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/directApi/Recognizer.html#getSingletonInstance--">getSingletonInstance()</a></span> - Static method in class com.microblink.directApi.<a href="com/microblink/directApi/Recognizer.html" title="class in com.microblink.directApi">Recognizer</a></dt>
 <dd>
@@ -2370,6 +2382,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/activity/BaseScanActivity.html#onStop--">onStop()</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#OPERATIONAL_CODE">OPERATIONAL_CODE</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Point.html#operatorMinus-com.microblink.geometry.Point-">operatorMinus(Point)</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Point.html" title="class in com.microblink.geometry">Point</a></dt>
 <dd>
 <div class="block">- operator on the point.</div>
@@ -2393,6 +2407,8 @@
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#OPTIONAL_DATA">OPTIONAL_DATA</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/hardware/orientation/Orientation.html" title="enum in com.microblink.hardware.orientation"><span class="typeNameLink">Orientation</span></a> - Enum in <a href="com/microblink/hardware/orientation/package-summary.html">com.microblink.hardware.orientation</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#ORIENTATION_NUMBER">ORIENTATION_NUMBER</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/view/OrientationAllowedListener.html" title="interface in com.microblink.view"><span class="typeNameLink">OrientationAllowedListener</span></a> - Interface in <a href="com/microblink/view/package-summary.html">com.microblink.view</a></dt>
 <dd>
@@ -2464,6 +2480,10 @@
 <dd>
 <div class="block">Key for accessing Payer name element.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#PAYER_PLACE">PAYER_PLACE</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>
+<div class="block">Key for accessing payer place element.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#PAYER_REFERENCE">PAYER_REFERENCE</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>
 <div class="block">Key for accessing Payer reference element.</div>
@@ -2471,6 +2491,10 @@
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#PAYER_REFERENCE_MODEL">PAYER_REFERENCE_MODEL</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>
 <div class="block">Key for accessing Payer reference model element.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#PAYER_STREET">PAYER_STREET</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>
+<div class="block">Key for accessing payer street element.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#PAYMENT_DESCRIPTION">PAYMENT_DESCRIPTION</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>
@@ -2550,6 +2574,10 @@
 <div class="block">Called inside onCreate method before creating camera manager.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/recognition/RecognizerView.html#prepareCameraSettings-CameraSettings-">prepareCameraSettings(CameraSettings)</a></span> - Method in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/RecognizerView.html" title="class in com.microblink.view.recognition">RecognizerView</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#PROCESSING_CODE">PROCESSING_CODE</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#PRODUCT_CODE">PRODUCT_CODE</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#PRUFZIFFER">PRUFZIFFER</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>
@@ -2640,6 +2668,14 @@
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#RECIPIENT_NAME">RECIPIENT_NAME</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>
 <div class="block">Key for accessing Recipient name element.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#RECIPIENT_PLACE">RECIPIENT_PLACE</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>
+<div class="block">Key for accessing Recipient address element.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#RECIPIENT_STREET">RECIPIENT_STREET</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>
+<div class="block">Key for accessing Recipient street element.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/settings/RecognitionSettings.html#RECOGNITION_MODE">RECOGNITION_MODE</a></span> - Static variable in class com.microblink.recognizers.settings.<a href="com/microblink/recognizers/settings/RecognitionSettings.html" title="class in com.microblink.recognizers.settings">RecognitionSettings</a></dt>
 <dd>
@@ -2827,6 +2863,8 @@
 <dd>
 <div class="block">Created by dodo on 07/10/14.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#SERVICE_CODE">SERVICE_CODE</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/MetadataSettings.ImageMetadataSettings.DebugImageMetadataSettings.html#setAll-boolean-">setAll(boolean)</a></span> - Method in class com.microblink.metadata.<a href="com/microblink/metadata/MetadataSettings.ImageMetadataSettings.DebugImageMetadataSettings.html" title="class in com.microblink.metadata">MetadataSettings.ImageMetadataSettings.DebugImageMetadataSettings</a></dt>
 <dd>
 <div class="block">Sets all settings to same value.</div>
@@ -3199,6 +3237,22 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/recognition/RecognizerView.html#shouldStartCamera--">shouldStartCamera()</a></span> - Method in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/RecognizerView.html" title="class in com.microblink.view.recognition">RecognizerView</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#SIM_NUMBER">SIM_NUMBER</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
+<dd>
+<div class="block">Key for accessing sim number.</div>
+</dd>
+<dt><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber"><span class="typeNameLink">SimNumberRecognizerSettings</span></a> - Class in <a href="com/microblink/recognizers/blinkbarcode/simnumber/package-summary.html">com.microblink.recognizers.blinkbarcode.simnumber</a></dt>
+<dd>
+<div class="block">Settings for setting up recognizer that can scan sim numbers from barcodes.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html#SimNumberRecognizerSettings--">SimNumberRecognizerSettings()</a></span> - Constructor for class com.microblink.recognizers.blinkbarcode.simnumber.<a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber">SimNumberRecognizerSettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber"><span class="typeNameLink">SimNumberScanResult</span></a> - Class in <a href="com/microblink/recognizers/blinkbarcode/simnumber/package-summary.html">com.microblink.recognizers.blinkbarcode.simnumber</a></dt>
+<dd>
+<div class="block">Result of scanning sim number from barcode.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html#SimNumberScanResult-long-boolean-boolean-">SimNumberScanResult(long, boolean, boolean)</a></span> - Constructor for class com.microblink.recognizers.blinkbarcode.simnumber.<a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber">SimNumberScanResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/RecognitionResultConstants.html#SLIP_ID">SLIP_ID</a></span> - Static variable in interface com.microblink.recognizers.<a href="com/microblink/recognizers/RecognitionResultConstants.html" title="interface in com.microblink.recognizers">RecognitionResultConstants</a></dt>
 <dd>
 <div class="block">Key for accessing SlipID element.</div>
@@ -3519,6 +3573,10 @@ the order they are declared.</div>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/bardecoder/BarDecoderRecognizerSettings.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.recognizers.blinkbarcode.bardecoder.<a href="com/microblink/recognizers/blinkbarcode/bardecoder/BarDecoderRecognizerSettings.html" title="class in com.microblink.recognizers.blinkbarcode.bardecoder">BarDecoderRecognizerSettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/pdf417/Pdf417RecognizerSettings.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.recognizers.blinkbarcode.pdf417.<a href="com/microblink/recognizers/blinkbarcode/pdf417/Pdf417RecognizerSettings.html" title="class in com.microblink.recognizers.blinkbarcode.pdf417">Pdf417RecognizerSettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.recognizers.blinkbarcode.simnumber.<a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber">SimNumberRecognizerSettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.recognizers.blinkbarcode.simnumber.<a href="com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html" title="class in com.microblink.recognizers.blinkbarcode.simnumber">SimNumberScanResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/recognizers/blinkbarcode/usdl/USDLRecognizerSettings.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.recognizers.blinkbarcode.usdl.<a href="com/microblink/recognizers/blinkbarcode/usdl/USDLRecognizerSettings.html" title="class in com.microblink.recognizers.blinkbarcode.usdl">USDLRecognizerSettings</a></dt>
 <dd>&nbsp;</dd>

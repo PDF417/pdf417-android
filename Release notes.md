@@ -1,5 +1,9 @@
 # Release notes
 
+## 6.2.0
+- fixed autofocus issue on US version of Samsung devices that received Android N update
+- added support for scanning barcodes on SIM cards
+
 ## 6.1.0
 
 - removed `RecognizerView` method `setInitialScanningPaused`. For achieving the same functionality, method `pauseScanning` should be used.
