@@ -1,5 +1,8 @@
 # Release notes
 
+## 6.1.1
+- fixed autofocus issue on US version of Samsung devices that received Android N update
+
 ## 6.1.0
 
 - removed `RecognizerView` method `setInitialScanningPaused`. For achieving the same functionality, method `pauseScanning` should be used.
