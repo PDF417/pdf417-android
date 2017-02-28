@@ -17,6 +17,7 @@ import com.microblink.recognizers.blinkbarcode.bardecoder.BarDecoderRecognizerSe
 import com.microblink.recognizers.blinkbarcode.bardecoder.BarDecoderScanResult;
 import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417RecognizerSettings;
 import com.microblink.recognizers.blinkbarcode.pdf417.Pdf417ScanResult;
+import com.microblink.recognizers.blinkbarcode.simnumber.SimNumberRecognizerSettings;
 import com.microblink.recognizers.blinkbarcode.zxing.ZXingRecognizerSettings;
 import com.microblink.recognizers.blinkbarcode.zxing.ZXingScanResult;
 import com.microblink.recognizers.settings.RecognitionSettings;
@@ -33,7 +34,7 @@ public class Pdf417MobiDemo extends Activity {
     // demo license key for package com.microblink.barcode
     // obtain your licence key at http://microblink.com/login or
     // contact us at http://help.microblink.com
-    private static final String LICENSE_KEY = "BKEBQ4LY-V4GNRCKE-2CGDYLRI-H4HHHUWZ-7EFI7ZOJ-MKQERFLE-5F3FR7XY-MXORWT6N";
+    private static final String LICENSE_KEY = "22FVDADU-HCQFZVHY-MXK3HLMC-U6ZI5SSP-7RK464O4-7OOLUBUI-R7S4SYVA-JCKTKYDS";
 
     private static final int MY_REQUEST_CODE = 1337;
 
@@ -130,6 +131,10 @@ public class Pdf417MobiDemo extends Activity {
         zXingRecognizerSettings.setScanQRCode(true);
         zXingRecognizerSettings.setScanITFCode(true);
 
+        // SimNumberRecognizerSettings define settings for scanning barcode from SIM number barcode
+        // located on boxes of prepaid SIMs
+        SimNumberRecognizerSettings sm = new SimNumberRecognizerSettings();
+
         // finally, when you have defined settings for each recognizer you want to use,
         // you should put them into array held by global settings object
 
@@ -137,7 +142,7 @@ public class Pdf417MobiDemo extends Activity {
         // add settings objects to recognizer settings array
         // Pdf417Recognizer, BarDecoderRecognizer and ZXingRecognizer
         //  will be used in the recognition process
-        recognitionSettings.setRecognizerSettingsArray(new RecognizerSettings[]{pdf417RecognizerSettings, oneDimensionalRecognizerSettings, zXingRecognizerSettings});
+        recognitionSettings.setRecognizerSettingsArray(new RecognizerSettings[]{pdf417RecognizerSettings, oneDimensionalRecognizerSettings, zXingRecognizerSettings,sm});
 
         // additionally, there are generic settings that are used by all recognizers or the
         // whole recognition process

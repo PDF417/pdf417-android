@@ -44,6 +44,7 @@ See below for more information about how to integrate _PDF417.mobi_ SDK into you
   * [Scanning PDF417 barcodes](#pdf417Recognizer)
   * [Scanning one dimensional barcodes with _PDF417.mobi_'s implementation](#custom1DBarDecoder)
   * [Scanning barcodes with ZXing implementation](#zxing)
+  * [Scanning SIM number barcodes](#simNumberRecognizer)
 * [Translation and localization](#translation)
 * [Embedding _PDF417.mobi_ inside another SDK](#embedAAR)
   * [_PDF417.mobi_ licensing model](#licensingModel)
@@ -98,7 +99,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile('com.microblink:pdf417.mobi:6.1.0@aar') {
+    compile('com.microblink:pdf417.mobi:6.2.0@aar') {
     	transitive = true
     }
 }
@@ -119,7 +120,7 @@ Current version of Android Studio will not automatically import javadoc from mav
 
 1. In Android Studio project sidebar, ensure [project view is enabled](https://developer.android.com/sdk/installing/studio-androidview.html)
 2. Expand `External Libraries` entry (usually this is the last entry in project view)
-3. Locate `pdf417.mobi-6.1.0` entry, right click on it and select `Library Properties...`
+3. Locate `pdf417.mobi-6.2.0` entry, right click on it and select `Library Properties...`
 4. A `Library Properties` pop-up window will appear
 5. Click the second `+` button in bottom left corner of the window (the one that contains `+` with little globe)
 6. Window for definining documentation URL will appear
@@ -144,7 +145,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>6.1.0</version>
+		  <version>6.2.0</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>
@@ -160,7 +161,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	```
 	dependencies {
    		compile project(':LibPdf417Mobi')
- 		compile "com.android.support:appcompat-v7:25.1.0"
+ 		compile "com.android.support:appcompat-v7:25.2.0"
 	}
 	```
 5. If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
@@ -1261,6 +1262,47 @@ This method will return the string representation of barcode contents.
 ##### `getBarcodeType()`
 This method will return a [BarcodeType](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/BarcodeType.html) enum that defines the type of barcode scanned.
 
+## <a name="simNumberRecognizer"></a> Scanning SIM number barcodes
+
+This section discusses the settings for setting up SIM number recognizer and explains how to obtain its results.
+
+### Setting up SIM number recognizer
+
+To activate SIM number recognizer, you need to create a [SimNumberRecognizerSettings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html) and add it to `RecognizerSettings` array. You can do this using following code snippet:
+
+```java
+private RecognizerSettings[] setupSettingsArray() {
+	SimNumberRecognizerSettings sett = new SimNumberRecognizerSettings();
+	// now add sett to recognizer settings array that is used to configure
+    // recognition
+	return new RecognizerSettings[] { sett };
+}
+```
+
+**Javadoc documentation for SimNumberRecognizerSettings can be found [here](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html).**
+
+### Obtaining results from SIM number recognizer
+SIM number recognizer produces [SimNumberScanResult](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html). You can use `instanceof` operator to check if element in results array is instance of `SimNumberScanResult` class. See the following snippet for an example:
+
+```java
+@Override
+public void onScanningDone(RecognitionResults results) {
+	BaseRecognitionResult[] dataArray = results.getRecognitionResults();
+	for(BaseRecognitionResult baseResult : dataArray) {
+		if(baseResult instanceof SimNumberScanResult) {
+			SimNumberScanResult result = (SimNumberScanResult) baseResult;
+	       // get scanned sim number
+			String simNumber = result.getSimNumber();
+			if (simNumber != null) {
+				// do something
+			}
+		}
+	}
+}
+```
+
+**Available getters are documented in [Javadoc](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html).**
+
 # <a name="translation"></a> Translation and localization
 
 `PDF417.mobi` can be localized to any language. If you are using `RecognizerView` in your custom scan activity, you should handle localization as in any other Android app - `RecognizerView` does not use strings nor drawables, it only uses assets from `assets/microblink` folder. Those assets must not be touched as they are required for recognition to work correctly.
@@ -1530,9 +1572,6 @@ If you are having problems with scanning certain items, undesired behaviour on s
 
 ## <a name="faq"></a> Frequently asked questions and known problems
 Here is a list of frequently asked questions and solutions for them and also a list of known problems in the SDK and how to work around them.
-
-### <a name="android7MultiWindowButtons"></a> When automatic rotation is enabled, buttons are mislayouted on default scan activity after orientation change in Android 7.0 multi-window mode
-This is a known issue which can only be worked around by disabling multi window support in your entire activity stack which, as described in [Android documentation](https://developer.android.com/guide/topics/ui/multi-window.html#configuring) or by using [custom UI integration approach](#recognizerView). We are aware of the issue and will fix it in a future release.
 
 ### <a name="featureNotSupportedByLicenseKey"></a> Sometimes scanning works, sometimes it says that feature is not supported by license key
 

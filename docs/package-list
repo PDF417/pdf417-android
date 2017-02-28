@@ -17,6 +17,7 @@ com.microblink.recognizers
 com.microblink.recognizers.blinkbarcode
 com.microblink.recognizers.blinkbarcode.bardecoder
 com.microblink.recognizers.blinkbarcode.pdf417
+com.microblink.recognizers.blinkbarcode.simnumber
 com.microblink.recognizers.blinkbarcode.usdl
 com.microblink.recognizers.blinkbarcode.zxing
 com.microblink.recognizers.settings
