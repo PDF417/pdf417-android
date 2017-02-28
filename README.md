@@ -98,7 +98,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile('com.microblink:pdf417.mobi:6.1.0@aar') {
+    compile('com.microblink:pdf417.mobi:6.1.1@aar') {
     	transitive = true
     }
 }
@@ -119,7 +119,7 @@ Current version of Android Studio will not automatically import javadoc from mav
 
 1. In Android Studio project sidebar, ensure [project view is enabled](https://developer.android.com/sdk/installing/studio-androidview.html)
 2. Expand `External Libraries` entry (usually this is the last entry in project view)
-3. Locate `pdf417.mobi-6.1.0` entry, right click on it and select `Library Properties...`
+3. Locate `pdf417.mobi-6.1.1` entry, right click on it and select `Library Properties...`
 4. A `Library Properties` pop-up window will appear
 5. Click the second `+` button in bottom left corner of the window (the one that contains `+` with little globe)
 6. Window for definining documentation URL will appear
@@ -144,7 +144,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>6.1.0</version>
+		  <version>6.1.1</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>
@@ -160,7 +160,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	```
 	dependencies {
    		compile project(':LibPdf417Mobi')
- 		compile "com.android.support:appcompat-v7:25.1.0"
+ 		compile "com.android.support:appcompat-v7:25.2.0"
 	}
 	```
 5. If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
@@ -1530,9 +1530,6 @@ If you are having problems with scanning certain items, undesired behaviour on s
 
 ## <a name="faq"></a> Frequently asked questions and known problems
 Here is a list of frequently asked questions and solutions for them and also a list of known problems in the SDK and how to work around them.
-
-### <a name="android7MultiWindowButtons"></a> When automatic rotation is enabled, buttons are mislayouted on default scan activity after orientation change in Android 7.0 multi-window mode
-This is a known issue which can only be worked around by disabling multi window support in your entire activity stack which, as described in [Android documentation](https://developer.android.com/guide/topics/ui/multi-window.html#configuring) or by using [custom UI integration approach](#recognizerView). We are aware of the issue and will fix it in a future release.
 
 ### <a name="featureNotSupportedByLicenseKey"></a> Sometimes scanning works, sometimes it says that feature is not supported by license key
 
