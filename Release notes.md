@@ -1,5 +1,8 @@
 # Release notes
 
+## 6.2.1
+- fixed rotated camera preview on Panasonic A2 tablet
+
 ## 6.2.0
 - fixed autofocus issue on US version of Samsung devices that received Android N update
 - added support for scanning barcodes on SIM cards
