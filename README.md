@@ -99,7 +99,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile('com.microblink:pdf417.mobi:6.2.1@aar') {
+    compile('com.microblink:pdf417.mobi:6.3.0@aar') {
     	transitive = true
     }
 }
@@ -120,7 +120,7 @@ Current version of Android Studio will not automatically import javadoc from mav
 
 1. In Android Studio project sidebar, ensure [project view is enabled](https://developer.android.com/sdk/installing/studio-androidview.html)
 2. Expand `External Libraries` entry (usually this is the last entry in project view)
-3. Locate `pdf417.mobi-6.2.1` entry, right click on it and select `Library Properties...`
+3. Locate `pdf417.mobi-6.3.0` entry, right click on it and select `Library Properties...`
 4. A `Library Properties` pop-up window will appear
 5. Click the second `+` button in bottom left corner of the window (the one that contains `+` with little globe)
 6. Window for definining documentation URL will appear
@@ -145,7 +145,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>6.2.1</version>
+		  <version>6.3.0</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>
@@ -161,7 +161,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	```
 	dependencies {
    		compile project(':LibPdf417Mobi')
- 		compile "com.android.support:appcompat-v7:25.2.0"
+ 		compile "com.android.support:appcompat-v7:25.3.0"
 	}
 	```
 5. If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
