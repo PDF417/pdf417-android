@@ -1,5 +1,16 @@
 # Release notes
 
+## 6.3.0
+- fixed `UnsatisfiedLinkError` that happened on pre-Lollipop devices and was introduced in v6.2.1
+- optimised native binary size
+	- 23% size reduction for `arm64-v8a` ABI
+	- 18% size reduction for `armeabi` ABI
+	- 30% size reduction for `armeabi-v7a` ABI
+	- 22% size reduction for `x86` and `x86_64` ABIs
+- removed `mips` and `mips64` native binaries for two reasons
+	- code size optimisations did not work for those ABIs
+	- no known Android device uses those ABIs
+
 ## 6.2.1
 - fixed rotated camera preview on Panasonic A2 tablet
 
