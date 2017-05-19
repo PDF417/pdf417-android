@@ -18,19 +18,3 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-
--keep class net.photopay.** { *; }
-
--keepclassmembers class net.photopay.** {
-    *;
-}
-
--keep class mobi.pdf417.** { *; }
-
--keepclassmembers class mobi.pdf417.** { 
-    *; 
-}
-
--dontwarn android.hardware.**
-
--dontwarn android.support.v4.**

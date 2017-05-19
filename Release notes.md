@@ -1,5 +1,12 @@
 # Release notes
 
+## 6.4.0
+- `LibPDF417` is now fully ProGuard-compatible, i.e. you no longer need to exclude `com.microblink.**` classes in your ProGuard configuration
+- removed support for Android 2.3 and Android 4.0 - minimum required Android version is now Android 4.1 (API level 16)
+	- devices with Android 4.0 and earlier take [less than 2% of market share](https://developer.android.com/about/dashboards/index.html#Platform) and is very costly to support them
+- removed support for `armeabi` devices and ARMv7 devices without NEON SIMD support
+    - support for ARMv7 devices with NEON support still remains
+
 ## 6.3.0
 - fixed `UnsatisfiedLinkError` that happened on pre-Lollipop devices and was introduced in v6.2.1
 - optimised native binary size

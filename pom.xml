@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.microblink</groupId>
   <artifactId>pdf417.mobi</artifactId>
-  <version>6.3.0</version>
+  <version>6.4.0</version>
   <packaging>aar</packaging>
   <name>Pdf417Mobi SDK for Android</name>
   <description>SDK that enables scanning of various barcodes in your Android application</description>
@@ -25,7 +25,7 @@
     <dependency>
       <groupId>com.android.support</groupId>
       <artifactId>appcompat-v7</artifactId>
-      <version>25.3.0</version>
+      <version>25.3.1</version>
       <scope>compile</scope>
       <type>aar</type>
     </dependency>

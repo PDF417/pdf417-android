@@ -99,19 +99,10 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile('com.microblink:pdf417.mobi:6.3.0@aar') {
+    compile('com.microblink:pdf417.mobi:6.4.0@aar') {
     	transitive = true
     }
 }
-```
-
-If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
-	
-```
--keep class com.microblink.** { *; }
--keepclassmembers class com.microblink.** { *; }
--dontwarn android.hardware.**
--dontwarn android.support.v4.**
 ```
 
 #### Import Javadoc to Android Studio
@@ -120,7 +111,7 @@ Current version of Android Studio will not automatically import javadoc from mav
 
 1. In Android Studio project sidebar, ensure [project view is enabled](https://developer.android.com/sdk/installing/studio-androidview.html)
 2. Expand `External Libraries` entry (usually this is the last entry in project view)
-3. Locate `pdf417.mobi-6.3.0` entry, right click on it and select `Library Properties...`
+3. Locate `pdf417.mobi-6.4.0` entry, right click on it and select `Library Properties...`
 4. A `Library Properties` pop-up window will appear
 5. Click the second `+` button in bottom left corner of the window (the one that contains `+` with little globe)
 6. Window for definining documentation URL will appear
@@ -145,7 +136,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>6.3.0</version>
+		  <version>6.4.0</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>
@@ -161,16 +152,8 @@ Open your `pom.xml` file and add these directives as appropriate:
 	```
 	dependencies {
    		compile project(':LibPdf417Mobi')
- 		compile "com.android.support:appcompat-v7:25.3.0"
+ 		compile "com.android.support:appcompat-v7:25.3.1"
 	}
-	```
-5. If you plan to use ProGuard, add following lines to your `proguard-rules.pro`:
-	
-	```
-	-keep class com.microblink.** { *; }
-	-keepclassmembers class com.microblink.** { *; }
-	-dontwarn android.hardware.**
-	-dontwarn android.support.v4.**
 	```
 	
 ### <a name="androidStudio_importAAR_javadoc"></a> Import Javadoc to Android Studio
@@ -203,8 +186,7 @@ You’ve already created the project that contains almost everything you need. N
 2. Open the `AndroidManifest.xml` file inside `LibPdf417Mobi.aar` file and make sure to copy all permissions, features and activities to the `AndroidManifest.xml` file of the target project.
 3. Copy the contents of `assets` folder from `LibPdf417Mobi.aar` into `assets` folder of target project. If `assets` folder in target project does not exist, create it.
 4. Clean and Rebuild your target project
-5. If you plan to use ProGuard, add same statements as in [Android studio guide](#quickIntegration) to your ProGuard configuration file.
-6. Add appcompat-v7 library to your workspace and reference it by target project (modern ADT plugin for Eclipse does this automatically for all new android projects).
+5. Add appcompat-v7 library to your workspace and reference it by target project (modern ADT plugin for Eclipse does this automatically for all new android projects).
 
 ## <a name="quickScan"></a> Performing your first scan
 1. You can start recognition process by starting `Pdf417ScanActivity` activity with Intent initialized in the following way:
@@ -267,7 +249,7 @@ This section will cover more advanced details in _PDF417.mobi_ integration. Firs
 ### _PDF417.mobi_ requirements
 Even before starting the scan activity, you should check if _PDF417.mobi_ is supported on current device. In order to be supported, device needs to have camera. 
 
-Android 2.3 is the minimum android version on which _PDF417.mobi_ is supported. For best performance and compatibility, we recommend Android 5.0 or newer.
+Android 4.1 is the minimum android version on which _PDF417.mobi_ is supported. For best performance and compatibility, we recommend Android 5.0 or newer.
 
 Camera video preview resolution also matters. In order to perform successful scans, camera preview resolution cannot be too low. _PDF417.mobi_ requires minimum 320p camera preview resolution in order to perform scan. It must be noted that camera preview resolution is not the same as the video record resolution, although on most devices those are the same. However, there are some devices that allow recording of HD video (720p resolution), but do not allow high enough camera preview resolution (for example, [Sony Xperia Go](http://www.gsmarena.com/sony_xperia_go-4782.php) supports video record resolution at 720p, but camera preview resolution is only 320p - _PDF417.mobi_ does not work on that device).
 
@@ -1302,7 +1284,6 @@ public void onScanningDone(RecognitionResults results) {
 ```
 
 **Available getters are documented in [Javadoc](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html).**
-
 # <a name="translation"></a> Translation and localization
 
 `PDF417.mobi` can be localized to any language. If you are using `RecognizerView` in your custom scan activity, you should handle localization as in any other Android app - `RecognizerView` does not use strings nor drawables, it only uses assets from `assets/microblink` folder. Those assets must not be touched as they are required for recognition to work correctly.
@@ -1388,34 +1369,28 @@ This problem is usually solved with transitive Maven dependencies, i.e. when pub
 
 # <a name="archConsider"></a> Processor architecture considerations
 
-_PDF417.mobi_ is distributed with native library binaries for all processor architectures supported by Android.
+_PDF417.mobi_ is distributed with both ARMv7, ARM64, x86 and x86_64 native library binaries.
 
-ARMv7 architecture gives the ability to take advantage of hardware accelerated floating point operations and SIMD processing with [NEON](http://www.arm.com/products/processors/technologies/neon.php). This gives _PDF417.mobi_ a huge performance boost on devices that have ARMv7 processors. Most new devices (all since 2012.) have ARMv7 processor so it makes little sense not to take advantage of performance boosts that those processors can give. 
+ARMv7 architecture gives the ability to take advantage of hardware accelerated floating point operations and SIMD processing with [NEON](http://www.arm.com/products/processors/technologies/neon.php). This gives _PDF417.mobi_ a huge performance boost on devices that have ARMv7 processors. Most new devices (all since 2012.) have ARMv7 processor so it makes little sense not to take advantage of performance boosts that those processors can give. Also note that some devices with ARMv7 processors do not support NEON instruction sets. Most popular are those based on [NVIDIA Tegra 2](https://en.wikipedia.org/wiki/Tegra#Tegra_2) fall into this category. Since these devices are old by today's standard, _PDF417.mobi_ does not support them.
 
-ARM64 is the new processor architecture that some new high end devices use. ARM64 processors are very powerful and also have the possibility to take advantage of new NEON64 SIMD instruction set to quickly process multiple pixels with single instruction.
+ARM64 is the new processor architecture that most new devices use. ARM64 processors are very powerful and also have the possibility to take advantage of new NEON64 SIMD instruction set to quickly process multiple pixels with single instruction.
 
-x86 architecture gives the ability to obtain native speed on x86 android devices, like [Prestigio 5430](http://www.gsmarena.com/prestigio_multiphone_5430_duo-5721.php). Without that, _PDF417.mobi_ will not work on such devices, or it will be run on top of ARM emulator that is shipped with device - this will give a huge performance penalty.
+x86 architecture gives the ability to obtain native speed on x86 android devices, like [Asus Zenfone 4](http://www.gsmarena.com/asus_zenfone_4-5951.php). Without that, _PDF417.mobi_ will not work on such devices, or it will be run on top of ARM emulator that is shipped with device - this will give a huge performance penalty.
 
 x86_64 architecture gives better performance than x86 on devices that use 64-bit Intel Atom processor.
 
-Mips and Mips64 architectures are used for devices that use mips-compatible processor.
-
 However, there are some issues to be considered:
 
-- ARMv7 processors understand ARMv6 instruction set, but ARMv6 processors do not understand ARMv7 instructions.
-- if ARMv7 processor executes ARMv6 code, it does not take advantage of hardware floating point acceleration and does not use SIMD operations
 - ARMv7 build of native library cannot be run on devices that do not have ARMv7 compatible processor (list of those old devices can be found [here](http://www.getawesomeinstantly.com/list-of-armv5-armv6-and-armv5-devices/))
-- neither ARMv6 nor ARMv7 processors understand x86 instruction set
-- x86 processors do not understand neither ARMv6 nor ARMv7 instruction sets
-- however, some x86 android devices ship with the builtin [ARM emulator](http://commonsware.com/blog/2013/11/21/libhoudini-what-it-means-for-developers.html) - such devices are able to run ARM binaries (both ARMv6 and ARMv7) but with performance penalty. There is also a risk that builtin ARM emulator will not understand some specific ARM instruction and will crash.
-- ARM64 processors understand both ARMv6 and ARMv7 instruction sets, but neither ARMv6 nor ARMv7 processors do not understand ARM64 instructions
-- if ARM64 processor executes ARMv6 code, it does not take advantage of hardware floating point acceleration and does not use SIMD operations
+- ARMv7 processors does not understand x86 instruction set
+- x86 processors do not understand neither ARM64 nor ARMv7 instruction sets
+- however, some x86 android devices ship with the builtin [ARM emulator](http://commonsware.com/blog/2013/11/21/libhoudini-what-it-means-for-developers.html) - such devices are able to run ARM binaries but with performance penalty. There is also a risk that builtin ARM emulator will not understand some specific ARM instruction and will crash.
+- ARM64 processors understand ARMv7 instruction set, but ARMv7 processors does not understand ARM64 instructions
 - if ARM64 processor executes ARMv7 code, it does not take advantage of modern NEON64 SIMD operations and does not take advantage of 64-bit registers it has - it runs in emulation mode
 - x86_64 processors understand x86 instruction set, but x86 processors do not understand x86_64 instruction set
 - if x86_64 processor executes x86 code, it does not take advantage of 64-bit registers and use two instructions instead of one for 64-bit operations
-- MIPS processors understand only MIPS instruction set, while MIPS64 processors understand both MIPS and MIPS64 instruction sets
 
-`LibPdf417Mobi.aar` archive contains builds of native library for all available architectures. By default, when you integrate _PDF417.mobi_ into your app, your app will contain native builds for all processor architectures. Thus, _PDF417.mobi_ will work on all devices and will use specific processor features where it can, e.g. ARMv7 features on ARMv7 devices and ARM64 features on ARM64 devices. However, the size of your application will be rather large.
+`LibPdf417Mobi.aar` archive contains ARMv7, ARM64, x86 and x86_64 builds of native library. By default, when you integrate _PDF417.mobi_ into your app, your app will contain native builds for all processor architectures. Thus, _PDF417.mobi_ will work on ARMv7, ARM64, x86 and x86_64 devices and will use ARMv7 features on ARMv7 devices and ARM64 features on ARM64 devices. However, the size of your application will be rather large.
 
 ## <a name="reduceSize"></a> Reducing the final size of your app
 
@@ -1428,7 +1403,7 @@ android {
     abi {
       enable true
       reset()
-      include 'x86', 'armeabi-v7a', 'armeabi', 'arm64-v8a', 'mips', 'mips64', 'x86_64'
+      include 'x86', 'armeabi-v7a', 'arm64-v8a', 'x86_64'
       universalApk true
     }
   }
@@ -1439,7 +1414,7 @@ With that build instructions, gradle will build four different APK files for you
 
 ```
 // map for the version code
-def abiVersionCodes = ['armeabi':1, 'armeabi-v7a':2, 'arm64-v8a':3, 'mips':4, 'mips64':5, 'x86':6, 'x86_64':7]
+def abiVersionCodes = ['armeabi-v7a':1, 'arm64-v8a':2, 'x86':3, 'x86_64':4]
 
 import com.android.build.OutputFile
 
@@ -1475,13 +1450,10 @@ android {
 
 where `<ABI>` represents the CPU architecture you want to remove:
 
-- to remove ARMv6 support, use `exclude 'lib/armeabi/libPdf417Mobi.so'`
 - to remove ARMv7 support, use `exclude 'lib/armeabi-v7a/libPdf417Mobi.so'`
 - to remove x86 support, use `exclude 'lib/x86/libPdf417Mobi.so'`
 - to remove ARM64 support, use `exclude 'lib/arm64-v8a/libPdf417Mobi.so'`
 - to remove x86_64 support, use `exclude 'lib/x86_64/libPdf417Mobi.so'`
-- to remove MIPS support, use `exclude 'lib/mips/libPdf417Mobi.so'`
-- to remove MIPS64 support, use `exclude 'lib/mips64/libPdf417Mobi.so'`
 
 You can also remove multiple processor architectures by specifying `exclude` directive multiple times. Just bear in mind that removing processor architecture will have sideeffects on performance and stability of your app. Please read [this](#archConsequences) for more information.
 
@@ -1493,42 +1465,33 @@ If you are using Eclipse, removing processor architecture support gets really co
 
 Native libraryies in eclipse library project are located in subfolder `libs`:
 
-- `libs/armeabi` contains native libraries for ARMv6 processor architecture
 - `libs/armeabi-v7a` contains native libraries for ARMv7 processor arhitecture
 - `libs/x86` contains native libraries for x86 processor architecture
 - `libs/arm64-v8a` contains native libraries for ARM64 processor architecture
 - `libs/x86_64` contains native libraries for x86_64 processor architecture
-- `libs/mips` contains native libraries for MIPS processor architecture
-- `libs/mips64` contains native libraries for MIPS64 processor architecture
 
 To remove a support for processor architecture, you should simply delete appropriate folder inside Eclipse library project:
 
-- to remove ARMv6 support, delete folder `libs/armeabi`
 - to remove ARMv7 support, delete folder `libs/armeabi-v7a`
 - to remove x86 support, delete folder `libs/x86`
 - to remove ARM64 support, delete folder `libs/arm64-v8a`
 - to remove x86_64 support, delete folder `libs/x86_64`
-- to remove MIPS support, delete folder `libs/mips`
-- to remove MIPS64 support, delete folder `libs/mips64`
 
 ### <a name="archConsequences"></a> Consequences of removing processor architecture
 
 However, removing a processor architecture has some consequences:
 
-- by removing ARMv6 support _PDF417.mobi_ will not work on devices that have ARMv6 processors. 
-- by removing ARMv7 support, _PDF417.mobi_ will work on both devices that have ARMv6, ARM64 or ARMv7 processor. However, on ARMv7 and ARM64 processors, hardware floating point and SIMD acceleration will not be used, thus making _PDF417.mobi_ much slower. Our internal tests have shown that running ARMv7 version of _PDF417.mobi_ on ARMv7 device is more than 50% faster than running ARMv6 version on same device.
+- by removing ARMv7 support _PDF417.mobi_ will not work on devices that have ARMv7 processors. 
 - by removing ARM64 support, _PDF417.mobi_ will not use ARM64 features on ARM64 device
 - by removing x86 support, _PDF417.mobi_ will not work on devices that have x86 processor, except in situations when devices have ARM emulator - in that case, _PDF417.mobi_ will work, but will be slow
 - by removing x86_64 support, _PDF417.mobi_ will not use 64-bit optimizations on x86_64 processor, but if x86 support is not removed, _PDF417.mobi_ should work
-- by removing MIPS support, _PDF417.mobi_ will not work on MIPS processors
-- by removing MIPS64 support, _PDF417.mobi_ will not utilize MIPS64 optimizations on MIPS64 processor, but if MIPS support is not removed, _PDF417.mobi_ should work
 
 Our recommendation is to include all architectures into your app - it will work on all devices and will provide best user experience. However, if you really need to reduce the size of your app, we recommend releasing separate version of your app for each processor architecture. It is easiest to do that with [APK splits](#reduceSize).
 
+
 ## <a name="combineNativeLibraries"></a> Combining _PDF417.mobi_ with other native libraries
 
-If you are combining _PDF417.mobi_ library with some other libraries that contain native code into your application, make sure you match the architectures of all native libraries. For example, if third party library has got only ARMv6 and x86 versions, you must use exactly ARMv6 and x86 versions of _PDF417.mobi_ with that library, but not ARMv7, ARM64 or some else. Using these architectures will crash your app in initialization step because JVM will try to load all its native dependencies in same preferred architecture - for example if device preferres ARMv7 native libraries so it will see that there is a _PDF417.mobi_ ARMv7 native library and will load it. After that, it will try to load ARMv7 version of your third party library which does not exist - therefore app will crash with `UnsatisfiedLinkError`.
-
+If you are combining _PDF417.mobi_ library with some other libraries that contain native code into your application, make sure you match the architectures of all native libraries. For example, if third party library has got only ARMv7 and x86 versions, you must use exactly ARMv7 and x86 versions of _PDF417.mobi_ with that library, but not ARM64. Using these architectures will crash your app in initialization step because JVM will try to load all its native dependencies in same preferred architecture and will fail with `UnsatisfiedLinkError`.
 # <a name="troubleshoot"></a> Troubleshooting
 
 ## <a name="integrationTroubleshoot"></a> Integration problems
