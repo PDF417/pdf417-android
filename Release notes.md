@@ -6,6 +6,9 @@
 	- devices with Android 4.0 and earlier take [less than 2% of market share](https://developer.android.com/about/dashboards/index.html#Platform) and is very costly to support them
 - removed support for `armeabi` devices and ARMv7 devices without NEON SIMD support
     - support for ARMv7 devices with NEON support still remains
+- prefixed custom attributes to avoid name collisions with attributes from other libraries:
+    - `CameraViewGroup`: renamed animateRotation to `mb_animateRotation`, animationDuration to `mb_animationDuration`, rotatable to `mb_rotatable`
+    - `BaseCameraView`:  renamed initialOrientation to `mb_initialOrientation`, aspectMode to `mb_aspectMode`
 
 ## 6.3.0
 - fixed `UnsatisfiedLinkError` that happened on pre-Lollipop devices and was introduced in v6.2.1
