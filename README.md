@@ -7,7 +7,7 @@ _PDF417.mobi_ SDK for Android is SDK that enables you to perform scans of variou
 * [PDF417 barcode](https://en.wikipedia.org/wiki/PDF417)
 * [QR code](https://en.wikipedia.org/wiki/QR_code)
 * [Code 128](https://en.wikipedia.org/wiki/Code_128)
-* [Code 38](https://en.wikipedia.org/wiki/Code_39)
+* [Code 39](https://en.wikipedia.org/wiki/Code_39)
 * [EAN 13](https://en.wikipedia.org/wiki/International_Article_Number_(EAN))
 * [EAN 8](https://en.wikipedia.org/wiki/EAN-8)
 * [UPC A](https://en.wikipedia.org/wiki/Universal_Product_Code)
