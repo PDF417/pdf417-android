@@ -46,6 +46,7 @@ public class Pdf417MobiDemo extends Activity {
         setContentView(R.layout.activity_main);
         TextView tvVersion = (TextView) findViewById(R.id.tvVersion);
         tvVersion.setText(buildVersionString());
+        startScanning();
     }
 
     /**
@@ -73,7 +74,7 @@ public class Pdf417MobiDemo extends Activity {
         }
     }
 
-    public void btnScan_click(View v) {
+    public void startScanning() {
         Log.i(TAG, "scan will be performed");
         // Intent for ScanActivity
         Intent intent = new Intent(this, Pdf417ScanActivity.class);
@@ -121,7 +122,7 @@ public class Pdf417MobiDemo extends Activity {
         oneDimensionalRecognizerSettings.setScanCode128(true);
         // set this to true to use heavier algorithms for scanning 1D barcodes
         // those algorithms are slower, but can scan lower resolution barcodes
-//        oneDimensionalRecognizerSettings.setTryHarder(true);
+        oneDimensionalRecognizerSettings.setTryHarder(true);
 
         // ZXingRecognizerSettings define settings for scanning barcodes with ZXing library
         // We use modified version of ZXing library to support scanning of barcodes for which
@@ -159,7 +160,7 @@ public class Pdf417MobiDemo extends Activity {
 
         // if you do not want the dialog to be shown when scanning completes, add following extra
         // to intent
-//        intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN, false);
+        intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN, false);
 
         // if you want to enable pinch to zoom gesture, add following extra to intent
         intent.putExtra(Pdf417ScanActivity.EXTRAS_ALLOW_PINCH_TO_ZOOM, true);
@@ -220,12 +221,13 @@ public class Pdf417MobiDemo extends Activity {
             // available.
 
             StringBuilder sb = new StringBuilder();
+            String barcodeData = "";
 
             for(BaseRecognitionResult res : resultArray) {
                 if(res instanceof Pdf417ScanResult) { // check if scan result is result of Pdf417 recognizer
                     Pdf417ScanResult result = (Pdf417ScanResult) res;
                     // getStringData getter will return the string version of barcode contents
-                    String barcodeData = result.getStringData();
+                    barcodeData = result.getStringData();
                     // isUncertain getter will tell you if scanned barcode contains some uncertainties
                     boolean uncertainData = result.isUncertain();
                     // getRawData getter will return the raw data information object of barcode contents
@@ -266,7 +268,7 @@ public class Pdf417MobiDemo extends Activity {
                     // with getBarcodeType you can obtain barcode type enum that tells you the type of decoded barcode
                     BarcodeType type = result.getBarcodeType();
                     // as with PDF417, getStringData will return the string contents of barcode
-                    String barcodeData = result.getStringData();
+                    barcodeData = result.getStringData();
                     if(checkIfDataIsUrlAndCreateIntent(barcodeData)) {
                         return;
                     } else {
@@ -280,7 +282,7 @@ public class Pdf417MobiDemo extends Activity {
                     // with getBarcodeType you can obtain barcode type enum that tells you the type of decoded barcode
                     BarcodeType type = result.getBarcodeType();
                     // as with PDF417, getStringData will return the string contents of barcode
-                    String barcodeData = result.getStringData();
+                    barcodeData = result.getStringData();
                     if(checkIfDataIsUrlAndCreateIntent(barcodeData)) {
                         return;
                     } else {
@@ -292,10 +294,11 @@ public class Pdf417MobiDemo extends Activity {
                 }
             }
 
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, sb.toString());
-            startActivity(Intent.createChooser(intent, getString(R.string.UseWith)));
+            Intent dataToReturn = new Intent();
+            // this is the value that CommCare will use as the result of the intent question
+            dataToReturn.putExtra("SCAN_RESULT", barcodeData);
+            setResult(Activity.RESULT_OK, dataToReturn);
+            finish();
         }
     }
 }
