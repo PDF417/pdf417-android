@@ -16,7 +16,7 @@ _PDF417.mobi_ SDK for Android is SDK that enables you to perform scans of variou
 * [Data Matrix](https://en.wikipedia.org/wiki/Data_Matrix)
 * [Aztec](https://en.wikipedia.org/wiki/Aztec_Code)
 
-Using _PDF417.mobi_ in your app requires a valid license key. You can obtain a trial license key by registering to [Microblink dashboard](https://microblink.com/login). After registering, you will be able to generate a license key for your app. License key is bound to [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename) of your app, so please make sure you enter the correct package name when asked.
+Using _PDF417.mobi_ in your app requires a valid license. You can obtain a trial license by registering to [Microblink dashboard](https://microblink.com/login). After registering, you will be able to generate a license for your app. License is bound to [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename) of your app, so please make sure you enter the correct package name when asked.
 
 See below for more information about how to integrate _PDF417.mobi_ SDK into your app and also check latest [Release notes](Release notes.md).
 
@@ -24,38 +24,49 @@ See below for more information about how to integrate _PDF417.mobi_ SDK into you
 
 * [Android _PDF417.mobi_ integration instructions](#intro)
 * [Quick Start](#quickStart)
-  * [Quick start with demo app](#quickDemo)
-  * [Integrating _PDF417.mobi_ into your project using Maven](#mavenIntegration)
-  * [Android studio integration instructions](#quickIntegration)
-  * [Eclipse integration instructions](#eclipseIntegration)
-  * [Performing your first scan](#quickScan)
+    * [Quick start with demo app](#quickDemo)
+    * [Integrating _PDF417.mobi_ into your project using Maven](#mavenIntegration)
+    * [Android studio integration instructions](#quickIntegration)
+        * [Import Javadoc to Android Studio](#androidStudio_importAAR_javadoc)
+    * [Eclipse integration instructions](#eclipseIntegration)
+    * [Performing your first scan](#quickScan)
 * [Advanced _PDF417.mobi_ integration instructions](#advancedIntegration)
-  * [Checking if _PDF417.mobi_ is supported](#supportCheck)
-  * [Customization of `Pdf417ScanActivity` activity](#scanActivityCustomization)
-  * [Embedding `RecognizerView` into custom scan activity](#recognizerView)
-  * [`RecognizerView` reference](#recognizerViewReference)
-* [Using direct API for recognition of Android Bitmaps](#directAPI)
-  * [Understanding DirectAPI's state machine](#directAPIStateMachine)
-  * [Using DirectAPI while RecognizerView is active](#directAPIWithRecognizer)
-  * [Obtaining various metadata with _MetadataListener_](#metadataListener)
-  * [Using ImageListener to obtain images that are being processed](#imageListener)
-* [Recognition settings and results](#recognitionSettingsAndResults)
-  * [Recognition settings](#recognitionSettings)
-  * [Scanning PDF417 barcodes](#pdf417Recognizer)
-  * [Scanning one dimensional barcodes with _PDF417.mobi_'s implementation](#custom1DBarDecoder)
-  * [Scanning barcodes with ZXing implementation](#zxing)
-  * [Scanning SIM number barcodes](#simNumberRecognizer)
-* [Translation and localization](#translation)
+    * [Checking if _PDF417.mobi_ is supported](#supportCheck)
+    * [UI customizations of built-in activities and fragments](#uiCustomizations)
+        * [Using built-in scan activity for performing the scan](#runBuiltinActivity)
+        * [Using `RecognizerRunnerFragment` within your activity](#recognizerRunnerFragment)
+        * [Built-in activities and overlays](#builtInUIComponents)
+        * [Changing appearance of built-in activities and scanning overlays](#changeBuiltInUIComponents)
+        * [Translation and localization](#translation)
+    * [Embedding `RecognizerRunnerView` into custom scan activity](#recognizerRunnerView)
+        * [Scan activity's orientation](#scanOrientation)
+    * [Using Direct API for recognition of Android Bitmaps and custom camera frames](#directAPI)
+        * [Understanding DirectAPI's state machine](#directAPIStateMachine)
+        * [Using DirectAPI while RecognizerRunnerView is active](#directAPIWithRecognizer)
+    * [Handling processing events with `RecognizerRunner` and `RecognizerRunnerView`](#processingEvents)
+        * [Note about `setMetadataCallbacks` method](#processingEventsImportantNote)
+* [`RecognizerBundle` and available recognizers](#availableRecognizers)
+    * [The `Recognizer` concept](#recognizerConcept)
+    * [`RecognizerBundle`](#recognizerBundle)
+        * [Passing `Recognizer` objects between activities](#intentOptimization)
+    * [List of available recognizers](#recognizerList)
+        * [Frame Grabber Recognizer](#frameGrabberRecognizer)
+        * [Success Frame Grabber Recognizer](#successFrameGrabberRecognizer)
+        * [PDF417 recognizer](#pdf417Recognizer)
+        * [Barcode recognizer](#barcodeRecognizer)
 * [Embedding _PDF417.mobi_ inside another SDK](#embedAAR)
-  * [_PDF417.mobi_ licensing model](#licensingModel)
-  * [Ensuring the final app gets all resources required by _PDF417.mobi_](#sdkIntegrationIntoApp)
+    * [_PDF417.mobi_ licensing model](#licensingModel)
+        * [Application licenses](#appLicence)
+        * [Library licenses](#libLicence)
+    * [Ensuring the final app gets all resources required by _PDF417.mobi_](#sdkIntegrationIntoApp)
 * [Processor architecture considerations](#archConsider)
-  * [Reducing the final size of your app](#reduceSize)
-  * [Combining _PDF417.mobi_ with other native libraries](#combineNativeLibraries)
+    * [Reducing the final size of your app](#reduceSize)
+        * [Consequences of removing processor architecture](#archConsequences)
+    * [Combining _PDF417.mobi_ with other native libraries](#combineNativeLibraries)
 * [Troubleshooting](#troubleshoot)
-  * [Integration problems](#integrationTroubleshoot)
-  * [SDK problems](#sdkTroubleshoot)
-  * [Frequently asked questions and known problems](#faq)
+    * [Integration problems](#integrationTroubleshoot)
+    * [SDK problems](#sdkTroubleshoot)
+    * [Frequently asked questions and known problems](#faq)
 * [Additional info](#info)
 
 # <a name="intro"></a> Android _PDF417.mobi_ integration instructions
@@ -70,7 +81,7 @@ Source code of all demo apps is given to you to show you how to perform integrat
 
 _PDF417.mobi_ is supported on Android SDK version 16 (Android 4.1) or later.
 
-The library contains one activity: `Pdf417ScanActivity`. It is responsible for camera control and recognition. You can also create your own scanning UI - you just need to embed `RecognizerView` into your activity and pass activity's lifecycle events to it and it will control the camera and recognition process. For more information, see [Embedding `RecognizerView` into custom scan activity](#recognizerView).
+The library contains one activity: `Pdf417ScanActivity`. It is responsible for camera control and recognition. You can also create your own scanning UI - you just need to embed `RecognizerRunnerView` into your activity and pass activity's lifecycle events to it and it will control the camera and recognition process. For more information, see [Embedding `RecognizerRunnerView` into custom scan activity](#recognizerRunnerView).
 
 # <a name="quickStart"></a> Quick Start
 
@@ -99,7 +110,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    compile('com.microblink:pdf417.mobi:6.4.0@aar') {
+    implementation('com.microblink:pdf417.mobi:7.0.0@aar') {
     	transitive = true
     }
 }
@@ -111,7 +122,7 @@ Current version of Android Studio will not automatically import javadoc from mav
 
 1. In Android Studio project sidebar, ensure [project view is enabled](https://developer.android.com/sdk/installing/studio-androidview.html)
 2. Expand `External Libraries` entry (usually this is the last entry in project view)
-3. Locate `pdf417.mobi-6.4.0` entry, right click on it and select `Library Properties...`
+3. Locate `pdf417.mobi-7.0.0` entry, right click on it and select `Library Properties...`
 4. A `Library Properties` pop-up window will appear
 5. Click the second `+` button in bottom left corner of the window (the one that contains `+` with little globe)
 6. Window for definining documentation URL will appear
@@ -136,7 +147,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	<dependency>
 		  <groupId>com.microblink</groupId>
 		  <artifactId>pdf417.mobi</artifactId>
-		  <version>6.4.0</version>
+		  <version>7.0.0</version>
 		  <type>aar</type>
   	</dependency>
 </dependencies>
@@ -149,12 +160,12 @@ Open your `pom.xml` file and add these directives as appropriate:
 3. In _File name_ field, enter the path to _LibPdf417Mobi.aar_ and click _Finish_.
 4. In your app's `build.gradle`, add dependency to `LibPdf417Mobi` and appcompat-v7:
 
-	```
-	dependencies {
-   		compile project(':LibPdf417Mobi')
- 		compile "com.android.support:appcompat-v7:25.3.1"
-	}
-	```
+    ```
+    dependencies {
+        implementation project(':LibPdf417Mobi')
+        implementation "com.android.support:appcompat-v7:27.0.2"
+    }
+    ```
 	
 ### <a name="androidStudio_importAAR_javadoc"></a> Import Javadoc to Android Studio
 
@@ -189,67 +200,100 @@ You’ve already created the project that contains almost everything you need. N
 5. Add appcompat-v7 library to your workspace and reference it by target project (modern ADT plugin for Eclipse does this automatically for all new android projects).
 
 ## <a name="quickScan"></a> Performing your first scan
-1. You can start recognition process by starting `Pdf417ScanActivity` activity with Intent initialized in the following way:
+1. Before starting a recognition process, you need to obtain a license from [Microblink dashboard](https://microblink.com/login). After registering, you will be able to generate a trial license for your app. License is bound to [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename) of your app, so please make sure you enter the correct package name when asked. 
+
+    After creating a license, you will have the option to download the license as a file that you must place within your application's _assets_ folder. You must ensure that license key is set before instantiating any other classes from the SDK, otherwise you will get the exception at runtime. Therefore, we recommend that you extend [Android Application class](https://developer.android.com/reference/android/app/Application.html) and set the license in its [onCreate callback](https://developer.android.com/reference/android/app/Application.html#onCreate()) in the following way:
+    
+    ```java
+    public class MyApplication extends Application {
+        @Override
+        public void onCreate() {
+            MicroblinkSDK.setLicenseFile("path/to/license/file/within/assets/dir", this);
+        }
+    }
+    ```
+
+2. In your main activity, create recognizer objects that will perform image recognition, configure them and store them into [RecognizerBundle object](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html). You can see more information about available recognizers and about `RecognizerBundle` in chapter [RecognizerBundle and available recognizers](#availableRecognizers). For example, to scan PDF417 2D barcode, you can configure your recognizer object in following way:
+
+    ```java
+    public class MyActivity extends Activity {
+        private Pdf417Recognizer mRecognizer;
+        private RecognizerBundle mRecognizerBundle;
+        
+        @Override
+        protected void onCreate(Bundle bundle) {
+            super.onCreate(bundle);
+            
+            // setup views, as you would normally do in onCreate callback
+            
+            // create Pdf417Recognizer
+            mRecognizer = new Pdf417Recognizer();
+            
+            // bundle recognizers into RecognizerBundle
+            mRecognizerBundle = new RecognizerBundle(mRecognizer);
+        }
+    }
+    ```
+
+3. You can start recognition process by starting `Pdf417ScanActivity` activity by creating `Pdf417ScanUISettings` and calling [`ActivityRunner.startActivityForResult`](https://pdf417.github.io/pdf417-android/com/microblink/uisettings/ActivityRunner.html#startActivityForResult-android.app.Activity-int-com.microblink.uisettings.UISettings-) method:
 	
 	```java
-	// Intent for Pdf417ScanActivity Activity
-	Intent intent = new Intent(this, Pdf417ScanActivity.class);
-	
-	// set your licence key
-	// obtain your licence key at http://microblink.com/login or
-	// contact us at http://help.microblink.com
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Add your licence key here");
-
-	RecognitionSettings settings = new RecognitionSettings();
-	// setup array of recognition settings (described in chapter "Recognition 
-	// settings and results")
-	settings.setRecognizerSettingsArray(setupSettingsArray());
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS, settings);
-
-	// Starting Activity
-	startActivityForResult(intent, MY_REQUEST_CODE);
-	```
-2. After `Pdf417ScanActivity` activity finishes the scan, it will return to the calling activity and will call method `onActivityResult`. You can obtain the scanning results in that method.
-
-	```java
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		
-		if (requestCode == MY_REQUEST_CODE) {
-			if (resultCode == Pdf417ScanActivity.RESULT_OK && data != null) {
-				// perform processing of the data here
-				
-				// for example, obtain parcelable recognition result
-				Bundle extras = data.getExtras();
-				RecognitionResults result = data.getParcelableExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULTS);
-
-				// get array of recognition results
-				BaseRecognitionResult[] resultArray = result.getRecognitionResults();				
-				// Each element in resultArray inherits BaseRecognitionResult class and
-				// represents the scan result of one of activated recognizers that have
-				// been set up. More information about this can be found in 
-				// "Recognition settings and results" chapter
-						
-				// Or, you can pass the intent to another activity
-				data.setComponent(new ComponentName(this, ResultActivity.class));
-				startActivity(data);
-			}
-		}
+	// method within MyActivity from previous step
+	public void startScanning() {
+        // Settings for Pdf417ScanActivity Activity
+        Pdf417ScanUISettings settings = new Pdf417ScanUISettings(mRecognizerBundle);
+        
+        // tweak settings as you wish
+        
+        // Start activity
+        ActivityRunner.startActivityForResult(this, MY_REQUEST_CODE, settings);
 	}
 	```
 	
-	For more information about defining recognition settings and obtaining scan results see [Recognition settings and results](#recognitionSettingsAndResults).
+4. After `Pdf417ScanActivity` activity finishes the scan, it will return to the calling activity or fragment and will call its method `onActivityResult`. You can obtain the scanning results in that method.
+
+	```java
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        
+        if (requestCode == MY_REQUEST_CODE) {
+            if (resultCode == Pdf417ScanActivity.RESULT_OK && data != null) {
+                // load the data into all recognizers bundled within your RecognizerBundle
+                
+                mRecognizerBundle.loadFromIntent(data);
+                
+                // now every recognizer object that was bundled within RecognizerBundle
+                // has been updated with results obtained during scanning session
+                
+                // you can get the result by invoking getResult on recognizer
+                Pdf417Recognizer.Result result = mRecognizer.getResult();
+                if (result.getResultState() == Recognizer.Result.State.Valid) {
+                    // result is valid, you can use it however you wish
+                }
+            }
+        }
+    }
+	```
+	
+	For more information about available recognizers and `RecognizerBundle`, see [RecognizerBundle and available recognizers](#availableRecognizers).
 
 # <a name="advancedIntegration"></a> Advanced _PDF417.mobi_ integration instructions
-This section will cover more advanced details in _PDF417.mobi_ integration. First part will discuss the methods for checking whether _PDF417.mobi_ is supported on current device. Second part will cover the possible customization of builtin `Pdf417ScanActivity` activity, third part will describe how to embed `RecognizerView` into your activity and fourth part will describe how to use direct API to recognize directly android bitmaps without the need of camera.
+This section will cover more advanced details in _PDF417.mobi_ integration. 
+
+1. [First part](#supportCheck) will discuss the methods for checking whether _PDF417.mobi_ is supported on current device. 
+2. [Second part](#uiCustomizations) will cover the possible customizations when using UI provided by the SDK.
+3. [Third part](#recognizerRunnerView) will describe how to embed `RecognizerRunnerView` into your activity with goal of creating custom scanning UI, while still using camera management capabilites of the SDK.
+4. [Fourth part](#directAPI) will describe how to use `RecognizerRunner` singleton (direct API) to recognize directly android bitmaps without the need of camera or to recognize camera frames that are obtained by custom camera management code.
+5. [Fifth part](#processingEvents) will describe how to subscribe to and handle processing events when using either `RecognizerRunnerView` or `RecognizerRunner`.
+
 
 ## <a name="supportCheck"></a> Checking if _PDF417.mobi_ is supported
 
 ### _PDF417.mobi_ requirements
-Even before starting the scan activity, you should check if _PDF417.mobi_ is supported on current device. In order to be supported, device needs to have camera. 
+Even before settings the license key, you should check if _PDF417.mobi_ is supported on current device. This is required because the _PDF417.mobi_ is native library that needs to be loaded by the JVM and it is possible that native library is not supported on CPU architecture of the current device. Attempting to call any method from the SDK, which relies on native code, such as license check, on device with unsupported CPU, will cause a crash of your app. 
 
-Android 4.1 is the minimum android version on which _PDF417.mobi_ is supported. For best performance and compatibility, we recommend Android 5.0 or newer.
+_PDF417.mobi_ requires Android 4.1 as the minimum android version. For best performance and compatibility, we recommend Android 5.0 or newer.
 
 Camera video preview resolution also matters. In order to perform successful scans, camera preview resolution cannot be too low. _PDF417.mobi_ requires minimum 320p camera preview resolution in order to perform scan. It must be noted that camera preview resolution is not the same as the video record resolution, although on most devices those are the same. However, there are some devices that allow recording of HD video (720p resolution), but do not allow high enough camera preview resolution (for example, [Sony Xperia Go](http://www.gsmarena.com/sony_xperia_go-4782.php) supports video record resolution at 720p, but camera preview resolution is only 320p - _PDF417.mobi_ does not work on that device).
 
@@ -261,256 +305,275 @@ To check whether the _PDF417.mobi_ is supported on the device, you can do it in 
 ```java
 // check if PDF417.mobi is supported on the device
 RecognizerCompatibilityStatus status = RecognizerCompatibility.getRecognizerCompatibilityStatus(this);
-if(status == RecognizerCompatibilityStatus.RECOGNIZER_SUPPORTED) {
-	Toast.makeText(this, "PDF417.mobi is supported!", Toast.LENGTH_LONG).show();
+if (status == RecognizerCompatibilityStatus.RECOGNIZER_SUPPORTED) {
+    Toast.makeText(this, "PDF417.mobi is supported!", Toast.LENGTH_LONG).show();
+} else if (status == RecognizerCompatibilityStatus.NO_CAMERA) {
+    Toast.makeText(this, "PDF417.mobi is supported only via Direct API!", Toast.LENGTH_LONG).show();
 } else {
 	Toast.makeText(this, "PDF417.mobi is not supported! Reason: " + status.name(), Toast.LENGTH_LONG).show();
 }
 ```
 
-However, some recognizers require camera with autofocus. If you try to start recognition with those recognizers on a device that does not have camera with autofocus, you will get an error. To prevent that, when you prepare the array with recognition settings (see [Recognition settings and results](#recognitionSettingsAndResults) for settings reference), you can easily filter out all settings that require autofocus from array using the following code snippet:
+However, some recognizers require camera with autofocus. If you try to start recognition with those recognizers on a device that does not have camera with autofocus, you will get an error. To prevent that, you can check whether certain recognizer requires autofocus by calling its [requiresAutofocus](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.html#requiresAutofocus--) method.
+
+If you already have an array of recognizers, you can easily filter out all recognizers that require autofocus from array using the following code snippet:
 
 ```java
-// setup array of recognition settings (described in chapter "Recognition 
-// settings and results")
-RecognizerSettings[] settArray = setupSettingsArray();
+Recognizer[] recArray = ...;
 if(!RecognizerCompatibility.cameraHasAutofocus(CameraType.CAMERA_BACKFACE, this)) {
-	setarr = RecognizerSettingsUtils.filterOutRecognizersThatRequireAutofocus(setarr);
+	recArray = RecognizerUtils.filterOutRecognizersThatRequireAutofocus(recArray);
 }
 ```
 
-## <a name="scanActivityCustomization"></a> Customization of `Pdf417ScanActivity` activity
+This utility method basically iterates over the given array of recognizers and throws out each recognizer that returns `true` from its [requiresAutofocus](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.html#requiresAutofocus--) method.
+## <a name="uiCustomizations"></a> UI customizations of built-in activities and fragments
 
-### `Pdf417ScanActivity` intent extras
+This section will discuss possibilities to customize appearance and behaviour of built-in activities and will show how to use [`RecognizerRunnerFragment`](https://pdf417.github.io/pdf417-android/com/microblink/fragment/RecognizerRunnerFragment.html) with provided built-in [scanning overlays](https://pdf417.github.io/pdf417-android/com/microblink/fragment/overlay/ScanningOverlay.html) to get the built-in UI experience within any part of your app.
 
-This section will discuss possible parameters that can be sent over `Intent` for `Pdf417ScanActivity` activity that can customize default behaviour. There are several intent extras that can be sent to `Pdf417ScanActivity` actitivy:
+### <a name="runBuiltinActivity"></a> Using built-in scan activity for performing the scan
 
-* <a name="intent_EXTRAS_CAMERA_TYPE" href="#intent_EXTRAS_CAMERA_TYPE">#</a> **`Pdf417ScanActivity.EXTRAS_CAMERA_TYPE`** - with this extra you can define which camera on device will be used. To set the extra to intent, use the following code snippet:
-	
-	```java
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_TYPE, (Parcelable)CameraType.CAMERA_FRONTFACE);
-	```
-	
-* <a name="intent_EXTRAS_CAMERA_ASPECT_MODE" href="#intent_EXTRAS_CAMERA_ASPECT_MODE">#</a> **`Pdf417ScanActivity.EXTRAS_CAMERA_ASPECT_MODE`** - with this extra you can define which [camera aspect mode](https://pdf417.github.io/pdf417-android/com/microblink/view/CameraAspectMode.html) will be used. If set to `ASPECT_FIT` (default), then camera preview will be letterboxed inside available view space. If set to `ASPECT_FILL`, camera preview will be zoomed and cropped to use the entire view space. To set the extra to intent, use the following code snippet:
+As has already been shown in [first scan example](#quickScan), you need to create a settings object that is associated with activity you wish to use. Attempt to start built-in activity directly via custom-crafted `Intent` will result with either crash of the app or with undefined behaviour of the scanning procedure.
 
-	```java
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_ASPECT_MODE, (Parcelable)CameraAspectMode.ASPECT_FIT);
-	```
-	
-* <a name="intent_EXTRAS_RECOGNITION_SETTINGS" href="#intent_EXTRAS_RECOGNITION_SETTINGS">#</a> **`Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS`** - with this extra you can define settings that affect whole recognition process. This includes both array of recognizer settings and global recognition settings. More information about recognition settings can be found in chapter [Recognition settings and results](#recognitionSettingsAndResults). To set the extra to intent, use the following code snippet:
-	
-	```java
-	RecognitionSettings recognitionSettings = new RecognitionSettings();
-	// define additional settings; e.g set timeout to 10 seconds
-	recognitionSettings.setNumMsBeforeTimeout(10000);
-	// setup recognizer settings array
-	recognitionSettings.setRecognizerSettingsArray(setupSettingsArray());
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_SETTINGS, recognitionSettings);
-	```
+List of available built-in scan activities in _PDF417.mobi_ are listed in section [Built-in activities and fragments](#builtInUIComponents).
+
+### <a name="recognizerRunnerFragment"></a> Using `RecognizerRunnerFragment` within your activity
+
+If you want to integrate UI provided by our built-in activity somewhere within your activity, you can do so by using [`RecognizerRunnerFragment`](https://pdf417.github.io/pdf417-android/com/microblink/fragment/RecognizerRunnerFragment.html). Any activity that will host the `RecognizerRunnerFragment` must implement [`ScanningOverlayBinder`](https://pdf417.github.io/pdf417-android/com/microblink/fragment/RecognizerRunnerFragment.ScanningOverlayBinder.html) interface. Attempt to add `RecognizerRunnerFragment` to activity that does not implement that interface will result with `ClassCastException`. This design is in accordance with [recommendation for communication between fragments](https://developer.android.com/training/basics/fragments/communicating.html).
+
+The `ScanningOverlayBinder` is responsible for returning `non-null` implementation of [`ScanningOverlay`](https://pdf417.github.io/pdf417-android/com/microblink/fragment/overlay/ScanningOverlay.html) - class that will manage UI on top of `RecognizerRunnerFragment`. It is not recommended to create your own implementation of `ScanningOverlay` as effort to do so might be equal or even greater to creating your custom UI implementation [in the recommended way](#recognizerRunnerView). 
+
+Here is the minimum example for activity that hosts the `RecognizerRunnerFragment`:
+
+```java
+public class MyActivity extends Activity implements RecognizerRunnerFragment.ScanningOverlayBinder, ScanResultListener {
+    private Pdf417Recognizer mRecognizer;
+    private RecognizerBundle mRecognizerBundle;
+    private Pdf417ScanOverlay mScanOverlay = createOverlay();
+    private RecognizerRunnerFragment mRecognizerRunnerFragment;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate();
+        setContentView(R.layout.activity_my_activity);
+        
+        if (null == savedInstanceState) {
+            // create fragment transaction to replace R.id.recognizer_runner_view_container with RecognizerRunnerFragment
+            mRecognizerRunnerFragment = new RecognizerRunnerFragment();
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.recognizer_runner_view_container, mRecognizerRunnerFragment);
+            fragmentTransaction.commit();
+        } else {
+            // obtain reference to fragment restored by Android within super.onCreate() call
+            mRecognizerRunnerFragment = (RecognizerRunnerFragment) getFragmentManager().findFragmentById(R.id.recognizer_runner_view_container);
+        }
+    }
+    
+    @Override
+    @NonNull
+    public ScanningOverlay getScanningOverlay() {
+        return mScanningOverlay;
+    }
+    
+    @Override
+    public void onScanningDone(@NonNull RecognitionSuccessType successType) {
+        // pause scanning to prevent new results while fragment is being removed
+        mRecognizerRunnerFragment.getRecognizerRunnerView().pauseScanning();
+        
+        // now you can remove the RecognizerRunnerFragment with new fragment transaction
+        // and use result within mRecognizer safely without the need for making a copy of it
+        
+        // if not paused, as soon as this method ends, RecognizerRunnerFragments continues
+        // scanning. Note that this can happen even if you created fragment transaction for
+        // removal of RecognizerRunnerFragment - in the time between end of this method
+        // and beginning of execution of the transaction. So to ensure result within mRecognizer
+        // does not get mutated, ensure calling pauseScanning() as shown above.
+    }
+    
+    private Pdf417ScanOverlay createOverlay() {
+        // create Pdf417Recognizer
+        mRecognizer = new Pdf417Recognizer();
+        
+        // bundle recognizers into RecognizerBundle
+        mRecognizerBundle = new RecognizerBundle(mRecognizer);
+        
+        // Settings for Pdf417ScanOverlay overlay
+        Pdf417ScanUISettings settings = new Pdf417ScanUISettings(mRecognizerBundle);
+        
+        return new Pdf417ScanOverlay(settings, this);
+    }
+}
+```
+
+Also please refer to demo apps provided with the SDK for more detailed example and make sure your host activity's orientation is set to `nosensor` or has configuration changing enabled (i.e. is not restarted when configuration change happens). For more information, check [this section](#scanOrientation).
+
+### <a name="builtInUIComponents"></a> Built-in activities and overlays
+
+Within _PDF417.mobi_ SDK there are several built-in activities and scanning overlays that you can use to perform scanning.
+#### `Pdf417ScanActivity` and `Pdf417ScanOverlay`
+
+[`Pdf417ScanOverlay`](https://pdf417.github.io/pdf417-android/com/microblink/fragment/overlay/Pdf417ScanOverlay.html) is overlay for [`RecognizerRunnerFragment`](https://pdf417.github.io/pdf417-android/com/microblink/fragment/RecognizerRunnerFragment.html) best suited for performing scanning of various barcodes. [`Pdf417ScanActivity`](https://pdf417.github.io/pdf417-android/com/microblink/activity/Pdf417ScanActivity.html) is the activity containing `RecognizerRunnerFragment` with [`Pdf417ScanOverlay`](https://pdf417.github.io/pdf417-android/com/microblink/fragment/overlay/Pdf417ScanOverlay.html), which can be used out of the box to simply perform the scanning using the default UI.
+### <a name="changeBuiltInUIComponents"></a> Changing appearance of built-in activities and scanning overlays
+
+Built-in activities and overlays use resources from the `res` folder within `LibPdf417Mobi.aar` to display its contents. If you need fully customised UI appearance, we recommend creating completely custom scanning UI (either activity or fragment), as described [here](#recognizerRunnerView). However, if you just want to slightly change the appearance of built-in activity or overlay, you can do that by overriding appropriate resource values, however this is **strictly not recommended**, as it can have unknown effects on the appearance of the UI component. If you think that some part of our built-in UI component should be configurable in a way that it currently is not, please [let us know](https://help.microblink.com) and we will consider adding that configurability into appropriate settings object.
+
+### <a name="translation"></a> Translation and localization
+
+Strings used within built-in activities and overlays can be localized to any language. If you are using `RecognizerRunnerView` ([see this chapter for more information](#recognizerRunnerView)) in your custom scan activity or fragment, you should handle localization as in any other Android app - `RecognizerRunnerView` does not use strings nor drawables, it only uses assets from `assets/microblink` folder. Those assets must not be touched as they are required for recognition to work correctly.
+
+However, if you use our builtin activities or overlays, they will use resources packed within `LibPdf417Mobi.aar` to display strings and images on top of camera view. We have already prepared string in several languages which you can use out of the box. You can also [modify those strings](#stringChanging), or you can [add your own language](#addLanguage).
+
+To use a language, you have to enable it from the code:
 		
-* <a name="intent_EXTRAS_RECOGNITION_RESULTS" href="#intent_EXTRAS_RECOGNITION_RESULTS">#</a> **`Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULTS`** - you can use this extra in `onActivityResult` method of calling activity to obtain recognition results. For more information about recognition settings and result, see [Recognition settings and results](#recognitionSettingsAndResults). You can use the following snippet to obtain scan results:
-
-	```java
-	RecognitionResults results = data.getParcelableExtra(Pdf417ScanActivity.EXTRAS_RECOGNITION_RESULTS);
-	```
-	
-* <a name="intent_EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING" href="#intent_EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING">#</a> **`Pdf417ScanActivity.EXTRAS_OPTIMIZE_CAMERA_FOR_NEAR_SCANNING`** - with this extra you can give a hint to _PDF417.mobi_ to optimize camera parameters for near object scanning. When camera parameters are optimized for near object scanning, macro focus mode will be preferred over autofocus mode. Thus, camera will have easier time focusing on to near objects, but might have harder time focusing on far objects. If you expect that most of your scans will be performed by holding the device very near the object, turn on that parameter. By default, this parameter is set to false.
-	
-* <a name="intent_EXTRAS_BEEP_RESOURCE" href="#intent_EXTRAS_BEEP_RESOURCE">#</a> **`Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE`** - with this extra you can set the resource ID of the sound to be played when scan completes. You can use following snippet to set this extra:
-
-	```java
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_BEEP_RESOURCE, R.raw.beep);
-    ```
-* <a name="intent_EXTRAS_SPLASH_SCREEN_LAYOUT_RESOURCE" href="#intent_EXTRAS_SPLASH_SCREEN_LAYOUT_RESOURCE">#</a> **`Pdf417ScanActivity.EXTRAS_SPLASH_SCREEN_LAYOUT_RESOURCE`** - with this extra you can set the resource ID of the layout that will be used as camera splash screen while camera is being initialized. You can use following snippet to set this extra:
-
-	```java
-	intent.putExtra(Pdf417ScanActivity. EXTRAS_SPLASH_SCREEN_LAYOUT_RESOURCE, R.layout.camera_splash);
-    ```
-	
-* <a name="intent_EXTRAS_SHOW_FOCUS_RECTANGLE" href="#intent_EXTRAS_SHOW_FOCUS_RECTANGLE">#</a> **`Pdf417ScanActivity.EXTRAS_SHOW_FOCUS_RECTANGLE`** - with this extra you can enable showing of rectangle that displays area camera uses to measure focus and brightness when automatically adjusting its parameters. You can enable showing of this rectangle with following code snippet:
-
-	```java
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_FOCUS_RECTANGLE, true);
-	```
-	
-* <a name="intent_EXTRAS_ALLOW_PINCH_TO_ZOOM" href="#intent_EXTRAS_ALLOW_PINCH_TO_ZOOM">#</a> **`Pdf417ScanActivity.EXTRAS_ALLOW_PINCH_TO_ZOOM`** - with this extra you can set whether pinch to zoom will be allowed on camera activity. Default is `false`. To enable pinch to zoom gesture on camera activity, use the following code snippet:
-
-	```java
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_ALLOW_PINCH_TO_ZOOM, true);
-	```
-* <a name="intent_EXTRAS_CAMERA_VIDEO_PRESET" href="#intent_EXTRAS_CAMERA_VIDEO_PRESET">#</a> **`Pdf417ScanActivity.EXTRAS_CAMERA_VIDEO_PRESET`** - with this extra you can set the video resolution preset that will be used when choosing camera resolution for scanning. For more information, see [javadoc](https://pdf417.github.io/pdf417-android/com/microblink/hardware/camera/VideoResolutionPreset.html). For example, to use 720p video resolution preset, use the following code snippet:
-
-	```java
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_CAMERA_VIDEO_PRESET, (Parcelable)VideoResolutionPreset.VIDEO_RESOLUTION_720p);
-	```
-* <a name="intent_EXTRAS_SET_FLAG_SECURE" href="#intent_EXTRAS_SET_FLAG_SECURE">#</a> **`Pdf417ScanActivity.EXTRAS_SET_FLAG_SECURE`** - with this extra you can request setting of `FLAG_SECURE` on activity window which indicates that the display has a secure video output and supports compositing secure surfaces. Use this to prevent taking screenshots of the activity window content and to prevent content from being viewed on non-secure displays. To set `FLAG_SECURE` on camera activity, use the following code snippet:
-
-	```java
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_SET_FLAG_SECURE, true);
-	```
-
-* <a name="intent_EXTRAS_LICENSE_KEY" href="#intent_EXTRAS_LICENSE_KEY">#</a> **`Pdf417ScanActivity.EXTRAS_LICENSE_KEY`** - with this extra you can set the license key for _PDF417.mobi_. You can obtain your licence key from [Microblink website](http://microblink.com/login) or you can contact us at [http://help.microblink.com](http://help.microblink.com). Once you obtain a license key, you can set it with following snippet:
-
-	```java
-	// set the license key
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
-	```
-	
-	Licence key is bound to package name of your application. For example, if you have licence key that is bound to `mobi.pdf417.demo` app package, you cannot use the same key in other applications. However, if you purchase Premium licence, you will get licence key that can be used in multiple applications. This licence key will then not be bound to package name of the app. Instead, it will be bound to the licencee string that needs to be provided to the library together with the licence key. To provide licencee string, use the `EXTRAS_LICENSEE` intent extra like this:
-
-	```java
-	// set the license key
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSEE, "Enter_Licensee_Here");
-	```
-
-* <a name="intent_EXTRAS_IMAGE_LISTENER" href="#intent_EXTRAS_IMAGE_LISTENER">#</a> **`Pdf417ScanActivity.EXTRAS_IMAGE_LISTENER`** - with this extra you can set your implementation of [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) that will obtain images that are being processed. Make sure that your [ImageListener](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) implementation correctly implements [Parcelable](https://developer.android.com/reference/android/os/Parcelable.html) interface with static [CREATOR](https://developer.android.com/reference/android/os/Parcelable.Creator.html) field. Without this, you might encounter a runtime error. For more information and example, see [Using ImageListener to obtain images that are being processed](#imageListener). By default, _ImageListener_ will receive all possible images that become available during recognition process. This will introduce performance penalty because most of those images will probably not be used so sending them will just waste time. To control which images should become available to _ImageListener_, you can also set [ImageMetadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.ImageMetadataSettings.html) with `Pdf417ScanActivity.EXTRAS_IMAGE_METADATA_SETTINGS`
-
-* <a name="intent_EXTRAS_IMAGE_METADATA_SETTINGS" href="#intent_EXTRAS_IMAGE_METADATA_SETTINGS">#</a> **`Pdf417ScanActivity.EXTRAS_IMAGE_METADATA_SETTINGS`** - with this extra you can set [ImageMetadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.ImageMetadataSettings.html) which will define which images will be sent to [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) given via `Pdf417ScanActivity.EXTRAS_IMAGE_LISTENER` extra. If _ImageListener_ is not given via Intent, then this extra has no effect. You can see example usage of _ImageMetadata Settings_ in chapter [Obtaining various metadata with _MetadataListener_](#metadataListener) and in provided demo apps.
-
-* <a name="intent_EXTRAS_SHOW_DIALOG_AFTER_SCAN" href="#intent_EXTRAS_SHOW_DIALOG_AFTER_SCAN">#</a> **`Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN`** - with this extra you can prevent showing of dialog after each barcode scan. By default, each time scanner finds and decodes a barcode, a dialog with barcode's contents will be shown. To prevent this, use the following snippet:
+* To enable usage of certain language, you should call method `LanguageUtils.setLanguageAndCountry(language, country, context)`. For example, you can set language like this:
 	
 	```java
-	// disable showing of dialog after scan
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_SHOW_DIALOG_AFTER_SCAN, false);
+	// define PDF417.mobi language
+	LanguageUtils.setLanguageAndCountry("hr", "", this);
 	```
 
-### Customizing `Pdf417ScanActivity` appearance
+#### <a name="addLanguage"></a> Adding new language
 
-Besides possibility to put various intent extras for customizing `Pdf417ScanActivity` behaviour, you can also change strings it displays. The procedure for changing strings in `Pdf417ScanActivity` activity are explained in [Translation and localization](#stringChanging) section.
+_PDF417.mobi_ can easily be translated to other languages. The `res` folder in `LibPdf417Mobi.aar` archive has folder `values` which contains `strings.xml` - this file contains english strings. In order to make e.g. croatian translation, create a folder `values-hr` in your project and put the copy of `strings.xml` inside it (you might need to extract `LibPdf417Mobi.aar` archive to get access to those files). Then, open that file and change the english version strings into croatian version. 
 
-#### Modifying other resources.
+#### <a name="stringChanging"></a> Changing strings in the existing language
+	
+To modify an existing string, the best approach would be to:
 
-Generally, you can also change other resources that `Pdf417ScanActivity` uses, but you are encouraged to create your own custom scan activity instead (see [Embedding `RecognizerView` into custom scan activity](#recognizerView)).
+1. choose a language which you want to modify. For example Croatia ('hr').
+2. find strings.xml in `LibPdf417Mobi.aar` archive folder `res/values-hr`
+3. choose a string key which you want to change. For example, ```<string name="MBBack">Back</string>```
+4. in your project create a file `strings.xml` in the folder `res/values-hr`, if it doesn't already exist
+5. create an entry in the file with the value for the string which you want. For example ```<string name="MBBack">Natrag</string>```
+6. repeat for all the string you wish to change
 
-#### Changing viewfinder appearance
+## <a name="recognizerRunnerView"></a> Embedding `RecognizerRunnerView` into custom scan activity
+This section will discuss how to embed [RecognizerRunnerView](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerRunnerView.html) into your scan activity and perform scan.
 
-To change the colour of viewfinder in `Pdf417ScanActivity`, change or override the colours defined in `res/values/colors.xml` (colours `default_frame` and `recognized_frame`).
-
-## <a name="recognizerView"></a> Embedding `RecognizerView` into custom scan activity
-This section will discuss how to embed [RecognizerView](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html) into your scan activity and perform scan.
-
-1. First make sure that `RecognizerView` is a member field in your activity. This is required because you will need to pass all activity's lifecycle events to `RecognizerView`.
+1. First make sure that `RecognizerRunnerView` is a member field in your activity. This is required because you will need to pass all activity's lifecycle events to `RecognizerRunnerView`.
 2. It is recommended to keep your scan activity in one orientation, such as `portrait` or `landscape`. Setting `sensor` as scan activity's orientation will trigger full restart of activity whenever device orientation changes. This will provide very poor user experience because both camera and _PDF417.mobi_ native library will have to be restarted every time. There are measures for this behaviour and will be discussed [later](#scanOrientation).
-3. In your activity's `onCreate` method, create a new `RecognizerView`, define its [settings and listeners](#recognizerViewReference) and then call its `create` method. After that, add your views that should be layouted on top of camera view.
-4. Override your activity's `onStart`, `onResume`, `onPause`, `onStop` and `onDestroy` methods and call `RecognizerView's` lifecycle methods `start`, `resume`, `pause`, `stop` and `destroy`. This will ensure correct camera and native resource management. If you plan to manage `RecognizerView's` lifecycle independently of host activity's lifecycle, make sure the order of calls to lifecycle methods is the same as is with activities (i.e. you should not call `resume` method if `create` and `start` were not called first).
+3. In your activity's `onCreate` method, create a new `RecognizerRunnerView`, set [RecognizerBundle](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html) containing recognizers that will be used by the view, define [CameraEventsListener](https://pdf417.github.io/pdf417-android/com/microblink/view/CameraEventsListener.html) that will handle mandatory camera events, define [ScanResultListener](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html) that will receive call when recognition has been completed and then call its `create` method. After that, add your views that should be layouted on top of camera view.
+4. Override your activity's `onStart`, `onResume`, `onPause`, `onStop` and `onDestroy` methods and call `RecognizerRunnerView's` lifecycle methods `start`, `resume`, `pause`, `stop` and `destroy`. This will ensure correct camera and native resource management. If you plan to manage `RecognizerRunnerView's` lifecycle independently of host's lifecycle, make sure the order of calls to lifecycle methods is the same as is with activities (i.e. you should not call `resume` method if `create` and `start` were not called first).
 
-Here is the minimum example of integration of `RecognizerView` as the only view in your activity:
+Here is the minimum example of integration of `RecognizerRunnerView` as the only view in your activity:
 
 ```java
 public class MyScanActivity extends Activity implements ScanResultListener, CameraEventsListener {
-	private static final int PERMISSION_CAMERA_REQUEST_CODE = 69;
-	private RecognizerView mRecognizerView;
-		
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {				
-		// create RecognizerView
-		mRecognizerView = new RecognizerView(this);
+    private static final int PERMISSION_CAMERA_REQUEST_CODE = 69;
+    private RecognizerRunnerView mRecognizerRunnerView;
+    private Pdf417Recognizer mRecognizer;
+    private RecognizerBundle mRecognizerBundle;
+    	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // create Pdf417Recognizer
+        mRecognizer = new Pdf417Recognizer();
+        
+        // bundle recognizers into RecognizerBundle
+        mRecognizerBundle = new RecognizerBundle(mRecognizer);				
+        // create RecognizerRunnerView
+        mRecognizerRunnerView = new RecognizerRunnerView(this);
+
+        // associate RecognizerBundle with RecognizerRunnerView
+        mRecognizerRunnerView.setRecognizerBundle(mRecognizerBundle);
+				
+        // scan result listener will be notified when scanning is complete
+        mRecognizerRunnerView.setScanResultListener(this);
+        // camera events listener will be notified about camera lifecycle and errors
+        mRecognizerRunnerView.setCameraEventsListener(this);
 		   
-		RecognitionSettings settings = new RecognitionSettings();
-		// setup array of recognition settings (described in chapter "Recognition 
-		// settings and results")
-		RecognizerSettings[] settArray = setupSettingsArray();
-		if(!RecognizerCompatibility.cameraHasAutofocus(CameraType.CAMERA_BACKFACE, this)) {
-			settArray = RecognizerSettingsUtils.filterOutRecognizersThatRequireAutofocus(settArray);
-		}
-		settings.setRecognizerSettingsArray(settArray);
-		mRecognizerView.setRecognitionSettings(settings);
-		
-		try {
-		    // set license key
-		    mRecognizerView.setLicenseKey(this, "your license key");
-		} catch (InvalidLicenceKeyException exc) {
-		    finish();
-		    return;
-		}
-		
-		// scan result listener will be notified when scan result gets available
-		mRecognizerView.setScanResultListener(this);
-		// camera events listener will be notified about camera lifecycle and errors
-		mRecognizerView.setCameraEventsListener(this);
-		
-		// set camera aspect mode
-		// ASPECT_FIT will fit the camera preview inside the view
-		// ASPECT_FILL will zoom and crop the camera preview, but will use the
-		// entire view surface
-		mRecognizerView.setAspectMode(CameraAspectMode.ASPECT_FILL);
-		   
-		mRecognizerView.create();
-		
-		setContentView(mRecognizerView);
-	}
+        mRecognizerRunnerView.create();
+        setContentView(mRecognizerRunnerView);
+    }
 	
-	@Override
-	protected void onStart() {
-	   super.onStart();
-	   // you need to pass all activity's lifecycle methods to RecognizerView
-	   mRecognizerView.start();
-	}
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // you need to pass all activity's lifecycle methods to RecognizerRunnerView
+        mRecognizerRunnerView.start();
+    }
 	
-	@Override
-	protected void onResume() {
-	   	super.onResume();
-	   	// you need to pass all activity's lifecycle methods to RecognizerView
-       mRecognizerView.resume();
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // you need to pass all activity's lifecycle methods to RecognizerRunnerView
+        mRecognizerRunnerView.resume();
+    }
 
-	@Override
-	protected void onPause() {
-	   	super.onPause();
-	   	// you need to pass all activity's lifecycle methods to RecognizerView
-		mRecognizerView.pause();
-	}
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // you need to pass all activity's lifecycle methods to RecognizerRunnerView
+        mRecognizerRunnerView.pause();
+    }
 
-	@Override
-	protected void onStop() {
-	   super.onStop();
-	   // you need to pass all activity's lifecycle methods to RecognizerView
-	   mRecognizerView.stop();
-	}
-	
-	@Override
-	protected void onDestroy() {
-	   super.onDestroy();
-	   // you need to pass all activity's lifecycle methods to RecognizerView
-	   mRecognizerView.destroy();
-	}
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // you need to pass all activity's lifecycle methods to RecognizerRunnerView
+        mRecognizerRunnerView.stop();
+    }
 
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-	   super.onConfigurationChanged(newConfig);
-	   // you need to pass all activity's lifecycle methods to RecognizerView
-	   mRecognizerView.changeConfiguration(newConfig);
-	}
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // you need to pass all activity's lifecycle methods to RecognizerRunnerView
+        mRecognizerRunnerView.destroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // you need to pass all activity's lifecycle methods to RecognizerRunnerView
+        mRecognizerRunnerView.changeConfiguration(newConfig);
+    }
 		
     @Override
-    public void onScanningDone(RecognitionResults results) {
-    	// this method is from ScanResultListener and will be called when scanning completes
-    	// RecognitionResults may contain multiple results in array returned
-    	// by method getRecognitionResults().
-    	// This depends on settings in RecognitionSettings object that was
-    	// given to RecognizerView.
-    	// For more information, see chapter "Recognition settings and results")
-    	
-    	// After this method ends, scanning will be resumed and recognition
-    	// state will be retained. If you want to prevent that, then
-    	// you should call:
-    	// mRecognizerView.resetRecognitionState();
+    public void onScanningDone(@NonNull RecognitionSuccessType successType) {
+        // this method is from ScanResultListener and will be called when scanning completes
+        // you can obtain scanning result by calling getResult on each
+        // recognizer that you bundled into RecognizerBundle.
+        // for example:
+        
+        Pdf417Recognizer.Result result = mRecognizer.getResult();
+        if (result.getResultState() == Recognizer.Result.State.Valid) {
+            // result is valid, you can use it however you wish
+        }
+        
+        // Note that mRecognizer is stateful object and that as soon as
+        // scanning either resumes or its state is reset
+        // the result object within mRecognizer will be changed. If you
+        // need to create a immutable copy of the result, you can do that
+        // by calling clone() on it, for example:
 
-		// If you want to pause scanning to prevent receiving recognition
-		// results, you should call:
-		// mRecognizerView.pauseScanning();
-		// After scanning is paused, you will have to resume it with:
-		// mRecognizerView.resumeScanning(true);
-		// boolean in resumeScanning method indicates whether recognition
-		// state should be automatically reset when resuming scanning
+        Pdf417Recognizer.Result immutableCopy = result.clone();
+    	
+        // After this method ends, scanning will be resumed and recognition
+        // state will be retained. If you want to prevent that, then
+        // you should call:
+        mRecognizerRunnerView.resetRecognitionState();
+        // Note that reseting recognition state will clear internal result
+        // objects of all recognizers that are bundled in RecognizerBundle
+        // associated with RecognizerRunnerView.
+
+        // If you want to pause scanning to prevent receiving recognition
+        // results or mutating result, you should call:
+        mRecognizerRunnerView.pauseScanning();
+        // if scanning is paused at the end of this method, it is guaranteed
+        // that result within mRecognizer will not be mutated, therefore you
+        // can avoid creating a copy as described above
+        
+        // After scanning is paused, you will have to resume it with:
+        mRecognizerRunnerView.resumeScanning(true);
+        // boolean in resumeScanning method indicates whether recognition
+        // state should be automatically reset when resuming scanning - this
+        // includes clearing result of mRecognizer
     }
-    
+
     @Override
     public void onCameraPreviewStarted() {
         // this method is from CameraEventsListener and will be called when camera preview starts
     }
-    
+
     @Override
     public void onCameraPreviewStopped() {
         // this method is from CameraEventsListener and will be called when camera preview stops
@@ -580,747 +643,199 @@ public class MyScanActivity extends Activity implements ScanResultListener, Came
 
 If activity's `screenOrientation` property in `AndroidManifest.xml` is set to `sensor`, `fullSensor` or similar, activity will be restarted every time device changes orientation from portrait to landscape and vice versa. While restarting activity, its `onPause`, `onStop` and `onDestroy` methods will be called and then new activity will be created anew. This is a potential problem for scan activity because in its lifecycle it controls both camera and native library - restarting the activity will trigger both restart of the camera and native library. This is a problem because changing orientation from landscape to portrait and vice versa will be very slow, thus degrading a user experience. **We do not recommend such setting.**
 
-For that matter, we recommend setting your scan activity to either `portrait` or `landscape` mode and handle device orientation changes manually. To help you with this, `RecognizerView` supports adding child views to it that will be rotated regardless of activity's `screenOrientation`. You add a view you wish to be rotated (such as view that contains buttons, status messages, etc.) to `RecognizerView` with `addChildView` method. The second parameter of the method is a boolean that defines whether the view you are adding will be rotated with device. To define allowed orientations, implement [OrientationAllowedListener](https://pdf417.github.io/pdf417-android/com/microblink/view/OrientationAllowedListener.html) interface and add it to `RecognizerView` with method `setOrientationAllowedListener`. **This is the recommended way of rotating camera overlay.**
+For that matter, we recommend setting your scan activity to either `portrait` or `landscape` mode and handle device orientation changes manually. To help you with this, `RecognizerRunnerView` supports adding child views to it that will be rotated regardless of activity's `screenOrientation`. You add a view you wish to be rotated (such as view that contains buttons, status messages, etc.) to `RecognizerRunnerView` with [addChildView](#{javadocUrl}(com/microblink/view/CameraViewGroup.html#addChildView-android.view.View-boolean-)) method. The second parameter of the method is a boolean that defines whether the view you are adding will be rotated with device. To define allowed orientations, implement [OrientationAllowedListener](https://pdf417.github.io/pdf417-android/com/microblink/view/OrientationAllowedListener.html) interface and add it to `RecognizerRunnerView` with method `setOrientationAllowedListener`. **This is the recommended way of rotating camera overlay.**
 
-However, if you really want to set `screenOrientation` property to `sensor` or similar and want Android to handle orientation changes of your scan activity, then we recommend to set `configChanges` property of your activity to `orientation|screenSize`. This will tell Android not to restart your activity when device orientation changes. Instead, activity's `onConfigurationChanged` method will be called so that activity can be notified of the configuration change. In your implementation of this method, you should call `changeConfiguration` method of `RecognizerView` so it can adapt its camera surface and child views to new configuration. Note that on Android versions older than 4.0 changing of configuration will require restart of camera, which can be slow.
-
-## <a name="recognizerViewReference"></a> `RecognizerView` reference
-The complete reference of `RecognizerView` is available in [Javadoc](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html). The usage example is provided in `pdf417MobiDemoCustomUI` demo app provided with SDK. This section just gives a quick overview of `RecognizerView's` most important methods.
-
-##### <a name="recognizerView_create"></a> [`create()`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#create--)
-This method should be called in activity's `onCreate` method. It will initialize `RecognizerView's` internal fields and will initialize camera control thread. This method must be called after all other settings are already defined, such as listeners and recognition settings. After calling this method, you can add child views to `RecognizerView` with method `addChildView(View, boolean)`.
-
-##### <a name="recognizerView_start"></a> [`start()`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#start--)
-This method should be called in activity's `onStart` method. It will initialize background processing thread and start native library initialization on that thread.
-
-##### <a name="recognizerView_resume"></a> [`resume()`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#resume--)
-This method should be called in activity's `onResume` method. It will trigger background initialization of camera. After camera is loaded, it will start camera frame recognition, except if scanning loop is paused.
-
-##### <a name="recognizerView_pause"></a> [`pause()`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#pause--)
-This method should be called in activity's `onPause` method. It will stop the camera, but will keep native library loaded.
-
-##### <a name="recognizerView_stop"></a> [`stop()`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#stop--)
-This method should be called in activity's `onStop` method. It will deinitialize native library, terminate background processing thread and free all resources that are no longer necessary.
-
-##### <a name="recognizerView_destroy"></a> [`destroy()`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#destroy--)
-This method should be called in activity's `onDestroy` method. It will free all resources allocated in `create()` and will terminate camera control thread.
-
-##### <a name="recognizerView_changeConfiguration"></a> [`changeConfiguration(Configuration)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#changeConfiguration-android.content.res.Configuration-)
-This method should be called in activity's `onConfigurationChanged` method. It will adapt camera surface to new configuration without the restart of the activity. See [Scan activity's orientation](#scanOrientation) for more information.
-
-##### <a name="recognizerView_setCameraType"></a> [`setCameraType(CameraType)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#setCameraType-com.microblink.hardware.camera.CameraType-)
-With this method you can define which camera on device will be used. Default camera used is back facing camera.
-
-##### <a name="recognizerView_setAspectMode"></a> [`setAspectMode(CameraAspectMode)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#setAspectMode-com.microblink.view.CameraAspectMode-)
-Define the [aspect mode of camera](https://pdf417.github.io/pdf417-android/com/microblink/view/CameraAspectMode.html). If set to `ASPECT_FIT` (default), then camera preview will be letterboxed inside available view space. If set to `ASPECT_FILL`, camera preview will be zoomed and cropped to use the entire view space.
-
-##### <a name="recognizerView_setVideoResolutionPreset"></a> [`setVideoResolutionPreset(VideoResolutionPreset)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#setVideoResolutionPreset-com.microblink.hardware.camera.VideoResolutionPreset-)
-Define the [video resolution preset](https://pdf417.github.io/pdf417-android/com/microblink/hardware/camera/VideoResolutionPreset.html) that will be used when choosing camera resolution for scanning.
-
-##### <a name="recognizerView_setRecognitionSettings"></a> [`setRecognitionSettings(RecognitionSettings)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#setRecognitionSettings-com.microblink.recognizers.settings.RecognitionSettings-)
-With this method you can set recognition settings that contains information what will be scanned and how will scan be performed. For more information about recognition settings and results see [Recognition settings and results](#recognitionSettingsAndResults). This method must be called before `create()`.
-
-##### <a name="recognizerView_reconfigureRecognizers1"></a> [`reconfigureRecognizers(RecognitionSettings)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#reconfigureRecognizers-com.microblink.recognizers.settings.RecognitionSettings-)
-With this method you can reconfigure the recognition process while recognizer is active. Unlike `setRecognitionSettings`, this method must be called while recognizer is active (i.e. after `resume` was called). For more information about recognition settings see [Recognition settings and results](#recognitionSettingsAndResults).
-
-##### <a name="recognizerView_setOrientationAllowedListener"></a> [`setOrientationAllowedListener(OrientationAllowedListener)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#setOrientationAllowedListener-com.microblink.view.OrientationAllowedListener-)
-With this method you can set a [OrientationAllowedListener](https://pdf417.github.io/pdf417-android/com/microblink/view/OrientationAllowedListener.html) which will be asked if current orientation is allowed. If orientation is allowed, it will be used to rotate rotatable views to it and it will be passed to native library so that recognizers can be aware of the new orientation. If you do not set this listener, recognition will be performed only in orientation defined by current activity's orientation.
-
-##### <a name="recognizerView_setScanResultListener"></a> [`setScanResultListener(ScanResultListener)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#setScanResultListener-com.microblink.view.recognition.ScanResultListener-)
-With this method you can set a [ScanResultListener](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html) which will be notified when recognition completes. After recognition completes, `RecognizerView` will pause its scanning loop and to continue the scanning you will have to call `resumeScanning` method. In this method you can obtain data from scanning results. For more information see [Recognition settings and results](#recognitionSettingsAndResults).
-
-##### <a name="recognizerView_setCameraEventsListener"></a> [`setCameraEventsListener(CameraEventsListener)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#setCameraEventsListener-com.microblink.view.CameraEventsListener-)
-With this method you can set a [CameraEventsListener](https://pdf417.github.io/pdf417-android/com/microblink/view/CameraEventsListener.html) which will be notified when various camera events occur, such as when camera preview has started, autofocus has failed or there has been an error while using the camera or performing the recognition.
-
-##### <a name="recognizerView_pauseScanning"></a> [`pauseScanning()`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#pauseScanning--)
-This method pauses the scanning loop, but keeps both camera and native library initialized. Pause and resume scanning methods count the number of calls, so if you called `pauseScanning()` twice, you will have to call `resumeScanning` twice to actually resume scanning.
-
-##### <a name="recognizerView_resumeScanning"></a> [`resumeScanning(boolean)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#resumeScanning-boolean-)
-With this method you can resume the paused scanning loop. If called with `true` parameter, implicitly calls `resetRecognitionState()`. If called with `false`, old recognition state will not be reset, so it could be reused for boosting recognition result. This may not be always a desired behaviour.  Pause and resume scanning methods count the number of calls, so if you called `pauseScanning()` twice, you will have to call `resumeScanning` twice to actually resume scanning loop.
-
-##### <a name="recognizerView_resetRecognitionState"></a> [`resetRecognitionState()`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#resetRecognitionState--)
-With this method you can reset internal recognition state. State is usually kept to improve recognition quality over time, but without resetting recognition state sometimes you might get poorer results (for example if you scan one object and then another without resetting state you might end up with result that contains properties from both scanned objects).
-
-##### <a name="recognizerView_addChildView"></a> [`addChildView(View, boolean)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#addChildView-android.view.View-boolean-)
-With this method you can add your own view on top of `RecognizerView`. `RecognizerView` will ensure that your view will be layouted exactly above camera preview surface (which can be letterboxed if aspect ratio of camera preview size does not match the aspect ratio of `RecognizerView` and camera aspect mode is set to `ASPECT_FIT`). Boolean parameter defines whether your view should be rotated with device orientation changes. The rotation is independent of host activity's orientation changes and allowed orientations will be determined from [OrientationAllowedListener](https://pdf417.github.io/pdf417-android/com/microblink/view/OrientationAllowedListener.html). See also [Scan activity's orientation](#scanOrientation) for more information why you should rotate your views independently of activity.
-
-##### <a name="recognizerView_isCameraFocused"></a> [`isCameraFocused()`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#isCameraFocused--) 
-This method returns `true` if camera thinks it has focused on object. Note that camera has to be active for this method to work. If camera is not active, returns `false`.
-
-##### <a name="recognizerView_focusCamera"></a> [`focusCamera()`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#focusCamera--) 
-This method requests camera to perform autofocus. If camera does not support autofocus feature, method does nothing. Note that camera has to be active for this method to work.
-
-##### <a name="recognizerView_isCameraTorchSupported"></a> [`isCameraTorchSupported()`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#isCameraTorchSupported--)
-This method returns `true` if camera supports torch flash mode. Note that camera has to be active for this method to work. If camera is not active, returns `false`.
-
-##### <a name="recognizerView_setTorchState"></a> [`setTorchState(boolean, SuccessCallback)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#setTorchState-boolean-com.microblink.hardware.SuccessCallback-) 
-If torch flash mode is supported on camera, this method can be used to enable/disable torch flash mode. After operation is performed, [SuccessCallback](https://pdf417.github.io/pdf417-android/com/microblink/hardware/SuccessCallback.html) will be called with boolean indicating whether operation has succeeded or not. Note that camera has to be active for this method to work and that callback might be called on background non-UI thread.
-
-##### <a name="recognizerView_setScanningRegion"></a> [`setScanningRegion(Rectangle, boolean)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#setScanningRegion-com.microblink.geometry.Rectangle-boolean-)
-You can use this method to define the scanning region and define whether this scanning region will be rotated with device if [OrientationAllowedListener](https://pdf417.github.io/pdf417-android/com/microblink/view/OrientationAllowedListener.html) determines that orientation is allowed. This is useful if you have your own camera overlay on top of `RecognizerView` that is set as rotatable view - you can thus synchronize the rotation of the view with the rotation of the scanning region native code will scan.
-
-Scanning region is defined as [Rectangle](https://pdf417.github.io/pdf417-android/com/microblink/geometry/Rectangle.html). First parameter of rectangle is x-coordinate represented as percentage of view width, second parameter is y-coordinate represented as percentage of view height, third parameter is region width represented as percentage of view width and fourth parameter is region height represented as percentage of view height.
-
-View width and height are defined in current context, i.e. they depend on screen orientation. If you allow your ROI view to be rotated, then in portrait view width will be smaller than height, whilst in landscape orientation width will be larger than height. This complies with view designer preview. If you choose not to rotate your ROI view, then your ROI view will be laid out either in portrait or landscape, depending on setting for your scan activity in `AndroidManifest.xml`
-
-Note that scanning region only reflects to native code - it does not have any impact on user interface. You are required to create a matching user interface that will visualize the same scanning region you set here.
-
-##### <a name="recognizerView_setMeteringAreas"/></a> [`setMeteringAreas(Rectangle[],boolean)`](https://pdf417.github.io/pdf417-android/com/microblink/view/BaseCameraView.html#setMeteringAreas-com.microblink.geometry.Rectangle:A-boolean-)
-This method can only be called when camera is active. You can use this method to define regions which camera will use to perform meterings for focus, white balance and exposure corrections. On devices that do not support metering areas, this will be ignored. Some devices support multiple metering areas and some support only one. If device supports only one metering area, only the first rectangle from array will be used.
-
-Each region is defined as [Rectangle](https://pdf417.github.io/pdf417-android/com/microblink/geometry/Rectangle.html). First parameter of rectangle is x-coordinate represented as percentage of view width, second parameter is y-coordinate represented as percentage of view height, third parameter is region width represented as percentage of view width and fourth parameter is region height represented as percentage of view height.
-
-View width and height are defined in current context, i.e. they depend on current device orientation. If you have custom [OrientationAllowedListener](https://pdf417.github.io/pdf417-android/com/microblink/view/OrientationAllowedListener.html), then device orientation will be the last orientation that you have allowed in your listener. If you don't have it set, orientation will be the orientation of activity as defined in `AndroidManifest.xml`. In portrait orientation view width will be smaller than height, whilst in landscape orientation width will be larger than height. This complies with view designer preview.
-
-Second boolean parameter indicates whether or not metering areas should be automatically updated when device orientation changes.
-
-##### <a name="recognizerView_setMetadataListener"></a> [`setMetadadaListener(MetadataListener, MetadataSettings)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#setMetadataListener-com.microblink.metadata.MetadataListener-com.microblink.metadata.MetadataSettings-)
-You can use this method to define [metadata listener](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataListener.html) that will obtain various metadata
-from the current recognition process. Which metadata will be available depends on [metadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.html). For more information and examples, check demo applications and section [Obtaining various metadata with _MetadataListener_](#metadataListener).
-
-##### <a name="recognizerView_setLicenseKey1"></a> [`setLicenseKey(String licenseKey)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#setLicenseKey-java.lang.String-)
-This method sets the license key that will unlock all features of the native library. You can obtain your license key from [Microblink website](http://microblink.com/login).
-
-##### <a name="recognizerView_setLicenseKey2"></a> [`setLicenseKey(String licenseKey, String licensee)`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerView.html#setLicenseKey-java.lang.String-java.lang.String-)
-Use this method to set a license key that is bound to a licensee, not the application package name. You will use this method when you obtain a license key that allows you to use _PDF417.mobi_ SDK in multiple applications. You can obtain your license key from [Microblink website](http://microblink.com/login).
-
-# <a name="directAPI"></a> Using direct API for recognition of Android Bitmaps
+However, if you really want to set `screenOrientation` property to `sensor` or similar and want Android to handle orientation changes of your scan activity, then we recommend to set `configChanges` property of your activity to `orientation|screenSize`. This will tell Android not to restart your activity when device orientation changes. Instead, activity's `onConfigurationChanged` method will be called so that activity can be notified of the configuration change. In your implementation of this method, you should call `changeConfiguration` method of `RecognizerView` so it can adapt its camera surface and child views to new configuration.
+## <a name="directAPI"></a> Using Direct API for recognition of Android Bitmaps and custom camera frames
 
 This section will describe how to use direct API to recognize android Bitmaps without the need for camera. You can use direct API anywhere from your application, not just from activities.
 
-1. First, you need to obtain reference to [Recognizer singleton](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html) using [getSingletonInstance](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html#getSingletonInstance--).
-2. Second, you need to [initialize the recognizer](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html#initialize-android.content.Context-com.microblink.recognizers.settings.RecognitionSettings-com.microblink.directApi.DirectApiErrorListener-).
-3. After initialization, you can use singleton to [process images](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html#recognizeBitmap-android.graphics.Bitmap-com.microblink.hardware.orientation.Orientation-com.microblink.view.recognition.ScanResultListener-). You cannot process multiple images in parallel.
-4. Do not forget to [terminate](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html#terminate--) the recognizer after usage (it is a shared resource).
+1. First, you need to obtain reference to [RecognizerRunner singleton](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html) using [getSingletonInstance](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#getSingletonInstance--).
+2. Second, you need to [initialize the recognizer runner](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#initialize-android.content.Context-com.microblink.entities.recognizers.RecognizerBundle-com.microblink.directApi.DirectApiErrorListener-).
+3. After initialization, you can use singleton to [process Android bitmaps](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#recognizeBitmap-android.graphics.Bitmap-com.microblink.hardware.orientation.Orientation-com.microblink.geometry.Rectangle-com.microblink.view.recognition.ScanResultListener-) or [images](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#recognizeImage-com.microblink.image.Image-com.microblink.view.recognition.ScanResultListener-) that are [built from custom camera frames](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageBuilder.html#buildImageFromCamera1NV21Frame-byte:A-int-int-com.microblink.hardware.orientation.Orientation-com.microblink.geometry.Rectangle-). Currently, it is not possible to process multiple images in parallel.
+4. Do not forget to [terminate](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#terminate--) the recognizer runner singleton after usage (it is a shared resource).
 
 Here is the minimum example of usage of direct API for recognizing android Bitmap:
 
 ```java
 public class DirectAPIActivity extends Activity implements ScanResultListener {
-	private Recognizer mRecognizer;
+    private RecognizerRunner mRecognizerRunner;
+    private Pdf417Recognizer mRecognizer;
+    private RecognizerBundle mRecognizerBundle;
 		
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// initialize your activity here
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // initialize your activity here
+        // create Pdf417Recognizer
+        mRecognizer = new Pdf417Recognizer();
+        
+        // bundle recognizers into RecognizerBundle
+        mRecognizerBundle = new RecognizerBundle(mRecognizer);
+        
+        try {
+            mRecognizerRunner = RecognizerRunner.getSingletonInstance();
+        } catch (FeatureNotSupportedException e) {
+            Toast.makeText(this, "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+        
+        mRecognizerRunner.initialize(this, mRecognizerBundle, new DirectApiErrorListener() {
+            @Override
+            public void onRecognizerError(Throwable t) {
+                Toast.makeText(DirectAPIActivity.this, "There was an error in initialization of Recognizer: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+    }
 	
-	@Override
-	protected void onStart() {
-	   super.onStart();
-	   try {
-		   mRecognizer = Recognizer.getSingletonInstance();
-		} catch (FeatureNotSupportedException e) {
-			Toast.makeText(this, "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
-			finish();
-			return;
-		}
-	   try {
-	       // set license key
-	       mRecognizer.setLicenseKey(this, "your license key");
-	   } catch (InvalidLicenceKeyException exc) {
-	       finish();
-	       return;
-	   }
-		RecognitionSettings settings = new RecognitionSettings();
-		// setupSettingsArray method is described in chapter "Recognition 
-		// settings and results")
-		settings.setRecognizerSettingsArray(setupSettingsArray());
-		mRecognizer.initialize(this, settings, new DirectApiErrorListener() {
-			@Override
-			public void onRecognizerError(Throwable t) {
-				Toast.makeText(DirectAPIActivity.this, "There was an error in initialization of Recognizer: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-				finish();
-			}
-		});
-	}
-	
-	@Override
-	protected void onResume() {
-	   super.onResume();
-		// start recognition
-		Bitmap bitmap = BitmapFactory.decodeFile("/path/to/some/file.jpg");
-		mRecognizer.recognize(bitmap, Orientation.ORIENTATION_LANDSCAPE_RIGHT, this);
-	}
-
-	@Override
-	protected void onStop() {
-	   super.onStop();
-	   mRecognizer.terminate();
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // start recognition
+        Bitmap bitmap = BitmapFactory.decodeFile("/path/to/some/file.jpg");
+        mRecognizerRunner.recognize(bitmap, Orientation.ORIENTATION_LANDSCAPE_RIGHT, this);
+    }
 
     @Override
-    public void onScanningDone(RecognitionResults results) {
-    	// this method is from ScanResultListener and will be called 
-    	// when scanning completes
-    	// RecognitionResults may contain multiple results in array returned
-    	// by method getRecognitionResults().
-    	// This depends on settings in RecognitionSettings object that was
-    	// given to RecognizerView.
-    	// For more information, see chapter "Recognition settings and results")
-    	    	
-    	finish(); // in this example, just finish the activity
+    protected void onDestroy() {
+        super.onStop();
+        mRecognizerRunner.terminate();
+    }
+
+    @Override
+    public void onScanningDone(@NonNull RecognitionSuccessType successType) {
+        // this method is from ScanResultListener and will be called 
+        // when scanning completes
+        // you can obtain scanning result by calling getResult on each
+        // recognizer that you bundled into RecognizerBundle.
+        // for example:
+        
+        Pdf417Recognizer.Result result = mRecognizer.getResult();
+        if (result.getResultState() == Recognizer.Result.State.Valid) {
+            // result is valid, you can use it however you wish
+        }
     }
     
 }
 ```
 
-## <a name="directAPIStateMachine"></a> Understanding DirectAPI's state machine
-
-DirectAPI's Recognizer singleton is actually a state machine which can be in one of 4 states: `OFFLINE`, `UNLOCKED`, `READY` and `WORKING`. 
-
-- When you obtain the reference to Recognizer singleton, it will be in `OFFLINE` state. 
-- First you need to unlock the Recognizer by providing a valid licence key using [`setLicenseKey`](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html#setLicenseKey-android.content.Context-java.lang.String-) method. If you attempt to call `setLicenseKey` while Recognizer is not in `OFFLINE` state, you will get `IllegalStateException`.
-- After successful unlocking, Recognizer singleton will move to `UNLOCKED` state.
-- Once in `UNLOCKED` state, you can initialize Recognizer by calling [`initialize`](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html#initialize-android.content.Context-com.microblink.recognizers.settings.RecognitionSettings-com.microblink.directApi.DirectApiErrorListener-) method. If you call `initialize` method while Recognizer is not in `UNLOCKED` state, you will get `IllegalStateException`.
-- After successful initialization, Recognizer will move to `READY` state. Now you can call any of the `recognize*` methods.
-- When starting recognition with any of the `recognize*` methods, Recognizer will move to `WORKING` state. If you attempt to call these methods while Recognizer is not in `READY` state, you will get `IllegalStateException`
-- Recognition is performed on background thread so it is safe to call all Recognizer's method from UI thread
-- When recognition is finished, Recognizer first moves back to `READY` state and then returns the result via provided [`ScanResultListener`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html). 
-- Please note that `ScanResultListener`'s [`onScanningDone`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html#onScanningDone-com.microblink.recognizers.RecognitionResults-) method will be called on background processing thread, so make sure you do not perform UI operations in this calback.
-- By calling [`terminate`](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html#terminate--) method, Recognizer singleton will release all its internal resources and will request processing thread to terminate. Note that even after calling `terminate` you might receive `onScanningDone` event if there was work in progress when `terminate` was called.
-- `terminate` method can be called from any Recognizer singleton's state
-- You can observe Recognizer singleton's state with method [`getCurrentState`](https://pdf417.github.io/pdf417-android/com/microblink/directApi/Recognizer.html#getCurrentState--)
-
-## <a name="directAPIWithRecognizer"></a> Using DirectAPI while RecognizerView is active
-Both [RecognizerView](#recognizerView) and DirectAPI recognizer use the same internal singleton that manages native code. This singleton handles initialization and termination of native library and propagating recognition settings to native library. It is possible to use RecognizerView and DirectAPI together, as internal singleton will make sure correct synchronization and correct recognition settings are used. If you run into problems while using DirectAPI in combination with RecognizerView, [let us know](http://help.microblink.com)!
-
-## <a name="metadataListener"></a> Obtaining various metadata with _MetadataListener_
-
-This section will give an example how to use [Metadata listener](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataListener.html) to obtain various metadata, such as object detection location, images that are being processed and much more. Which metadata will be obtainable is configured with [Metadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.html). You must set both _MetadataSettings_ and your implementation of _MetadataListener_ before calling [create](#recognizerView_create) method of [RecognizerView](#recognizerView). Setting them after causes undefined behaviour.
-
-The following code snippet shows how to configure _MetadataSettings_ to obtain detection location, video frame that was used to perform and dewarped image of the document being scanned (**NOTE:** the availability of metadata depends on currently active recognisers and their settings. Not all recognisers can produce all types of metadata. Check [Recognition settings and results](#recognitionSettingsAndResults) article for more information about recognisers and their settings):
-
-```java
-// this snippet should be in onCreate method of your scanning activity
-
-MetadataSettings ms = new MetadataSettings();
-// enable receiving of detection location
-ms.setDetectionMetadataAllowed(true);
-
-// ImageMetadataSettings contains settings for defining which images will be returned
-MetadataSettings.ImageMetadataSettings ims = new MetadataSettings.ImageMetadataSettings();
-// enable returning of dewarped images, if they are available
-ims.setDewarpedImageEnabled(true);
-// enable returning of image that was used to obtain valid scanning result
-ims.setSuccessfulScanFrameEnabled(true)
-
-// set ImageMetadataSettings to MetadataSettings object
-ms.setImageMetadataSettings(ims);
-
-// this line must be called before mRecognizerView.create()
-mRecognizerView.setMetadataListener(myMetadataListener, ms);
-```
-
-The following snippet shows one possible implementation of _MetadataListener_:
-
-```java
-public class MyMetadataListener implements MetadataListener {
-
-	/**
-	 * Called when metadata is available.
-	 */
-    @Override
-    public void onMetadataAvailable(Metadata metadata) {
-    	// detection location will be available as DetectionMetadata
-        if (metadata instanceof DetectionMetadata) {
-        	// DetectionMetadata contains DetectorResult which is null if object detection
-        	// has failed and non-null otherwise
-        	// Let's assume that we have a QuadViewManager which can display animated frame
-        	// around detected object (for reference, please check javadoc and demo apps)
-            DetectorResult dr = ((DetectionMetadata) metadata).getDetectionResult();
-            if (dr == null) {
-            	// animate frame to default location if detection has failed
-                mQuadViewManager.animateQuadToDefaultPosition();
-            } else if (dr instanceof QuadDetectorResult) {
-            	// otherwise, animate frame to detected location
-                mQuadViewManager.animateQuadToDetectionPosition((QuadDetectorResult) dr);
-            }
-        // images will be available inside ImageMetadata
-        } else if (metadata instanceof ImageMetadata) {
-        	// obtain image
-        	
-        	// Please note that Image's internal buffers are valid only
-        	// until this method ends. If you want to save image for later,
-        	// obtained a cloned image with image.clone().
-        	
-            Image image = ((ImageMetadata) metadata).getImage();
-            // to convert the image to Bitmap, call image.convertToBitmap()
-            
-            // after this line, image gets disposed. If you want to save it
-            // for later, you need to clone it with image.clone()
-        }
-    }
-}
-```
-
-Here are javadoc links to all classes that appeared in previous code snippet:
-
-- [Metadata](https://pdf417.github.io/pdf417-android/com/microblink/metadata/Metadata.html)
-- [DetectionMetadata](https://pdf417.github.io/pdf417-android/com/microblink/metadata/DetectionMetadata.html)
-- [DetectorResult](https://pdf417.github.io/pdf417-android/com/microblink/detectors/DetectorResult.html)
-- [QuadViewManager](https://pdf417.github.io/pdf417-android/com/microblink/view/viewfinder/quadview/QuadViewManager.html)
-- [QuadDetectorResult](https://pdf417.github.io/pdf417-android/com/microblink/detectors/quad/QuadDetectorResult.html)
-- [ImageMetadata](https://pdf417.github.io/pdf417-android/com/microblink/metadata/ImageMetadata.html)
-- [Image](https://pdf417.github.io/pdf417-android/com/microblink/image/Image.html)
-
-## <a name="imageListener"></a> Using ImageListener to obtain images that are being processed
-
-There are two ways of obtaining images that are being processed:
-
-- if _Pdf417ScanActivity_ is being used to perform scanning, then you need to implement [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) and send your implementation via Intent to _Pdf417ScanActivity_. Note that while this seems easier, this actually introduces a large performance penalty because _ImageListener_ will receive all images, including ones you do not actually need, except in cases when you also provide [ImageMetadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.ImageMetadataSettings.html) with [`Pdf417ScanActivity.EXTRAS_IMAGE_METADATA_SETTINGS`](#intent_EXTRAS_IMAGE_METADATA_SETTINGS) extra.
-- if [RecognizerView](#recognizerView) is directly embedded into your scanning activity, then you should initialise it with [Metadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.html) and your implementation of [Metadata listener interface](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataListener.html). The _MetadataSettings_ will define which metadata will be reported to _MetadataListener_. The metadata can contain various data, such as images, object detection location etc. To see documentation and example how to use _MetadataListener_ to obtain images and other metadata, see section [Obtaining various metadata with _MetadataListener_](#metadataListener).
-
-This section will give an example how to implement [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) that will obtain images that are being processed. `ImageListener` has only one method that needs to be implemented: `onImageAvailable(Image)`. This method is called whenever library has available image for current processing step. [Image](https://pdf417.github.io/pdf417-android/com/microblink/image/Image.html) is class that contains all information about available image, including buffer with image pixels. Image can be in several format and of several types. [ImageFormat](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageFormat.html) defines the pixel format of the image, while [ImageType](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageType.html) defines the type of the image. `ImageListener` interface extends android's [Parcelable interface](https://developer.android.com/reference/android/os/Parcelable.html) so it is possible to send implementations via [intents](https://developer.android.com/reference/android/content/Intent.html).
-
-Here is the example implementation of [ImageListener interface](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html). This implementation will save all images into folder `myImages` on device's external storage:
-
-```java
-public class MyImageListener implements ImageListener {
-
-   /**
-    * Called when library has image available.
-    */
-    @Override
-    public void onImageAvailable(Image image) {
-        // we will save images to 'myImages' folder on external storage
-        // image filenames will be 'imageType - currentTimestamp.jpg'
-        String output = Environment.getExternalStorageDirectory().getAbsolutePath() + "/myImages";
-        File f = new File(output);
-        if(!f.exists()) {
-            f.mkdirs();
-        }
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-        String dateString = dateFormat.format(new Date());
-        String filename = null;
-        switch(image.getImageFormat()) {
-            case ALPHA_8: {
-                filename = output + "/alpha_8 - " + image.getImageName() + " - " + dateString + ".jpg";
-                break;
-            }
-            case BGRA_8888: {
-                filename = output + "/bgra - " + image.getImageName() + " - " + dateString + ".jpg";
-                break;
-            }
-            case YUV_NV21: {
-                filename = output + "/yuv - " + image.getImageName()+ " - " + dateString + ".jpg";
-                break;
-            }
-        }
-        Bitmap b = image.convertToBitmap();
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(filename);
-            boolean success = b.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            if(!success) {
-                Log.e(this, "Failed to compress bitmap!");
-                if(fos != null) {
-                    try {
-                        fos.close();
-                    } catch (IOException ignored) {
-                    } finally {
-                        fos = null;
-                    }
-                    new File(filename).delete();
-                }
-            }
-        } catch (FileNotFoundException e) {
-            Log.e(this, e, "Failed to save image");
-        } finally {
-            if(fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException ignored) {
-                }
-            }
-        }
-        // after this line, image gets disposed. If you want to save it
-        // for later, you need to clone it with image.clone()
-    }
-
-    /**
-     * ImageListener interface extends Parcelable interface, so we also need to implement
-     * that interface. The implementation of Parcelable interface is below this line.
-     */
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-    }
-
-    public static final Creator<MyImageListener> CREATOR = new Creator<MyImageListener>() {
-        @Override
-        public MyImageListener createFromParcel(Parcel source) {
-            return new MyImageListener();
-        }
-
-        @Override
-        public MyImageListener[] newArray(int size) {
-            return new MyImageListener[size];
-        }
-    };
-}
-```
-
-Note that [ImageListener](https://pdf417.github.io/pdf417-android/com/microblink/image/ImageListener.html) can only be given to _Pdf417ScanActivity_ via Intent, while to [RecognizerView](#recognizerView), you need to give [Metadata listener](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataListener.html) and [Metadata settings](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataSettings.html) that defines which metadata should be obtained. When you give _ImageListener_ to _Pdf417ScanActivity_ via Intent, it internally registers a _MetadataListener_ that enables obtaining of all available image types and invokes _ImageListener_ given via Intent with the result. For more information and examples how to use _MetadataListener_ for obtaining images, refer to demo applications.
-
-# <a name="recognitionSettingsAndResults"></a> Recognition settings and results
-
-This chapter will discuss various recognition settings used to configure different recognizers and scan results generated by them.
-
-## <a name="recognitionSettings"></a> Recognition settings
-
-[Recognition settings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/settings/RecognitionSettings.html) define what will be scanned and how will the recognition process be performed. Here is the list of methods that are most relevant:
-
-##### [`setAllowMultipleScanResultsOnSingleImage(boolean)`](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/settings/RecognitionSettings.html#setAllowMultipleScanResultsOnSingleImage-boolean-)
-Sets whether or not outputting of multiple scan results from same image is allowed. If that is `true`, it is possible to return multiple recognition results produced by different recognizers from same image. However, single recognizer can still produce only a single result from single image. If this option is `false`, the array of `BaseRecognitionResults` will contain at most 1 element. The upside of setting that option to `false` is the speed - if you enable lots of recognizers, as soon as the first recognizer succeeds in scanning, recognition chain will be terminated and other recognizers will not get a chance to analyze the image. The downside is that you are then unable to obtain multiple results from different recognizers from single image. By default, this option is `true`.
-
-##### [`setNumMsBeforeTimeout(int)`](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/settings/RecognitionSettings.html#setNumMsBeforeTimeout-int-)
-Sets the number of miliseconds _PDF417.mobi_ will attempt to perform the scan it exits with timeout error. On timeout returned array of `BaseRecognitionResults` inside [RecognitionResults](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/RecognitionResults.html) might be null, empty or may contain only elements that are not valid ([`isValid`](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/BaseRecognitionResult.html#isValid--) returns `false`) or are empty ([`isEmpty`](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/BaseRecognitionResult.html#isEmpty--) returns `true`).
-
-**NOTE**: Please be aware that time counting does not start from the moment when scanning starts. Instead it starts from the moment when at least one `BaseRecognitionResult` becomes available which is neither [empty](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/BaseRecognitionResult.html#isEmpty--) nor [valid](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/BaseRecognitionResult.html#isValid--).
-
-The reason for this is the better user experience in cases when for example timeout is set to 10 seconds and user starts scanning and leaves device lying on table for 9 seconds and then points the device towards the object it wants to scan: in such case it is better to let that user scan the object it wants instead of completing scan with empty scan result as soon as 10 seconds timeout ticks out.
-
-##### [`setFrameQualityEstimationMode(FrameQualityEstimationMode)`](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/settings/RecognitionSettings.html#setFrameQualityEstimationMode-com.microblink.recognizers.settings.RecognitionSettings.FrameQualityEstimationMode-)
-Sets the mode of the frame quality estimation. Frame quality estimation is the process of estimating the quality of video frame so only best quality frames can be chosen for processing so no time is wasted on processing frames that are of too poor quality to contain any meaningful information. It is **not** used when performing recognition of [Android bitmaps](https://developer.android.com/reference/android/graphics/Bitmap.html) using [Direct API](#directAPI). You can choose 3 different frame quality estimation modes: automatic, always on and always off.
-
-- In **automatic** mode (default), frame quality estimation will be used if device contains multiple processor cores or if on single core device at least one active recognizer requires frame quality estimation.
-- In **always on** mode, frame quality estimation will be used always, regardless of device or active recognizers.
-- In **always off** mode, frame quality estimation will be always disabled, regardless of device or active recognizers. This is not recommended setting because it can significantly decrease quality of the scanning process.
-
-##### [`setRecognizerSettingsArray(RecognizerSettings[])`](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/settings/RecognitionSettings.html#setRecognizerSettingsArray-com.microblink.recognizers.settings.RecognizerSettings:A-)
-Sets the array of [RecognizerSettings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/settings/RecognizerSettings.html) that will define which recognizers should be activated and how should the be set up. The list of available _RecognizerSettings_ and their specifics are given below.
-
-## <a name="pdf417Recognizer"></a> Scanning PDF417 barcodes
-
-This section discusses the settings for setting up PDF417 recognizer and explains how to obtain results from PDF417 recognizer.
-
-### Setting up PDF417 recognizer
-
-To activate PDF417 recognizer, you need to create a [Pdf417RecognizerSettings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/pdf417/Pdf417RecognizerSettings.html) and add it to `RecognizerSettings` array. You can do this using following code snippet:
-
-```java
-private RecognizerSettings[] setupSettingsArray() {
-	Pdf417RecognizerSettings sett = new Pdf417RecognizerSettings();
-	// disable scanning of white barcodes on black background
-	sett.setInverseScanning(false);
-	// allow scanning of barcodes that have invalid checksum
-	sett.setUncertainScanning(true);
-	// disable scanning of barcodes that do not have quiet zone
-	// as defined by the standard
-	sett.setNullQuietZoneAllowed(false);
-
-	// now add sett to recognizer settings array that is used to configure
-	// recognition
-	return new RecognizerSettings[] { sett };
-}
-```
-
-As can be seen from example, you can tweak PDF417 recognition parameters with methods of `Pdf417RecognizerSettings`.
-
-##### `setUncertainScanning(boolean)`
-By setting this to `true`, you will enable scanning of non-standard elements, but there is no guarantee that all data will be read. This option is used when multiple rows are missing (e.g. not whole barcode is printed). Default is `false`.
-
-##### `setNullQuietZoneAllowed(boolean)`
-By setting this to `true`, you will allow scanning barcodes which don't have quiet zone surrounding it (e.g. text concatenated with barcode). This option can significantly increase recognition time. Default is `false`.
-
-##### `setInverseScanning(boolean)`
-By setting this to `true`, you will enable scanning of barcodes with inverse intensity values (i.e. white barcodes on dark background). This option can significantly increase recognition time. Default is `false`.
-
-### Obtaining results from PDF417 recognizer
-PDF417 recognizer produces [Pdf417ScanResult](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/pdf417/Pdf417ScanResult.html). You can use `instanceof` operator to check if element in results array is instance of `Pdf417ScanResult` class. See the following snippet for an example:
-
-```java
-@Override
-public void onScanningDone(RecognitionResults results) {
-	BaseRecognitionResult[] dataArray = results.getRecognitionResults();
-	for(BaseRecognitionResult baseResult : dataArray) {
-		if(baseResult instanceof Pdf417ScanResult) {
-			Pdf417ScanResult result = (Pdf417ScanResult) baseResult;
-			
-	        // getStringData getter will return the string version of barcode contents
-			String barcodeData = result.getStringData();
-			// isUncertain getter will tell you if scanned barcode is uncertain
-			boolean uncertainData = result.isUncertain();
-			// getRawData getter will return the raw data information object of barcode contents
-			BarcodeDetailedData rawData = result.getRawData();
-			// BarcodeDetailedData contains information about barcode's binary layout, if you
-			// are only interested in raw bytes, you can obtain them with getAllData getter
-			byte[] rawDataBuffer = rawData.getAllData();
-		}
-	}
-}
-```
-
-As you can see from the example, obtaining data is rather simple. You just need to call several methods of the `Pdf417ScanResult` object:
-
-##### `String getStringData()`
-This method will return the string representation of barcode contents. Note that PDF417 barcode can contain binary data so sometimes it makes little sense to obtain only string representation of barcode data.
-
-##### `boolean isUncertain()`
-This method will return the boolean indicating if scanned barcode is uncertain. This can return `true` only if scanning of uncertain barcodes is allowed, as explained earlier.
-
-##### `BarcodeDetailedData getRawData()`
-This method will return the object that contains information about barcode's binary layout. You can see information about that object in [javadoc](https://pdf417.github.io/pdf417-android/com/microblink/results/barcode/BarcodeDetailedData.html). However, if you only need to access byte array containing, you can call method `getAllData` of `BarcodeDetailedData` object.
-
-##### `Quadrilateral getPositionOnImage()`
-Returns the position of barcode on image. Note that returned coordinates are in image's coordinate system which is not related to view coordinate system used for UI.
-
-## <a name="custom1DBarDecoder"></a> Scanning one dimensional barcodes with _PDF417.mobi_'s implementation
-
-This section discusses the settings for setting up 1D barcode recognizer that uses _PDF417.mobi_'s implementation of scanning algorithms and explains how to obtain results from that recognizer. Henceforth, the 1D barcode recognizer that uses _PDF417.mobi_'s implementation of scanning algorithms will be refered as "Bardecoder recognizer".
-
-### Setting up Bardecoder recognizer
-
-To activate Bardecoder recognizer, you need to create a [BarDecoderRecognizerSettings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/bardecoder/BarDecoderRecognizerSettings.html) and add it to `RecognizerSettings` array. You can do this using following code snippet:
-
-```java
-private RecognizerSettings[] setupSettingsArray() {
-	BarDecoderRecognizerSettings sett = new BarDecoderRecognizerSettings();
-	// activate scanning of Code39 barcodes
-	sett.setScanCode39(true);
-	// activate scanning of Code128 barcodes
-	sett.setScanCode128(true);
-	// disable scanning of white barcodes on black background
-	sett.setInverseScanning(false);
-	// disable slower algorithm for low resolution barcodes
-	sett.setTryHarder(false);
-
-	// now add sett to recognizer settings array that is used to configure
-	// recognition
-	return new RecognizerSettings[] { sett };
-}
-```
-
-As can be seen from example, you can tweak Bardecoder recognition parameters with methods of `BarDecoderRecognizerSettings`.
-
-##### `setScanCode128(boolean)`
-Method activates or deactivates the scanning of Code128 1D barcodes. Default (initial) value is `false`.
-
-##### `setScanCode39(boolean)`
-Method activates or deactivates the scanning of Code39 1D barcodes. Default (initial) value is `false`.
-
-##### `setInverseScanning(boolean)`
-By setting this to `true`, you will enable scanning of barcodes with inverse intensity values (i.e. white barcodes on dark background). This option can significantly increase recognition time. Default is `false`.
-
-##### `setTryHarder(boolean)`
-By setting this to `true`, you will enabled scanning of lower resolution barcodes at cost of additional processing time. This option can significantly increase recognition time. Default is `false`.
-
-### Obtaining results from Bardecoder recognizer
-
-Bardecoder recognizer produces [BarDecoderScanResult](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/barcode/blinkbardecoder/BarDecoderScanResult.html). You can use `instanceof` operator to check if element in results array is instance of `BarDecoderScanResult` class. See the following snippet for example:
-
-```java
-@Override
-public void onScanningDone(RecognitionResults results) {
-	BaseRecognitionResult[] dataArray = results.getRecognitionResults();
-	for(BaseRecognitionResult baseResult : dataArray) {
-		if(baseResult instanceof BarDecoderScanResult) {
-			BarDecoderScanResult result = (BarDecoderScanResult) baseResult;
-			
-			// getBarcodeType getter will return a BarcodeType enum that will define
-			// the type of the barcode scanned
-			BarcodeType barType = result.getBarcodeType();
-	        // getStringData getter will return the string version of barcode contents
-			String barcodeData = result.getStringData();
-			// getRawData getter will return the raw data information object of barcode contents
-			BarcodeDetailedData rawData = result.getRawData();
-			// BarcodeDetailedData contains information about barcode's binary layout, if you
-			// are only interested in raw bytes, you can obtain them with getAllData getter
-			byte[] rawDataBuffer = rawData.getAllData();
-		}
-	}
-}
-```
-
-As you can see from the example, obtaining data is rather simple. You just need to call several methods of the `BarDecoderScanResult` object:
-
-##### `String getStringData()`
-This method will return the string representation of barcode contents. 
-
-##### `BarcodeDetailedData getRawData()`
-This method will return the object that contains information about barcode's binary layout. You can see information about that object in [javadoc](https://pdf417.github.io/pdf417-android/com/microblink/results/barcode/BarcodeDetailedData.html). However, if you only need to access byte array containing, you can call method `getAllData` of `BarcodeDetailedData` object.
-
-##### `String getExtendedStringData()`
-This method will return the string representation of extended barcode contents. This is available only if barcode that supports extended encoding mode was scanned (e.g. code39).
-
-##### `BarcodeDetailedData getExtendedRawData()`
-This method will return the object that contains information about barcode's binary layout when decoded in extended mode. You can see information about that object in [javadoc](https://pdf417.github.io/pdf417-android/com/microblink/results/barcode/BarcodeDetailedData.html). However, if you only need to access byte array containing, you can call method `getAllData` of `BarcodeDetailedData` object. This is available only if barcode that supports extended encoding mode was scanned (e.g. code39).
-
-##### `getBarcodeType()`
-This method will return a [BarcodeType](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/BarcodeType.html) enum that defines the type of barcode scanned.
-
-## <a name="zxing"></a> Scanning barcodes with ZXing implementation
-
-This section discusses the settings for setting up barcode recognizer that use ZXing's implementation of scanning algorithms and explains how to obtain results from it. _PDF417.mobi_ uses ZXing's [c++ port](https://github.com/zxing/zxing/tree/00f634024ceeee591f54e6984ea7dd666fab22ae/cpp) to support barcodes for which we still do not have our own scanning algorithms. Also, since ZXing's c++ port is not maintained anymore, we also provide updates and bugfixes to it inside our codebase.
-
-### Setting up ZXing recognizer
-
-To activate ZXing recognizer, you need to create [ZXingRecognizerSettings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/zxing/ZXingRecognizerSettings.html) and add it to `RecognizerSettings` array. You can do this using the following code snippet:
-
-```java
-private RecognizerSettings[] setupSettingsArray() {
-	ZXingRecognizerSettings sett=  new ZXingRecognizerSettings();
-	// disable scanning of white barcodes on black background
-	sett.setInverseScanning(false);
-	// activate scanning of QR codes
-	sett.setScanQRCode(true);
-
-	// now add sett to recognizer settings array that is used to configure
-	// recognition
-	return new RecognizerSettings[] { sett };
-}
-```
-
-As can be seen from example, you can tweak ZXing recognition parameters with methods of `ZXingRecognizerSettings`. Note that some barcodes, such as Code 39 are available for scanning with [_PDF417.mobi_'s implementation](#custom1DBarDecoder). You can choose to use only one implementation or both (just put both settings objects into `RecognizerSettings` array). Using both implementations increases the chance of correct barcode recognition, but requires more processing time. Of course, we recommend using the _PDF417.mobi_'s implementation for supported barcodes.
-
-##### `setScanAztecCode(boolean)`
-Method activates or deactivates the scanning of Aztec 2D barcodes. Default (initial) value is `false`.
-
-##### `setScanCode128(boolean)`
-Method activates or deactivates the scanning of Code128 1D barcodes. Default (initial) value is `false`.
-
-##### `setScanCode39(boolean)`
-Method activates or deactivates the scanning of Code39 1D barcodes. Default (initial) value is `false`.
-
-##### `setScanDataMatrixCode(boolean)`
-Method activates or deactivates the scanning of Data Matrix 2D barcodes. Default (initial) value is `false`.
-
-##### `setScanEAN13Code(boolean)`
-Method activates or deactivates the scanning of EAN 13 1D barcodes. Default (initial) value is `false`.
-
-##### `setScanEAN8Code(boolean)`
-Method activates or deactivates the scanning of EAN 8 1D barcodes. Default (initial) value is `false`.
-
-##### `shouldScanITFCode(boolean)`
-Method activates or deactivates the scanning of ITF 1D barcodes. Default (initial) value is `false`.
-
-##### `setScanQRCode(boolean)`
-Method activates or deactivates the scanning of QR 2D barcodes. Default (initial) value is `false`.
-
-##### `setScanUPCACode(boolean)`
-Method activates or deactivates the scanning of UPC A 1D barcodes. Default (initial) value is `false`.
-
-##### `setScanUPCECode(boolean)`
-Method activates or deactivates the scanning of UPC E 1D barcodes. Default (initial) value is `false`.
-
-##### `setInverseScanning(boolean)`
-By setting this to `true`, you will enable scanning of barcodes with inverse intensity values (i.e. white barcodes on dark background). This option can significantly increase recognition time. Default is `false`.
-
-##### `setSlowThoroughScan(boolean)`
-Use this method to enable slower, but more thorough scan procedure when scanning barcodes. By default, this option is turned on.
-
-### Obtaining results from ZXing recognizer
-
-ZXing recognizer produces [ZXingScanResult](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/zxing/ZXingScanResult.html). You can use `instanceof` operator to check if element in results array is instance of `ZXingScanResult` class. See the following snippet for example:
-
-```java
-@Override
-public void onScanningDone(RecognitionResults results) {
-	BaseRecognitionResult[] dataArray = results.getRecognitionResults();
-	for(BaseRecognitionResult baseResult : dataArray) {
-		if(baseResult instanceof ZXingScanResult) {
-			ZXingScanResult result = (ZXingScanResult) baseResult;
-			
-			// getBarcodeType getter will return a BarcodeType enum that will define
-			// the type of the barcode scanned
-			BarcodeType barType = result.getBarcodeType();
-	        // getStringData getter will return the string version of barcode contents
-			String barcodeData = result.getStringData();
-		}
-	}
-}
-```
-
-As you can see from the example, obtaining data is rather simple. You just need to call several methods of the `ZXingScanResult` object:
-
-##### `String getStringData()`
-This method will return the string representation of barcode contents. 
-
-##### `getBarcodeType()`
-This method will return a [BarcodeType](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/BarcodeType.html) enum that defines the type of barcode scanned.
-
-## <a name="simNumberRecognizer"></a> Scanning SIM number barcodes
-
-This section discusses the settings for setting up SIM number recognizer and explains how to obtain its results.
-
-### Setting up SIM number recognizer
-
-To activate SIM number recognizer, you need to create a [SimNumberRecognizerSettings](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html) and add it to `RecognizerSettings` array. You can do this using following code snippet:
-
-```java
-private RecognizerSettings[] setupSettingsArray() {
-	SimNumberRecognizerSettings sett = new SimNumberRecognizerSettings();
-	// now add sett to recognizer settings array that is used to configure
-    // recognition
-	return new RecognizerSettings[] { sett };
-}
-```
-
-**Javadoc documentation for SimNumberRecognizerSettings can be found [here](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberRecognizerSettings.html).**
-
-### Obtaining results from SIM number recognizer
-SIM number recognizer produces [SimNumberScanResult](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html). You can use `instanceof` operator to check if element in results array is instance of `SimNumberScanResult` class. See the following snippet for an example:
-
-```java
-@Override
-public void onScanningDone(RecognitionResults results) {
-	BaseRecognitionResult[] dataArray = results.getRecognitionResults();
-	for(BaseRecognitionResult baseResult : dataArray) {
-		if(baseResult instanceof SimNumberScanResult) {
-			SimNumberScanResult result = (SimNumberScanResult) baseResult;
-	       // get scanned sim number
-			String simNumber = result.getSimNumber();
-			if (simNumber != null) {
-				// do something
-			}
-		}
-	}
-}
-```
-
-**Available getters are documented in [Javadoc](https://pdf417.github.io/pdf417-android/com/microblink/recognizers/blinkbarcode/simnumber/SimNumberScanResult.html).**
-# <a name="translation"></a> Translation and localization
-
-`PDF417.mobi` can be localized to any language. If you are using `RecognizerView` in your custom scan activity, you should handle localization as in any other Android app - `RecognizerView` does not use strings nor drawables, it only uses assets from `assets/microblink` folder. Those assets must not be touched as they are required for recognition to work correctly.
-
-However, if you use our builtin `Pdf417ScanActivity` activity, it will use resources packed with library project to display strings and images on top of camera view. We have already prepared string in several languages which you can use out of the box. You can also [modify those strings](#stringChanging), or you can [add your own language](#addLanguage).
-
-To use a language, you have to enable it from the code:
-
-* To enable usage of predefined language you should call method `LanguageUtils.setLanguage(language, context)`. For example, you can set language like this:
-
-	```java
-	// define PDF417.mobi language
-	LanguageUtils.setLanguage(Language.Croatian, this);
-	```
-		
-* To enable usage of language that is not available in predefined language enum (for example, if you added your own language), you should call method `LanguageUtils.setLanguageAndCountry(language, country, context)`. For example, you can set language like this:
-	
-	```java
-	// define PDF417.mobi language
-	LanguageUtils.setLanguageAndCountry("hr", "", this);
-	```
-
-### <a name="addLanguage"></a> Adding new language
-
-_PDF417.mobi_ can easily be translated to other languages. The `res` folder in `LibPdf417Mobi.aar` archive has folder `values` which contains `strings.xml` - this file contains english strings. In order to make e.g. croatian translation, create a folder `values-hr` in your project and put the copy of `strings.xml` inside it (you might need to extract `LibPdf417Mobi.aar` archive to get access to those files). Then, open that file and change the english version strings into croatian version. 
-
-### <a name="stringChanging"></a> Changing strings in the existing language
-	
-To modify an existing string, the best approach would be to:
-
-1. choose a language which you want to modify. For example Croatia ('hr').
-2. find strings.xml in `LibPdf417Mobi.aar` archive folder `res/values-hr`
-3. choose a string key which you want to change. For example, ```<string name="PhotoPayHelp">Help</string>```
-4. in your project create a file `strings.xml` in the folder `res/values-hr`, if it doesn't already exist
-5. create an entry in the file with the value for the string which you want. For example ```<string name="PhotoPayHelp">Pomoć</string>```
-6. repeat for all the string you wish to change
+### <a name="directAPIStateMachine"></a> Understanding DirectAPI's state machine
 
+DirectAPI's `RecognizerRunner` singleton is actually a state machine which can be in one of 3 states: `OFFLINE`, `READY` and `WORKING`. 
+
+- When you obtain the reference to `RecognizerRunner` singleton, it will be in `OFFLINE` state. 
+- You can initialize `RecognizerRunner` by calling [initialize](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#initialize-android.content.Context-com.microblink.entities.recognizers.RecognizerBundle-com.microblink.directApi.DirectApiErrorListener-) method. If you call `initialize` method while `RecognizerRunner` is not in `OFFLINE` state, you will get `IllegalStateException`.
+- After successful initialization, `RecognizerRunner` will move to `READY` state. Now you can call any of the `recognize*` methods.
+- When starting recognition with any of the `recognize*` methods, `RecognizerRunner` will move to `WORKING` state. If you attempt to call these methods while `RecognizerRunner` is not in `READY` state, you will get `IllegalStateException`
+- Recognition is performed on background thread so it is safe to call all `RecognizerRunner's` methods from UI thread
+- When recognition is finished, `RecognizerRunner` first moves back to `READY` state and then calls the [onScanningDone](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html#onScanningDone-RecognitionSuccessType-) method of the provided [`ScanResultListener`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html). 
+- Please note that `ScanResultListener`'s [`onScanningDone`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html#onScanningDone-RecognitionSuccessType-) method will be called on background processing thread, so make sure you do not perform UI operations in this calback. Also note that until the `onScanningDone` method completes, `RecognizerRunner` will not perform recognition of another image, even if any of the `recognize*` methods have been called just after transitioning to `READY` state. This is to ensure that results of the recognizers bundled within `RecognizerBundle` associated with `RecognizerRunner` are not modified while possibly being used within `onScanningDone` method.
+- By calling [`terminate`](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#terminate--) method, `RecognizerRunner` singleton will release all its internal resources. Note that even after calling `terminate` you might receive `onScanningDone` event if there was work in progress when `terminate` was called.
+- `terminate` method can be called from any `RecognizerRunner` singleton's state
+- You can observe `RecognizerRunner` singleton's state with method [`getCurrentState`](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#getCurrentState--)
+
+### <a name="directAPIWithRecognizer"></a> Using DirectAPI while RecognizerRunnerView is active
+Both [RecognizerRunnerView](#recognizerRunnerView) and `RecognizerRunner` use the same internal singleton that manages native code. This singleton handles initialization and termination of native library and propagating recognizers to native library. It is possible to use `RecognizerRunnerView` and `RecognizerRunner` together, as internal singleton will make sure correct synchronization and correct recognition settings are used. If you run into problems while using `RecognizerRunner` in combination with `RecognizerRunnerView`, [let us know](http://help.microblink.com)!
+
+## <a name="processingEvents"></a> Handling processing events with `RecognizerRunner` and `RecognizerRunnerView`
+
+This section will describe how you can subscribe to and handle processing events when using [RecognizerRunner](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html) or [RecognizerRunnerView](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerRunnerView.html). Processing events, also known as _Metadata callbacks_ are purely intended for giving processing feedback on UI or to capture some debug information during development of your app using _PDF417.mobi_ SDK. For that reason, built-in activities and fragments do not support subscribing and handling of those events from third parties - they handle those events internally. If you need to handle those events by yourself, you need to use either [RecognizerRunnerView](#recognizerRunnerView) or [RecognizerRunner](#directAPI).
+
+Callbacks for all events are bundled together into [MetadataCallbacks class](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataCallbacks.html). Both [RecognizerRunner](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html#setMetadataCallbacks-com.microblink.metadata.MetadataCallbacks-) and [RecognizerRunnerView](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerRunnerView.html#setMetadataCallbacks-com.microblink.metadata.MetadataCallbacks-) have methods which allow you to set all your callbacks. 
+
+We suggest that you check for more information about available callbacks and events to which you can handle in the [javadoc for MetadataCallbacks class](https://pdf417.github.io/pdf417-android/com/microblink/metadata/MetadataCallbacks.html).
+
+### <a name="processingEventsImportantNote"></a> Note about `setMetadataCallbacks` method
+
+Please note that both those methods need to pass information about available callbacks to the native code and for efficiency's reasons this is done at the time `setMetadataCallbacks` method is called and **not every time** when change occurs withing `MetadataCallbacks` object. This means that if you, for example, set `QuadDetectionCallback` to `MetadataCallbacks` **after** you already called `setMetadataCallbacks` method, the `QuadDetectionCallback` will not be registered with the native code and you will not receive its events.
+
+Similarly, if you, for example, remove the `QuadDetectionCallback` from `MetadataCallbacks` object **after** you already called `setMetadataCallbacks` method, your app will crash with `NullPointerException` when our processing code attempts to invoke the method on removed callback (which is now set to `null`). We **deliberately** do not perform `null` check here because of two reasons:
+
+- it is inefficient
+- having `null` callback, while still being registered to native code is illegal state of your program and it should therefore crash
+
+**Remember**, each time you make some changes to `MetadataCallbacks` object, you need to apply those changes to to your `RecognizerRunner` or `RecognizerRunnerView` by calling its `setMetadataCallbacks` method.
+
+# <a name="availableRecognizers"></a> `RecognizerBundle` and available recognizers
+
+[RecognizerBundle](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html) is an object which wraps the [Recognizers](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.html) and defines settings about how recognition should be performed. Besides that, `RecognizerBundle` makes it possible to transfer `Recognizer` objects between different activities, which is required when using built-in activities to perform scanning, as described in [first scan section](#quickScan), but is also handy when you need to pass `Recognizer` objects between your activities.
+
+This section will first describe [what is a `Recognizer`](#recognizerConcept) and how it should be used to perform recognition of the images, videos and camera stream. Next, [we will describe how `RecognizerBundle`](#recognizerBundle) can be used to tweak the recognition procedure and to transfer `Recognizer` objects between activities. Finally, we will give a [list of all available `Recognizer` objects](#recognizerList) and give a brief description of each `Recognizer`, its purpose and recommendations how it should be used to get best performance and user experience.
+
+## <a name="recognizerConcept"></a> The `Recognizer` concept
+
+The [Recognizer](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.html) is the basic unit of processing within the _PDF417.mobi_ SDK. Its main purpose is to process the image and extract meaningful information from it. As you will see [later](#recognizerList), the _PDF417.mobi_ SDK has lots of different `Recognizer` objects that have various purposes.
+
+Each `Recognizer` has a `Result` object, which contains the data that was extracted from the image. The `Result` object is a member of corresponding `Recognizer` object its lifetime is bound to the lifetime of its parent `Recognizer` object. If you need your `Result` object to outlive its parent `Recognizer` object, you must make a copy of it by calling its method [`clone()`](https://pdf417.github.io/pdf417-android/com/microblink/entities/Entity.Result.html#clone--).
+
+Every `Recognizer` is a stateful object, that can be in two states: _idle state_ and _working state_. While in _idle state_, you can tweak `Recognizer` object's properties via its getters and setters. After you bundle it into a `RecognizerBundle` and use either [RecognizerRunner](https://pdf417.github.io/pdf417-android/com/microblink/directApi/RecognizerRunner.html) or [RecognizerRunnerView](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerRunnerView.html) to _run_ the processing with all `Recognizer` objects bundled within `RecognizerBundle`, it will change to _working state_ where the `Recognizer` object is being used for processing. While being in _working state_, you cannot tweak `Recognizer` object's properties. If you need to, you have to create a copy of the `Recognizer` object by calling its [`clone()`](https://pdf417.github.io/pdf417-android/com/microblink/entities/Entity.html#clone--), then tweak that copy, bundle it into a new `RecognizerBundle` and use [`reconfigureRecognizers`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerRunnerView.html#reconfigureRecognizers-com.microblink.entities.recognizers.RecognizerBundle-) to ensure new bundle gets used on processing thread.
+
+While `Recognizer` object works, it changes its internal state and its result. The `Recognizer` object's `Result` always starts in [Empty state](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.Result.State.html#Empty). When corresponding `Recognizer` object performs the recognition of given image, its `Result` can either stay in `Empty` state (in case `Recognizer` failed to perform recognition), move to [Uncertain state](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.Result.State.html#Uncertain) (in case `Recognizer` performed the recognition, but not all mandatory information was extracted) or move to [Valid state](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.Result.State.html#Valid) (in case `Recognizer` performed recognition and all mandatory information was successfully extracted from the image).
+
+As soon as one `Recognizer` object's `Result` within `RecognizerBundle` given to `RecognizerRunner` or `RecognizerRunnerView` changes to `Valid` state, the [`onScanningDone`](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/ScanResultListener.html#onScanningDone-RecognitionSuccessType-) callback will be invoked on same thread that performs the background processing and you will have the opportunity to inspect each of your `Recognizer` objects' `Results` to see which one has moved to `Valid` state.
+
+As already stated in [section about `RecognizerRunnerView`](#recognizerRunnerView), as soon as `onScanningDone` method ends, the `RecognizerRunnerView` will continue processing new camera frames with same `Recognizer` objects, unless [paused](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerRunnerView.html#pauseScanning--). Continuation of processing or [resetting recognition](https://pdf417.github.io/pdf417-android/com/microblink/view/recognition/RecognizerRunnerView.html#resetRecognitionState--) will mutate or reset all `Recognizer` objects's `Results`. When using built-in activities, as soon as `onScanningDone` is invoked, built-in activity pauses the `RecognizerRunnerView` and starts finishing the activity, while saving the `RecognizerBundle` with active `Recognizer` objects into `Intent` so they can be transferred back to the calling activities.
+
+
+## <a name="recognizerBundle"></a> `RecognizerBundle`
+
+The [RecognizerBundle](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html) is wrapper around [Recognizers](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.html) objects that can be used to transfer `Recognizer` objects between activities and to give `Recognizer` objects to `RecognizerRunner` or `RecognizerRunnerView` for processing.
+
+The `RecognizerBundle` is always [constructed with array](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html#RecognizerBundle-com.microblink.entities.recognizers.Recognizer:A-) of `Recognizer` objects that need to be prepared for recognition (i.e. their properties must be tweaked already). The constructor is _varargs_, which makes it easier to pass `Recognizer` objects to it, without the need of creating temporary array.
+
+The `RecognizerBundle` manages a chain of `Recognizer` objects within the recognition process. When new image arrives, it is first processed by first `Recognizer` in chain, then by the second and so on until either chain of `Recognizer` objects ends or some `Recognizer` object's `Result` changes its state to `Valid`. If you always want the chain of `Recognizer` objects to end, regardless of whether some `Recognizer` object's `Result` in chain has changed its state to `Valid` or not, you can [allow returning of multiple results on single image](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html#setAllowMultipleScanResultsOnSingleImage-boolean-).
+
+You cannot change the order of the `Recognizer` objects within the chain - no matter the order in which you give `Recognizer` objects to `RecognizerBundle`, they are internally ordered in a way that provides best possible performance and accuracy. Also, in order for _PDF417.mobi_ SDK to be able to order `Recognizer` objects in recognition chain in a best way possible, it is not allowed to have multiple instances of `Recognizer` objects of the same type within the chain. Attempting to do so will crash your application.
+
+### <a name="intentOptimization"></a> Passing `Recognizer` objects between activities
+
+Besides managing chain of `Recognizer` objects, `RecognizerBundle` also manages transferring bundled `Recognizer` objects between different activities within your app. Although each `Recognizer` object, and each its `Result` object implements [Parcelable interface](https://developer.android.com/reference/android/os/Parcelable.html), it is not so straight forward to put those objects into [Intent](https://developer.android.com/reference/android/content/Intent.html) and pass them around between your activities and services for two main reasons:
+
+- `Result` object is tied to its `Recognizer` object, which manages lifetime of the native `Result` object.
+- `Result` object often contains large data blocks, such as images, which cannot be transferred via `Intent` because of [Android's Intent transaction data limit](https://developer.android.com/reference/android/os/TransactionTooLargeException.html).
+
+Although the first problem can be easily worked around by making a [copy](https://pdf417.github.io/pdf417-android/com/microblink/entities/Entity.Result.html#clone--) of the `Result` and transfer it independently, the second problem is much tougher to cope with. This is where, `RecognizerBundle's` methods [saveToIntent](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html#saveToIntent-android.content.Intent-) and [loadFromIntent](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html#loadFromIntent-android.content.Intent-) come to help, as they ensure the safe passing of `Recognizer` objects bundled within `RecognizerBundle` between activities according to policy defined with method [`setIntentDataTransferMode`](https://pdf417.github.io/pdf417-android/com/microblink/MicroblinkSDK.html#setIntentDataTransferMode-com.microblink.intent.IntentDataTransferMode-):
+
+- if set to [`STANDARD`](https://pdf417.github.io/pdf417-android/com/microblink/intent/IntentDataTransferMode.html#STANDARD), the `Recognizer` objects will be passed via `Intent` using normal _Intent transaction mechanism_, which is limited by [Android's Intent transaction data limit](https://developer.android.com/reference/android/os/TransactionTooLargeException.html). This is same as manually putting `Recognizer` objects into `Intent` and is OK as long as you do not use `Recognizer` objects that produce images or other large objects in their `Results`.
+- if set to [`OPTIMISED`](https://pdf417.github.io/pdf417-android/com/microblink/intent/IntentDataTransferMode.html#OPTIMISED), the `Recognizer` objects will be passed via internal singleton object and no serialization will take place. This means that there is no limit to the size of data that is being passed. This is also the fastest transfer method, but it has a serious drawback - if Android kills your app to save memory for other apps and then later restarts it and redelivers `Intent` that should contain `Recognizer` objects, the internal singleton that should contain saved `Recognizer` objects will be empty and data that was being sent will be lost. You can easily provoke that condition by choosing _No background processes_ under _Limit background processes_ in your device's _Developer options_, and then switch from your app to another app and then back to your app.
+- if set to [`PERSISTED_OPTIMISED`](https://pdf417.github.io/pdf417-android/com/microblink/intent/IntentDataTransferMode.html#PERSISTED_OPTIMISED), the `Recognizer` objects will be passed via internal singleton object (just like in `OPTIMISED` mode) and will additionaly be serialized into a file in your application's private folder. In case Android restarts your app and internal singleton is empty after re-delivery of the `Intent`, the data will be loaded from file and nothing will be lost. The files will be automatically cleaned up when new transfer takes place. Just like `OPTIMISED`, this mode does not have limit to the size of data that is being passed and does not have a drawback that `OPTIMISED` mode has, but some users might be concerned about files to which data is being written. These files **will** contain end-user's private data, such as image of the object that was scanned and the extracted data. Also these files **will** remain saved in your application's private folder until the next usage of scan function - those files are not cleaned after reading from them, as we cannot be sure that our app will not be restarted by Android again and we will need to read from those files again - instead old files are cleaned at the time of writing a new file, so basically **always** at least one file remains saved in your application's private folder and that file contains data from the last scan end-user has performed. If that is a concern to you, you should use either `OPTIMISED` mode to transfer large data and image between activities or create your own mechanism for data transfer. Note that your application's private folder is only accessible by your application and your application alone, unless the end-user's device is rooted.
+
+## <a name="recognizerList"></a> List of available recognizers
+
+This section will give a list of all `Recognizer` objects that are available within _PDF417.mobi_ SDK, their purpose and recommendations how they should be used to get best performance and user experience.
+
+### <a name="frameGrabberRecognizer"></a> Frame Grabber Recognizer
+
+The [`FrameGrabberRecognizer`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.html) is the simplest recognizer in _PDF417.mobi_ SDK, as it does not perform any processing on the given image, instead it just returns that image back to its [`FrameCallback`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/framegrabber/FrameCallback.html). Its [Result](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.Result.html) never changes state from [Empty](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/Recognizer.Result.State.html#Empty).
+
+This recognizer is best for easy capturing of camera frames with [`RecognizerRunnerView`](#recognizerRunnerView). Note that [`Image`](https://pdf417.github.io/pdf417-android/com/microblink/image/Image.html) sent to [`onFrameAvailable`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/framegrabber/FrameCallback.html#onFrameAvailable-com.microblink.image.Image-boolean-double-) are temporary and their internal buffers all valid only until the `onFrameAvailable` method is executing - as soon as method ends, all internal buffers of `Image` object are disposed. If you need to store `Image` object for later use, you must create a copy of it by calling [`clone`](https://pdf417.github.io/pdf417-android/com/microblink/image/Image.html#clone--).
+
+Also note that [`FrameCallback`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/framegrabber/FrameCallback.html) interface extends [Parcelable interface](https://developer.android.com/reference/android/os/Parcelable.html), which means that when implementing `FrameCallback` interface, you must also implement `Parcelable` interface. 
+
+This is especially important if you plan to transfer `FrameGrabberRecognizer` between activities - in that case, keep in mind that the instance of your object may not be the same as the instance on which `onFrameAvailable` method gets called - the instance that receives `onFrameAvailable` calls is the one that is created within activity that is performing the scan.
+
+### <a name="successFrameGrabberRecognizer"></a> Success Frame Grabber Recognizer
+
+The [`SuccessFrameGrabberRecognizer`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/successframe/SuccessFrameGrabberRecognizer.html) is a special `Recognizer` that wraps some other `Recognizer` and impersonates it while processing the image. However, when the `Recognizer` being impersonated changes its `Result` into `Valid` state, the `SuccessFrameGrabberRecognizer` captures the image and saves it into its own `Result` object.
+
+Since `SuccessFrameGrabberRecognizer` impersonates its slave `Recognizer` object, it is not possible to give both concrete `Recognizer` object and `SuccessFrameGrabberRecognizer` that wraps it to same `RecognizerBundle` - doing so will have the same result as if you have given two instances of same `Recognizer` type to the `RecognizerBundle` - it will crash your application.
+
+This recognizer is best for use cases when you need to capture the exact image that was being processed by some other `Recognizer` object at the time its `Result` became `Valid`. When that happens, `SuccessFrameGrabber's` [`Result`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/successframe/SuccessFrameGrabberRecognizer.Result.html) will also become `Valid` and will contain described image. That image can then be retreived with [`getSuccessFrame()`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/successframe/SuccessFrameGrabberRecognizer.Result.html#getSuccessFrame--) method.
+
+### <a name="pdf417Recognizer"></a> PDF417 recognizer
+
+The [`Pdf417Recognizer`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/blinkbarcode/pdf417/Pdf417Recognizer.html) is recognizer specialised for scanning [PDF417 2D barcodes](https://en.wikipedia.org/wiki/PDF417). This recognizer can recognize only PDF417 2D barcodes - for recognition of other barcodes, please refer to [BarcodeRecognizer](#barcodeRecognizer).
+
+This recognizer can be used in any context, but it works best with the [`Pdf417ScanActivity`](https://pdf417.github.io/pdf417-android/com/microblink/activity/Pdf417ScanActivity.html), which has UI best suited for barcode scanning.
+
+### <a name="barcodeRecognizer"></a> Barcode recognizer
+
+The [`BarcodeRecognizer`](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html) is recognizer specialised for scanning various types of barcodes. This recognizer should be your first choice when scanning barcodes as it supports lots of barcode symbologies, including the [PDF417 2D barcodes](https://en.wikipedia.org/wiki/PDF417), thus making [PDF417 recognizer](#pdf417Recognizer) possibly redundant, which was kept only for its simplicity.
+
+As you can see from [javadoc](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html), you can enable multiple barcode symbologies within this recognizer, however keep in mind that enabling more barcode symbologies affect scanning performance - the more barcode symbologies are enabled, the slower the overall recognition performance. Also, keep in mind that some simple barcode symbologies that lack proper redundancy, such as [Code 39](https://en.wikipedia.org/wiki/Code_39), can be recognized within more complex barcodes, especially 2D barcodes, like [PDF417](https://en.wikipedia.org/wiki/PDF417).
+
+This recognizer can be used in any context, but it works best with the [`Pdf417ScanActivity`](https://pdf417.github.io/pdf417-android/com/microblink/activity/Pdf417ScanActivity.html), which has UI best suited for barcode scanning.
 # <a name="embedAAR"></a> Embedding _PDF417.mobi_ inside another SDK
 
 When creating your own SDK which depends on _PDF417.mobi_, you should consider following cases:
@@ -1337,25 +852,20 @@ _PDF417.mobi_ supports two types of licenses:
 
 ### <a name="appLicence"></a> Application licenses
 
-Application license keys are bound to application's [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename). This means that each app must have its own license key in order to be able to use _PDF417.mobi_. This model is appropriate when integrating _PDF417.mobi_ directly into app, however if you are creating SDK that depends on _PDF417.mobi_, you would need separate _PDF417.mobi_ license key for each of your clients using your SDK. This is not practical, so you should contact us at [help.microblink.com](http://help.microblink.com) and we can provide you a library license key.
+Application licenses are bound to application's [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename). This means that each app must have its own license in order to be able to use _PDF417.mobi_. This model is appropriate when integrating _PDF417.mobi_ directly into app, however if you are creating SDK that depends on _PDF417.mobi_, you would need separate _PDF417.mobi_ license for each of your clients using your SDK. This is not practical, so you should contact us at [help.microblink.com](http://help.microblink.com) and we can provide you a library license.
 
 ### <a name="libLicence"></a> Library licenses
 
-Library license keys are bound to licensee name. You will provide your licensee name with your inquiry for library license key. Unlike application license keys, library license keys must be set together with licensee name:
+Library license keys are bound to licensee name. You will provide your licensee name with your inquiry for library license. Unlike application licenses, library licenses must be set together with licensee name:
 
-- when using _Pdf417ScanActivity_, you should provide licensee name with extra `Pdf417ScanActivity.EXTRAS_LICENSEE`, for example:
-
-	```java
-	// set the license key
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSE_KEY, "Enter_License_Key_Here");
-	intent.putExtra(Pdf417ScanActivity.EXTRAS_LICENSEE, "Enter_Licensee_Here");
-	```
-	
-- when using [RecognizerView](#recognizerView), you should use [method that accepts both license key and licensee](#recognizerView_setLicenseKey2), for example:
-
-	```java
-	mRecognizerView.setLicenseKey("Enter_License_Key_Here", "Enter_Licensee_Here");
-	```
+```java
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        MicroblinkSDK.setLicenseFile("path/to/license/file/within/assets/dir", "licensee", this);
+    }
+}
+```
 	
 ## <a name="sdkIntegrationIntoApp"></a> Ensuring the final app gets all resources required by _PDF417.mobi_
 
@@ -1364,14 +874,15 @@ At the time of writing this documentation, [Android does not have support for co
 This problem is usually solved with transitive Maven dependencies, i.e. when publishing your AAR to Maven you specify dependencies of your AAR so they are automatically referenced by app using your AAR. Besides this, there are also several other approaches you can try:
 
 - you can ask your clients to reference _PDF417.mobi_ in their app when integrating your SDK
-- since the problem lies in resource merging part you can try avoiding this step by ensuring your library will not use any component from _PDF417.mobi_ that uses resources (i.e. _Pdf417ScanActivity_). You can perform [custom UI integration](#recognizerView) while taking care that all resources (strings, layouts, images, ...) used are solely from your AAR, not from _PDF417.mobi_. Then, in your AAR you should not reference `LibPdf417Mobi.aar` as gradle dependency, instead you should unzip it and copy its assets to your AAR’s assets folder, its classes.jar to your AAR’s lib folder (which should be referenced by gradle as jar dependency) and contents of its jni folder to your AAR’s src/main/jniLibs folder.
-- Another approach is to use [3rd party unofficial gradle script](https://github.com/adwiv/android-fat-aar) that aim to combine multiple AARs into single fat AAR. Use this script at your own risk.
+- since the problem lies in resource merging part you can try avoiding this step by ensuring your library will not use any component from _PDF417.mobi_ that uses resources (i.e. built-in activities, fragments and views, except `RecognizerRunnerView`). You can perform [custom UI integration](#recognizerRunnerView) while taking care that all resources (strings, layouts, images, ...) used are solely from your AAR, not from _PDF417.mobi_. Then, in your AAR you should not reference `LibPdf417Mobi.aar` as gradle dependency, instead you should unzip it and copy its assets to your AAR’s assets folder, its `classes.jar` to your AAR’s lib folder (which should be referenced by gradle as jar dependency) and contents of its jni folder to your AAR’s src/main/jniLibs folder.
+- Another approach is to use [3rd party unofficial gradle script](https://github.com/adwiv/android-fat-aar) that aim to combine multiple AARs into single fat AAR. Use this script at your own risk and report issues to [its developers](https://github.com/adwiv/android-fat-aar/issues) - we do not offer support for using that script.
+- There is also a [3rd party unofficial gradle plugin](https://github.com/Vigi0303/fat-aar-plugin) which aims to do the same, but is more up to date with latest updates to Android gradle plugin. Use this plugin at your own risk and report all issues with using to [its developers](https://github.com/Vigi0303/fat-aar-plugin/issues) - we do not offer support for using that plugin.
 
 # <a name="archConsider"></a> Processor architecture considerations
 
 _PDF417.mobi_ is distributed with both ARMv7, ARM64, x86 and x86_64 native library binaries.
 
-ARMv7 architecture gives the ability to take advantage of hardware accelerated floating point operations and SIMD processing with [NEON](http://www.arm.com/products/processors/technologies/neon.php). This gives _PDF417.mobi_ a huge performance boost on devices that have ARMv7 processors. Most new devices (all since 2012.) have ARMv7 processor so it makes little sense not to take advantage of performance boosts that those processors can give. Also note that some devices with ARMv7 processors do not support NEON instruction sets. Most popular are those based on [NVIDIA Tegra 2](https://en.wikipedia.org/wiki/Tegra#Tegra_2) fall into this category. Since these devices are old by today's standard, _PDF417.mobi_ does not support them.
+ARMv7 architecture gives the ability to take advantage of hardware accelerated floating point operations and SIMD processing with [NEON](http://www.arm.com/products/processors/technologies/neon.php). This gives _PDF417.mobi_ a huge performance boost on devices that have ARMv7 processors. Most new devices (all since 2012.) have ARMv7 processor so it makes little sense not to take advantage of performance boosts that those processors can give. Also note that some devices with ARMv7 processors do not support NEON instruction sets. Most popular are those based on [NVIDIA Tegra 2](https://en.wikipedia.org/wiki/Tegra#Tegra_2) fall into this category. Since these devices are old by today's standard, _PDF417.mobi_ does not support them. For the same reason, _PDF417.mobi_ does not support devices with ARMv5 (`armeabi`) architecture.
 
 ARM64 is the new processor architecture that most new devices use. ARM64 processors are very powerful and also have the possibility to take advantage of new NEON64 SIMD instruction set to quickly process multiple pixels with single instruction.
 
@@ -1385,7 +896,8 @@ However, there are some issues to be considered:
 - ARMv7 processors does not understand x86 instruction set
 - x86 processors do not understand neither ARM64 nor ARMv7 instruction sets
 - however, some x86 android devices ship with the builtin [ARM emulator](http://commonsware.com/blog/2013/11/21/libhoudini-what-it-means-for-developers.html) - such devices are able to run ARM binaries but with performance penalty. There is also a risk that builtin ARM emulator will not understand some specific ARM instruction and will crash.
-- ARM64 processors understand ARMv7 instruction set, but ARMv7 processors does not understand ARM64 instructions
+- ARM64 processors understand ARMv7 instruction set, but ARMv7 processors do not understand ARM64 instructions. 
+    - <a name="64bitNotice"></a> **NOTE:** as of year 2018, some android devices that ship with ARM64 processor do not have full compatibility with ARMv7. This is mostly due to incorrect configuration of Android's 32-bit subsystem by the vendor, however Google [has announced](https://android-developers.googleblog.com/2017/12/improving-app-security-and-performance.html) that as od August 2019 all apps on PlayStore that contain native code will need to have native support for 64-bit processors (this includes ARM64 and x86_64) - this is in anticipation of future Android devices that will support 64-bit code **only**, i.e. that will have ARM64 processors that do not understand ARMv7 instruction set.
 - if ARM64 processor executes ARMv7 code, it does not take advantage of modern NEON64 SIMD operations and does not take advantage of 64-bit registers it has - it runs in emulation mode
 - x86_64 processors understand x86 instruction set, but x86 processors do not understand x86_64 instruction set
 - if x86_64 processor executes x86 code, it does not take advantage of 64-bit registers and use two instructions instead of one for 64-bit operations
@@ -1429,13 +941,13 @@ android.applicationVariants.all { variant ->
 }
 ```
 
-For more information about creating APK splits with gradle, check [this article from Google](https://sites.google.com/a/android.com/tools/tech-docs/new-build-system/user-guide/apk-splits#TOC-ABIs-Splits).
+For more information about creating APK splits with gradle, check [this article from Google](https://developer.android.com/studio/build/configure-apk-splits.html#configure-abi-split).
 
 After generating multiple APK's, you need to upload them to Google Play. For tutorial and rules about uploading multiple APK's to Google Play, please read the [official Google article about multiple APKs](https://developer.android.com/google/play/publishing/multiple-apks.html).
 
 ### Removing processor architecture support in gradle without using APK splits
 
-If you will not be distributing your app via Google Play or for some other reasons you want to have single APK of smaller size, you can completely remove support for certaing CPU architecture from your APK. **This is not recommended as this has [consequences](#archConsequences)**.
+If you will not be distributing your app via Google Play or for some other reasons you want to have single APK of smaller size, you can completely remove support for certaing CPU architecture from your APK. **This is not recommended due to [consequences](#archConsequences)**.
 
 To remove certain CPU arhitecture, add following statement to your `android` block inside `build.gradle`:
 
@@ -1453,15 +965,16 @@ where `<ABI>` represents the CPU architecture you want to remove:
 - to remove ARMv7 support, use `exclude 'lib/armeabi-v7a/libPdf417Mobi.so'`
 - to remove x86 support, use `exclude 'lib/x86/libPdf417Mobi.so'`
 - to remove ARM64 support, use `exclude 'lib/arm64-v8a/libPdf417Mobi.so'`
+    - **NOTE**: this is **not recommended**. See [this notice](#64bitNotice).
 - to remove x86_64 support, use `exclude 'lib/x86_64/libPdf417Mobi.so'`
 
-You can also remove multiple processor architectures by specifying `exclude` directive multiple times. Just bear in mind that removing processor architecture will have sideeffects on performance and stability of your app. Please read [this](#archConsequences) for more information.
+You can also remove multiple processor architectures by specifying `exclude` directive multiple times. Just bear in mind that removing processor architecture will have side effects on performance and stability of your app. Please read [this](#archConsequences) for more information.
 
 ### Removing processor architecture support in Eclipse
 
 This section assumes that you have set up and prepared your Eclipse project from `LibPdf417Mobi.aar` as described in chapter [Eclipse integration instructions](#eclipseIntegration).
 
-If you are using Eclipse, removing processor architecture support gets really complicated. Eclipse does not support build flavors and you will either need to remove support for some processors or create several different library projects from `LibPdf417Mobi.aar` - each one for specific processor architecture. 
+If you are using Eclipse, removing processor architecture support gets really complicated. Eclipse does not support APK splits and you will either need to remove support for some processors or create several different library projects from `LibPdf417Mobi.aar` - each one for specific processor architecture. 
 
 Native libraryies in eclipse library project are located in subfolder `libs`:
 
@@ -1475,6 +988,7 @@ To remove a support for processor architecture, you should simply delete appropr
 - to remove ARMv7 support, delete folder `libs/armeabi-v7a`
 - to remove x86 support, delete folder `libs/x86`
 - to remove ARM64 support, delete folder `libs/arm64-v8a`
+    - **NOTE**: this is **not recommended**. See [this notice](#64bitNotice).
 - to remove x86_64 support, delete folder `libs/x86_64`
 
 ### <a name="archConsequences"></a> Consequences of removing processor architecture
@@ -1483,7 +997,8 @@ However, removing a processor architecture has some consequences:
 
 - by removing ARMv7 support _PDF417.mobi_ will not work on devices that have ARMv7 processors. 
 - by removing ARM64 support, _PDF417.mobi_ will not use ARM64 features on ARM64 device
-- by removing x86 support, _PDF417.mobi_ will not work on devices that have x86 processor, except in situations when devices have ARM emulator - in that case, _PDF417.mobi_ will work, but will be slow
+    - also, some future devices may ship with ARM64 processors that will not support ARMv7 instruction set. Please see [this note](#64bitNotice) for more information.
+- by removing x86 support, _PDF417.mobi_ will not work on devices that have x86 processor, except in situations when devices have ARM emulator - in that case, _PDF417.mobi_ will work, but will be slow and possibly unstable
 - by removing x86_64 support, _PDF417.mobi_ will not use 64-bit optimizations on x86_64 processor, but if x86 support is not removed, _PDF417.mobi_ should work
 
 Our recommendation is to include all architectures into your app - it will work on all devices and will provide best user experience. However, if you really need to reduce the size of your app, we recommend releasing separate version of your app for each processor architecture. It is easiest to do that with [APK splits](#reduceSize).
@@ -1511,7 +1026,7 @@ If you are getting "invalid licence key" error or having other licence-related p
 When you have determine what is the licence-relate problem or you simply do not understand the log, you should contact us [help.microblink.com](http://help.microblink.com). When contacting us, please make sure you provide following information:
 
 * exact package name of your app (from your `AndroidManifest.xml` and/or your `build.gradle` file)
-* licence key that is causing problems
+* licence that is causing problems
 * please stress out that you are reporting problem related to Android version of _PDF417.mobi_ SDK
 * if unsure about the problem, you should also provide excerpt from ADB logcat containing licence error
 
@@ -1530,25 +1045,44 @@ If you are having problems with scanning certain items, undesired behaviour on s
 * Contact us at [help.microblink.com](http://help.microblink.com) describing your problem and provide following information:
 	* log file obtained in previous step
 	* high resolution scan/photo of the item that you are trying to scan
-	* information about device that you are using - we need exact model name of the device. You can obtain that information with [this app](https://play.google.com/store/apps/details?id=com.jphilli85.deviceinfo&hl=en)
+	* information about device that you are using - we need exact model name of the device. You can obtain that information with any app like [this one](https://play.google.com/store/apps/details?id=ru.andr7e.deviceinfohw)
 	* please stress out that you are reporting problem related to Android version of _PDF417.mobi_ SDK
+
 
 ## <a name="faq"></a> Frequently asked questions and known problems
 Here is a list of frequently asked questions and solutions for them and also a list of known problems in the SDK and how to work around them.
 
-### <a name="featureNotSupportedByLicenseKey"></a> Sometimes scanning works, sometimes it says that feature is not supported by license key
+#### <a name="featureNotSupportedByLicenseKey"></a> In demo everything worked, but after switching to production license I get `InvalidLicenseKeyException` as soon as I construct specific `Recognizer` object
 
-Each license key contains information about which features are allowed to use and which are not. This error can usually happens with production licence keys when you attempt to use recognizer which was not included in licence key. You should contact [support](http://help.microblink.com) to check if provided licence key is OK and that it really contains all features that you have purchased.
+Each license key contains information about which features are allowed to use and which are not. This exception indicates that your production license does not allow using of specific `Recognizer` object. You should contact [support](http://help.microblink.com) to check if provided licence is OK and that it really contains all features that you have purchased.
 
-### <a name="missingResources"></a> When my app starts, I get exception telling me that some resource/class cannot be found or I get `ClassNotFoundException`
+#### <a name="invalidLicenseKey"></a> I get `InvalidLicenseKeyException` with trial license key
+
+Whenever you construct any `Recognizer` object or any other object that derives from [`Entity`](https://pdf417.github.io/pdf417-android/com/microblink/entities/Entity.html), a check whether license allows using that object will be performed. If license is not set prior constructing that object, you will get `InvalidLicenseKeyException`. We recommend setting license as early as possible in your app, ideally in `onCreate` callback of your [Application singleton](https://developer.android.com/reference/android/app/Application.html).
+
+#### <a name="missingResources"></a> When my app starts, I get exception telling me that some resource/class cannot be found or I get `ClassNotFoundException`
 
 This usually happens when you perform integration into [Eclipse project](#eclipseIntegration) and you forget to add resources or native libraries into the project. You must alway take care that same versions of both resources, assets, java library and native libraries are used in combination. Combining different versions of resources, assets, java and native libraries will trigger crash in SDK. This problem can also occur when you have performed improper integration of _PDF417.mobi_ SDK into your SDK. Please read how to [embed _PDF417.mobi_ inside another SDK](#embedAAR).
 
-### <a name="unsatisfiedLinkError"></a> When my app starts, I get `UnsatisfiedLinkError`
+#### <a name="unsatisfiedLinkError"></a> When my app starts, I get `UnsatisfiedLinkError`
 
 This error happens when JVM fails to load some native method from native library. If performing integration into [Eclipse project](#eclipseIntegration) make sure you have the same version of all native libraries and java wrapper. If performing integration [into Android studio](quickIntegration) and this error happens, make sure that you have correctly combined _PDF417.mobi_ SDK with [third party SDKs that contain native code](#combineNativeLibraries). If this error also happens in our integration demo apps, then it may indicate a bug in the SDK that is manifested on specific device. Please report that to our [support team](http://help.microblink.com).
 
+#### <a name="lateMetadata1"></a> I've added my callback to `MetadataCallbacks` object, but it is not being called
 
+Make sure that after adding your callback to `MetadataCallbacks` you have applied changes to `RecognizerRunnerView` or `RecognizerRunner` as described in [this section](#processingEventsImportantNote).
+
+#### <a name="lateMetadata2"></a> I've removed my callback to `MetadataCallbacks` object, and now app is crashing with `NullPointerException`
+
+Make sure that after removing your callback from `MetadataCallbacks` you have applied changes to `RecognizerRunnerView` or `RecognizerRunner` as described in [this section](#processingEventsImportantNote).
+
+#### <a name="statefulRecognizer"></a> In my `onScanningDone` callback I have the result inside my `Recognizer`, but when scanning activity finishes, the result is gone
+
+This usually happens when using `RecognizerRunnerView` and forgetting to pause the `RecognizerRunnerView` in your `onScanningDone` callback. Then, as soon as `onScanningDone` happens, the result is mutated or reset by additional processing that `Recognizer` performs in the time between end of your `onScanningDone` callback and actual finishing of the scanning activity. For more information about statefulness of the `Recognizer` objects, check [this section](#recognizerConcept).
+
+#### <a name="transactionTooLarge"></a> I am using built-in activity to perform scanning and after scanning finishes, my app crashes with `IllegalStateException` stating `Data cannot be saved to intent because its size exceeds intent limit`.
+
+This usually happens when you use `Recognizer` that produces image or similar large object inside its `Result` and that object exceeds the Android intent transaction limit. You should enable different intent data transfer mode. For more information about this, [check this section](#intentOptimization). Also, instead of using built-in activity, you can use [`RecognizerRunnerFragment` with built-in scanning overlay](#recognizerRunnerFragment).
 # <a name="info"></a> Additional info
 Complete API reference can be found in [Javadoc](https://pdf417.github.io/pdf417-android/index.html). 
 
