@@ -12,7 +12,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
         }
     }
@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    compile ("com.microblink:pdf417.mobi:${rootProject.ext.pdf417MobiVersion}@aar") {
+    implementation ("com.microblink:pdf417.mobi:${rootProject.ext.pdf417MobiVersion}@aar") {
         transitive = true
     }
 }
