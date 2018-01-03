@@ -21,6 +21,7 @@
     </uses-feature>
 
     <application
+        android:name="mobi.pdf417.demo.CustomUIDemo"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >

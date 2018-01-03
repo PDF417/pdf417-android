@@ -4,10 +4,10 @@
     <string name="app_name">Pdf417 Custom UI Demo</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="custom_ui_roi">Camera overlay with ROI</string>
-	<string name="custom_ui">Custom camera overlay</string>
-    <string name="default_ui_no_dialog">Default overlay, no dialog</string>
-    <string name="default_ui_no_logo">Default overlay</string>
+    <string name="custom_ui_roi">Custom camera activity with ROI</string>
+	<string name="custom_ui">Custom camera activity</string>
+    <string name="default_ui_no_dialog">Default overlay in fragment</string>
+    <string name="default_ui_no_logo">Default activity</string>
     <string name="UseWith">Use with</string>
     <string name="Back">Back</string>
     <string name="LightOff">Light: off</string>

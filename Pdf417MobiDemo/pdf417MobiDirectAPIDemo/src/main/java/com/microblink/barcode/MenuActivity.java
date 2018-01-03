@@ -21,6 +21,7 @@ import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.entities.recognizers.blinkbarcode.barcode.BarcodeRecognizer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -121,7 +122,7 @@ public class MenuActivity extends Activity {
         BarcodeRecognizer.Result result = mBarcodeRecognizer.getResult();
 
         StringBuilder sb = new StringBuilder(result.getBarcodeFormat().name());
-
+        sb.append("\n\n");
         if (result.isUncertain()) {
             sb.append("\nThis scan data is uncertain!\n\nString data:\n");
         }
@@ -130,14 +131,8 @@ public class MenuActivity extends Activity {
         byte[] rawDataBuffer = result.getRawData();
         sb.append("\n");
         sb.append("Raw data:\n");
-        sb.append("{");
-        for (int i = 0; i < rawDataBuffer.length; ++i) {
-            sb.append((int) rawDataBuffer[i] & 0x0FF);
-            if (i != rawDataBuffer.length - 1) {
-                sb.append(", ");
-            }
-        }
-        sb.append("}\n\n\n");
+        sb.append(Arrays.toString(rawDataBuffer));
+        sb.append("\n\n\n");
 
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Scan result")
@@ -150,7 +145,7 @@ public class MenuActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == MY_REQUEST_CODE && resultCode == BaseScanActivity.RESULT_OK && data != null) {
+        if (requestCode == MY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             // First, obtain recognition result
             // method loadFromIntent will update bundled recognizers with results that have arrived
             mRecognizerBundle.loadFromIntent(data);
