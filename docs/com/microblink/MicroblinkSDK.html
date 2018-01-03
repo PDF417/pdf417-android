@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -140,19 +140,26 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#getNativeLibraryVersionString--">getNativeLibraryVersionString</a></span>()</code>
+<div class="block">Methods returns the version string of native library, if it has been
+ loaded.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#setIntentDataTransferMode-com.microblink.intent.IntentDataTransferMode-">setIntentDataTransferMode</a></span>(<a href="../../com/microblink/intent/IntentDataTransferMode.html" title="class in com.microblink.intent">IntentDataTransferMode</a>&nbsp;intentDataTransferMode)</code>
 <div class="block">Sets intent data transfer mode for passing Microblink SDK data between activities.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#setLicenseBuffer-byte:A-android.content.Context-">setLicenseBuffer</a></span>(byte[]&nbsp;licenseBuffer,
                 android.content.Context&nbsp;applicationContext)</code>
 <div class="block">Set license buffer and unlock the SDK.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#setLicenseBuffer-byte:A-java.lang.String-android.content.Context-">setLicenseBuffer</a></span>(byte[]&nbsp;licenseBuffer,
                 java.lang.String&nbsp;licensee,
@@ -160,14 +167,14 @@ extends java.lang.Object</pre>
 <div class="block">Set license buffer and unlock the SDK.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#setLicenseFile-java.lang.String-android.content.Context-">setLicenseFile</a></span>(java.lang.String&nbsp;licenseFilePath,
               android.content.Context&nbsp;applicationContext)</code>
 <div class="block">Set the license file and unlock the SDK.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#setLicenseFile-java.lang.String-java.lang.String-android.content.Context-">setLicenseFile</a></span>(java.lang.String&nbsp;licenseFilePath,
               java.lang.String&nbsp;licensee,
@@ -175,14 +182,14 @@ extends java.lang.Object</pre>
 <div class="block">Set the license file and unlock the SDK.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#setLicenseKey-java.lang.String-android.content.Context-">setLicenseKey</a></span>(java.lang.String&nbsp;base64LicenseKey,
              android.content.Context&nbsp;applicationContext)</code>
 <div class="block">Set license key and unlock the SDK.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#setLicenseKey-java.lang.String-java.lang.String-android.content.Context-">setLicenseKey</a></span>(java.lang.String&nbsp;base64LicenseKey,
              java.lang.String&nbsp;licensee,
@@ -379,7 +386,7 @@ public static&nbsp;<a href="../../com/microblink/intent/IntentDataTransferMode.h
 <a name="setIntentDataTransferMode-com.microblink.intent.IntentDataTransferMode-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setIntentDataTransferMode</h4>
 <pre>public static&nbsp;void&nbsp;setIntentDataTransferMode(@NonNull
@@ -390,6 +397,22 @@ public static&nbsp;<a href="../../com/microblink/intent/IntentDataTransferMode.h
 <dd><code>intentDataTransferMode</code> - requested data transfer mode</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../com/microblink/intent/IntentDataTransferMode.html" title="class in com.microblink.intent"><code>IntentDataTransferMode</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getNativeLibraryVersionString--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getNativeLibraryVersionString</h4>
+<pre>public static&nbsp;java.lang.String&nbsp;getNativeLibraryVersionString()</pre>
+<div class="block">Methods returns the version string of native library, if it has been
+ loaded. If native library is not loaded, method returns string
+ "native library not loaded".</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>version string of native library</dd>
 </dl>
 </li>
 </ul>

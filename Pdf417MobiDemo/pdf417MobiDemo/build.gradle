@@ -8,6 +8,7 @@ android {
         applicationId "com.microblink.barcode"
         minSdkVersion 16
         targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 20
     }
 
     buildTypes {

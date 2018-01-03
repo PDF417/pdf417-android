@@ -219,8 +219,6 @@ public class Pdf417CustomUIDemo extends Activity implements RecognizerRunnerFrag
             // method loadFromIntent will update bundled recognizers with results that have arrived
             mRecognizerBundle.loadFromIntent(data);
             showResults();
-
-
         }
     }
 
