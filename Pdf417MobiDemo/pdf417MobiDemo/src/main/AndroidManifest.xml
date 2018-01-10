@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.microblink.activity.Pdf417ScanActivity"
+            android:name="com.microblink.activity.BarcodeScanActivity"
             tools:replace="android:theme"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait" >

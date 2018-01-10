@@ -1,7 +1,6 @@
 package mobi.pdf417.demo;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,12 +12,12 @@ import android.view.View;
 import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.entities.recognizers.blinkbarcode.barcode.BarcodeRecognizer;
 import com.microblink.fragment.RecognizerRunnerFragment;
-import com.microblink.fragment.overlay.Pdf417ScanOverlay;
+import com.microblink.fragment.overlay.BarcodeOverlayController;
 import com.microblink.fragment.overlay.ScanningOverlay;
 import com.microblink.geometry.Rectangle;
 import com.microblink.recognition.RecognitionSuccessType;
 import com.microblink.uisettings.ActivityRunner;
-import com.microblink.uisettings.Pdf417ScanUISettings;
+import com.microblink.uisettings.BarcodeUISettings;
 import com.microblink.view.recognition.ScanResultListener;
 
 import java.net.MalformedURLException;
@@ -40,18 +39,18 @@ public class Pdf417CustomUIDemo extends Activity implements RecognizerRunnerFrag
     private RecognizerBundle mRecognizerBundle;
 
     /**
-     * Recognizer runner fragment will be shown on top of layout view with Pdf417ScanOverlay.
+     * Recognizer runner fragment will be shown on top of layout view with BarcodeOverlayController.
      */
     private RecognizerRunnerFragment mRecognizerRunnerFragment;
 
     /**
-     * Pdf417ScanOverlay displays same UI as Pdf417ScanActivity, but over given RecognizerRunnerFragment.
+     * BarcodeOverlayController displays same UI as BarcodeScanActivity, but over given RecognizerRunnerFragment.
      * Association is done via {@link #getScanningOverlay()} method in fragment's {@link RecognizerRunnerFragment#onAttach(Activity)}
      * lifecycle event, so you must ensure that mScanOverlay exists at this time.
      */
-    private Pdf417ScanOverlay mScanOverlay = createRecognizerAndOverlay();
+    private BarcodeOverlayController mScanOverlay = createRecognizerAndOverlay();
 
-    private Pdf417ScanOverlay createRecognizerAndOverlay() {
+    private BarcodeOverlayController createRecognizerAndOverlay() {
         // create recognizers
 
         // Don't enable recognizers and barcode types which you don't actually use because this will
@@ -67,8 +66,8 @@ public class Pdf417CustomUIDemo extends Activity implements RecognizerRunnerFrag
         // create bundle BarcodeRecognizer within RecognizerBundle
         mRecognizerBundle = new RecognizerBundle(mBarcodeRecognizer);
 
-        // create Pdf417ScanOverlay
-        return new Pdf417ScanOverlay(new Pdf417ScanUISettings(mRecognizerBundle), this);
+        // create BarcodeOverlayController
+        return new BarcodeOverlayController(new BarcodeUISettings(mRecognizerBundle), this);
     }
 
     @Override
@@ -89,8 +88,8 @@ public class Pdf417CustomUIDemo extends Activity implements RecognizerRunnerFrag
 
         switch (id) {
         case R.id.btnDefaultActivity: {
-            // invoke default scan activity (PDF417ScanActivity)
-            Pdf417ScanUISettings uiSettings = new Pdf417ScanUISettings(mRecognizerBundle);
+            // invoke default scan activity (BarcodeScanActivity)
+            BarcodeUISettings uiSettings = new BarcodeUISettings(mRecognizerBundle);
             ActivityRunner.startActivityForResult(this, MY_REQUEST_CODE, uiSettings);
             break;
         }

@@ -14,7 +14,7 @@ import com.microblink.MicroblinkSDK;
 import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.entities.recognizers.blinkbarcode.barcode.BarcodeRecognizer;
 import com.microblink.uisettings.ActivityRunner;
-import com.microblink.uisettings.Pdf417ScanUISettings;
+import com.microblink.uisettings.BarcodeUISettings;
 import com.microblink.util.Log;
 
 import java.net.MalformedURLException;
@@ -84,9 +84,9 @@ public class Pdf417MobiDemo extends Activity {
     public void btnScan_click(View v) {
         Log.i(TAG, "scan will be performed");
 
-        // create settings for Pdf417ScanActivity
-        Pdf417ScanUISettings uiSettings = new Pdf417ScanUISettings(mRecognizerBundle);
-        // start Pdf417ScanActivity
+        // create settings for BarcodeScanActivity
+        BarcodeUISettings uiSettings = new BarcodeUISettings(mRecognizerBundle);
+        // start BarcodeScanActivity
         ActivityRunner.startActivityForResult(this, MY_REQUEST_CODE, uiSettings);
     }
 

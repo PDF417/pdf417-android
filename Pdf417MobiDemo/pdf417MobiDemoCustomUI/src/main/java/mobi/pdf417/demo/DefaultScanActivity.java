@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.microblink.activity.Pdf417ScanActivity;
+import com.microblink.activity.BarcodeScanActivity;
 import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.geometry.Rectangle;
 import com.microblink.hardware.SuccessCallback;
@@ -127,8 +127,8 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         // QuadViewManager based on several presets defined in QuadViewPreset enum. Details about
         // each of them can be found in javadoc. This method automatically adds the QuadView as a
         // child of RecognizerView.
-        // Here we use preset which sets up quad view in the same style as used in built-in PDF417 ScanActivity.
-        mQvManager= QuadViewManagerFactory.createQuadViewFromPreset(mRecognizerRunnerView, QuadViewPreset.DEFAULT_CORNERS_FROM_PDF417_SCAN_ACTIVITY);
+        // Here we use preset which sets up quad view in the same style as used in built-in BarcodeScanActivity.
+        mQvManager= QuadViewManagerFactory.createQuadViewFromPreset(mRecognizerRunnerView, QuadViewPreset.DEFAULT_CORNERS_FROM_BARCODE_SCAN_ACTIVITY);
 
         // create PointSetView
         mPointSetView = new PointSetView(this, null, mRecognizerRunnerView.getHostScreenOrientation());
@@ -350,7 +350,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
             // if we have 5 scans, return most recent result via Intent
             Intent intent = new Intent();
             mRecognizerBundle.saveToIntent(intent);
-            setResult(Pdf417ScanActivity.RESULT_OK, intent);
+            setResult(BarcodeScanActivity.RESULT_OK, intent);
             finish();
         } else {
             // if we still do not have 5 scans, wait 2 seconds and then resume
