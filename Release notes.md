@@ -3,6 +3,7 @@
 ## 7.0.0
 - new API, which is not backward compatible. Please check [README](README.md) and updated demo applications for more information, but the gist of it is:
     - `RecognizerView` has been renamed to `RecognizerRunnerView` and `Recognizer` singleton to `RecognizerRunner`
+    - `Pdf417ScanActivity` has been renamed to `BarcodeScanActivity`
     - previously internal `Recognizer` objects are not internal anymore - instead of having opaque `RecognizerSettings` and `RecognizerResult` objects, you now have stateful `Recognizer` object that contains its `Result` within and mutates it while performing recognition. For more information, see [README](README.md) and updated demo applications
     - added `RecognizerRunnerFragment` with support for various scanning overlays in a manner similar to iOS API. This now allows you to use built-in UI, which was previously strictly available for `Pdf417ScanActivity`, in form of fragment anywhere within your activity. Full details are given in [README](README.md) and in updated demo applications.
 - new licence format, which is not backward compatible. Full details are given in [README](README.md) and in updated applications, but the gist of it is:
