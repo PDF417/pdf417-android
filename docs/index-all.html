@@ -82,9 +82,9 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/CameraViewGroup.html#addChildView-android.view.View-boolean-int-">addChildView(View, boolean, int)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/CameraViewGroup.html" title="class in com.microblink.view">CameraViewGroup</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#addChildViews-com.microblink.view.recognition.RecognizerRunnerView-">addChildViews(RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BarcodeOverlayController.html#addChildViews-com.microblink.view.recognition.RecognizerRunnerView-">addChildViews(RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BarcodeOverlayController.html" title="class in com.microblink.fragment.overlay">BarcodeOverlayController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/Pdf417ScanOverlay.html#addChildViews-com.microblink.view.recognition.RecognizerRunnerView-">addChildViews(RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/Pdf417ScanOverlay.html" title="class in com.microblink.fragment.overlay">Pdf417ScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#addChildViews-com.microblink.view.recognition.RecognizerRunnerView-">addChildViews(RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/USDLKeys.html#AddressCity">AddressCity</a></span> - Static variable in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/USDLKeys.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">USDLKeys</a></dt>
 <dd>
@@ -224,6 +224,10 @@
 <dd>
 <div class="block">Represents the format of scanned barcode</div>
 </dd>
+<dt><a href="com/microblink/fragment/overlay/BarcodeOverlayController.html" title="class in com.microblink.fragment.overlay"><span class="typeNameLink">BarcodeOverlayController</span></a> - Class in <a href="com/microblink/fragment/overlay/package-summary.html">com.microblink.fragment.overlay</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BarcodeOverlayController.html#BarcodeOverlayController-com.microblink.uisettings.BarcodeUISettings-com.microblink.view.recognition.ScanResultListener-">BarcodeOverlayController(BarcodeUISettings, ScanResultListener)</a></span> - Constructor for class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BarcodeOverlayController.html" title="class in com.microblink.fragment.overlay">BarcodeOverlayController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode"><span class="typeNameLink">BarcodeRecognizer</span></a> - Class in <a href="com/microblink/entities/recognizers/blinkbarcode/barcode/package-summary.html">com.microblink.entities.recognizers.blinkbarcode.barcode</a></dt>
 <dd>
 <div class="block">Recognizer that can perform recognition of any supported barcode type.</div>
@@ -231,6 +235,21 @@
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#BarcodeRecognizer--">BarcodeRecognizer()</a></span> - Constructor for class com.microblink.entities.recognizers.blinkbarcode.barcode.<a href="com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode">BarcodeRecognizer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode"><span class="typeNameLink">BarcodeRecognizer.Result</span></a> - Class in <a href="com/microblink/entities/recognizers/blinkbarcode/barcode/package-summary.html">com.microblink.entities.recognizers.blinkbarcode.barcode</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity"><span class="typeNameLink">BarcodeScanActivity</span></a> - Class in <a href="com/microblink/activity/package-summary.html">com.microblink.activity</a></dt>
+<dd>
+<div class="block">Responsible for UI of the capturing process, and also for coordinating recognition and camera
+ actions.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BarcodeScanActivity.html#BarcodeScanActivity--">BarcodeScanActivity()</a></span> - Constructor for class com.microblink.activity.<a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity">BarcodeScanActivity</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings"><span class="typeNameLink">BarcodeUISettings</span></a> - Class in <a href="com/microblink/uisettings/package-summary.html">com.microblink.uisettings</a></dt>
+<dd>
+<div class="block">Scan settings for <a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity"><code>BarcodeScanActivity</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#BarcodeUISettings-com.microblink.entities.recognizers.RecognizerBundle-">BarcodeUISettings(RecognizerBundle)</a></span> - Constructor for class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#BarcodeUISettings-android.content.Intent-">BarcodeUISettings(Intent)</a></span> - Constructor for class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/view/BaseCameraEventsListener.html" title="interface in com.microblink.view"><span class="typeNameLink">BaseCameraEventsListener</span></a> - Interface in <a href="com/microblink/view/package-summary.html">com.microblink.view</a></dt>
 <dd>&nbsp;</dd>
@@ -260,9 +279,9 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/activity/BaseScanActivity.html#BaseScanActivity--">BaseScanActivity()</a></span> - Constructor for class com.microblink.activity.<a href="com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay"><span class="typeNameLink">BaseScanOverlay</span></a> - Class in <a href="com/microblink/fragment/overlay/package-summary.html">com.microblink.fragment.overlay</a></dt>
+<dt><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay"><span class="typeNameLink">BaseScanOverlayController</span></a> - Class in <a href="com/microblink/fragment/overlay/package-summary.html">com.microblink.fragment.overlay</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#BaseScanOverlay-com.microblink.uisettings.BaseScanUISettings-com.microblink.view.recognition.ScanResultListener-">BaseScanOverlay(BaseScanUISettings, ScanResultListener)</a></span> - Constructor for class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#BaseScanOverlayController-com.microblink.uisettings.BaseScanUISettings-com.microblink.view.recognition.ScanResultListener-">BaseScanOverlayController(BaseScanUISettings, ScanResultListener)</a></span> - Constructor for class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings"><span class="typeNameLink">BaseScanUISettings</span></a> - Class in <a href="com/microblink/uisettings/package-summary.html">com.microblink.uisettings</a></dt>
 <dd>
@@ -593,15 +612,13 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/recognition/RecognizerRunnerView.html#createOrientationChangeListener--">createOrientationChangeListener()</a></span> - Method in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/RecognizerRunnerView.html" title="class in com.microblink.view.recognition">RecognizerRunnerView</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#createPointSetView-com.microblink.view.recognition.RecognizerRunnerView-">createPointSetView(RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#createQuadView-com.microblink.view.recognition.RecognizerRunnerView-">createQuadView(RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#createPointSetView-com.microblink.view.recognition.RecognizerRunnerView-">createPointSetView(RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewManagerFactory.html#createQuadViewFromPreset-com.microblink.view.recognition.RecognizerRunnerView-com.microblink.view.viewfinder.quadview.QuadViewPreset-">createQuadViewFromPreset(RecognizerRunnerView, QuadViewPreset)</a></span> - Static method in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewManagerFactory.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewManagerFactory</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/BaseScanActivity.html#createScanningOverlayFromIntent-android.content.Intent-">createScanningOverlayFromIntent(Intent)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BarcodeScanActivity.html#createScanningOverlayFromIntent-android.content.Intent-">createScanningOverlayFromIntent(Intent)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity">BarcodeScanActivity</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/Pdf417ScanActivity.html#createScanningOverlayFromIntent-android.content.Intent-">createScanningOverlayFromIntent(Intent)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity">Pdf417ScanActivity</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BaseScanActivity.html#createScanningOverlayFromIntent-android.content.Intent-">createScanningOverlayFromIntent(Intent)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/results/date/DateResult.html#createUnparsed-java.lang.String-">createUnparsed(String)</a></span> - Static method in class com.microblink.results.date.<a href="com/microblink/results/date/DateResult.html" title="class in com.microblink.results.date">DateResult</a></dt>
 <dd>
@@ -736,25 +753,26 @@
 <dd>
 <div class="block">Callback that will be invoked when debug text information gets available.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_CORNERS_FROM_PDF417_SCAN_ACTIVITY">DEFAULT_CORNERS_FROM_PDF417_SCAN_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_CORNERS_FROM_BARCODE_SCAN_ACTIVITY">DEFAULT_CORNERS_FROM_BARCODE_SCAN_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
 <dd>
-<div class="block">Setup quad view in the same style as used in default Pdf417ScanActivity</div>
+<div class="block">Setup quad view in the same style as used in default BarcodeScanActivity</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_CORNERS_FROM_SCAN_ACTIVITY">DEFAULT_CORNERS_FROM_SCAN_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_CORNERS_FROM_PHOTOPAY_ACTIVITY">DEFAULT_CORNERS_FROM_PHOTOPAY_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
 <dd>
-<div class="block">Setup quad view in the same style as used in default ScanActivity</div>
+<div class="block">Setup quad view in the same style as used in default PhotopayActivity</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_FROM_SCAN_CARD_ACTIVITY">DEFAULT_FROM_SCAN_CARD_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_FROM_DOCUMENT_SCAN_ACTIVITY">DEFAULT_FROM_DOCUMENT_SCAN_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
 <dd>
-<div class="block">Setup quad view in the same style as used in default ScanCard activity</div>
+<div class="block">Setup quad view in the same style as used in default DocumentScanActivity</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_FROM_SCAN_FOV_ACTIVITY">DEFAULT_FROM_SCAN_FOV_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_FROM_OCR_LINE_SCAN_ACTIVITY">DEFAULT_FROM_OCR_LINE_SCAN_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
 <dd>
-<div class="block">Setup quad view in the same style as used in default ScanFOV activity</div>
+<div class="block">Setup quad view in the same style as used in default OcrLineScanActivity</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_FROM_SCAN_FOV_WITH_INFO_ACTIVITY">DEFAULT_FROM_SCAN_FOV_WITH_INFO_ACTIVITY</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html#DEFAULT_FROM_OCR_LINE_SCAN_ACTIVITY_WITH_INFO">DEFAULT_FROM_OCR_LINE_SCAN_ACTIVITY_WITH_INFO</a></span> - Static variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewPreset.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewPreset</a></dt>
 <dd>
-<div class="block">Setup quad view in the same style as used in default ScanFovWithInfo activity</div>
+<div class="block">Setup quad view in the same style as used in OcrLineScanActivity when scan info
+  messages are enabled</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/Entity.html#describeContents--">describeContents()</a></span> - Method in class com.microblink.entities.<a href="com/microblink/entities/Entity.html" title="class in com.microblink.entities">Entity</a></dt>
 <dd>&nbsp;</dd>
@@ -1124,7 +1142,7 @@
 <dd>
 <div class="block">Callback that will be invoked when debug text information gets available.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#getDefaultOrientation--">getDefaultOrientation()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#getDefaultOrientation--">getDefaultOrientation()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>
 <div class="block">Method returns the default status messages orientation for given
  settings.</div>
@@ -1326,7 +1344,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/util/RecognizerCompatibility.html#getRecognizerCompatibilityStatus-android.content.Context-">getRecognizerCompatibilityStatus(Context)</a></span> - Static method in class com.microblink.util.<a href="com/microblink/util/RecognizerCompatibility.html" title="class in com.microblink.util">RecognizerCompatibility</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#getRecognizerRunnerView--">getRecognizerRunnerView()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#getRecognizerRunnerView--">getRecognizerRunnerView()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#getRecognizerRunnerView--">getRecognizerRunnerView()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>
@@ -1378,7 +1396,7 @@
 <dd>
 <div class="block">Returns the listener that will obtain the results of the scanning.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/Pdf417ScanUISettings.html#getShowDialogAfterScan-boolean-">getShowDialogAfterScan(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/Pdf417ScanUISettings.html" title="class in com.microblink.uisettings">Pdf417ScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#getShowDialogAfterScan-boolean-">getShowDialogAfterScan(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
 <dd>
 <div class="block">Returns flag which indicates whether result dialog should be shown after each barcode scan.</div>
 </dd>
@@ -1433,7 +1451,7 @@
 <dd>
 <div class="block">Returns the camera frame image on which given recognizer's result has become valid.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/Pdf417ScanUISettings.html#getTargetActivity--">getTargetActivity()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/Pdf417ScanUISettings.html" title="class in com.microblink.uisettings">Pdf417ScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#getTargetActivity--">getTargetActivity()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#getTargetActivity--">getTargetActivity()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
 <dd>
@@ -1515,11 +1533,11 @@
 <dd>
 <div class="block">Optional on all AAMVA, Magnetic and Compact barcodes.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#handleRecognitionDone-RecognitionSuccessType-">handleRecognitionDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BarcodeOverlayController.html#handleRecognitionDone-RecognitionSuccessType-">handleRecognitionDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BarcodeOverlayController.html" title="class in com.microblink.fragment.overlay">BarcodeOverlayController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/Pdf417ScanOverlay.html#handleRecognitionDone-RecognitionSuccessType-">handleRecognitionDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/Pdf417ScanOverlay.html" title="class in com.microblink.fragment.overlay">Pdf417ScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#handleRecognitionDone-RecognitionSuccessType-">handleRecognitionDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#hasAnimatedViews--">hasAnimatedViews()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#hasAnimatedViews--">hasAnimatedViews()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/util/CameraPermissionManager.html#hasCameraPermission--">hasCameraPermission()</a></span> - Method in class com.microblink.util.<a href="com/microblink/util/CameraPermissionManager.html" title="class in com.microblink.util">CameraPermissionManager</a></dt>
 <dd>
@@ -1574,7 +1592,7 @@
 <dd>
 <div class="block">Created by dodo on 16/12/14.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#initDebugStatus--">initDebugStatus()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#initDebugStatus--">initDebugStatus()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/directApi/RecognizerRunner.html#initialize-android.content.Context-com.microblink.entities.recognizers.RecognizerBundle-com.microblink.directApi.DirectApiErrorListener-">initialize(Context, RecognizerBundle, DirectApiErrorListener)</a></span> - Method in class com.microblink.directApi.<a href="com/microblink/directApi/RecognizerRunner.html" title="class in com.microblink.directApi">RecognizerRunner</a></dt>
 <dd>
@@ -1618,7 +1636,7 @@
 <dd>
 <div class="block">Returns true if quad view animation is currently in progress.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#isAnyAnimationInProgress--">isAnyAnimationInProgress()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#isAnyAnimationInProgress--">isAnyAnimationInProgress()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#isAutofocusSupported--">isAutofocusSupported()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
@@ -1697,7 +1715,7 @@
 <div class="block">Allow scanning PDF417 barcodes which don't have quiet zone
  surrounding it (e.g.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#isOrientationAllowed-com.microblink.hardware.orientation.Orientation-">isOrientationAllowed(Orientation)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#isOrientationAllowed-com.microblink.hardware.orientation.Orientation-">isOrientationAllowed(Orientation)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#isOrientationAllowed-com.microblink.hardware.orientation.Orientation-">isOrientationAllowed(Orientation)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
@@ -1881,7 +1899,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Quadrilateral.html#matchesMargins-int-int-int-int-int-">matchesMargins(int, int, int, int, int)</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Quadrilateral.html" title="class in com.microblink.geometry">Quadrilateral</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mBackButton">mBackButton</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mBackButton">mBackButton</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>
 <div class="block">This is a back button</div>
 </dd>
@@ -1899,9 +1917,9 @@
 <dd>
 <div class="block">Current configuration orientation</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mDebugImageListener">mDebugImageListener</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mDebugImageListener">mDebugImageListener</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mDebugStatus">mDebugStatus</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mDebugStatus">mDebugStatus</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>
 <div class="block">This text field contains debug status messages</div>
 </dd>
@@ -1927,7 +1945,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/MetadataCallbacks.html#MetadataCallbacks--">MetadataCallbacks()</a></span> - Constructor for class com.microblink.metadata.<a href="com/microblink/metadata/MetadataCallbacks.html" title="class in com.microblink.metadata">MetadataCallbacks</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mHandler">mHandler</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mHandler">mHandler</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#mHostScreenOrientation">mHostScreenOrientation</a></span> - Variable in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
@@ -1983,9 +2001,9 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#mIsRequestedOrientationUser">mIsRequestedOrientationUser</a></span> - Variable in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mLayout">mLayout</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mLayout">mLayout</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mMetadataCallbacks">mMetadataCallbacks</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mMetadataCallbacks">mMetadataCallbacks</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#mOnActivityFlipListener">mOnActivityFlipListener</a></span> - Variable in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
@@ -1993,21 +2011,21 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#mOrientationChangeListener">mOrientationChangeListener</a></span> - Variable in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mPointSetView">mPointSetView</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mPointSetView">mPointSetView</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewManager.html#mQuadView">mQuadView</a></span> - Variable in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewManager.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewManager</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mQuadViewManager">mQuadViewManager</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mQuadViewManager">mQuadViewManager</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>
 <div class="block">Actual viewfinder that draws animations</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mRecognizerBundle">mRecognizerBundle</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mRecognizerBundle">mRecognizerBundle</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/activity/BaseScanActivity.html#mRecognizerRunnerFragment">mRecognizerRunnerFragment</a></span> - Variable in class com.microblink.activity.<a href="com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mRecognizerRunnerFragment">mRecognizerRunnerFragment</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mRecognizerRunnerFragment">mRecognizerRunnerFragment</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mRectView">mRectView</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mRectView">mRectView</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#mRotateMeteringAreas">mRotateMeteringAreas</a></span> - Variable in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
@@ -2015,19 +2033,19 @@
 <dd>
 <div class="block">Represented points are locations of Machine Readable Zone detected elements.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mScanResultListener">mScanResultListener</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mScanResultListener">mScanResultListener</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mScanUISettings">mScanUISettings</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mScanUISettings">mScanUISettings</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/Pdf417ScanActivity.html#mShowDialog">mShowDialog</a></span> - Variable in class com.microblink.activity.<a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity">Pdf417ScanActivity</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BarcodeScanActivity.html#mShowDialog">mShowDialog</a></span> - Variable in class com.microblink.activity.<a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity">BarcodeScanActivity</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mShowFocusRectangle">mShowFocusRectangle</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mShowFocusRectangle">mShowFocusRectangle</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#mSlaveOrientationChangeListener">mSlaveOrientationChangeListener</a></span> - Variable in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
 <div class="block">Slave orientation change listener that can be notified of orientation change events generated by mOrientationManager</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#mTorchButton">mTorchButton</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mTorchButton">mTorchButton</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>
 <div class="block">This is a torch control button</div>
 </dd>
@@ -2113,7 +2131,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/directApi/RecognizerRunner.State.html#OFFLINE">OFFLINE</a></span> - Static variable in class com.microblink.directApi.<a href="com/microblink/directApi/RecognizerRunner.State.html" title="class in com.microblink.directApi">RecognizerRunner.State</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onActivityFlip--">onActivityFlip()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onActivityFlip--">onActivityFlip()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#onActivityFlip--">onActivityFlip()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
@@ -2140,7 +2158,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onAttach-android.app.Activity-">onAttach(Activity)</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onAutofocusFailed--">onAutofocusFailed()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onAutofocusFailed--">onAutofocusFailed()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onAutofocusFailed--">onAutofocusFailed()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2150,7 +2168,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.BaseCameraListener.html#onAutofocusFailed--">onAutofocusFailed()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.BaseCameraListener.html" title="class in com.microblink.view">BaseCameraView.BaseCameraListener</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onAutofocusStarted-android.graphics.Rect:A-">onAutofocusStarted(Rect[])</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onAutofocusStarted-android.graphics.Rect:A-">onAutofocusStarted(Rect[])</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onAutofocusStarted-android.graphics.Rect:A-">onAutofocusStarted(Rect[])</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2160,7 +2178,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.BaseCameraListener.html#onAutofocusStarted-android.graphics.Rect:A-">onAutofocusStarted(Rect[])</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.BaseCameraListener.html" title="class in com.microblink.view">BaseCameraView.BaseCameraListener</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onAutofocusStopped-android.graphics.Rect:A-">onAutofocusStopped(Rect[])</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onAutofocusStopped-android.graphics.Rect:A-">onAutofocusStopped(Rect[])</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onAutofocusStopped-android.graphics.Rect:A-">onAutofocusStopped(Rect[])</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2170,13 +2188,13 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.BaseCameraListener.html#onAutofocusStopped-android.graphics.Rect:A-">onAutofocusStopped(Rect[])</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.BaseCameraListener.html" title="class in com.microblink.view">BaseCameraView.BaseCameraListener</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/BaseScanActivity.html#onBackPressed--">onBackPressed()</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/Pdf417ScanActivity.html#onBackPressed--">onBackPressed()</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity">Pdf417ScanActivity</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BarcodeScanActivity.html#onBackPressed--">onBackPressed()</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity">BarcodeScanActivity</a></dt>
 <dd>
 <div class="block">Callback which is called when user clicks the back button.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onBackPressed--">onBackPressed()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BaseScanActivity.html#onBackPressed--">onBackPressed()</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onBackPressed--">onBackPressed()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onCameraPermissionDenied--">onCameraPermissionDenied()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2186,7 +2204,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.BaseCameraViewEventsListener.html#onCameraPinchEvent-float-">onCameraPinchEvent(float)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.BaseCameraViewEventsListener.html" title="class in com.microblink.view">BaseCameraView.BaseCameraViewEventsListener</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onCameraPreviewStarted--">onCameraPreviewStarted()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onCameraPreviewStarted--">onCameraPreviewStarted()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onCameraPreviewStarted--">onCameraPreviewStarted()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2199,7 +2217,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/recognition/RecognizerRunnerView.html#onCameraPreviewStarted--">onCameraPreviewStarted()</a></span> - Method in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/RecognizerRunnerView.html" title="class in com.microblink.view.recognition">RecognizerRunnerView</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onCameraPreviewStopped--">onCameraPreviewStopped()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onCameraPreviewStopped--">onCameraPreviewStopped()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onCameraPreviewStopped--">onCameraPreviewStopped()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2217,7 +2235,7 @@
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html#onConfigurationChanged-android.content.res.Configuration-"><code>RecognizerRunnerFragment.onConfigurationChanged(Configuration)</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onConfigurationChanged-android.content.res.Configuration-">onConfigurationChanged(Configuration)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onConfigurationChanged-android.content.res.Configuration-">onConfigurationChanged(Configuration)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onConfigurationChanged-android.content.res.Configuration-">onConfigurationChanged(Configuration)</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2227,7 +2245,7 @@
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html#onCreate-android.os.Bundle-"><code>RecognizerRunnerFragment.onCreate(Bundle)</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onCreate-android.os.Bundle-">onCreate(Bundle)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onCreate-android.os.Bundle-">onCreate(Bundle)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onCreate-android.os.Bundle-">onCreate(Bundle)</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2241,20 +2259,20 @@
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html#onDestroy--"><code>RecognizerRunnerFragment.onDestroy()</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onDestroy--">onDestroy()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onDestroy--">onDestroy()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onDestroy--">onDestroy()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onDestroyView--">onDestroyView()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onDetectionFailed--">onDetectionFailed()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onDetectionFailed--">onDetectionFailed()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/detection/FailedDetectionCallback.html#onDetectionFailed--">onDetectionFailed()</a></span> - Method in interface com.microblink.metadata.detection.<a href="com/microblink/metadata/detection/FailedDetectionCallback.html" title="interface in com.microblink.metadata.detection">FailedDetectionCallback</a></dt>
 <dd>
 <div class="block">Invoked when all recognizers in active <a href="com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers"><code>Recognizer</code></a>
  chain have failed to detect anything on the image.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onError-java.lang.Throwable-">onError(Throwable)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onError-java.lang.Throwable-">onError(Throwable)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onError-java.lang.Throwable-">onError(Throwable)</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2286,17 +2304,17 @@
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html#onPause--"><code>RecognizerRunnerFragment.onPause()</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onPause--">onPause()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onPause--">onPause()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onPause--">onPause()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onPointsDetection-com.microblink.metadata.detection.points.DisplayablePointsDetection-">onPointsDetection(DisplayablePointsDetection)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onPointsDetection-com.microblink.metadata.detection.points.DisplayablePointsDetection-">onPointsDetection(DisplayablePointsDetection)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/detection/points/PointsDetectionCallback.html#onPointsDetection-com.microblink.metadata.detection.points.DisplayablePointsDetection-">onPointsDetection(DisplayablePointsDetection)</a></span> - Method in interface com.microblink.metadata.detection.points.<a href="com/microblink/metadata/detection/points/PointsDetectionCallback.html" title="interface in com.microblink.metadata.detection.points">PointsDetectionCallback</a></dt>
 <dd>
 <div class="block">Called when <a href="com/microblink/metadata/detection/points/DisplayablePointsDetection.html" title="class in com.microblink.metadata.detection.points"><code>DisplayablePointsDetection</code></a> gets available.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onQuadDetection-com.microblink.metadata.detection.quad.DisplayableQuadDetection-">onQuadDetection(DisplayableQuadDetection)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onQuadDetection-com.microblink.metadata.detection.quad.DisplayableQuadDetection-">onQuadDetection(DisplayableQuadDetection)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/detection/quad/QuadDetectionCallback.html#onQuadDetection-com.microblink.metadata.detection.quad.DisplayableQuadDetection-">onQuadDetection(DisplayableQuadDetection)</a></span> - Method in interface com.microblink.metadata.detection.quad.<a href="com/microblink/metadata/detection/quad/QuadDetectionCallback.html" title="interface in com.microblink.metadata.detection.quad">QuadDetectionCallback</a></dt>
 <dd>
@@ -2306,13 +2324,13 @@
 <dd>
 <div class="block">Called when error occurs in recognizer initialization.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onRecognizerRunnerFragmentAttached-com.microblink.fragment.RecognizerRunnerFragment-android.app.Activity-">onRecognizerRunnerFragmentAttached(RecognizerRunnerFragment, Activity)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onRecognizerRunnerFragmentAttached-com.microblink.fragment.RecognizerRunnerFragment-android.app.Activity-">onRecognizerRunnerFragmentAttached(RecognizerRunnerFragment, Activity)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/ScanningOverlay.html#onRecognizerRunnerFragmentAttached-com.microblink.fragment.RecognizerRunnerFragment-android.app.Activity-">onRecognizerRunnerFragmentAttached(RecognizerRunnerFragment, Activity)</a></span> - Method in interface com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/ScanningOverlay.html" title="interface in com.microblink.fragment.overlay">ScanningOverlay</a></dt>
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment"><code>RecognizerRunnerFragment</code></a> gets attached to its host activity.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onRecognizerRunnerViewCreated-com.microblink.fragment.RecognizerRunnerFragment-">onRecognizerRunnerViewCreated(RecognizerRunnerFragment)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onRecognizerRunnerViewCreated-com.microblink.fragment.RecognizerRunnerFragment-">onRecognizerRunnerViewCreated(RecognizerRunnerFragment)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/ScanningOverlay.html#onRecognizerRunnerViewCreated-com.microblink.fragment.RecognizerRunnerFragment-">onRecognizerRunnerViewCreated(RecognizerRunnerFragment)</a></span> - Method in interface com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/ScanningOverlay.html" title="interface in com.microblink.fragment.overlay">ScanningOverlay</a></dt>
 <dd>
@@ -2329,7 +2347,7 @@
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html#onResume--"><code>RecognizerRunnerFragment.onResume()</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onResume--">onResume()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onResume--">onResume()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onResume--">onResume()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2337,15 +2355,15 @@
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html#onSaveInstanceState-android.os.Bundle-"><code>RecognizerRunnerFragment.onSaveInstanceState(Bundle)</code></a>,</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onSaveInstanceState-android.os.Bundle-">onSaveInstanceState(Bundle)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onSaveInstanceState-android.os.Bundle-">onSaveInstanceState(Bundle)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onSaveInstanceState-android.os.Bundle-">onSaveInstanceState(Bundle)</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BarcodeScanActivity.html#onScanningDone-RecognitionSuccessType-">onScanningDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity">BarcodeScanActivity</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/activity/BaseScanActivity.html#onScanningDone-RecognitionSuccessType-">onScanningDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity">BaseScanActivity</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/Pdf417ScanActivity.html#onScanningDone-RecognitionSuccessType-">onScanningDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity">Pdf417ScanActivity</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onScanningDone-RecognitionSuccessType-">onScanningDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onScanningDone-RecognitionSuccessType-">onScanningDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onScanningDone-RecognitionSuccessType-">onScanningDone(RecognitionSuccessType)</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2361,7 +2379,7 @@
 <dd>
 <div class="block">Called when device stops shaking/moving.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onSizeChanged-int-int-">onSizeChanged(int, int)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onSizeChanged-int-int-">onSizeChanged(int, int)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/OnSizeChangedListener.html#onSizeChanged-int-int-">onSizeChanged(int, int)</a></span> - Method in interface com.microblink.view.<a href="com/microblink/view/OnSizeChangedListener.html" title="interface in com.microblink.view">OnSizeChangedListener</a></dt>
 <dd>
@@ -2375,7 +2393,7 @@
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html#onStart--"><code>RecognizerRunnerFragment.onStart()</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onStart--">onStart()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onStart--">onStart()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onStart--">onStart()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2383,7 +2401,7 @@
 <dd>
 <div class="block">Called after <a href="com/microblink/fragment/RecognizerRunnerFragment.html#onStop--"><code>RecognizerRunnerFragment.onStop()</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#onStop--">onStop()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onStop--">onStop()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onStop--">onStop()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
@@ -2490,25 +2508,6 @@
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/pdf417/Pdf417Recognizer.html#Pdf417Recognizer--">Pdf417Recognizer()</a></span> - Constructor for class com.microblink.entities.recognizers.blinkbarcode.pdf417.<a href="com/microblink/entities/recognizers/blinkbarcode/pdf417/Pdf417Recognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.pdf417">Pdf417Recognizer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/entities/recognizers/blinkbarcode/pdf417/Pdf417Recognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.pdf417"><span class="typeNameLink">Pdf417Recognizer.Result</span></a> - Class in <a href="com/microblink/entities/recognizers/blinkbarcode/pdf417/package-summary.html">com.microblink.entities.recognizers.blinkbarcode.pdf417</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity"><span class="typeNameLink">Pdf417ScanActivity</span></a> - Class in <a href="com/microblink/activity/package-summary.html">com.microblink.activity</a></dt>
-<dd>
-<div class="block">Responsible for UI of the capturing process, and also for coordinating recognition and camera
- actions.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/Pdf417ScanActivity.html#Pdf417ScanActivity--">Pdf417ScanActivity()</a></span> - Constructor for class com.microblink.activity.<a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity">Pdf417ScanActivity</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/microblink/fragment/overlay/Pdf417ScanOverlay.html" title="class in com.microblink.fragment.overlay"><span class="typeNameLink">Pdf417ScanOverlay</span></a> - Class in <a href="com/microblink/fragment/overlay/package-summary.html">com.microblink.fragment.overlay</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/Pdf417ScanOverlay.html#Pdf417ScanOverlay-com.microblink.uisettings.Pdf417ScanUISettings-com.microblink.view.recognition.ScanResultListener-">Pdf417ScanOverlay(Pdf417ScanUISettings, ScanResultListener)</a></span> - Constructor for class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/Pdf417ScanOverlay.html" title="class in com.microblink.fragment.overlay">Pdf417ScanOverlay</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/microblink/uisettings/Pdf417ScanUISettings.html" title="class in com.microblink.uisettings"><span class="typeNameLink">Pdf417ScanUISettings</span></a> - Class in <a href="com/microblink/uisettings/package-summary.html">com.microblink.uisettings</a></dt>
-<dd>
-<div class="block">Scan settings for <a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity"><code>Pdf417ScanActivity</code></a>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/Pdf417ScanUISettings.html#Pdf417ScanUISettings-com.microblink.entities.recognizers.RecognizerBundle-">Pdf417ScanUISettings(RecognizerBundle)</a></span> - Constructor for class com.microblink.uisettings.<a href="com/microblink/uisettings/Pdf417ScanUISettings.html" title="class in com.microblink.uisettings">Pdf417ScanUISettings</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/Pdf417ScanUISettings.html#Pdf417ScanUISettings-android.content.Intent-">Pdf417ScanUISettings(Intent)</a></span> - Constructor for class com.microblink.uisettings.<a href="com/microblink/uisettings/Pdf417ScanUISettings.html" title="class in com.microblink.uisettings">Pdf417ScanUISettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/USDLKeys.html#PermitExpirationDate">PermitExpirationDate</a></span> - Static variable in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/USDLKeys.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">USDLKeys</a></dt>
 <dd>
@@ -2817,11 +2816,11 @@
 <dd>
 <div class="block">Represents abstract result that can be returned by <code>com.microblink.recognizers.IResultHolder#getObject(String)</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/Pdf417ScanActivity.html#RESULT_OK">RESULT_OK</a></span> - Static variable in class com.microblink.activity.<a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity">Pdf417ScanActivity</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BarcodeScanActivity.html#RESULT_OK">RESULT_OK</a></span> - Static variable in class com.microblink.activity.<a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity">BarcodeScanActivity</a></dt>
 <dd>
 <div class="block">This code is returned on successful scan.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/Pdf417ScanActivity.html#RESULT_OK_DATA_COPIED">RESULT_OK_DATA_COPIED</a></span> - Static variable in class com.microblink.activity.<a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity">Pdf417ScanActivity</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BarcodeScanActivity.html#RESULT_OK_DATA_COPIED">RESULT_OK_DATA_COPIED</a></span> - Static variable in class com.microblink.activity.<a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity">BarcodeScanActivity</a></dt>
 <dd>
 <div class="block">This code is returned on successful scan after which copy button was
  tapped to indicate that barcode data is saved in clipboard and available
@@ -3194,7 +3193,7 @@
  capable of displaying camera preview video stream: <code>SurfaceView</code> and
  <code>TextureView</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/activity/Pdf417ScanActivity.html#setResultAndFinish-int-">setResultAndFinish(int)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/Pdf417ScanActivity.html" title="class in com.microblink.activity">Pdf417ScanActivity</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/activity/BarcodeScanActivity.html#setResultAndFinish-int-">setResultAndFinish(int)</a></span> - Method in class com.microblink.activity.<a href="com/microblink/activity/BarcodeScanActivity.html" title="class in com.microblink.activity">BarcodeScanActivity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/Image.html#setROI-android.graphics.Rect-">setROI(Rect)</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/Image.html" title="class in com.microblink.image">Image</a></dt>
 <dd>
@@ -3266,7 +3265,7 @@
 <dd>
 <div class="block">Sets the shake callback that will be notified about device shake events.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/Pdf417ScanUISettings.html#setShowDialogAfterScan-java.lang.Boolean-">setShowDialogAfterScan(Boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/Pdf417ScanUISettings.html" title="class in com.microblink.uisettings">Pdf417ScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#setShowDialogAfterScan-java.lang.Boolean-">setShowDialogAfterScan(Boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
 <dd>
 <div class="block">Defines whether result dialog should be shown after each barcode scan, default is <code>true</code>.</div>
 </dd>
@@ -3431,7 +3430,7 @@
 <dd>
 <div class="block">Optional on AAMVA version 01.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlay.html#soundNotification--">soundNotification()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlay.html" title="class in com.microblink.fragment.overlay">BaseScanOverlay</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#soundNotification--">soundNotification()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/intent/IntentDataTransferMode.html#STANDARD">STANDARD</a></span> - Static variable in class com.microblink.intent.<a href="com/microblink/intent/IntentDataTransferMode.html" title="class in com.microblink.intent">IntentDataTransferMode</a></dt>
 <dd>
