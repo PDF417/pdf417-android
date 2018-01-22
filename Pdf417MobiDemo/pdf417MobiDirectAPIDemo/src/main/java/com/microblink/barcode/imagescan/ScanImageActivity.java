@@ -10,22 +10,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.microblink.activity.BaseScanActivity;
 import com.microblink.barcode.R;
 import com.microblink.directApi.DirectApiErrorListener;
-import com.microblink.directApi.Recognizer;
+import com.microblink.directApi.RecognizerRunner;
+import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.hardware.orientation.Orientation;
 import com.microblink.recognition.FeatureNotSupportedException;
-import com.microblink.recognition.InvalidLicenceKeyException;
-import com.microblink.recognizers.BaseRecognitionResult;
-import com.microblink.recognizers.RecognitionResults;
-import com.microblink.recognizers.settings.RecognitionSettings;
+import com.microblink.recognition.RecognitionSuccessType;
 import com.microblink.view.recognition.ScanResultListener;
 
 import java.io.File;
@@ -45,16 +43,15 @@ public class ScanImageActivity extends Activity {
     public static final String TAG = "pdf417mobiDemo";
 
     private Button mScanButton;
-    private Button mTakePhotoButton;
 
     /** Image view which shows current image that will be scanned. */
     private ImageView mImgView;
 
-    /** Recognizer instance */
-    private Recognizer mRecognizer = null;
-    /** Recognition settings instance. */
-    private RecognitionSettings mSettings;
-    private String mLicenseKey;
+    /** RecognizerRunner that will run all recognizers within RecognizerBundle on given image */
+    private RecognizerRunner mRecognizerRunner;
+
+    /** Bundle that will contain all recognizers that have arrived via Intent */
+    private RecognizerBundle mRecognizerBundle;
 
     /** Current bitmap for recognition. */
     private Bitmap mBitmap;
@@ -64,36 +61,43 @@ public class ScanImageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_image);
 
-        mScanButton = (Button) findViewById(R.id.btnScan);
-        mTakePhotoButton = (Button) findViewById(R.id.btnTakePhoto);
-        mImgView = (ImageView) findViewById(R.id.imgImage);
+        mScanButton = findViewById(R.id.btnScan);
+        mImgView = findViewById(R.id.imgImage);
 
         Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            mSettings = extras.getParcelable(BaseScanActivity.EXTRAS_RECOGNITION_SETTINGS);
-            mLicenseKey = extras.getString(BaseScanActivity.EXTRAS_LICENSE_KEY);
-        }
 
-        // initial bitmap is loaded from assets
-        AssetManager assets = getAssets();
-        InputStream istr = null;
-        try {
-            istr = assets.open(ASSETS_BITMAP_NAME);
-            // load inital bitmap from assets
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = BITMAP_CONFIG;
-            mBitmap = BitmapFactory.decodeStream(istr, null, options);
-        } catch (IOException e) {
-            // handle exception
-            Log.e(TAG, "Failed to load image from assets!");
-            Toast.makeText(this, "Failed to load image from assets!", Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        } finally {
+        mRecognizerBundle = new RecognizerBundle();
+        // since mRecognizerBundle does not contain any recognizers, loadFromIntent will create
+        // new recognizers from intent data and automatically bundle them inside mRecognizerBundle
+        mRecognizerBundle.loadFromIntent(intent);
+
+        if ( savedInstanceState == null ) {
+            // initial bitmap is loaded from assets
+            AssetManager assets = getAssets();
+            InputStream istr = null;
             try {
-                istr.close();
-            } catch (IOException ignorable) { }
+                istr = assets.open(ASSETS_BITMAP_NAME);
+                // load inital bitmap from assets
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = BITMAP_CONFIG;
+                mBitmap = BitmapFactory.decodeStream(istr, null, options);
+            } catch (IOException e) {
+                // handle exception
+                Log.e(TAG, "Failed to load image from assets!");
+                Toast.makeText(this, "Failed to load image from assets!", Toast.LENGTH_LONG).show();
+                finish();
+                return;
+            } finally {
+                try {
+                    if (istr != null) {
+                        istr.close();
+                    }
+                } catch (IOException ignored) {
+                }
+            }
+        } else {
+            // otherwise, load bitmap from saved state
+            mBitmap = savedInstanceState.getParcelable("bitmap");
         }
 
         // show loaded bitmap
@@ -106,32 +110,15 @@ public class ScanImageActivity extends Activity {
 
         // get the recognizer instance
         try {
-            mRecognizer = Recognizer.getSingletonInstance();
+            mRecognizerRunner = RecognizerRunner.getSingletonInstance();
         } catch (FeatureNotSupportedException e) {
             Toast.makeText(this, "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
             finish();
             return;
         }
 
-        // In order for scanning to work, you must enter a valid licence key. Without licence key,
-        // scanning will not work. Licence key is bound the the package name of your app, so when
-        // obtaining your licence key from Microblink make sure you give us the correct package name
-        // of your app. You can obtain your licence key at http://microblink.com/login or contact us
-        // at http://help.microblink.com.
-        // Licence key also defines which recognizers are enabled and which are not. Since the licence
-        // key validation is performed on image processing thread in native code, all enabled recognizers
-        // that are disallowed by licence key will be turned off without any error and information
-        // about turning them off will be logged to ADB logcat.
-        try {
-            mRecognizer.setLicenseKey(this, mLicenseKey);
-        } catch (InvalidLicenceKeyException exc) {
-            Toast.makeText(this, "License key check failed! Reason: " + exc.getMessage(), Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
-
         // initialize recognizer singleton
-        mRecognizer.initialize(this, mSettings, new DirectApiErrorListener() {
+        mRecognizerRunner.initialize(this, mRecognizerBundle, new DirectApiErrorListener() {
             @Override
             public void onRecognizerError(Throwable t) {
                 Log.e(TAG, "Failed to initialize recognizer.", t);
@@ -140,6 +127,35 @@ public class ScanImageActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        /*
+         * If using IntentDataTransferMode.PERSISTED_OPTIMISED transfer mode for RecognitionBundle,
+         * then it is backed by temporary file which gets deleted each time loadFromBundle is called.
+         * This can cause crash if your activity gets restarted by the Android. To prevent that crash
+         * you should save RecognizerBundle's state in your onSaveInstanceState method. This will
+         * ensure that bundle is written back to temporary file that will be available for loadFromBundle
+         * method if activity gets restarted. However, if no restart occur, you must ensure this
+         * temporary file gets deleted. Therefore, you must call clearSavedState in your onResume callback.
+         */
+        mRecognizerBundle.saveState();
+
+        // persist loaded bitmap
+        outState.putParcelable("bitmap", mBitmap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /*
+         * Clear temporary file created in onSaveInstanceState in case no activity restart happened
+         * after call to onSaveInstanceState. If restart happened and temporary file was consumed
+         * by loadFromBundle method in onCreate, then this method will do nothing.
+         */
+        mRecognizerBundle.clearSavedState();
     }
 
     /**
@@ -173,26 +189,14 @@ public class ScanImageActivity extends Activity {
             pd.show();
 
             // recognize image
-            mRecognizer.recognizeBitmap(mBitmap, Orientation.ORIENTATION_LANDSCAPE_RIGHT, new ScanResultListener() {
+            mRecognizerRunner.recognizeBitmap(mBitmap, Orientation.ORIENTATION_LANDSCAPE_RIGHT, new ScanResultListener() {
                 @Override
-                public void onScanningDone(RecognitionResults results) {
-                    // check if results contain valid data
-                    BaseRecognitionResult[] brrs = results.getRecognitionResults();
-                    boolean haveSomething = false;
-                    if (brrs != null) {
-                        for (BaseRecognitionResult brr : brrs) {
-                            if (!brr.isEmpty() && brr.isValid()) {
-                                haveSomething = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (haveSomething) {
-                        // return results
+                public void onScanningDone(@NonNull RecognitionSuccessType recognitionSuccessType) {
+                    if (recognitionSuccessType != RecognitionSuccessType.UNSUCCESSFUL) {
+                        // return results (if successful or partial)
                         Intent intent = new Intent();
-                        intent.putExtra(BaseScanActivity.EXTRAS_RECOGNITION_RESULTS, results);
-                        setResult(BaseScanActivity.RESULT_OK, intent);
+                        mRecognizerBundle.saveToIntent(intent);
+                        setResult(RESULT_OK, intent);
                         finish();
                     } else {
                         Toast.makeText(ScanImageActivity.this, "Nothing scanned!", Toast.LENGTH_SHORT).show();
@@ -213,9 +217,9 @@ public class ScanImageActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (mRecognizer != null) {
+        if (mRecognizerRunner != null) {
             // terminate the native library
-            mRecognizer.terminate();
+            mRecognizerRunner.terminate();
         }
     }
 
@@ -228,6 +232,7 @@ public class ScanImageActivity extends Activity {
                     BitmapFactory.Options options = new BitmapFactory.Options();
                     options.inPreferredConfig = BITMAP_CONFIG;
                     mBitmap = BitmapFactory.decodeFile(mCameraFile, options);
+                    //noinspection ResultOfMethodCallIgnored
                     new File(mCameraFile).delete();
                     // show camera image
                     mImgView.setImageBitmap(mBitmap);

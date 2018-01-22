@@ -14,14 +14,15 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-project.txt'
             signingConfig = debug.signingConfig
         }
     }
 }
 
 dependencies {
-    compile ("com.microblink:pdf417.mobi:${rootProject.ext.pdf417MobiVersion}@aar") {
+    implementation ("com.microblink:pdf417.mobi:${rootProject.ext.pdf417MobiVersion}@aar") {
         transitive = true
     }
 }

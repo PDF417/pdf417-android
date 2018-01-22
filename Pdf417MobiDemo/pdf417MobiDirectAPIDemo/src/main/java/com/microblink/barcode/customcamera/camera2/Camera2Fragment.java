@@ -48,14 +48,12 @@ import android.widget.Toast;
 import com.microblink.activity.BaseScanActivity;
 import com.microblink.barcode.R;
 import com.microblink.directApi.DirectApiErrorListener;
-import com.microblink.directApi.Recognizer;
+import com.microblink.directApi.RecognizerRunner;
+import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.hardware.orientation.Orientation;
 import com.microblink.image.ImageBuilder;
 import com.microblink.recognition.FeatureNotSupportedException;
-import com.microblink.recognition.InvalidLicenceKeyException;
-import com.microblink.recognizers.BaseRecognitionResult;
-import com.microblink.recognizers.RecognitionResults;
-import com.microblink.recognizers.settings.RecognitionSettings;
+import com.microblink.recognition.RecognitionSuccessType;
 import com.microblink.view.recognition.ScanResultListener;
 
 import java.util.ArrayList;
@@ -85,9 +83,8 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
      * Max preview height that is guaranteed by Camera2 API
      */
     private static final int MAX_PREVIEW_HEIGHT = 1080;
-    private Recognizer mRecognizer;
-    private RecognitionSettings mSettings = new RecognitionSettings();
-    private String mLicenseKey = null;
+    private RecognizerRunner mRecognizerRunner;
+    private RecognizerBundle mRecognizerBundle;
     private Image mImageBeingRecognized = null;
     private long mTimestamp;
 
@@ -104,12 +101,12 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
             try {
                 img = reader.acquireNextImage();
                 if (img != null) {
-                    if (mRecognizer.getCurrentState() == Recognizer.State.READY) {
+                    if (mRecognizerRunner.getCurrentState() == RecognizerRunner.State.READY) {
                         mImageBeingRecognized = img;
                         com.microblink.image.Image image = ImageBuilder.buildImageFromCamera2Image(mImageBeingRecognized, Orientation.ORIENTATION_LANDSCAPE_RIGHT, null);
                         Log.i(TAG, "Starting recognition");
                         mTimestamp = System.currentTimeMillis();
-                        mRecognizer.recognizeImage(image, Camera2Fragment.this);
+                        mRecognizerRunner.recognizeImage(image, Camera2Fragment.this);
                     } else {
                         Log.v(TAG, "Recognizer is busy. Dropping current frame");
                         img.close();
@@ -301,43 +298,22 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
         super.onCreate(savedInstanceState);
 
         Intent intent = getActivity().getIntent();
-        Bundle extras = intent.getExtras();
-
-        if (extras != null) {
-            mSettings = extras.getParcelable(BaseScanActivity.EXTRAS_RECOGNITION_SETTINGS);
-            mLicenseKey = extras.getString(BaseScanActivity.EXTRAS_LICENSE_KEY);
-        }
+        mRecognizerBundle = new RecognizerBundle();
+        mRecognizerBundle.loadFromIntent(intent);
     }
 
     @Override
     public void onStart() {
         super.onStart();
         try {
-            mRecognizer = Recognizer.getSingletonInstance();
+            mRecognizerRunner = RecognizerRunner.getSingletonInstance();
         } catch (FeatureNotSupportedException e) {
             Toast.makeText(Camera2Fragment.this.getActivity(), "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
             getActivity().finish();
             return;
         }
-        try {
-            // In order for scanning to work, you must enter a valid licence key. Without licence key,
-            // scanning will not work. Licence key is bound the the package name of your app, so when
-            // obtaining your licence key from Microblink make sure you give us the correct package name
-            // of your app. You can obtain your licence key at http://microblink.com/login or contact us
-            // at http://help.microblink.com.
-            // Licence key also defines which recognizers are enabled and which are not. Since the licence
-            // key validation is performed on image processing thread in native code, all enabled recognizers
-            // that are disallowed by licence key will be turned off without any error and information
-            // about turning them off will be logged to ADB logcat.
-            mRecognizer.setLicenseKey(Camera2Fragment.this.getActivity(), mLicenseKey);
-        } catch (InvalidLicenceKeyException exc) {
-            Toast.makeText(Camera2Fragment.this.getActivity(), "License key check failed! Reason: " + exc.getMessage(), Toast.LENGTH_LONG).show();
-            getActivity().finish();
-            return;
-        }
 
-
-        mRecognizer.initialize(getActivity(), mSettings, new DirectApiErrorListener() {
+        mRecognizerRunner.initialize(getActivity(), mRecognizerBundle, new DirectApiErrorListener() {
             @Override
             public void onRecognizerError(Throwable t) {
                 Toast.makeText(Camera2Fragment.this.getActivity(), "There was an error in Recognizer: " + t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -372,8 +348,8 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
     @Override
     public void onStop() {
         super.onStop();
-        if (mRecognizer != null) {
-            mRecognizer.terminate();
+        if (mRecognizerRunner != null) {
+            mRecognizerRunner.terminate();
         }
     }
 
@@ -663,27 +639,16 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
     }
 
     @Override
-    public void onScanningDone(RecognitionResults results) {
+    public void onScanningDone(@NonNull RecognitionSuccessType recognitionSuccessType) {
         long timePassed = System.currentTimeMillis() - mTimestamp;
         Log.w(TAG, "Frame processing took " + timePassed + " ms");
-        // check if results contain valid data
-        BaseRecognitionResult[] brrs = results.getRecognitionResults();
-        boolean haveSomething = false;
-        if (brrs != null) {
-            for (BaseRecognitionResult brr : brrs) {
-                if (!brr.isEmpty()) {
-                    haveSomething = true;
-                    break;
-                }
-            }
-        }
 
         mImageBeingRecognized.close();
 
-        if (haveSomething) {
+        if (recognitionSuccessType != RecognitionSuccessType.UNSUCCESSFUL) {
             // return results
             Intent intent = new Intent();
-            intent.putExtra(BaseScanActivity.EXTRAS_RECOGNITION_RESULTS, results);
+            mRecognizerBundle.saveToIntent(intent);
             getActivity().setResult(BaseScanActivity.RESULT_OK, intent);
             getActivity().finish();
         } else {
