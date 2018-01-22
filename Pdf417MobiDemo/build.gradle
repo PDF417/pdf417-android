@@ -15,8 +15,8 @@ allprojects {
         jcenter()
         mavenCentral()
         google()
-//        maven { url 'http://maven.microblink.com' }
-        mavenLocal()
+        maven { url 'http://maven.microblink.com' }
+//        mavenLocal()
     }
 }
 

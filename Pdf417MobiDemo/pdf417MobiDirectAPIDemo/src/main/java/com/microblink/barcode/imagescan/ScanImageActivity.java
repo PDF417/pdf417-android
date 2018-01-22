@@ -71,27 +71,33 @@ public class ScanImageActivity extends Activity {
         // new recognizers from intent data and automatically bundle them inside mRecognizerBundle
         mRecognizerBundle.loadFromIntent(intent);
 
-        // initial bitmap is loaded from assets
-        AssetManager assets = getAssets();
-        InputStream istr = null;
-        try {
-            istr = assets.open(ASSETS_BITMAP_NAME);
-            // load inital bitmap from assets
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = BITMAP_CONFIG;
-            mBitmap = BitmapFactory.decodeStream(istr, null, options);
-        } catch (IOException e) {
-            // handle exception
-            Log.e(TAG, "Failed to load image from assets!");
-            Toast.makeText(this, "Failed to load image from assets!", Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        } finally {
+        if ( savedInstanceState == null ) {
+            // initial bitmap is loaded from assets
+            AssetManager assets = getAssets();
+            InputStream istr = null;
             try {
-                if (istr != null) {
-                    istr.close();
+                istr = assets.open(ASSETS_BITMAP_NAME);
+                // load inital bitmap from assets
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inPreferredConfig = BITMAP_CONFIG;
+                mBitmap = BitmapFactory.decodeStream(istr, null, options);
+            } catch (IOException e) {
+                // handle exception
+                Log.e(TAG, "Failed to load image from assets!");
+                Toast.makeText(this, "Failed to load image from assets!", Toast.LENGTH_LONG).show();
+                finish();
+                return;
+            } finally {
+                try {
+                    if (istr != null) {
+                        istr.close();
+                    }
+                } catch (IOException ignored) {
                 }
-            } catch (IOException ignored) { }
+            }
+        } else {
+            // otherwise, load bitmap from saved state
+            mBitmap = savedInstanceState.getParcelable("bitmap");
         }
 
         // show loaded bitmap
@@ -121,6 +127,35 @@ public class ScanImageActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        /*
+         * If using IntentDataTransferMode.PERSISTED_OPTIMISED transfer mode for RecognitionBundle,
+         * then it is backed by temporary file which gets deleted each time loadFromBundle is called.
+         * This can cause crash if your activity gets restarted by the Android. To prevent that crash
+         * you should save RecognizerBundle's state in your onSaveInstanceState method. This will
+         * ensure that bundle is written back to temporary file that will be available for loadFromBundle
+         * method if activity gets restarted. However, if no restart occur, you must ensure this
+         * temporary file gets deleted. Therefore, you must call clearSavedState in your onResume callback.
+         */
+        mRecognizerBundle.saveState();
+
+        // persist loaded bitmap
+        outState.putParcelable("bitmap", mBitmap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /*
+         * Clear temporary file created in onSaveInstanceState in case no activity restart happened
+         * after call to onSaveInstanceState. If restart happened and temporary file was consumed
+         * by loadFromBundle method in onCreate, then this method will do nothing.
+         */
+        mRecognizerBundle.clearSavedState();
     }
 
     /**

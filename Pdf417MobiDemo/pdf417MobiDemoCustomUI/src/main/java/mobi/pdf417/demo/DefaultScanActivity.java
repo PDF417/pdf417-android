@@ -47,7 +47,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
     private int mScanCount = 0;
     private Handler mHandler = new Handler();
 
-    /** RecognizerView is the builtin view that controls camera and recognition */
+    /** RecognizerRunnerView is the builtin view that controls camera and recognition */
     private RecognizerRunnerView mRecognizerRunnerView;
     /** CameraPermissionManager is provided helper class that can be used to obtain the permission to use camera.
      * It is used on Android 6.0 (API level 23) or newer.
@@ -126,7 +126,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
         // Use provided factory method from QuadViewManagerFactory that can instantiate the
         // QuadViewManager based on several presets defined in QuadViewPreset enum. Details about
         // each of them can be found in javadoc. This method automatically adds the QuadView as a
-        // child of RecognizerView.
+        // child of RecognizerRunnerView.
         // Here we use preset which sets up quad view in the same style as used in built-in BarcodeScanActivity.
         mQvManager= QuadViewManagerFactory.createQuadViewFromPreset(mRecognizerRunnerView, QuadViewPreset.DEFAULT_CORNERS_FROM_BARCODE_SCAN_ACTIVITY);
 
@@ -184,7 +184,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
     @Override
     protected void onStart() {
         super.onStart();
-        // all activity lifecycle events must be passed on to RecognizerView
+        // all activity lifecycle events must be passed on to RecognizerRunnerView
         if(mRecognizerRunnerView != null) {
             mRecognizerRunnerView.start();
         }
@@ -193,28 +193,28 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
     @Override
     protected void onResume() {
         super.onResume();
-        // all activity lifecycle events must be passed on to RecognizerView
+        // all activity lifecycle events must be passed on to RecognizerRunnerView
         mRecognizerRunnerView.resume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // all activity lifecycle events must be passed on to RecognizerView
+        // all activity lifecycle events must be passed on to RecognizerRunnerView
         mRecognizerRunnerView.pause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        // all activity lifecycle events must be passed on to RecognizerView
+        // all activity lifecycle events must be passed on to RecognizerRunnerView
         mRecognizerRunnerView.stop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // all activity lifecycle events must be passed on to RecognizerView
+        // all activity lifecycle events must be passed on to RecognizerRunnerView
         mRecognizerRunnerView.destroy();
     }
 
