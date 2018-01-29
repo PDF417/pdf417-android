@@ -18,7 +18,7 @@ _PDF417.mobi_ SDK for Android enables you to perform scans of various barcodes i
 
 Using _PDF417.mobi_ in your app requires a valid license. You can obtain a trial license by registering to [Microblink dashboard](https://microblink.com/login). After registering, you will be able to generate a license for your app. License is bound to [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename) of your app, so please make sure you enter the correct package name when asked.
 
-For more information on how to integrate _PDF417.mobi_ SDK into your app read the instructions below. Make sure you read the latest [Release notes](Release\ notes.md) for most rescent changes and improvements.
+For more information on how to integrate _PDF417.mobi_ SDK into your app read the instructions below. Make sure you read the latest [Release notes](Release\ notes.md) for most recent changes and improvements.
 
 # Table of contents
 
@@ -73,13 +73,13 @@ For more information on how to integrate _PDF417.mobi_ SDK into your app read th
 
 The package contains Android Archive (AAR) that contains everything you need to use the _PDF417.mobi_ library. Besides AAR, package also contains a demo project that contains following modules:
 
-- _Pdf417MobiDemo_ shows how to use simple Intent-based API to scan a single barcode.
-- _Pdf417MobiDemoCustomUI_ demonstrates advanced SDK integration within a custom scan activity and shows how `RecognizerRunnerFragment` can be used to embed default UI into your activity.
-- _Pdf417MobiDirectAPIDemo_ demonstrates how to perform scanning of [Android Bitmaps](https://developer.android.com/reference/android/graphics/Bitmap.html)
+- _Pdf417MobiSample_ shows how to use simple Intent-based API to scan a single barcode.
+- _Pdf417MobiCustomUISample_ demonstrates advanced SDK integration within a custom scan activity and shows how `RecognizerRunnerFragment` can be used to embed default UI into your activity.
+- _Pdf417MobiDirectAPISample_ demonstrates how to perform scanning of [Android Bitmaps](https://developer.android.com/reference/android/graphics/Bitmap.html)
  
 Source code of all demo apps is given to you to show you how to perform integration of _PDF417.mobi_ SDK into your app. This source code and all of the resources are at your disposal. You can use these demo apps as a basis for creating your own app, or you can copy/paste code and/or resources from demo apps into your app and use them as you wish without even asking us for permission.
 
-_PDF417.mobi_ is supported on Android SDK version 16 (Android 4.1) or later.
+_PDF417.mobi_ is supported in Android SDK version 16 (Android 4.1) or later.
 
 The library contains one activity: `BarcodeScanActivity`. It is responsible for camera control and recognition. You can also create your own scanning UI - you just need to embed `RecognizerRunnerView` into your activity and pass activity's lifecycle events to it and it will control the camera and recognition process. For more information, see [Embedding `RecognizerRunnerView` into custom scan activity](#recognizerRunnerView).
 
@@ -593,7 +593,7 @@ public class MyScanActivity extends Activity implements ScanResultListener, Came
     @TargetApi(23)
     public void onCameraPermissionDenied() {
     	/**
-    	 * Called on Android 6.0 and newer if camera permission is not given
+    	 * Called in Android 6.0 and newer if camera permission is not given
     	 * by user. You should request permission from user to access camera.
     	 */
     	 requestPermissions(new String[]{Manifest.permission.CAMERA}, PERMISSION_CAMERA_REQUEST_CODE);
