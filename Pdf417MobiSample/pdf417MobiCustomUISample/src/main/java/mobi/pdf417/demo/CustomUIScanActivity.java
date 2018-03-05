@@ -39,7 +39,7 @@ import com.microblink.view.viewfinder.quadview.QuadViewManager;
 import com.microblink.view.viewfinder.quadview.QuadViewManagerFactory;
 import com.microblink.view.viewfinder.quadview.QuadViewPreset;
 
-public class DefaultScanActivity extends Activity implements ScanResultListener, CameraEventsListener, FailedDetectionCallback, QuadDetectionCallback, PointsDetectionCallback {
+public class CustomUIScanActivity extends Activity implements ScanResultListener, CameraEventsListener, FailedDetectionCallback, QuadDetectionCallback, PointsDetectionCallback {
 
     public static final String EXTRAS_ROTATE_ROI = "EXTRAS_ROTATE_ROI";
     public static final String EXTRAS_ROI = "EXTRAS_ROI";
@@ -67,7 +67,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_default_scan);
+        setContentView(R.layout.activity_custom_ui_scan);
 
         // create a scanner view
         mRecognizerRunnerView = findViewById(R.id.recognizerRunnerView);
@@ -172,7 +172,7 @@ public class DefaultScanActivity extends Activity implements ScanResultListener,
 
                 // add ROI layout
                 @SuppressLint("InflateParams")
-                View roiView = getLayoutInflater().inflate(R.layout.roi_overlay, null);
+                View roiView = getLayoutInflater().inflate(R.layout.scan_region_overlay, null);
                 mRecognizerRunnerView.addChildView(roiView, rotateRoi);
             }
         }

@@ -4,7 +4,7 @@
     android:id="@+id/my_default_scan_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mobi.pdf417.demo.DefaultScanActivity">
+    tools:context="mobi.pdf417.demo.CustomUIScanActivity">
 
     <com.microblink.view.recognition.RecognizerRunnerView
         android:id="@+id/recognizerRunnerView"

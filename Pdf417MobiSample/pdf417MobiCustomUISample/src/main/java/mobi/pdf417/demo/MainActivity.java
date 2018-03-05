@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.Arrays;
 
 // ScanningOverlayBinder and ScanResultListener interfaces must be implemented for case when RecognizerRunnerFragment is used
-public class Pdf417CustomUIDemo extends Activity implements RecognizerRunnerFragment.ScanningOverlayBinder, ScanResultListener {
+public class MainActivity extends Activity implements RecognizerRunnerFragment.ScanningOverlayBinder, ScanResultListener {
     private static final int MY_REQUEST_CODE = 1337;
 
     /**
@@ -109,7 +109,7 @@ public class Pdf417CustomUIDemo extends Activity implements RecognizerRunnerFrag
         }
         case R.id.btnCustomUI: {
             // create intent for custom scan activity
-            Intent intent = new Intent(this, DefaultScanActivity.class);
+            Intent intent = new Intent(this, CustomUIScanActivity.class);
 
             // add RecognizerBundle to intent
             mRecognizerBundle.saveToIntent(intent);
@@ -119,7 +119,7 @@ public class Pdf417CustomUIDemo extends Activity implements RecognizerRunnerFrag
         }
         case R.id.btnCustomUIROI: {
             // create intent for custom scan activity
-            Intent intent = new Intent(this, DefaultScanActivity.class);
+            Intent intent = new Intent(this, CustomUIScanActivity.class);
 
             // add RecognizerBundle to intent
             mRecognizerBundle.saveToIntent(intent);
@@ -138,11 +138,11 @@ public class Pdf417CustomUIDemo extends Activity implements RecognizerRunnerFrag
             // If you choose not to rotate your ROI view, then your ROI view will be layout either
             // in portrait or landscape, depending on setting for your camera activity in AndroidManifest.xml
             Rectangle roi = new Rectangle(0.2f, 0.1f, 0.5f, 0.4f);
-            intent.putExtra(DefaultScanActivity.EXTRAS_ROI, roi);
+            intent.putExtra(CustomUIScanActivity.EXTRAS_ROI, roi);
             // if you intent to rotate your ROI view, you should set the EXTRAS_ROTATE_ROI extra to true
             // so that PDF417.mobi can adjust ROI coordinates for native library when device orientation
             // change event occurs
-            intent.putExtra(DefaultScanActivity.EXTRAS_ROTATE_ROI, true);
+            intent.putExtra(CustomUIScanActivity.EXTRAS_ROTATE_ROI, true);
 
             startActivityForResult(intent, MY_REQUEST_CODE);
             break;
