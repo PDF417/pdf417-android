@@ -17,7 +17,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".Pdf417MobiDemo"
+            android:name=".Pdf417MobiDemoActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
