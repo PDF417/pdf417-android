@@ -39,48 +39,46 @@ import com.microblink.view.viewfinder.quadview.QuadViewManager;
 import com.microblink.view.viewfinder.quadview.QuadViewManagerFactory;
 import com.microblink.view.viewfinder.quadview.QuadViewPreset;
 
-public class CustomUIScanActivity extends Activity implements ScanResultListener, CameraEventsListener, FailedDetectionCallback, QuadDetectionCallback, PointsDetectionCallback {
+@SuppressLint("InflateParams")
+public class CustomUIScanActivity extends Activity implements View.OnClickListener {
 
-    public static final String EXTRAS_ROTATE_ROI = "EXTRAS_ROTATE_ROI";
-    public static final String EXTRAS_ROI = "EXTRAS_ROI";
-
-    private int mScanCount = 0;
-    private Handler mHandler = new Handler();
+    public static final String EXTRAS_ROTATE_SCAN_REGION = "EXTRAS_ROTATE_SCAN_REGION";
+    public static final String EXTRAS_SCAN_REGION = "EXTRAS_SCAN_REGION";
 
     /** RecognizerRunnerView is the builtin view that controls camera and recognition */
     private RecognizerRunnerView mRecognizerRunnerView;
+
+    /** RecognizerBundle will hold the recognizer objects that arrived via Intent */
+    private RecognizerBundle mRecognizerBundle;
+
     /** CameraPermissionManager is provided helper class that can be used to obtain the permission to use camera.
      * It is used on Android 6.0 (API level 23) or newer.
      */
     private CameraPermissionManager mCameraPermissionManager;
+
     /** This is built-in helper for built-in view that draws detection location */
-    QuadViewManager mQvManager = null;
+    private QuadViewManager mQvManager = null;
+
     /** This is a builtin point set view that can visualize points of interest, such as those of QR code */
     private PointSetView mPointSetView;
-    /** This is a torch button */
-    private Button mTorchButton = null;
-    /** This variable holds the torch state */
+
     private boolean mTorchEnabled = false;
-    /** RecognizerBundle will hold the recognizer objects that arrived via Intent */
-    private RecognizerBundle mRecognizerBundle;
+    private Button mTorchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_ui_scan);
 
-        // create a scanner view
-        mRecognizerRunnerView = findViewById(R.id.recognizerRunnerView);
+        mRecognizerRunnerView = findViewById(R.id.recognizer_runner_view);
 
         mRecognizerBundle = new RecognizerBundle();
         mRecognizerBundle.loadFromIntent(getIntent());
 
-        // set RecognizerBundle to RecognizerRunnerView
         mRecognizerRunnerView.setRecognizerBundle(mRecognizerBundle);
 
-        // add listeners
-        mRecognizerRunnerView.setScanResultListener(this);
-        mRecognizerRunnerView.setCameraEventsListener(this);
+        mRecognizerRunnerView.setScanResultListener(scanResultListener);
+        mRecognizerRunnerView.setCameraEventsListener(cameraEventsListener);
 
         // orientation allowed listener is asked if orientation is allowed when device orientation
         // changes - if orientation is allowed, rotatable views will be rotated to that orientation
@@ -92,99 +90,89 @@ public class CustomUIScanActivity extends Activity implements ScanResultListener
             }
         });
 
-        // define which metadata will be available, like detection metadata
         MetadataCallbacks metadataCallbacks = new MetadataCallbacks();
-        // set callback for quad detection
-        metadataCallbacks.setQuadDetectionCallback(this);
-        // set callback for points detection
-        metadataCallbacks.setPointsDetectionCallback(this);
-        // set callback when no detection
-        metadataCallbacks.setFailedDetectionCallback(this);
-
-        // register metadata callbacks to recognizer runner view
+        metadataCallbacks.setQuadDetectionCallback(quadDetectionCallback);
+        metadataCallbacks.setPointsDetectionCallback(pointsDetectionCallback);
+        metadataCallbacks.setFailedDetectionCallback(failedDetectionCallback);
         mRecognizerRunnerView.setMetadataCallbacks(metadataCallbacks);
 
-        // animate rotatable views on top of scanner view
+        // animate rotatable views on top of recognizer view
         mRecognizerRunnerView.setAnimateRotation(true);
-
         // zoom and crop camera instead of fitting it into view
         mRecognizerRunnerView.setAspectMode(CameraAspectMode.ASPECT_FILL);
 
-        // instantiate the camera permission manager
         mCameraPermissionManager = new CameraPermissionManager(this);
-        // get the built in layout that should be displayed when camera permission is not given
-        View v = mCameraPermissionManager.getAskPermissionOverlay();
-        if (v != null) {
-            // add it to the current layout that contains the recognizer view
-            ViewGroup vg = findViewById(R.id.my_default_scan_root);
-            vg.addView(v);
-        }
+        setupCameraPermissionOverlay();
 
-        // after scanner is created, you can add your views to it
+        setupQuadViewManager();
+        setupPointSetView();
+        setupScanRegionView();
+        setupCameraOverlayButtons();
 
-        // initialize QuadViewManager
+        // make sure RecognizerBundle, listeners and callbacks were set prior calling create
+        mRecognizerRunnerView.create();
+    }
+
+    private void setupQuadViewManager() {
         // Use provided factory method from QuadViewManagerFactory that can instantiate the
         // QuadViewManager based on several presets defined in QuadViewPreset enum. Details about
         // each of them can be found in javadoc. This method automatically adds the QuadView as a
         // child of RecognizerRunnerView.
         // Here we use preset which sets up quad view in the same style as used in built-in BarcodeScanActivity.
-        mQvManager= QuadViewManagerFactory.createQuadViewFromPreset(mRecognizerRunnerView, QuadViewPreset.DEFAULT_CORNERS_FROM_BARCODE_SCAN_ACTIVITY);
+        mQvManager = QuadViewManagerFactory.createQuadViewFromPreset(mRecognizerRunnerView, QuadViewPreset.DEFAULT_CORNERS_FROM_BARCODE_SCAN_ACTIVITY);
+    }
 
-        // create PointSetView
+    private void setupPointSetView() {
         mPointSetView = new PointSetView(this, null, mRecognizerRunnerView.getHostScreenOrientation());
-
         // add point set view to scanner view as fixed (non-rotatable) view
         mRecognizerRunnerView.addChildView(mPointSetView, false);
+    }
 
-        // inflate buttons layout from XML
-        View layout = getLayoutInflater().inflate(R.layout.default_barcode_camera_overlay, null);
-
-        // setup back button
-        /* This is a back button */
-        Button backButton = layout.findViewById(R.id.defaultBackButton);
-        backButton.setText(getString(R.string.mbHome));
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        // obtain a reference to torch button, but make it invisible
-        // we will make it appear only if device supports torch control.
-        // That information will be known only after camera has become active.
-        mTorchButton = layout.findViewById(R.id.defaultTorchButton);
-        mTorchButton.setVisibility(View.GONE);
-
-        // add buttons layout as rotatable view on top of scanner view
-        mRecognizerRunnerView.addChildView(layout, true);
-
-        // if ROI is set, then create and add ROI layout
+    private void setupScanRegionView() {
+        // if scan region is set, then create and add scan region layout
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
-            boolean rotateRoi = extras.getBoolean(EXTRAS_ROTATE_ROI);
-            Rectangle roi = extras.getParcelable(EXTRAS_ROI);
-            if(roi != null) {
-                // tell scanner to use ROI
-                mRecognizerRunnerView.setScanningRegion(roi, rotateRoi);
-
-                // add ROI layout
-                @SuppressLint("InflateParams")
+            Rectangle scanRegion = extras.getParcelable(EXTRAS_SCAN_REGION);
+            if(scanRegion != null) {
+                boolean rotateScanRegion = extras.getBoolean(EXTRAS_ROTATE_SCAN_REGION);
+                mRecognizerRunnerView.setScanningRegion(scanRegion, rotateScanRegion);
                 View roiView = getLayoutInflater().inflate(R.layout.scan_region_overlay, null);
-                mRecognizerRunnerView.addChildView(roiView, rotateRoi);
+                mRecognizerRunnerView.addChildView(roiView, rotateScanRegion);
             }
         }
-
-        // create scanner (make sure RecognizerBundle, listeners and callbacks were set prior calling create)
-        mRecognizerRunnerView.create();
     }
+
+    private void setupCameraPermissionOverlay() {
+        // get the built in layout that should be displayed when camera permission is not given
+        View cameraPermissionOverlayView = mCameraPermissionManager.getAskPermissionOverlay();
+        if (cameraPermissionOverlayView != null) {
+            // add it to the current layout that contains the recognizer view
+            ViewGroup rootView = findViewById(R.id.root);
+            rootView.addView(cameraPermissionOverlayView);
+        }
+    }
+
+    private void setupCameraOverlayButtons() {
+        View layout = getLayoutInflater().inflate(R.layout.camera_overlay, null);
+
+        Button backButton = layout.findViewById(R.id.btnBack);
+        backButton.setOnClickListener(this);
+
+        // Make it invisible until we know if device supports torch control
+        mTorchButton = layout.findViewById(R.id.btnTorch);
+        mTorchButton.setVisibility(View.GONE);
+        mTorchButton.setOnClickListener(this);
+
+        mRecognizerRunnerView.addChildView(layout, true);
+    }
+
+    /**
+     * all activity lifecycle events must be passed on to RecognizerRunnerView
+     */
 
     @Override
     protected void onStart() {
         super.onStart();
-        // all activity lifecycle events must be passed on to RecognizerRunnerView
         if(mRecognizerRunnerView != null) {
             mRecognizerRunnerView.start();
         }
@@ -193,42 +181,35 @@ public class CustomUIScanActivity extends Activity implements ScanResultListener
     @Override
     protected void onResume() {
         super.onResume();
-        // all activity lifecycle events must be passed on to RecognizerRunnerView
         mRecognizerRunnerView.resume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // all activity lifecycle events must be passed on to RecognizerRunnerView
         mRecognizerRunnerView.pause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        // all activity lifecycle events must be passed on to RecognizerRunnerView
         mRecognizerRunnerView.stop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // all activity lifecycle events must be passed on to RecognizerRunnerView
         mRecognizerRunnerView.destroy();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // change configuration of scanner's internal views
+        // change configuration of recognizer runner's internal views
         mRecognizerRunnerView.changeConfiguration(newConfig);
         mQvManager.configurationChanged(mRecognizerRunnerView, newConfig);
     }
 
-    /**
-     * Callback which is called when user clicks the back button.
-     */
     @Override
     public void onBackPressed() {
         setResult(RESULT_CANCELED, null);
@@ -236,168 +217,34 @@ public class CustomUIScanActivity extends Activity implements ScanResultListener
     }
 
     @Override
-    public void onCameraPreviewStarted() {
-        // if device supports torch, make torch button visible and setup it
-        // isCameraTorchSupported returns true if device supports controlling the torch and
-        // camera preview is active
-        if(mRecognizerRunnerView.isCameraTorchSupported()) {
-            mTorchButton.setVisibility(View.VISIBLE);
-            mTorchButton.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    // setTorchEnabled returns true if torch turning off/on has succeeded
-                    mRecognizerRunnerView.setTorchState(!mTorchEnabled, new SuccessCallback() {
-                        @Override
-                        public void onOperationDone(final boolean success) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (success) {
-                                        mTorchEnabled = !mTorchEnabled;
-                                        if (mTorchEnabled) {
-                                            mTorchButton.setText(R.string.LightOn);
-                                        } else {
-                                            mTorchButton.setText(R.string.LightOff);
-                                        }
-                                    }
-                                }
-                            });
-                        }
-                    });
-                }
-            });
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.btnBack) {
+            onBackPressed();
+        } else if (id == R.id.btnTorch) {
+            toggleTorchState();
         }
     }
 
-    @Override
-    public void onCameraPreviewStopped() {
-        // this method is called just after camera preview has stopped
-    }
-
-    @Override
-    public void onAutofocusFailed() {
-        // this method is called when camera autofocus fails
-        Toast.makeText(this, "Autofocus failed", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onAutofocusStarted(Rect[] rects) {
-        // draw here focusing animation
-        // rects array define array of rectangles in view's coordinate system where
-        // focus metering is taking place
-    }
-
-    @Override
-    public void onAutofocusStopped(Rect[] rects) {
-        // remove focusing animation
-        // rects array define array of rectangles in view's coordinate system where
-        // focus metering is taking place
-    }
-
-    @Override
-    public void onDetectionFailed() {
-        // clear points
-        mPointSetView.setDisplayablePointsDetection(null);
-        // begin quadrilateral animation to default position
-        mQvManager.animateQuadToDefaultPosition();
-    }
-
-    @Override
-    public void onPointsDetection(@NonNull DisplayablePointsDetection displayablePointsDetection) {
-        mPointSetView.setDisplayablePointsDetection(displayablePointsDetection);
-    }
-
-    @Override
-    public void onQuadDetection(@NonNull DisplayableQuadDetection displayableQuadDetection) {
-        // begin quadrilateral animation to detected quadrilateral
-        mQvManager.animateQuadToDetectionPosition(displayableQuadDetection);
-        // clear points
-        mPointSetView.setDisplayablePointsDetection(null);
-    }
-
-    /**
-     * this activity will perform 5 scans of barcode and then return the last
-     * scanned one
-     */
-    @Override
-    public void onScanningDone(@NonNull RecognitionSuccessType recognitionSuccessType) {
-        mScanCount++;
-        StringBuilder sb = new StringBuilder();
-        sb.append("Scanned ");
-        sb.append(mScanCount);
-        switch (mScanCount) {
-            case 1:
-                sb.append("st");
-                break;
-            case 2:
-                sb.append("nd");
-                break;
-            case 3:
-                sb.append("rd");
-                break;
-            default:
-                sb.append("th");
-                break;
-        }
-        sb.append(" barcode!");
-        Toast.makeText(this, sb.toString(), Toast.LENGTH_SHORT).show();
-        // pause scanning to prevent scan results to come while
-        // activity is being finished or while we wait for delayed task
-        // that will resume scanning
-        mRecognizerRunnerView.pauseScanning();
-        if (mScanCount >= 5) {
-            // if we have 5 scans, return most recent result via Intent
-            Intent intent = new Intent();
-            mRecognizerBundle.saveToIntent(intent);
-            setResult(BarcodeScanActivity.RESULT_OK, intent);
-            finish();
-        } else {
-            // if we still do not have 5 scans, wait 2 seconds and then resume
-            // scanning and reset recognition state
-            mHandler.postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    mRecognizerRunnerView.resumeScanning(true);
-                }
-            }, 2000);
-        }
-    }
-
-
-    @Override
-    public void onError(Throwable ex) {
-        // This method will be called when opening of camera resulted in exception or
-        // recognition process encountered an error.
-        // The error details will be given in ex parameter.
-        com.microblink.util.Log.e(this, ex, "Error");
-        AlertDialog.Builder ab = new AlertDialog.Builder(this);
-        ab.setMessage("There has been an error!")
-                .setTitle("Error")
-                .setCancelable(false)
-                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+    private void toggleTorchState() {
+        mRecognizerRunnerView.setTorchState(!mTorchEnabled, new SuccessCallback() {
+            @Override
+            public void onOperationDone(final boolean success) {
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(dialog != null) {
-                            dialog.dismiss();
+                    public void run() {
+                        if (success) {
+                            mTorchEnabled = !mTorchEnabled;
+                            if (mTorchEnabled) {
+                                mTorchButton.setText(R.string.LightOn);
+                            } else {
+                                mTorchButton.setText(R.string.LightOff);
+                            }
                         }
-                        setResult(RESULT_CANCELED);
-                        finish();
                     }
-                }).create().show();
-    }
-
-    @Override
-    @TargetApi(23)
-    public void onCameraPermissionDenied() {
-        // this method is called on Android 6.0 and newer if camera permission was not given
-        // by user
-
-        // ask user to give a camera permission. Provided manager asks for
-        // permission only if it has not been already granted.
-        // on API level < 23, this method does nothing
-        mCameraPermissionManager.askForCameraPermission();
+                });
+            }
+        });
     }
 
     @Override
@@ -406,4 +253,125 @@ public class CustomUIScanActivity extends Activity implements ScanResultListener
         // on API level 23, we need to pass request permission result to camera permission manager
         mCameraPermissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
+    //this activity performs 5 scans of barcode and returns the last one
+    private final ScanResultListener scanResultListener = new ScanResultListener() {
+
+        private int mScanCount = 0;
+
+        @Override
+        public void onScanningDone(@NonNull RecognitionSuccessType recognitionSuccessType) {
+            mScanCount++;
+
+            String scanCountText = "Scanned: " + mScanCount + " / 5";
+            Toast.makeText(CustomUIScanActivity.this, scanCountText, Toast.LENGTH_SHORT).show();
+
+            // pause scanning to prevent scan results to come while
+            // activity is being finished or while we wait for delayed task that will resume scanning
+            mRecognizerRunnerView.pauseScanning();
+            if (mScanCount >= 5) {
+                // if we have 5 scans, return most recent result via Intent
+                Intent intent = new Intent();
+                mRecognizerBundle.saveToIntent(intent);
+                setResult(BarcodeScanActivity.RESULT_OK, intent);
+                finish();
+            } else {
+                // if we still do not have 5 scans, wait 2 seconds and then resume scanning and reset recognition state
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRecognizerRunnerView.resumeScanning(true);
+                    }
+                }, 2000);
+            }
+        }
+    };
+
+    private final CameraEventsListener cameraEventsListener = new CameraEventsListener() {
+
+        @Override
+        public void onCameraPermissionDenied() {
+            mCameraPermissionManager.askForCameraPermission();
+        }
+
+        @Override
+        public void onCameraPreviewStarted() {
+            if(mRecognizerRunnerView.isCameraTorchSupported()) {
+                mTorchButton.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onCameraPreviewStopped() {
+            // this method is called just after camera preview has stopped
+        }
+
+        @Override
+        public void onError(Throwable ex) {
+            // This method will be called when opening of camera resulted in exception or
+            // recognition process encountered an error.
+            // The error details will be given in ex parameter.
+            com.microblink.util.Log.e(this, ex, "Error");
+            AlertDialog.Builder ab = new AlertDialog.Builder(CustomUIScanActivity.this);
+            ab.setMessage("There has been an error!")
+                    .setTitle("Error")
+                    .setCancelable(false)
+                    .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(dialog != null) {
+                                dialog.dismiss();
+                            }
+                            setResult(RESULT_CANCELED);
+                            finish();
+                        }
+                    }).create().show();
+        }
+
+        @Override
+        public void onAutofocusFailed() {
+            Toast.makeText(CustomUIScanActivity.this, "Autofocus failed", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onAutofocusStarted(Rect[] rects) {
+            // here you should draw focusing animation
+            // rects array define array of rectangles in view's coordinate system where
+            // focus metering is taking place
+        }
+
+        @Override
+        public void onAutofocusStopped(Rect[] rects) {
+            // remove focusing animation
+            // rects array defines array of rectangles in view's coordinate system where
+            // focus metering is taking place
+        }
+    };
+
+    private final QuadDetectionCallback quadDetectionCallback = new QuadDetectionCallback() {
+        @Override
+        public void onQuadDetection(@NonNull DisplayableQuadDetection displayableQuadDetection) {
+            // begin quadrilateral animation to detected quadrilateral
+            mQvManager.animateQuadToDetectionPosition(displayableQuadDetection);
+            // clear points
+            mPointSetView.setDisplayablePointsDetection(null);
+        }
+    };
+
+    private final PointsDetectionCallback pointsDetectionCallback = new PointsDetectionCallback() {
+        @Override
+        public void onPointsDetection(@NonNull DisplayablePointsDetection displayablePointsDetection) {
+            mPointSetView.setDisplayablePointsDetection(displayablePointsDetection);
+        }
+    };
+
+    private final FailedDetectionCallback failedDetectionCallback = new FailedDetectionCallback() {
+        @Override
+        public void onDetectionFailed() {
+            mPointSetView.setDisplayablePointsDetection(null);
+            // begin quadrilateral animation to default position
+            mQvManager.animateQuadToDefaultPosition();
+        }
+    };
+
 }
