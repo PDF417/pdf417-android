@@ -77,8 +77,8 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
 
         mRecognizerRunnerView.setRecognizerBundle(mRecognizerBundle);
 
-        mRecognizerRunnerView.setScanResultListener(scanResultListener);
-        mRecognizerRunnerView.setCameraEventsListener(cameraEventsListener);
+        mRecognizerRunnerView.setScanResultListener(mScanResultListener);
+        mRecognizerRunnerView.setCameraEventsListener(mCameraEventsListener);
 
         // orientation allowed listener is asked if orientation is allowed when device orientation
         // changes - if orientation is allowed, rotatable views will be rotated to that orientation
@@ -91,9 +91,9 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
         });
 
         MetadataCallbacks metadataCallbacks = new MetadataCallbacks();
-        metadataCallbacks.setQuadDetectionCallback(quadDetectionCallback);
-        metadataCallbacks.setPointsDetectionCallback(pointsDetectionCallback);
-        metadataCallbacks.setFailedDetectionCallback(failedDetectionCallback);
+        metadataCallbacks.setQuadDetectionCallback(mQuadDetectionCallback);
+        metadataCallbacks.setPointsDetectionCallback(mPointsDetectionCallback);
+        metadataCallbacks.setFailedDetectionCallback(mFailedDetectionCallback);
         mRecognizerRunnerView.setMetadataCallbacks(metadataCallbacks);
 
         // animate rotatable views on top of recognizer view
@@ -255,7 +255,7 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
     }
 
     //this activity performs 5 scans of barcode and returns the last one
-    private final ScanResultListener scanResultListener = new ScanResultListener() {
+    private final ScanResultListener mScanResultListener = new ScanResultListener() {
 
         private int mScanCount = 0;
 
@@ -287,7 +287,7 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
         }
     };
 
-    private final CameraEventsListener cameraEventsListener = new CameraEventsListener() {
+    private final CameraEventsListener mCameraEventsListener = new CameraEventsListener() {
 
         @Override
         public void onCameraPermissionDenied() {
@@ -348,7 +348,7 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
         }
     };
 
-    private final QuadDetectionCallback quadDetectionCallback = new QuadDetectionCallback() {
+    private final QuadDetectionCallback mQuadDetectionCallback = new QuadDetectionCallback() {
         @Override
         public void onQuadDetection(@NonNull DisplayableQuadDetection displayableQuadDetection) {
             // begin quadrilateral animation to detected quadrilateral
@@ -358,14 +358,14 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
         }
     };
 
-    private final PointsDetectionCallback pointsDetectionCallback = new PointsDetectionCallback() {
+    private final PointsDetectionCallback mPointsDetectionCallback = new PointsDetectionCallback() {
         @Override
         public void onPointsDetection(@NonNull DisplayablePointsDetection displayablePointsDetection) {
             mPointSetView.setDisplayablePointsDetection(displayablePointsDetection);
         }
     };
 
-    private final FailedDetectionCallback failedDetectionCallback = new FailedDetectionCallback() {
+    private final FailedDetectionCallback mFailedDetectionCallback = new FailedDetectionCallback() {
         @Override
         public void onDetectionFailed() {
             mPointSetView.setDisplayablePointsDetection(null);
