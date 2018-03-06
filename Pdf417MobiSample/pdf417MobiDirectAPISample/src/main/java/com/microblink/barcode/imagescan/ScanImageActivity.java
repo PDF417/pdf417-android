@@ -34,11 +34,12 @@ public class ScanImageActivity extends Activity {
 
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
 
-    private static final String ASSETS_BITMAP_NAME = "dual-barcode-sample.png";
     /** Request code for built-in camera activity. */
     public static final int CAMERA_REQUEST_CODE = 0x101;
+
     /** file that will hold the image taken from camera */
     private String mCameraFile = Environment.getExternalStorageDirectory().getPath() + "/my-photo.jpg";
+
     /**  tag for logcat */
     public static final String TAG = "pdf417mobiDemo";
 
@@ -71,44 +72,48 @@ public class ScanImageActivity extends Activity {
         // new recognizers from intent data and automatically bundle them inside mRecognizerBundle
         mRecognizerBundle.loadFromIntent(intent);
 
-        if ( savedInstanceState == null ) {
-            // initial bitmap is loaded from assets
-            AssetManager assets = getAssets();
-            InputStream istr = null;
-            try {
-                istr = assets.open(ASSETS_BITMAP_NAME);
-                // load inital bitmap from assets
-                BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inPreferredConfig = BITMAP_CONFIG;
-                mBitmap = BitmapFactory.decodeStream(istr, null, options);
-            } catch (IOException e) {
-                // handle exception
-                Log.e(TAG, "Failed to load image from assets!");
-                Toast.makeText(this, "Failed to load image from assets!", Toast.LENGTH_LONG).show();
-                finish();
-                return;
-            } finally {
-                try {
-                    if (istr != null) {
-                        istr.close();
-                    }
-                } catch (IOException ignored) {
-                }
-            }
+        if (savedInstanceState == null) {
+            loadDefaultBitmapFromAssets();
         } else {
-            // otherwise, load bitmap from saved state
             mBitmap = savedInstanceState.getParcelable("bitmap");
         }
 
-        // show loaded bitmap
-        mImgView.setImageBitmap(mBitmap);
+        if (mBitmap != null) {
+            // show loaded bitmap
+            mImgView.setImageBitmap(mBitmap);
+        } else {
+            Toast.makeText(this, "Failed to load image from assets!", Toast.LENGTH_LONG).show();
+            finish();
+        }
+    }
+
+    private void loadDefaultBitmapFromAssets() {
+        AssetManager assets = getAssets();
+        InputStream istr = null;
+        try {
+            istr = assets.open("dual-barcode-sample.png");
+            // load inital bitmap from assets
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = BITMAP_CONFIG;
+            mBitmap = BitmapFactory.decodeStream(istr, null, options);
+        } catch (IOException e) {
+            // handle exception
+            Log.e(TAG, "Failed to load image from assets!");
+            mBitmap = null;
+        } finally {
+            try {
+                if (istr != null) {
+                    istr.close();
+                }
+            } catch (IOException ignored) {
+            }
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        // get the recognizer instance
         try {
             mRecognizerRunner = RecognizerRunner.getSingletonInstance();
         } catch (FeatureNotSupportedException e) {
@@ -117,7 +122,6 @@ public class ScanImageActivity extends Activity {
             return;
         }
 
-        // initialize recognizer singleton
         mRecognizerRunner.initialize(this, mRecognizerBundle, new DirectApiErrorListener() {
             @Override
             public void onRecognizerError(Throwable t) {
@@ -158,60 +162,49 @@ public class ScanImageActivity extends Activity {
         mRecognizerBundle.clearSavedState();
     }
 
-    /**
-     * Starts built-in camera intent for taking scan images.
-     */
-    private void startCamera() {
+    public void onTakePhotoClick(View view) {
+        // Starts built-in camera intent for taking scan images
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(mCameraFile)));
         startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
     }
 
-    /**
-     * Handler for button "Take Photo"
-     */
-    public void takePhotoHandler(View view) {
-        startCamera();
-    }
-
-    /**
-     * Handler for button "Scan"
-     */
-    public void scanButtonHandler(View view) {
-        if (mBitmap != null) {
-            // disable button
-            mScanButton.setEnabled(false);
-            // show progress dialog
-            final ProgressDialog pd = new ProgressDialog(this);
-            pd.setIndeterminate(true);
-            pd.setMessage("Performing recognition");
-            pd.setCancelable(false);
-            pd.show();
-
-            // recognize image
-            mRecognizerRunner.recognizeBitmap(mBitmap, Orientation.ORIENTATION_LANDSCAPE_RIGHT, new ScanResultListener() {
-                @Override
-                public void onScanningDone(@NonNull RecognitionSuccessType recognitionSuccessType) {
-                    if (recognitionSuccessType != RecognitionSuccessType.UNSUCCESSFUL) {
-                        // return results (if successful or partial)
-                        Intent intent = new Intent();
-                        mRecognizerBundle.saveToIntent(intent);
-                        setResult(RESULT_OK, intent);
-                        finish();
-                    } else {
-                        Toast.makeText(ScanImageActivity.this, "Nothing scanned!", Toast.LENGTH_SHORT).show();
-                        // enable button again
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mScanButton.setEnabled(true);
-                                pd.dismiss();
-                            }
-                        });
-                    }
-                }
-            });
+    public void onScanClick(View view) {
+        if (mBitmap == null) {
+            return;
         }
+
+        mScanButton.setEnabled(false);
+
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setIndeterminate(true);
+        pd.setMessage("Performing recognition");
+        pd.setCancelable(false);
+        pd.show();
+
+        // recognize image
+        mRecognizerRunner.recognizeBitmap(mBitmap, Orientation.ORIENTATION_LANDSCAPE_RIGHT, new ScanResultListener() {
+            @Override
+            public void onScanningDone(@NonNull RecognitionSuccessType recognitionSuccessType) {
+                if (recognitionSuccessType != RecognitionSuccessType.UNSUCCESSFUL) {
+                    // return results (if successful or partial)
+                    Intent intent = new Intent();
+                    mRecognizerBundle.saveToIntent(intent);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                } else {
+                    Toast.makeText(ScanImageActivity.this, "Nothing scanned!", Toast.LENGTH_SHORT).show();
+                    // enable button again
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mScanButton.setEnabled(true);
+                            pd.dismiss();
+                        }
+                    });
+                }
+            }
+        });
     }
 
     @Override
