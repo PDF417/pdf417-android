@@ -5,7 +5,7 @@ import android.app.Application;
 import com.microblink.MicroblinkSDK;
 import com.microblink.intent.IntentDataTransferMode;
 
-public final class DirectAPIDemo extends Application {
+public final class DirectApiDemoApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
