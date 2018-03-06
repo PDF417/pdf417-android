@@ -9,5 +9,5 @@ android:
         - android-26
         - extra-android-m2repository
 script:
-    - cd Pdf417MobiDemo
+    - cd Pdf417MobiSample
     - ./gradlew clean assembleRelease
