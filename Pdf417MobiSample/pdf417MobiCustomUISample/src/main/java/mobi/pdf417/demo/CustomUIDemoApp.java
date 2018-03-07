@@ -5,7 +5,7 @@ import android.app.Application;
 import com.microblink.MicroblinkSDK;
 import com.microblink.intent.IntentDataTransferMode;
 
-public final class CustomUIDemo extends Application {
+public final class CustomUIDemoApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();

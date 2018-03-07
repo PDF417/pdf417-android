@@ -65,62 +65,41 @@ public class MenuActivity extends Activity {
     }
 
     private void initRecognizer() {
-        // Don't enable recognizers and barcode types which you don't actually use because this will
-        // significantly decrease the scanning speed.
-
-        // create new BarcodeRecognizer
+        // You have to enable recognizers and barcode types you want to support
+        // Don't enable what you don't need, it will significantly decrease scanning performance
         mBarcodeRecognizer = new BarcodeRecognizer();
-        // enable scanning of PDF417 2D barcpde
         mBarcodeRecognizer.setScanPDF417(true);
-        // enable scanning of QR code
         mBarcodeRecognizer.setScanQRCode(true);
 
-        // create bundle BarcodeRecognizer within RecognizerBundle
         mRecognizerBundle = new RecognizerBundle(mBarcodeRecognizer);
     }
 
-    /**
-     * Handler for "Scan Image" button
-     */
     public void onScanImageClick(View v) {
         Intent intent = new Intent(this, ScanImageActivity.class);
-        // save RecognizerBundle into Intent
         mRecognizerBundle.saveToIntent(intent);
         startActivityForResult(intent, MY_REQUEST_CODE);
     }
 
-    /**
-     * Handler for "Camera 1 Activity" and "Camera 2 Activity" buttons
-     */
-    public void onCameraScanClick(View view) {
-        Class<?> targetActivity = null;
-        switch (view.getId()) {
-            case R.id.btn_camera1:
-                targetActivity = Camera1Activity.class;
-                break;
-            case R.id.btn_camera2:
-                if (Build.VERSION.SDK_INT >= 21) {
-                    targetActivity = Camera2Activity.class;
-                } else {
-                    Toast.makeText(this, "Camera2 API requires Android 5.0 or newer. Camera1 direct API will be used", Toast.LENGTH_SHORT).show();
-                    targetActivity = Camera1Activity.class;
-                }
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown button clicked!");
+    public void onCamera1Click(View view) {
+        startCameraActivity(Camera1Activity.class);
+    }
+
+    public void onCamera2Click(View view) {
+        if (Build.VERSION.SDK_INT >= 21) {
+            startCameraActivity(Camera2Activity.class);
+        } else {
+            Toast.makeText(this, "Camera2 API requires Android 5.0 or newer. Camera1 direct API will be used", Toast.LENGTH_SHORT).show();
+            startCameraActivity(Camera1Activity.class);
         }
+    }
 
+    private void startCameraActivity(Class targetActivity) {
         Intent intent = new Intent(this, targetActivity);
-        // save RecognizerBundle into Intent
         mRecognizerBundle.saveToIntent(intent);
         startActivityForResult(intent, MY_REQUEST_CODE);
     }
 
-    public void showResults() {
-        // after calling mRecognizerBundle.loadFromIntent, results are stored within mBarcodeRecognizer
-
-        BarcodeRecognizer.Result result = mBarcodeRecognizer.getResult();
-
+    public void showResults(BarcodeRecognizer.Result result) {
         StringBuilder sb = new StringBuilder(result.getBarcodeFormat().name());
         sb.append("\n\n");
         if (result.isUncertain()) {
@@ -128,10 +107,8 @@ public class MenuActivity extends Activity {
         }
         sb.append(result.getStringData());
 
-        byte[] rawDataBuffer = result.getRawData();
-        sb.append("\n");
-        sb.append("Raw data:\n");
-        sb.append(Arrays.toString(rawDataBuffer));
+        sb.append("\nRaw data:\n");
+        sb.append(Arrays.toString(result.getRawData()));
         sb.append("\n\n\n");
 
         AlertDialog dialog = new AlertDialog.Builder(this)
@@ -146,10 +123,11 @@ public class MenuActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == MY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            // First, obtain recognition result
-            // method loadFromIntent will update bundled recognizers with results that have arrived
+            // updates bundled recognizers with results that have arrived
             mRecognizerBundle.loadFromIntent(data);
-            showResults();
+            // after calling mRecognizerBundle.loadFromIntent, results are stored within mBarcodeRecognizer
+            BarcodeRecognizer.Result result = mBarcodeRecognizer.getResult();
+            showResults(result);
         }
     }
 

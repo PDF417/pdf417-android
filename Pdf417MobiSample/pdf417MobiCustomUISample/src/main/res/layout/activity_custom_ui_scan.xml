@@ -1,13 +1,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/my_default_scan_root"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mobi.pdf417.demo.DefaultScanActivity">
+    tools:context="mobi.pdf417.demo.CustomUIScanActivity">
 
     <com.microblink.view.recognition.RecognizerRunnerView
-        android:id="@+id/recognizerRunnerView"
+        android:id="@+id/recognizer_runner_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         custom:mb_initialOrientation="portrait">

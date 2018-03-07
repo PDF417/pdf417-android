@@ -5,10 +5,6 @@
     android:versionCode="8"
     android:versionName="2.0" >
 
-    <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="19" />
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
@@ -21,12 +17,12 @@
     </uses-feature>
 
     <application
-        android:name="mobi.pdf417.demo.CustomUIDemo"
+        android:name="mobi.pdf417.demo.CustomUIDemoApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".Pdf417CustomUIDemo"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
@@ -41,7 +37,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".DefaultScanActivity"
+            android:name=".CustomUIScanActivity"
             android:screenOrientation="portrait" >
         </activity>
     </application>

@@ -17,4 +17,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/bg_button</item>
+    </style>
+
 </resources>
