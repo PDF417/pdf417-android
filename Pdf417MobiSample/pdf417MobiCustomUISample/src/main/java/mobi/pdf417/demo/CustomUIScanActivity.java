@@ -21,6 +21,7 @@ import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.geometry.Rectangle;
 import com.microblink.hardware.SuccessCallback;
 import com.microblink.hardware.orientation.Orientation;
+import com.microblink.intent.IntentDataTransferMode;
 import com.microblink.metadata.MetadataCallbacks;
 import com.microblink.metadata.detection.FailedDetectionCallback;
 import com.microblink.metadata.detection.points.DisplayablePointsDetection;
@@ -113,6 +114,13 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
         mRecognizerRunnerView.create();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // recognizer bundle state must be saved in onSaveInstanceState
+        mRecognizerBundle.saveState();
+    }
+
     private void setupQuadViewManager() {
         // Use provided factory method from QuadViewManagerFactory that can instantiate the
         // QuadViewManager based on several presets defined in QuadViewPreset enum. Details about
@@ -182,6 +190,9 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
     protected void onResume() {
         super.onResume();
         mRecognizerRunnerView.resume();
+        // clear saved state to be sure that data is cleared from internal cache and from file when
+        // intent optimisation is used
+        mRecognizerBundle.clearSavedState();
     }
 
     @Override
