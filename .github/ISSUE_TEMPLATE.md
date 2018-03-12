@@ -1,8 +1,14 @@
+Before filing a bug, check that you are using the latest version of the PDF417 SDK.
+
+Also, make sure your issue isn't on [the list of common problems.](https://github.com/PDF417/pdf417-android#-frequently-asked-questions-and-known-problems)
+
+---
+
 ### Description
 
 Issue description goes here.
 
-Please try to provide steps to reproduce the issue.
+Please try to provide steps to reproduce the issue, or minimal code sample. It will help us resolve the issue faster.
 
 ### Environment Details
 
