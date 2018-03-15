@@ -117,7 +117,15 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        // recognizer bundle state must be saved in onSaveInstanceState
+         /*
+         * If using IntentDataTransferMode.PERSISTED_OPTIMISED transfer mode for RecognitionBundle,
+         * then it is backed by temporary file which gets deleted each time loadFromBundle is called.
+         * This can cause crash if your activity gets restarted by the Android. To prevent that crash
+         * you should save RecognizerBundle's state in your onSaveInstanceState method. This will
+         * ensure that bundle is written back to temporary file that will be available for loadFromBundle
+         * method if activity gets restarted. However, if no restart occur, you must ensure this
+         * temporary file gets deleted. Therefore, you must call clearSavedState in your onResume callback.
+         */
         mRecognizerBundle.saveState();
     }
 
@@ -190,8 +198,11 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
     protected void onResume() {
         super.onResume();
         mRecognizerRunnerView.resume();
-        // clear saved state to be sure that data is cleared from internal cache and from file when
-        // intent optimisation is used
+        /*
+         * Clear temporary file created in onSaveInstanceState in case no activity restart happened
+         * after call to onSaveInstanceState. If restart happened and temporary file was consumed
+         * by loadFromBundle method in onCreate, then this method will do nothing.
+         */
         mRecognizerBundle.clearSavedState();
     }
 

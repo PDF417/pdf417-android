@@ -5,30 +5,40 @@
                 android:layout_height="fill_parent"
                 android:gravity="center" >
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" >
-
-        <Button
-            android:id="@+id/btnScan"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:onClick="onScanClick"
-            android:text="@string/scan" >
-        </Button>
+        android:padding="12dp"
+        android:layout_alignParentTop="true"
+        android:gravity="center">
 
         <Button
             android:id="@+id/btnTakePhoto"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:onClick="onTakePhotoClick"
-            android:text="@string/takePhoto" >
-        </Button>
-    </RelativeLayout>
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="@string/takePhoto" />
+
+        <Button
+            android:id="@+id/btnChoosePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:onClick="onChoosePhotoClick"
+            android:text="@string/choosePhoto" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:onClick="onScanClick"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:text="@string/scan" />
 
     <ImageView
         android:id="@+id/imgImage"
@@ -37,6 +47,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/toolbar" />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_below="@id/btnScan" />
 
 </RelativeLayout>
