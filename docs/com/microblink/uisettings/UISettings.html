@@ -163,7 +163,7 @@ extends java.lang.Object</pre>
                       java.lang.String&nbsp;optionName)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>protected abstract java.lang.Class</code></td>
+<td class="colFirst"><code>abstract java.lang.Class</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/uisettings/UISettings.html#getTargetActivity--">getTargetActivity</a></span>()</code>
 <div class="block">Returns target activity.</div>
 </td>
@@ -213,7 +213,7 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/uisettings/UISettings.html#readString-java.lang.String-">readString</a></span>(java.lang.String&nbsp;optionName)</code>&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>protected void</code></td>
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/uisettings/UISettings.html#saveToIntent-android.content.Intent-">saveToIntent</a></span>(android.content.Intent&nbsp;intent)</code>
 <div class="block">Saves this scan activity settings to <code>Intent</code> so it can be passed to the
  corresponding scan activity.</div>
@@ -316,11 +316,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>saveToIntent</h4>
 <pre>@CallSuper
-protected&nbsp;void&nbsp;saveToIntent(@NonNull
-                                       android.content.Intent&nbsp;intent)</pre>
+public&nbsp;void&nbsp;saveToIntent(@NonNull
+                                    android.content.Intent&nbsp;intent)</pre>
 <div class="block">Saves this scan activity settings to <code>Intent</code> so it can be passed to the
  corresponding scan activity. Intent target activity must be set before calling this method,
- and target activity must be compatible with this settings.</div>
+ and target activity must be compatible with this settings.
+
+ DO NOT USE THIS METHOD UNLESS YOU KNOW WHAT YOU ARE DOING. Improper usage will crash your app.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>intent</code> - Intent to which this scan activity settings should be saved.</dd>
@@ -425,8 +427,10 @@ protected&nbsp;void&nbsp;saveToIntent(@NonNull
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getTargetActivity</h4>
-<pre>protected abstract&nbsp;java.lang.Class&nbsp;getTargetActivity()</pre>
-<div class="block">Returns target activity. Concrete settings can be used only with the corresponding activity.</div>
+<pre>public abstract&nbsp;java.lang.Class&nbsp;getTargetActivity()</pre>
+<div class="block">Returns target activity. Concrete settings can be used only with the corresponding activity.
+ This method is public for convenience when you are not able to use <a href="../../../com/microblink/uisettings/ActivityRunner.html" title="class in com.microblink.uisettings"><code>ActivityRunner</code></a>.
+ DO NOT USE THIS METHOD UNLESS YOU KNOW WHAT YOU ARE DOING. Improper usage will crash your app.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>target activity.</dd>

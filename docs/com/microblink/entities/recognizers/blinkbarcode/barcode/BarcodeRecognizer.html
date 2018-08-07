@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li>Prev&nbsp;Class</li>
 <li><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -242,29 +242,28 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#isInverseScanning--">isInverseScanning</a></span>()</code>
-<div class="block">Enables scanning of barcodes with inverse intensity values
- (e.g.</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#isNullQuietZoneAllowed--">isNullQuietZoneAllowed</a></span>()</code>
 <div class="block">Allow scanning PDF417 barcodes which don't have quiet zone
  surrounding it (e.g.</div>
 </td>
 </tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#isScanInverse--">isScanInverse</a></span>()</code>
+<div class="block">Enables scanning of barcodes with inverse intensity values (e.g.</div>
+</td>
+</tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#isSlowerThoroughScan--">isSlowerThoroughScan</a></span>()</code>
-<div class="block">Enable slower, but more thorough scanning, thus giving higher possibility of successful scan.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#isScanUncertain--">isScanUncertain</a></span>()</code>
+<div class="block">Enable decoding of non-standard PDF417 barcodes, but without
+ guarantee that all data will be read.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#isUncertainDecoding--">isUncertainDecoding</a></span>()</code>
-<div class="block">Enable decoding of non-standard PDF417 barcodes, but without
- guarantee that all data will be read.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#isSlowerThoroughScan--">isSlowerThoroughScan</a></span>()</code>
+<div class="block">Enable slower, but more thorough scanning, thus giving higher possibility of successful scan.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
@@ -279,101 +278,100 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setInverseScanning-boolean-">setInverseScanning</a></span>(boolean&nbsp;inverseScanning)</code>
-<div class="block">Enables scanning of barcodes with inverse intensity values
- (e.g.</div>
-</td>
-</tr>
-<tr id="i11" class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setNullQuietZoneAllowed-boolean-">setNullQuietZoneAllowed</a></span>(boolean&nbsp;nullQuietZoneAllowed)</code>
 <div class="block">Allow scanning PDF417 barcodes which don't have quiet zone
  surrounding it (e.g.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setReadCode39AsExtendedData-boolean-">setReadCode39AsExtendedData</a></span>(boolean&nbsp;readCode39AsExtendedData)</code>
 <div class="block">Enable reading code39 barcode contents as extended data.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanAztecCode-boolean-">setScanAztecCode</a></span>(boolean&nbsp;scanAztecCode)</code>
 <div class="block">Should Aztec 2D barcode be scanned.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanCode128-boolean-">setScanCode128</a></span>(boolean&nbsp;scanCode128)</code>
 <div class="block">Should Code128 barcode be scanned.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanCode39-boolean-">setScanCode39</a></span>(boolean&nbsp;scanCode39)</code>
 <div class="block">Should Code39 barcode be scanned.</div>
 </td>
 </tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanDataMatrix-boolean-">setScanDataMatrix</a></span>(boolean&nbsp;scanDataMatrix)</code>
+<div class="block">Should DataMatrix 2D barcode be scanned.</div>
+</td>
+</tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanDataMatrixCode-boolean-">setScanDataMatrixCode</a></span>(boolean&nbsp;scanDataMatrixCode)</code>
-<div class="block">Should DataMatrix 2D barcode be scanned.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanEan13-boolean-">setScanEan13</a></span>(boolean&nbsp;scanEan13)</code>
+<div class="block">Should EAN13 barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanEAN13Code-boolean-">setScanEAN13Code</a></span>(boolean&nbsp;scanEAN13Code)</code>
-<div class="block">Should EAN13 barcode be scanned.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanEan8-boolean-">setScanEan8</a></span>(boolean&nbsp;scanEan8)</code>
+<div class="block">Should EAN8 barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanEAN8Code-boolean-">setScanEAN8Code</a></span>(boolean&nbsp;scanEAN8Code)</code>
-<div class="block">Should EAN8 barcode be scanned.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanInverse-boolean-">setScanInverse</a></span>(boolean&nbsp;scanInverse)</code>
+<div class="block">Enables scanning of barcodes with inverse intensity values (e.g.</div>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanITFCode-boolean-">setScanITFCode</a></span>(boolean&nbsp;scanITFCode)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanItf-boolean-">setScanItf</a></span>(boolean&nbsp;scanItf)</code>
 <div class="block">Should ITF barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanPDF417-boolean-">setScanPDF417</a></span>(boolean&nbsp;scanPDF417)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanPdf417-boolean-">setScanPdf417</a></span>(boolean&nbsp;scanPdf417)</code>
 <div class="block">Should PDF417 2D barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanQRCode-boolean-">setScanQRCode</a></span>(boolean&nbsp;scanQRCode)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanQrCode-boolean-">setScanQrCode</a></span>(boolean&nbsp;scanQrCode)</code>
 <div class="block">Should QR code be scanned.</div>
 </td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanUPCACode-boolean-">setScanUPCACode</a></span>(boolean&nbsp;scanUPCACode)</code>
-<div class="block">Should UPCA barcode be scanned.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanUncertain-boolean-">setScanUncertain</a></span>(boolean&nbsp;scanUncertain)</code>
+<div class="block">Enable decoding of non-standard PDF417 barcodes, but without
+ guarantee that all data will be read.</div>
 </td>
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanUPCECode-boolean-">setScanUPCECode</a></span>(boolean&nbsp;scanUPCECode)</code>
-<div class="block">Should UPCE barcode be scanned.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanUpca-boolean-">setScanUpca</a></span>(boolean&nbsp;scanUpca)</code>
+<div class="block">Should UPCA barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setSlowerThoroughScan-boolean-">setSlowerThoroughScan</a></span>(boolean&nbsp;slowerThoroughScan)</code>
-<div class="block">Enable slower, but more thorough scanning, thus giving higher possibility of successful scan.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setScanUpce-boolean-">setScanUpce</a></span>(boolean&nbsp;scanUpce)</code>
+<div class="block">Should UPCE barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i25" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setUncertainDecoding-boolean-">setUncertainDecoding</a></span>(boolean&nbsp;uncertainDecoding)</code>
-<div class="block">Enable decoding of non-standard PDF417 barcodes, but without
- guarantee that all data will be read.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#setSlowerThoroughScan-boolean-">setSlowerThoroughScan</a></span>(boolean&nbsp;slowerThoroughScan)</code>
+<div class="block">Enable slower, but more thorough scanning, thus giving higher possibility of successful scan.</div>
 </td>
 </tr>
 <tr id="i26" class="altColor">
@@ -402,49 +400,49 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 </tr>
 <tr id="i30" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanDataMatrixCode--">shouldScanDataMatrixCode</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanDataMatrix--">shouldScanDataMatrix</a></span>()</code>
 <div class="block">Should DataMatrix 2D barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i31" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanEAN13Code--">shouldScanEAN13Code</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanEan13--">shouldScanEan13</a></span>()</code>
 <div class="block">Should EAN13 barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i32" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanEAN8Code--">shouldScanEAN8Code</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanEan8--">shouldScanEan8</a></span>()</code>
 <div class="block">Should EAN8 barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i33" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanITFCode--">shouldScanITFCode</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanItf--">shouldScanItf</a></span>()</code>
 <div class="block">Should ITF barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i34" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanPDF417--">shouldScanPDF417</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanPdf417--">shouldScanPdf417</a></span>()</code>
 <div class="block">Should PDF417 2D barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i35" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanQRCode--">shouldScanQRCode</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanQrCode--">shouldScanQrCode</a></span>()</code>
 <div class="block">Should QR code be scanned.</div>
 </td>
 </tr>
 <tr id="i36" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanUPCACode--">shouldScanUPCACode</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanUpca--">shouldScanUpca</a></span>()</code>
 <div class="block">Should UPCA barcode be scanned.</div>
 </td>
 </tr>
 <tr id="i37" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanUPCECode--">shouldScanUPCECode</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html#shouldScanUpce--">shouldScanUpce</a></span>()</code>
 <div class="block">Should UPCE barcode be scanned.</div>
 </td>
 </tr>
@@ -458,14 +456,14 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.microblink.entities.recognizers.<a href="../../../../../../com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers">Recognizer</a></h3>
-<code><a href="../../../../../../com/microblink/entities/recognizers/Recognizer.html#nativeGetNativeResultContext-long-">nativeGetNativeResultContext</a>, <a href="../../../../../../com/microblink/entities/recognizers/Recognizer.html#requiresAutofocus--">requiresAutofocus</a>, <a href="../../../../../../com/microblink/entities/recognizers/Recognizer.html#requiresLandscapeMode--">requiresLandscapeMode</a></code></li>
+<code><a href="../../../../../../com/microblink/entities/recognizers/Recognizer.html#requiresAutofocus--">requiresAutofocus</a>, <a href="../../../../../../com/microblink/entities/recognizers/Recognizer.html#requiresLandscapeMode--">requiresLandscapeMode</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.com.microblink.entities.Entity">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.microblink.entities.<a href="../../../../../../com/microblink/entities/Entity.html" title="class in com.microblink.entities">Entity</a></h3>
-<code><a href="../../../../../../com/microblink/entities/Entity.html#describeContents--">describeContents</a>, <a href="../../../../../../com/microblink/entities/Entity.html#finalize--">finalize</a>, <a href="../../../../../../com/microblink/entities/Entity.html#getNativeContext--">getNativeContext</a>, <a href="../../../../../../com/microblink/entities/Entity.html#getResult--">getResult</a>, <a href="../../../../../../com/microblink/entities/Entity.html#readFromParcel-android.os.Parcel-">readFromParcel</a>, <a href="../../../../../../com/microblink/entities/Entity.html#writeToParcel-android.os.Parcel-int-">writeToParcel</a></code></li>
+<code><a href="../../../../../../com/microblink/entities/Entity.html#describeContents--">describeContents</a>, <a href="../../../../../../com/microblink/entities/Entity.html#finalize--">finalize</a>, <a href="../../../../../../com/microblink/entities/Entity.html#getNativeContext--">getNativeContext</a>, <a href="../../../../../../com/microblink/entities/Entity.html#getResult--">getResult</a>, <a href="../../../../../../com/microblink/entities/Entity.html#nativeGetNativeResultContext-long-">nativeGetNativeResultContext</a>, <a href="../../../../../../com/microblink/entities/Entity.html#readFromParcel-android.os.Parcel-">readFromParcel</a>, <a href="../../../../../../com/microblink/entities/Entity.html#writeToParcel-android.os.Parcel-int-">writeToParcel</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -529,7 +527,8 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <li class="blockList">
 <h4>setScanCode128</h4>
 <pre>public&nbsp;void&nbsp;setScanCode128(boolean&nbsp;scanCode128)</pre>
-<div class="block">Should Code128 barcode be scanned.</div>
+<div class="block">Should Code128 barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="shouldScanCode128--">
@@ -539,47 +538,30 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <li class="blockList">
 <h4>shouldScanCode128</h4>
 <pre>public&nbsp;boolean&nbsp;shouldScanCode128()</pre>
-<div class="block">Should Code128 barcode be scanned.</div>
+<div class="block">Should Code128 barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
-<a name="setScanITFCode-boolean-">
+<a name="setScanDataMatrix-boolean-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setScanITFCode</h4>
-<pre>public&nbsp;void&nbsp;setScanITFCode(boolean&nbsp;scanITFCode)</pre>
-<div class="block">Should ITF barcode be scanned.</div>
+<h4>setScanDataMatrix</h4>
+<pre>public&nbsp;void&nbsp;setScanDataMatrix(boolean&nbsp;scanDataMatrix)</pre>
+<div class="block">Should DataMatrix 2D barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
-<a name="shouldScanITFCode--">
+<a name="shouldScanDataMatrix--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>shouldScanITFCode</h4>
-<pre>public&nbsp;boolean&nbsp;shouldScanITFCode()</pre>
-<div class="block">Should ITF barcode be scanned.</div>
-</li>
-</ul>
-<a name="setScanDataMatrixCode-boolean-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setScanDataMatrixCode</h4>
-<pre>public&nbsp;void&nbsp;setScanDataMatrixCode(boolean&nbsp;scanDataMatrixCode)</pre>
-<div class="block">Should DataMatrix 2D barcode be scanned.</div>
-</li>
-</ul>
-<a name="shouldScanDataMatrixCode--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>shouldScanDataMatrixCode</h4>
-<pre>public&nbsp;boolean&nbsp;shouldScanDataMatrixCode()</pre>
-<div class="block">Should DataMatrix 2D barcode be scanned.</div>
+<h4>shouldScanDataMatrix</h4>
+<pre>public&nbsp;boolean&nbsp;shouldScanDataMatrix()</pre>
+<div class="block">Should DataMatrix 2D barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="setScanCode39-boolean-">
@@ -589,7 +571,8 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <li class="blockList">
 <h4>setScanCode39</h4>
 <pre>public&nbsp;void&nbsp;setScanCode39(boolean&nbsp;scanCode39)</pre>
-<div class="block">Should Code39 barcode be scanned.</div>
+<div class="block">Should Code39 barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="shouldScanCode39--">
@@ -599,7 +582,8 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <li class="blockList">
 <h4>shouldScanCode39</h4>
 <pre>public&nbsp;boolean&nbsp;shouldScanCode39()</pre>
-<div class="block">Should Code39 barcode be scanned.</div>
+<div class="block">Should Code39 barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="setSlowerThoroughScan-boolean-">
@@ -610,6 +594,8 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <h4>setSlowerThoroughScan</h4>
 <pre>public&nbsp;void&nbsp;setSlowerThoroughScan(boolean&nbsp;slowerThoroughScan)</pre>
 <div class="block">Enable slower, but more thorough scanning, thus giving higher possibility of successful scan.
+
+ By default, this is set to 'true'
 
  NOTE: this option has no effect on PDF417 barcode scanning</div>
 </li>
@@ -623,115 +609,147 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <pre>public&nbsp;boolean&nbsp;isSlowerThoroughScan()</pre>
 <div class="block">Enable slower, but more thorough scanning, thus giving higher possibility of successful scan.
 
+ By default, this is set to 'true'
+
  NOTE: this option has no effect on PDF417 barcode scanning</div>
 </li>
 </ul>
-<a name="setUncertainDecoding-boolean-">
+<a name="setScanEan8-boolean-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setUncertainDecoding</h4>
-<pre>public&nbsp;void&nbsp;setUncertainDecoding(boolean&nbsp;uncertainDecoding)</pre>
+<h4>setScanEan8</h4>
+<pre>public&nbsp;void&nbsp;setScanEan8(boolean&nbsp;scanEan8)</pre>
+<div class="block">Should EAN8 barcode be scanned.
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="shouldScanEan8--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>shouldScanEan8</h4>
+<pre>public&nbsp;boolean&nbsp;shouldScanEan8()</pre>
+<div class="block">Should EAN8 barcode be scanned.
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="setScanEan13-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setScanEan13</h4>
+<pre>public&nbsp;void&nbsp;setScanEan13(boolean&nbsp;scanEan13)</pre>
+<div class="block">Should EAN13 barcode be scanned.
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="shouldScanEan13--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>shouldScanEan13</h4>
+<pre>public&nbsp;boolean&nbsp;shouldScanEan13()</pre>
+<div class="block">Should EAN13 barcode be scanned.
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="setScanPdf417-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setScanPdf417</h4>
+<pre>public&nbsp;void&nbsp;setScanPdf417(boolean&nbsp;scanPdf417)</pre>
+<div class="block">Should PDF417 2D barcode be scanned.
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="shouldScanPdf417--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>shouldScanPdf417</h4>
+<pre>public&nbsp;boolean&nbsp;shouldScanPdf417()</pre>
+<div class="block">Should PDF417 2D barcode be scanned.
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="setScanInverse-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setScanInverse</h4>
+<pre>public&nbsp;void&nbsp;setScanInverse(boolean&nbsp;scanInverse)</pre>
+<div class="block">Enables scanning of barcodes with inverse intensity values (e.g. white barcode on black background)
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="isScanInverse--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isScanInverse</h4>
+<pre>public&nbsp;boolean&nbsp;isScanInverse()</pre>
+<div class="block">Enables scanning of barcodes with inverse intensity values (e.g. white barcode on black background)
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="setScanUncertain-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setScanUncertain</h4>
+<pre>public&nbsp;void&nbsp;setScanUncertain(boolean&nbsp;scanUncertain)</pre>
 <div class="block">Enable decoding of non-standard PDF417 barcodes, but without
  guarantee that all data will be read. This option should be enabled
  for PDF417 barcode that has missing rows (i.e. not whole barcode is
- printed)</div>
+ printed)
+ By default, this is set to 'true'</div>
 </li>
 </ul>
-<a name="isUncertainDecoding--">
+<a name="isScanUncertain--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>isUncertainDecoding</h4>
-<pre>public&nbsp;boolean&nbsp;isUncertainDecoding()</pre>
+<h4>isScanUncertain</h4>
+<pre>public&nbsp;boolean&nbsp;isScanUncertain()</pre>
 <div class="block">Enable decoding of non-standard PDF417 barcodes, but without
  guarantee that all data will be read. This option should be enabled
  for PDF417 barcode that has missing rows (i.e. not whole barcode is
- printed)</div>
+ printed)
+ By default, this is set to 'true'</div>
 </li>
 </ul>
-<a name="setInverseScanning-boolean-">
+<a name="setScanUpce-boolean-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setInverseScanning</h4>
-<pre>public&nbsp;void&nbsp;setInverseScanning(boolean&nbsp;inverseScanning)</pre>
-<div class="block">Enables scanning of barcodes with inverse intensity values
- (e.g. white barcode on black background)</div>
+<h4>setScanUpce</h4>
+<pre>public&nbsp;void&nbsp;setScanUpce(boolean&nbsp;scanUpce)</pre>
+<div class="block">Should UPCE barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
-<a name="isInverseScanning--">
+<a name="shouldScanUpce--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>isInverseScanning</h4>
-<pre>public&nbsp;boolean&nbsp;isInverseScanning()</pre>
-<div class="block">Enables scanning of barcodes with inverse intensity values
- (e.g. white barcode on black background)</div>
-</li>
-</ul>
-<a name="setScanEAN13Code-boolean-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setScanEAN13Code</h4>
-<pre>public&nbsp;void&nbsp;setScanEAN13Code(boolean&nbsp;scanEAN13Code)</pre>
-<div class="block">Should EAN13 barcode be scanned.</div>
-</li>
-</ul>
-<a name="shouldScanEAN13Code--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>shouldScanEAN13Code</h4>
-<pre>public&nbsp;boolean&nbsp;shouldScanEAN13Code()</pre>
-<div class="block">Should EAN13 barcode be scanned.</div>
-</li>
-</ul>
-<a name="setScanPDF417-boolean-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setScanPDF417</h4>
-<pre>public&nbsp;void&nbsp;setScanPDF417(boolean&nbsp;scanPDF417)</pre>
-<div class="block">Should PDF417 2D barcode be scanned.</div>
-</li>
-</ul>
-<a name="shouldScanPDF417--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>shouldScanPDF417</h4>
-<pre>public&nbsp;boolean&nbsp;shouldScanPDF417()</pre>
-<div class="block">Should PDF417 2D barcode be scanned.</div>
-</li>
-</ul>
-<a name="setScanUPCECode-boolean-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setScanUPCECode</h4>
-<pre>public&nbsp;void&nbsp;setScanUPCECode(boolean&nbsp;scanUPCECode)</pre>
-<div class="block">Should UPCE barcode be scanned.</div>
-</li>
-</ul>
-<a name="shouldScanUPCECode--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>shouldScanUPCECode</h4>
-<pre>public&nbsp;boolean&nbsp;shouldScanUPCECode()</pre>
-<div class="block">Should UPCE barcode be scanned.</div>
+<h4>shouldScanUpce</h4>
+<pre>public&nbsp;boolean&nbsp;shouldScanUpce()</pre>
+<div class="block">Should UPCE barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="setReadCode39AsExtendedData-boolean-">
@@ -742,7 +760,9 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <h4>setReadCode39AsExtendedData</h4>
 <pre>public&nbsp;void&nbsp;setReadCode39AsExtendedData(boolean&nbsp;readCode39AsExtendedData)</pre>
 <div class="block">Enable reading code39 barcode contents as extended data. For more information about code39
- extended data (a.k.a. full ASCII mode), see https://en.wikipedia.org/wiki/Code_39#Full_ASCII_Code_39</div>
+ extended data (a.k.a. full ASCII mode), see https://en.wikipedia.org/wiki/Code_39#Full_ASCII_Code_39
+
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="shouldReadCode39AsExtendedData--">
@@ -753,7 +773,9 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <h4>shouldReadCode39AsExtendedData</h4>
 <pre>public&nbsp;boolean&nbsp;shouldReadCode39AsExtendedData()</pre>
 <div class="block">Enable reading code39 barcode contents as extended data. For more information about code39
- extended data (a.k.a. full ASCII mode), see https://en.wikipedia.org/wiki/Code_39#Full_ASCII_Code_39</div>
+ extended data (a.k.a. full ASCII mode), see https://en.wikipedia.org/wiki/Code_39#Full_ASCII_Code_39
+
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="setNullQuietZoneAllowed-boolean-">
@@ -765,7 +787,8 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <pre>public&nbsp;void&nbsp;setNullQuietZoneAllowed(boolean&nbsp;nullQuietZoneAllowed)</pre>
 <div class="block">Allow scanning PDF417 barcodes which don't have quiet zone
  surrounding it (e.g. text concatenated with barcode). This
- option can significantly increase recognition time.</div>
+ option can significantly increase recognition time.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="isNullQuietZoneAllowed--">
@@ -777,47 +800,74 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <pre>public&nbsp;boolean&nbsp;isNullQuietZoneAllowed()</pre>
 <div class="block">Allow scanning PDF417 barcodes which don't have quiet zone
  surrounding it (e.g. text concatenated with barcode). This
- option can significantly increase recognition time.</div>
+ option can significantly increase recognition time.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
-<a name="setScanUPCACode-boolean-">
+<a name="setScanItf-boolean-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setScanUPCACode</h4>
-<pre>public&nbsp;void&nbsp;setScanUPCACode(boolean&nbsp;scanUPCACode)</pre>
-<div class="block">Should UPCA barcode be scanned.</div>
+<h4>setScanItf</h4>
+<pre>public&nbsp;void&nbsp;setScanItf(boolean&nbsp;scanItf)</pre>
+<div class="block">Should ITF barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
-<a name="shouldScanUPCACode--">
+<a name="shouldScanItf--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>shouldScanUPCACode</h4>
-<pre>public&nbsp;boolean&nbsp;shouldScanUPCACode()</pre>
-<div class="block">Should UPCA barcode be scanned.</div>
+<h4>shouldScanItf</h4>
+<pre>public&nbsp;boolean&nbsp;shouldScanItf()</pre>
+<div class="block">Should ITF barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
-<a name="setScanQRCode-boolean-">
+<a name="setScanQrCode-boolean-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setScanQRCode</h4>
-<pre>public&nbsp;void&nbsp;setScanQRCode(boolean&nbsp;scanQRCode)</pre>
-<div class="block">Should QR code be scanned.</div>
+<h4>setScanQrCode</h4>
+<pre>public&nbsp;void&nbsp;setScanQrCode(boolean&nbsp;scanQrCode)</pre>
+<div class="block">Should QR code be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
-<a name="shouldScanQRCode--">
+<a name="shouldScanQrCode--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>shouldScanQRCode</h4>
-<pre>public&nbsp;boolean&nbsp;shouldScanQRCode()</pre>
-<div class="block">Should QR code be scanned.</div>
+<h4>shouldScanQrCode</h4>
+<pre>public&nbsp;boolean&nbsp;shouldScanQrCode()</pre>
+<div class="block">Should QR code be scanned.
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="setScanUpca-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setScanUpca</h4>
+<pre>public&nbsp;void&nbsp;setScanUpca(boolean&nbsp;scanUpca)</pre>
+<div class="block">Should UPCA barcode be scanned.
+ By default, this is set to 'false'</div>
+</li>
+</ul>
+<a name="shouldScanUpca--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>shouldScanUpca</h4>
+<pre>public&nbsp;boolean&nbsp;shouldScanUpca()</pre>
+<div class="block">Should UPCA barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="setScanAztecCode-boolean-">
@@ -827,7 +877,8 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <li class="blockList">
 <h4>setScanAztecCode</h4>
 <pre>public&nbsp;void&nbsp;setScanAztecCode(boolean&nbsp;scanAztecCode)</pre>
-<div class="block">Should Aztec 2D barcode be scanned.</div>
+<div class="block">Should Aztec 2D barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="shouldScanAztecCode--">
@@ -837,7 +888,8 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
 <li class="blockList">
 <h4>shouldScanAztecCode</h4>
 <pre>public&nbsp;boolean&nbsp;shouldScanAztecCode()</pre>
-<div class="block">Should Aztec 2D barcode be scanned.</div>
+<div class="block">Should Aztec 2D barcode be scanned.
+ By default, this is set to 'false'</div>
 </li>
 </ul>
 <a name="setAutoScaleDetection-boolean-">
@@ -851,6 +903,8 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
  If set to true, prior reading barcode, image scale will be
  corrected. This enabled correct reading of barcodes on high
  resolution images but slows down the recognition process.
+
+ By default, this is set to 'true'
 
  NOTE: This setting is applied only for Code39 and Code128 barcode scanning.</div>
 </li>
@@ -867,27 +921,9 @@ extends <a href="../../../../../../com/microblink/entities/recognizers/Recognize
  corrected. This enabled correct reading of barcodes on high
  resolution images but slows down the recognition process.
 
+ By default, this is set to 'true'
+
  NOTE: This setting is applied only for Code39 and Code128 barcode scanning.</div>
-</li>
-</ul>
-<a name="setScanEAN8Code-boolean-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setScanEAN8Code</h4>
-<pre>public&nbsp;void&nbsp;setScanEAN8Code(boolean&nbsp;scanEAN8Code)</pre>
-<div class="block">Should EAN8 barcode be scanned.</div>
-</li>
-</ul>
-<a name="shouldScanEAN8Code--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>shouldScanEAN8Code</h4>
-<pre>public&nbsp;boolean&nbsp;shouldScanEAN8Code()</pre>
-<div class="block">Should EAN8 barcode be scanned.</div>
 </li>
 </ul>
 <a name="terminateNative-long-">
@@ -964,7 +1000,7 @@ protected&nbsp;byte[]&nbsp;serializeNativeSettings()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../../com/microblink/entities/Entity.html#consumeResultFrom-E-">Entity</a></code></span></div>
 <div class="block">Consume result from other entity. The result from other will be put instead current result
  of this entity.
- This method is used inside <a href="../../../../../../com/microblink/entities/recognizers/RecognizerBundle.html#loadFromIntent-android.content.Intent-"><code>RecognizerBundle.loadFromIntent(Intent)</code></a>
+ This method is used inside <code>com.microblink.entities.recognizers.RecognizerBundle#loadFromIntent(Intent)</code>
  and similar methods to replace the result content of the saved entities with results that
  have arrived over <code>Intent</code></div>
 <dl>
@@ -1002,7 +1038,7 @@ protected&nbsp;byte[]&nbsp;serializeNativeSettings()</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li>Prev&nbsp;Class</li>
 <li><a href="../../../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -195,6 +195,12 @@ extends java.lang.Object</pre>
              java.lang.String&nbsp;licensee,
              android.content.Context&nbsp;applicationContext)</code>
 <div class="block">Set license key and unlock the SDK.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../com/microblink/MicroblinkSDK.html#setShowTimeLimitedLicenseWarning-boolean-">setShowTimeLimitedLicenseWarning</a></span>(boolean&nbsp;showTimeLimitedLicenseWarning)</code>
+<div class="block">Disable or enable showing of toast when time limited license key is entered.</div>
 </td>
 </tr>
 </table>
@@ -397,6 +403,23 @@ public static&nbsp;<a href="../../com/microblink/intent/IntentDataTransferMode.h
 <dd><code>intentDataTransferMode</code> - requested data transfer mode</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../com/microblink/intent/IntentDataTransferMode.html" title="class in com.microblink.intent"><code>IntentDataTransferMode</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="setShowTimeLimitedLicenseWarning-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setShowTimeLimitedLicenseWarning</h4>
+<pre>public static&nbsp;void&nbsp;setShowTimeLimitedLicenseWarning(boolean&nbsp;showTimeLimitedLicenseWarning)</pre>
+<div class="block">Disable or enable showing of toast when time limited license key is entered. By default, whenever
+ someone uses time-limited license key, a toast will appear informing user that license is time-limited.
+ This feature should protect you from accidentally using time-limited demo license key in production
+ version of your app.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>showTimeLimitedLicenseWarning</code> - whether or not warning for using time limited license should be shown</dd>
 </dl>
 </li>
 </ul>

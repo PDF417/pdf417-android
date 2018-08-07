@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -98,7 +98,12 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
+<li>&lt;any&gt;</li>
+<li>
+<ul class="inheritance">
 <li>com.microblink.entities.recognizers.RecognizerBundle</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -108,7 +113,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">RecognizerBundle</span>
-extends java.lang.Object</pre>
+extends &lt;any&gt;</pre>
 <div class="block">Represents a bundle of <a href="../../../../com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers"><code>Recognizer</code></a> objects that can travel via <code>Intent</code></div>
 </li>
 </ul>
@@ -182,93 +187,97 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#clearSavedState--">clearSavedState</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#consumeContentFromLoadedObject-com.microblink.entities.recognizers.RecognizerBundle-">consumeContentFromLoadedObject</a></span>(<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a>&nbsp;loadedBundle)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#describeContents--">describeContents</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>static <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#createFromIntent-android.content.Intent-">createFromIntent</a></span>(android.content.Intent&nbsp;intent)</code>
+<div class="block">Creates object of this class from <code>Intent</code>.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;o)</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>protected &lt;any&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#getConcreteCreator--">getConcreteCreator</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.FrameQualityEstimationMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.FrameQualityEstimationMode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#getFrameQualityEstimationMode--">getFrameQualityEstimationMode</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#getNumMsBeforeTimeout--">getNumMsBeforeTimeout</a></span>()</code>
 <div class="block">Returns the duration in milliseconds that needs to pass since scanning has begun in order to define timeout.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.RecognitionMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.RecognitionMode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#getRecognitionMode--">getRecognitionMode</a></span>()</code>
 <div class="block">Returns the current recognition mode.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers">Recognizer</a>[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#getRecognizers--">getRecognizers</a></span>()</code>
 <div class="block">Returns the array of recognizers associated with this bundle.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#loadFromIntent-android.content.Intent-">loadFromIntent</a></span>(android.content.Intent&nbsp;intent)</code>
-<div class="block">Loads this <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers"><code>RecognizerBundle</code></a> from <code>Intent</code> that has arrived from another <code>Activity</code>.</div>
-</td>
-</tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#saveState--">saveState</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>protected java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#getUniqueIdIntentExtraKey--">getUniqueIdIntentExtraKey</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#readFromParcel-android.os.Parcel-">readFromParcel</a></span>(android.os.Parcel&nbsp;in)</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#saveToIntent-android.content.Intent-">saveToIntent</a></span>(android.content.Intent&nbsp;intent)</code>
 <div class="block">Saves this <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers"><code>RecognizerBundle</code></a> to <code>Intent</code> so it can be passed to another <code>Activity</code>.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#setAllowMultipleScanResultsOnSingleImage-boolean-">setAllowMultipleScanResultsOnSingleImage</a></span>(boolean&nbsp;multiScan)</code>
 <div class="block">Sets whether or not outputting of multiple scan results from same image
  is allowed.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#setFrameQualityEstimationMode-com.microblink.entities.recognizers.RecognizerBundle.FrameQualityEstimationMode-">setFrameQualityEstimationMode</a></span>(<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.FrameQualityEstimationMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.FrameQualityEstimationMode</a>&nbsp;mode)</code>
 <div class="block">Sets the mode of the frame quality estimation.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#setNumMsBeforeTimeout-int-">setNumMsBeforeTimeout</a></span>(int&nbsp;numMsBeforeTimeout)</code>
 <div class="block">Set the duration in milliseconds that needs to pass since scanning has begun in order to define timeout.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#setRecognitionMode-com.microblink.entities.recognizers.RecognizerBundle.RecognitionMode-">setRecognitionMode</a></span>(<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.RecognitionMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.RecognitionMode</a>&nbsp;recognitionMode)</code>
 <div class="block">This method is for debugging and testing purposes only.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#shouldAllowMultipleScanResultsOnSingleImage--">shouldAllowMultipleScanResultsOnSingleImage</a></span>()</code>
 <div class="block">Returns true if multiple scan results can be obtained from single image.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#writeToParcel-android.os.Parcel-int-">writeToParcel</a></span>(android.os.Parcel&nbsp;dest,
              int&nbsp;flags)</code>&nbsp;</td>
@@ -330,6 +339,23 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="createFromIntent-android.content.Intent-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createFromIntent</h4>
+<pre>@Nullable
+public static final&nbsp;<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a>&nbsp;createFromIntent(android.content.Intent&nbsp;intent)</pre>
+<div class="block">Creates object of this class from <code>Intent</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>intent</code> - intent in which object is stored.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>created object or <code>null</code> if it does not exist in the given intent.</dd>
+</dl>
+</li>
+</ul>
 <a name="getRecognizers--">
 <!--   -->
 </a>
@@ -472,6 +498,34 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.FrameQualityEstimationMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.FrameQualityEstimationMode</a>&nbsp;getFrameQualityEstimationMode()</pre>
 </li>
 </ul>
+<a name="getUniqueIdIntentExtraKey--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUniqueIdIntentExtraKey</h4>
+<pre>protected&nbsp;java.lang.String&nbsp;getUniqueIdIntentExtraKey()</pre>
+</li>
+</ul>
+<a name="getConcreteCreator--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConcreteCreator</h4>
+<pre>protected&nbsp;&lt;any&gt;&nbsp;getConcreteCreator()</pre>
+</li>
+</ul>
+<a name="consumeContentFromLoadedObject-com.microblink.entities.recognizers.RecognizerBundle-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>consumeContentFromLoadedObject</h4>
+<pre>protected&nbsp;void&nbsp;consumeContentFromLoadedObject(@NonNull
+                                              <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a>&nbsp;loadedBundle)</pre>
+</li>
+</ul>
 <a name="saveToIntent-android.content.Intent-">
 <!--   -->
 </a>
@@ -487,40 +541,6 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a name="loadFromIntent-android.content.Intent-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>loadFromIntent</h4>
-<pre>public&nbsp;void&nbsp;loadFromIntent(@NonNull
-                           android.content.Intent&nbsp;intent)</pre>
-<div class="block">Loads this <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers"><code>RecognizerBundle</code></a> from <code>Intent</code> that has arrived from another <code>Activity</code>.
- This method updates current recognizers with results that have arrived in <code>Intent</code>.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>intent</code> - Intent from which <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers"><code>RecognizerBundle</code></a> should be loaded.</dd>
-</dl>
-</li>
-</ul>
-<a name="saveState--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>saveState</h4>
-<pre>public&nbsp;void&nbsp;saveState()</pre>
-</li>
-</ul>
-<a name="clearSavedState--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>clearSavedState</h4>
-<pre>public&nbsp;void&nbsp;clearSavedState()</pre>
-</li>
-</ul>
 <a name="equals-java.lang.Object-">
 <!--   -->
 </a>
@@ -528,19 +548,15 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>equals</h4>
 <pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;o)</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
-</dl>
 </li>
 </ul>
-<a name="describeContents--">
+<a name="readFromParcel-android.os.Parcel-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>describeContents</h4>
-<pre>public&nbsp;int&nbsp;describeContents()</pre>
+<h4>readFromParcel</h4>
+<pre>protected&nbsp;void&nbsp;readFromParcel(android.os.Parcel&nbsp;in)</pre>
 </li>
 </ul>
 <a name="writeToParcel-android.os.Parcel-int-">

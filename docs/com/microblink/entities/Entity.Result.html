@@ -219,7 +219,7 @@ implements android.os.Parcelable</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/entities/Entity.Result.html#finalize--">finalize</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>protected long</code></td>
+<td class="colFirst"><code>long</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/entities/Entity.Result.html#getNativeContext--">getNativeContext</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -305,7 +305,7 @@ implements android.os.Parcelable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getNativeContext</h4>
-<pre>protected final&nbsp;long&nbsp;getNativeContext()</pre>
+<pre>public final&nbsp;long&nbsp;getNativeContext()</pre>
 </li>
 </ul>
 <a name="isEmpty--">
@@ -373,8 +373,9 @@ protected abstract&nbsp;byte[]&nbsp;serializeToByteArray()</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>writeToParcel</h4>
-<pre>public&nbsp;void&nbsp;writeToParcel(android.os.Parcel&nbsp;dest,
-                          int&nbsp;i)</pre>
+<pre>@CallSuper
+public&nbsp;void&nbsp;writeToParcel(android.os.Parcel&nbsp;dest,
+                                     int&nbsp;i)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>writeToParcel</code>&nbsp;in interface&nbsp;<code>android.os.Parcelable</code></dd>
@@ -387,7 +388,8 @@ protected abstract&nbsp;byte[]&nbsp;serializeToByteArray()</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>readFromParcel</h4>
-<pre>protected&nbsp;void&nbsp;readFromParcel(android.os.Parcel&nbsp;in)</pre>
+<pre>@CallSuper
+protected&nbsp;void&nbsp;readFromParcel(android.os.Parcel&nbsp;in)</pre>
 </li>
 </ul>
 <a name="terminateNative-long-">
