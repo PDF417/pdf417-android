@@ -117,7 +117,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../com/microblink/uisettings/options/BeepSoundUIOptions.html" title="interface in com.microblink.uisettings.options">BeepSoundUIOptions</a>, <a href="../../../com/microblink/uisettings/options/CameraSettingsUIOptions.html" title="interface in com.microblink.uisettings.options">CameraSettingsUIOptions</a>, <a href="../../../com/microblink/uisettings/options/DebugImageListenerUIOptions.html" title="interface in com.microblink.uisettings.options">DebugImageListenerUIOptions</a></dd>
+<dd><a href="../../../com/microblink/uisettings/options/BeepSoundUIOptions.html" title="interface in com.microblink.uisettings.options">BeepSoundUIOptions</a>, <a href="../../../com/microblink/uisettings/options/CameraSettingsUIOptions.html" title="interface in com.microblink.uisettings.options">CameraSettingsUIOptions</a>, <a href="../../../com/microblink/uisettings/options/DebugImageListenerUIOptions.html" title="interface in com.microblink.uisettings.options">DebugImageListenerUIOptions</a>, <a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html" title="interface in com.microblink.uisettings.options">SplashScreenUIOptions</a></dd>
 </dl>
 <hr>
 <br>
@@ -169,7 +169,7 @@ extends <a href="../../../com/microblink/uisettings/BaseScanUISettings.html" tit
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>protected java.lang.Class</code></td>
+<td class="colFirst"><code>java.lang.Class</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/uisettings/BarcodeUISettings.html#getTargetActivity--">getTargetActivity</a></span>()</code>
 <div class="block">Returns target activity.</div>
 </td>
@@ -287,9 +287,11 @@ extends <a href="../../../com/microblink/uisettings/BaseScanUISettings.html" tit
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getTargetActivity</h4>
-<pre>protected&nbsp;java.lang.Class&nbsp;getTargetActivity()</pre>
+<pre>public&nbsp;java.lang.Class&nbsp;getTargetActivity()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../com/microblink/uisettings/UISettings.html#getTargetActivity--">UISettings</a></code></span></div>
-<div class="block">Returns target activity. Concrete settings can be used only with the corresponding activity.</div>
+<div class="block">Returns target activity. Concrete settings can be used only with the corresponding activity.
+ This method is public for convenience when you are not able to use <a href="../../../com/microblink/uisettings/ActivityRunner.html" title="class in com.microblink.uisettings"><code>ActivityRunner</code></a>.
+ DO NOT USE THIS METHOD UNLESS YOU KNOW WHAT YOU ARE DOING. Improper usage will crash your app.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../com/microblink/uisettings/UISettings.html#getTargetActivity--">getTargetActivity</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></code></dd>

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":9,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
+var methods = {"i0":10,"i1":10,"i2":9,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -227,11 +227,26 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/directApi/RecognizerRunner.html#recognizeString-java.lang.String-com.microblink.view.recognition.ScanResultListener-">recognizeString</a></span>(java.lang.String&nbsp;stringData,
+               <a href="../../../com/microblink/view/recognition/ScanResultListener.html" title="interface in com.microblink.view.recognition">ScanResultListener</a>&nbsp;resultListener)</code>
+<div class="block">Use this method to directly recognize given string data without performing the OCR, while recognizer is active.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/directApi/RecognizerRunner.html#recognizeStringWithRecognizers-java.lang.String-com.microblink.view.recognition.ScanResultListener-com.microblink.entities.recognizers.RecognizerBundle-">recognizeStringWithRecognizers</a></span>(java.lang.String&nbsp;stringData,
+                              <a href="../../../com/microblink/view/recognition/ScanResultListener.html" title="interface in com.microblink.view.recognition">ScanResultListener</a>&nbsp;resultListener,
+                              <a href="../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a>&nbsp;recognizerBundle)</code>
+<div class="block">Use this method to directly recognize given string data without performing the OCR, while recognizer is active.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/directApi/RecognizerRunner.html#setMetadataCallbacks-com.microblink.metadata.MetadataCallbacks-">setMetadataCallbacks</a></span>(<a href="../../../com/microblink/metadata/MetadataCallbacks.html" title="class in com.microblink.metadata">MetadataCallbacks</a>&nbsp;metadataCallbacks)</code>
 <div class="block">Sets the metadata callbacks that will obtain metadata during processing.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/directApi/RecognizerRunner.html#terminate--">terminate</a></span>()</code>
 <div class="block">Terminates the native library.</div>
@@ -499,6 +514,61 @@ public final&nbsp;void&nbsp;recognizeImageWithRecognizers(@NonNull
 <dd><code>recognizerBundle</code> - Recognizer bundle that will be used to perform this recognition.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.IllegalStateException</code> - if recognizer is not initialized or is currently working or Image object is already disposed</dd>
+<dd><code>java.lang.NullPointerException</code> - if given null scan result listener</dd>
+</dl>
+</li>
+</ul>
+<a name="recognizeString-java.lang.String-com.microblink.view.recognition.ScanResultListener-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>recognizeString</h4>
+<pre>@UiThread
+public final&nbsp;void&nbsp;recognizeString(@NonNull
+                                            java.lang.String&nbsp;stringData,
+                                            @NonNull
+                                            <a href="../../../com/microblink/view/recognition/ScanResultListener.html" title="interface in com.microblink.view.recognition">ScanResultListener</a>&nbsp;resultListener)</pre>
+<div class="block">Use this method to directly recognize given string data without performing the OCR, while recognizer is active.
+ <p>
+ Recognition will be performed with same settings that were used for initialization
+ of recognizer singleton.
+ <p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>stringData</code> - String to be processed.</dd>
+<dd><code>resultListener</code> - Listener that will be invoked with recognition result.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.IllegalStateException</code> - if recognizer is not initialized or is currently working</dd>
+<dd><code>java.lang.NullPointerException</code> - if given null scan result listener</dd>
+</dl>
+</li>
+</ul>
+<a name="recognizeStringWithRecognizers-java.lang.String-com.microblink.view.recognition.ScanResultListener-com.microblink.entities.recognizers.RecognizerBundle-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>recognizeStringWithRecognizers</h4>
+<pre>@UiThread
+public final&nbsp;void&nbsp;recognizeStringWithRecognizers(@NonNull
+                                                           java.lang.String&nbsp;stringData,
+                                                           @NonNull
+                                                           <a href="../../../com/microblink/view/recognition/ScanResultListener.html" title="interface in com.microblink.view.recognition">ScanResultListener</a>&nbsp;resultListener,
+                                                           @NonNull
+                                                           <a href="../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a>&nbsp;recognizerBundle)</pre>
+<div class="block">Use this method to directly recognize given string data without performing the OCR, while recognizer is active.
+ Recognition will be performed with given recognition settings.
+ <p>
+ If error happens due to illegal settings, onError will be invoked of the
+ DirectApiErrorListener that was set in initialize method.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>stringData</code> - String to be processed.</dd>
+<dd><code>resultListener</code> - Listener that will be invoked with recognition result.</dd>
+<dd><code>recognizerBundle</code> - Recognizer bundle that will be used to perform this recognition.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.IllegalStateException</code> - if recognizer is not initialized or is currently working</dd>
 <dd><code>java.lang.NullPointerException</code> - if given null scan result listener</dd>
 </dl>
 </li>

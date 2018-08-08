@@ -1,4 +1,20 @@
 # Release notes
+## 7.1.0
+### Bug fixes
+- fixed crash that could happend when calling `reconfigureRecogizers` on `RecognizerRunnerView`
+
+### Improvements for existing features
+- added support for nonstandard pdf417 barcodes which wrongly encode number of data codewords
+
+### Minor API changes
+- `PointSetView` is now in `com.microblink.view.viewfinder.points package`
+- `BarcodeFormat` has been renamed to `BarcodeType`
+- `USDLRecognizer` has been renamed to `UsdlRecognizer`
+- updated `BarcodeRecognizer`:
+    - casing of several methods has been updated: `setScanPdf417`, `setScanQrCode`, `setScanDataMatrix`, `setScanEan13`, `setScanEan8`, `bsetScanItf`, `setScanUpca`, `setScanUpce`
+    - `setUncertainDecoding` renamed to `setScanUncertain`
+    - `setInverseScanning` renamed to `setScanInverse`
+
 
 ## 7.0.0
 - new API, which is not backward compatible. Please check [README](README.md) and updated demo applications for more information, but the gist of it is:

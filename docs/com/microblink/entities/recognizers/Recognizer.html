@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":10,"i2":10};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -116,7 +116,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode">BarcodeRecognizer</a>, <a href="../../../../com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.html" title="class in com.microblink.entities.recognizers.framegrabber">FrameGrabberRecognizer</a>, <a href="../../../../com/microblink/entities/recognizers/blinkbarcode/pdf417/Pdf417Recognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.pdf417">Pdf417Recognizer</a>, <a href="../../../../com/microblink/entities/recognizers/blinkbarcode/simnumber/SimNumberRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.simnumber">SimNumberRecognizer</a>, <a href="../../../../com/microblink/entities/recognizers/successframe/SuccessFrameGrabberRecognizer.html" title="class in com.microblink.entities.recognizers.successframe">SuccessFrameGrabberRecognizer</a>, <a href="../../../../com/microblink/entities/recognizers/blinkbarcode/usdl/USDLRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">USDLRecognizer</a></dd>
+<dd><a href="../../../../com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode">BarcodeRecognizer</a>, <a href="../../../../com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.html" title="class in com.microblink.entities.recognizers.framegrabber">FrameGrabberRecognizer</a>, <a href="../../../../com/microblink/entities/recognizers/blinkbarcode/pdf417/Pdf417Recognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.pdf417">Pdf417Recognizer</a>, <a href="../../../../com/microblink/entities/recognizers/blinkbarcode/simnumber/SimNumberRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.simnumber">SimNumberRecognizer</a>, <a href="../../../../com/microblink/entities/recognizers/successframe/SuccessFrameGrabberRecognizer.html" title="class in com.microblink.entities.recognizers.successframe">SuccessFrameGrabberRecognizer</a>, <a href="../../../../com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer</a></dd>
 </dl>
 <hr>
 <br>
@@ -214,22 +214,18 @@ extends <a href="../../../../com/microblink/entities/Entity.html" title="class i
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>protected static long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/Recognizer.html#nativeGetNativeResultContext-long-">nativeGetNativeResultContext</a></span>(long&nbsp;nativeContext)</code>&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/Recognizer.html#requiresAutofocus--">requiresAutofocus</a></span>()</code>
 <div class="block">Returns true if this recognizer requires camera with autofocus.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/Recognizer.html#requiresLandscapeMode--">requiresLandscapeMode</a></span>()</code>
 <div class="block">Returns true if this recognizer works only in landscape mode.</div>
@@ -241,7 +237,7 @@ extends <a href="../../../../com/microblink/entities/Entity.html" title="class i
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.microblink.entities.<a href="../../../../com/microblink/entities/Entity.html" title="class in com.microblink.entities">Entity</a></h3>
-<code><a href="../../../../com/microblink/entities/Entity.html#clone--">clone</a>, <a href="../../../../com/microblink/entities/Entity.html#consumeResultFrom-E-">consumeResultFrom</a>, <a href="../../../../com/microblink/entities/Entity.html#describeContents--">describeContents</a>, <a href="../../../../com/microblink/entities/Entity.html#deserializeNativeSettings-byte:A-">deserializeNativeSettings</a>, <a href="../../../../com/microblink/entities/Entity.html#finalize--">finalize</a>, <a href="../../../../com/microblink/entities/Entity.html#getNativeContext--">getNativeContext</a>, <a href="../../../../com/microblink/entities/Entity.html#getResult--">getResult</a>, <a href="../../../../com/microblink/entities/Entity.html#readFromParcel-android.os.Parcel-">readFromParcel</a>, <a href="../../../../com/microblink/entities/Entity.html#serializeNativeSettings--">serializeNativeSettings</a>, <a href="../../../../com/microblink/entities/Entity.html#terminateNative-long-">terminateNative</a>, <a href="../../../../com/microblink/entities/Entity.html#writeToParcel-android.os.Parcel-int-">writeToParcel</a></code></li>
+<code><a href="../../../../com/microblink/entities/Entity.html#clone--">clone</a>, <a href="../../../../com/microblink/entities/Entity.html#consumeResultFrom-E-">consumeResultFrom</a>, <a href="../../../../com/microblink/entities/Entity.html#describeContents--">describeContents</a>, <a href="../../../../com/microblink/entities/Entity.html#deserializeNativeSettings-byte:A-">deserializeNativeSettings</a>, <a href="../../../../com/microblink/entities/Entity.html#finalize--">finalize</a>, <a href="../../../../com/microblink/entities/Entity.html#getNativeContext--">getNativeContext</a>, <a href="../../../../com/microblink/entities/Entity.html#getResult--">getResult</a>, <a href="../../../../com/microblink/entities/Entity.html#nativeGetNativeResultContext-long-">nativeGetNativeResultContext</a>, <a href="../../../../com/microblink/entities/Entity.html#readFromParcel-android.os.Parcel-">readFromParcel</a>, <a href="../../../../com/microblink/entities/Entity.html#serializeNativeSettings--">serializeNativeSettings</a>, <a href="../../../../com/microblink/entities/Entity.html#terminateNative-long-">terminateNative</a>, <a href="../../../../com/microblink/entities/Entity.html#writeToParcel-android.os.Parcel-int-">writeToParcel</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -314,15 +310,6 @@ extends <a href="../../../../com/microblink/entities/Entity.html" title="class i
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="nativeGetNativeResultContext-long-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>nativeGetNativeResultContext</h4>
-<pre>protected static&nbsp;long&nbsp;nativeGetNativeResultContext(long&nbsp;nativeContext)</pre>
-</li>
-</ul>
 <a name="requiresAutofocus--">
 <!--   -->
 </a>

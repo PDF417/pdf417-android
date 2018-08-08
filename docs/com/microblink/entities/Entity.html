@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":10,"i3":6,"i4":10,"i5":10,"i6":10,"i7":10,"i8":6,"i9":6,"i10":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":6,"i1":6,"i2":10,"i3":6,"i4":10,"i5":10,"i6":10,"i7":9,"i8":10,"i9":6,"i10":6,"i11":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -199,7 +199,7 @@ implements android.os.Parcelable</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -239,18 +239,22 @@ implements android.os.Parcelable</pre>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code>protected static long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/entities/Entity.html#nativeGetNativeResultContext-long-">nativeGetNativeResultContext</a></span>(long&nbsp;nativeContext)</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/entities/Entity.html#readFromParcel-android.os.Parcel-">readFromParcel</a></span>(android.os.Parcel&nbsp;in)</code>&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>protected abstract byte[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/entities/Entity.html#serializeNativeSettings--">serializeNativeSettings</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/entities/Entity.html#terminateNative-long-">terminateNative</a></span>(long&nbsp;nativeContext)</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/entities/Entity.html#writeToParcel-android.os.Parcel-int-">writeToParcel</a></span>(android.os.Parcel&nbsp;dest,
              int&nbsp;i)</code>&nbsp;</td>
@@ -308,6 +312,15 @@ implements android.os.Parcelable</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="nativeGetNativeResultContext-long-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>nativeGetNativeResultContext</h4>
+<pre>protected static&nbsp;long&nbsp;nativeGetNativeResultContext(long&nbsp;nativeContext)</pre>
+</li>
+</ul>
 <a name="finalize--">
 <!--   -->
 </a>
@@ -406,7 +419,7 @@ protected abstract&nbsp;byte[]&nbsp;serializeNativeSettings()</pre>
                                        <a href="../../../com/microblink/entities/Entity.html" title="class in com.microblink.entities">Entity</a>&nbsp;other)</pre>
 <div class="block">Consume result from other entity. The result from other will be put instead current result
  of this entity.
- This method is used inside <a href="../../../com/microblink/entities/recognizers/RecognizerBundle.html#loadFromIntent-android.content.Intent-"><code>RecognizerBundle.loadFromIntent(Intent)</code></a>
+ This method is used inside <code>com.microblink.entities.recognizers.RecognizerBundle#loadFromIntent(Intent)</code>
  and similar methods to replace the result content of the saved entities with results that
  have arrived over <code>Intent</code></div>
 <dl>

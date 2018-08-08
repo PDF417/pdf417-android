@@ -112,7 +112,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../com/microblink/uisettings/options/BeepSoundUIOptions.html" title="interface in com.microblink.uisettings.options">BeepSoundUIOptions</a>, <a href="../../../com/microblink/uisettings/options/CameraSettingsUIOptions.html" title="interface in com.microblink.uisettings.options">CameraSettingsUIOptions</a>, <a href="../../../com/microblink/uisettings/options/DebugImageListenerUIOptions.html" title="interface in com.microblink.uisettings.options">DebugImageListenerUIOptions</a></dd>
+<dd><a href="../../../com/microblink/uisettings/options/BeepSoundUIOptions.html" title="interface in com.microblink.uisettings.options">BeepSoundUIOptions</a>, <a href="../../../com/microblink/uisettings/options/CameraSettingsUIOptions.html" title="interface in com.microblink.uisettings.options">CameraSettingsUIOptions</a>, <a href="../../../com/microblink/uisettings/options/DebugImageListenerUIOptions.html" title="interface in com.microblink.uisettings.options">DebugImageListenerUIOptions</a>, <a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html" title="interface in com.microblink.uisettings.options">SplashScreenUIOptions</a></dd>
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
@@ -122,7 +122,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public abstract class <span class="typeNameLabel">BaseScanUISettings</span>
 extends <a href="../../../com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a>
-implements <a href="../../../com/microblink/uisettings/options/DebugImageListenerUIOptions.html" title="interface in com.microblink.uisettings.options">DebugImageListenerUIOptions</a>, <a href="../../../com/microblink/uisettings/options/CameraSettingsUIOptions.html" title="interface in com.microblink.uisettings.options">CameraSettingsUIOptions</a>, <a href="../../../com/microblink/uisettings/options/BeepSoundUIOptions.html" title="interface in com.microblink.uisettings.options">BeepSoundUIOptions</a></pre>
+implements <a href="../../../com/microblink/uisettings/options/DebugImageListenerUIOptions.html" title="interface in com.microblink.uisettings.options">DebugImageListenerUIOptions</a>, <a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html" title="interface in com.microblink.uisettings.options">SplashScreenUIOptions</a>, <a href="../../../com/microblink/uisettings/options/CameraSettingsUIOptions.html" title="interface in com.microblink.uisettings.options">CameraSettingsUIOptions</a>, <a href="../../../com/microblink/uisettings/options/BeepSoundUIOptions.html" title="interface in com.microblink.uisettings.options">BeepSoundUIOptions</a></pre>
 <div class="block">Scan settings for <a href="../../../com/microblink/activity/BaseScanActivity.html" title="class in com.microblink.activity"><code>BaseScanActivity</code></a>.</div>
 </li>
 </ul>
@@ -254,7 +254,7 @@ implements <a href="../../../com/microblink/uisettings/options/DebugImageListene
 </td>
 </tr>
 <tr id="i14" class="altColor">
-<td class="colFirst"><code>protected void</code></td>
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/microblink/uisettings/BaseScanUISettings.html#saveToIntent-android.content.Intent-">saveToIntent</a></span>(android.content.Intent&nbsp;intent)</code>
 <div class="block">Saves this scan activity settings to <code>Intent</code> so it can be passed to the
  corresponding scan activity.</div>
@@ -421,12 +421,14 @@ public&nbsp;<a href="../../../com/microblink/entities/recognizers/RecognizerBund
 <li class="blockList">
 <h4>saveToIntent</h4>
 <pre>@CallSuper
-protected&nbsp;void&nbsp;saveToIntent(@NonNull
-                                       android.content.Intent&nbsp;intent)</pre>
+public&nbsp;void&nbsp;saveToIntent(@NonNull
+                                    android.content.Intent&nbsp;intent)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../com/microblink/uisettings/UISettings.html#saveToIntent-android.content.Intent-">UISettings</a></code></span></div>
 <div class="block">Saves this scan activity settings to <code>Intent</code> so it can be passed to the
  corresponding scan activity. Intent target activity must be set before calling this method,
- and target activity must be compatible with this settings.</div>
+ and target activity must be compatible with this settings.
+
+ DO NOT USE THIS METHOD UNLESS YOU KNOW WHAT YOU ARE DOING. Improper usage will crash your app.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="../../../com/microblink/uisettings/UISettings.html#saveToIntent-android.content.Intent-">saveToIntent</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></code></dd>
@@ -671,9 +673,12 @@ public final&nbsp;int&nbsp;getBeepSoundResourceID(int&nbsp;defaultValue)</pre>
 <h4>getSplashScreenLayoutResourceID</h4>
 <pre>@LayoutRes
 public final&nbsp;int&nbsp;getSplashScreenLayoutResourceID(int&nbsp;defaultValue)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html#getSplashScreenLayoutResourceID-int-">SplashScreenUIOptions</a></code></span></div>
 <div class="block">Returns the ID of the layout resource that will be used as camera splash screen displayed
  while camera is being initialized.</div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html#getSplashScreenLayoutResourceID-int-">getSplashScreenLayoutResourceID</a></code>&nbsp;in interface&nbsp;<code><a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html" title="interface in com.microblink.uisettings.options">SplashScreenUIOptions</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>defaultValue</code> - Value to return if value has not been explicitly set.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -690,9 +695,12 @@ public final&nbsp;int&nbsp;getSplashScreenLayoutResourceID(int&nbsp;defaultValue
 <h4>setSplashScreenLayoutResourceID</h4>
 <pre>public final&nbsp;void&nbsp;setSplashScreenLayoutResourceID(@LayoutRes
                                                   int&nbsp;splashScreenLayoutResourceID)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html#setSplashScreenLayoutResourceID-int-">SplashScreenUIOptions</a></code></span></div>
 <div class="block">Defines the ID of the layout resource that will be used as camera splash screen displayed
  while camera is being initialized. If not set, default splash screen will be used.</div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html#setSplashScreenLayoutResourceID-int-">setSplashScreenLayoutResourceID</a></code>&nbsp;in interface&nbsp;<code><a href="../../../com/microblink/uisettings/options/SplashScreenUIOptions.html" title="interface in com.microblink.uisettings.options">SplashScreenUIOptions</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>splashScreenLayoutResourceID</code> - ID of the layout resource that will be used as camera
                                     splash screen displayed while camera is being initialized.</dd>
