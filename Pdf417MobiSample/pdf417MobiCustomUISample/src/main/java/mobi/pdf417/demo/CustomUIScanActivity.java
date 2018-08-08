@@ -35,7 +35,7 @@ import com.microblink.view.CameraEventsListener;
 import com.microblink.view.OrientationAllowedListener;
 import com.microblink.view.recognition.RecognizerRunnerView;
 import com.microblink.view.recognition.ScanResultListener;
-import com.microblink.view.viewfinder.PointSetView;
+import com.microblink.view.viewfinder.points.PointSetView;
 import com.microblink.view.viewfinder.quadview.QuadViewManager;
 import com.microblink.view.viewfinder.quadview.QuadViewManagerFactory;
 import com.microblink.view.viewfinder.quadview.QuadViewPreset;

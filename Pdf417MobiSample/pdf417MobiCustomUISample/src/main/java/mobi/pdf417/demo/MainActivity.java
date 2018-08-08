@@ -53,8 +53,8 @@ public class MainActivity extends Activity implements RecognizerRunnerFragment.S
         // You have to enable recognizers and barcode types you want to support
         // Don't enable what you don't need, it will significantly decrease scanning performance
         mBarcodeRecognizer = new BarcodeRecognizer();
-        mBarcodeRecognizer.setScanPDF417(true);
-        mBarcodeRecognizer.setScanQRCode(true);
+        mBarcodeRecognizer.setScanPdf417(true);
+        mBarcodeRecognizer.setScanQrCode(true);
 
         mRecognizerBundle = new RecognizerBundle(mBarcodeRecognizer);
 
@@ -186,7 +186,7 @@ public class MainActivity extends Activity implements RecognizerRunnerFragment.S
     }
 
     private void shareScanResult(BarcodeRecognizer.Result result) {
-        StringBuilder sb = new StringBuilder(result.getBarcodeFormat().name());
+        StringBuilder sb = new StringBuilder(result.getBarcodeType().name());
         sb.append("\n\n");
 
         if (result.isUncertain()) {
