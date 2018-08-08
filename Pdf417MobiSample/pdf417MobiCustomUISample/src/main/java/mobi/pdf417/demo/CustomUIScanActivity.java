@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import com.microblink.recognition.RecognitionSuccessType;
 import com.microblink.util.CameraPermissionManager;
 import com.microblink.view.CameraAspectMode;
 import com.microblink.view.CameraEventsListener;
+import com.microblink.view.NonLandscapeOrientationNotSupportedException;
 import com.microblink.view.OrientationAllowedListener;
 import com.microblink.view.recognition.RecognizerRunnerView;
 import com.microblink.view.recognition.ScanResultListener;
@@ -69,7 +71,13 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_ui_scan);
+        try {
+            setContentView(R.layout.activity_custom_ui_scan);
+        } catch (NonLandscapeOrientationNotSupportedException exception) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            recreate();
+            return;
+        }
 
         mRecognizerRunnerView = findViewById(R.id.recognizer_runner_view);
 
