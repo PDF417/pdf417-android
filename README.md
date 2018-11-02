@@ -22,52 +22,52 @@ For more information on how to integrate _PDF417.mobi_ SDK into your app read th
 
 # Table of contents
 
-* [Android _PDF417.mobi_ integration instructions](#intro)
-* [Quick Start](#quickStart)
-    * [Quick start with the sample app](#quickDemo)
-    * [Android Studio integration](#androidStudioIntegration)
-    * [Eclipse integration](#eclipseIntegration)
-    * [Maven Plugin integration](#mavenIntegration)
-    * [Performing your first scan](#quickScan)
-* [Advanced _PDF417.mobi_ integration instructions](#advancedIntegration)
-    * [Checking if _PDF417.mobi_ is supported](#supportCheck)
-    * [UI customizations of built-in activities and fragments](#uiCustomizations)
-        * [Using built-in scan activity for performing the scan](#runBuiltinActivity)
-        * [Using `RecognizerRunnerFragment` within your activity](#recognizerRunnerFragment)
-        * [Built-in activities and overlays](#builtInUIComponents)
-        * [Changing the appearance of built-in activities and scanning overlays](#changeBuiltInUIComponents)
-        * [Translation and localization](#translation)
-    * [Embedding `RecognizerRunnerView` into custom scan activity](#recognizerRunnerView)
-        * [Scan activity's orientation](#scanOrientation)
-    * [Direct API](#directAPI)
-        * [Using Direct API for recognition of Android Bitmaps and custom camera frames](#directAPI_images)
-        * [Using Direct API for `String` recognition (parsing)](#directAPI_strings)
-        * [Understanding DirectAPI's state machine](#directAPIStateMachine)
-        * [Using DirectAPI while RecognizerRunnerView is active](#directAPIWithRecognizer)
-    * [Handling processing events with `RecognizerRunner` and `RecognizerRunnerView`](#processingEvents)
-        * [Note about the `setMetadataCallbacks` method](#processingEventsImportantNote)
-* [`Recogniezr` concept and `RecognizerBundle`](#availableRecognizers)
-    * [The `Recognizer` concept](#recognizerConcept)
-    * [`RecognizerBundle`](#recognizerBundle)
-        * [Passing `Recognizer` objects between activities](#intentOptimization)
-* [List of available recognizers](#recognizerList)
-    * [Frame Grabber Recognizer](#frameGrabberRecognizer)
-    * [Success Frame Grabber Recognizer](#successFrameGrabberRecognizer)
-    * [PDF417 recognizer](#pdf417Recognizer)
-    * [Barcode recognizer](#barcodeRecognizer)
-* [Embedding _PDF417.mobi_ inside another SDK](#embedAAR)
-    * [_PDF417.mobi_ licensing model](#licensingModel)
-        * [Application licenses](#appLicence)
-    * [Ensuring the final app gets all resources required by _PDF417.mobi_](#sdkIntegrationIntoApp)
-* [Processor architecture considerations](#archConsider)
-    * [Reducing the final size of your app](#reduceSize)
-        * [Consequences of removing processor architecture](#archConsequences)
-    * [Combining _PDF417.mobi_ with other native libraries](#combineNativeLibraries)
-* [Troubleshooting](#troubleshoot)
-    * [Integration problems](#integrationTroubleshoot)
-    * [SDK problems](#sdkTroubleshoot)
-    * [Frequently asked questions and known problems](#faq)
-* [Additional info](#info)
+* [Android _PDF417.mobi_ integration instructions](#user-content-intro)
+* [Quick Start](#user-content-quickStart)
+    * [Quick start with the sample app](#user-content-quickDemo)
+    * [Android Studio integration](#user-content-androidStudioIntegration)
+    * [Eclipse integration](#user-content-eclipseIntegration)
+    * [Maven Plugin integration](#user-content-mavenIntegration)
+    * [Performing your first scan](#user-content-quickScan)
+* [Advanced _PDF417.mobi_ integration instructions](#user-content-advancedIntegration)
+    * [Checking if _PDF417.mobi_ is supported](#user-content-supportCheck)
+    * [UI customizations of built-in activities and fragments](#user-content-uiCustomizations)
+        * [Using built-in scan activity for performing the scan](#user-content-runBuiltinActivity)
+        * [Using `RecognizerRunnerFragment` within your activity](#user-content-recognizerRunnerFragment)
+        * [Built-in activities and overlays](#user-content-builtInUIComponents)
+        * [Changing the appearance of built-in activities and scanning overlays](#user-content-changeBuiltInUIComponents)
+        * [Translation and localization](#user-content-translation)
+    * [Embedding `RecognizerRunnerView` into custom scan activity](#user-content-recognizerRunnerView)
+        * [Scan activity's orientation](#user-content-scanOrientation)
+    * [Direct API](#user-content-directAPI)
+        * [Using Direct API for recognition of Android Bitmaps and custom camera frames](#user-content-directAPI_images)
+        * [Using Direct API for `String` recognition (parsing)](#user-content-directAPI_strings)
+        * [Understanding DirectAPI's state machine](#user-content-directAPIStateMachine)
+        * [Using DirectAPI while RecognizerRunnerView is active](#user-content-directAPIWithRecognizer)
+    * [Handling processing events with `RecognizerRunner` and `RecognizerRunnerView`](#user-content-processingEvents)
+        * [Note about the `setMetadataCallbacks` method](#user-content-processingEventsImportantNote)
+* [`Recogniezr` concept and `RecognizerBundle`](#user-content-availableRecognizers)
+    * [The `Recognizer` concept](#user-content-recognizerConcept)
+    * [`RecognizerBundle`](#user-content-recognizerBundle)
+        * [Passing `Recognizer` objects between activities](#user-content-intentOptimization)
+* [List of available recognizers](#user-content-recognizerList)
+    * [Frame Grabber Recognizer](#user-content-frameGrabberRecognizer)
+    * [Success Frame Grabber Recognizer](#user-content-successFrameGrabberRecognizer)
+    * [PDF417 recognizer](#user-content-pdf417Recognizer)
+    * [Barcode recognizer](#user-content-barcodeRecognizer)
+* [Embedding _PDF417.mobi_ inside another SDK](#user-content-embedAAR)
+    * [_PDF417.mobi_ licensing model](#user-content-licensingModel)
+        * [Application licenses](#user-content-appLicence)
+    * [Ensuring the final app gets all resources required by _PDF417.mobi_](#user-content-sdkIntegrationIntoApp)
+* [Processor architecture considerations](#user-content-archConsider)
+    * [Reducing the final size of your app](#user-content-reduceSize)
+        * [Consequences of removing processor architecture](#user-content-archConsequences)
+    * [Combining _PDF417.mobi_ with other native libraries](#user-content-combineNativeLibraries)
+* [Troubleshooting](#user-content-troubleshoot)
+    * [Integration problems](#user-content-integrationTroubleshoot)
+    * [SDK problems](#user-content-sdkTroubleshoot)
+    * [Frequently asked questions and known problems](#user-content-faq)
+* [Additional info](#user-content-info)
 
 # <a name="intro"></a> Android _PDF417.mobi_ integration instructions
 
@@ -101,7 +101,7 @@ In your `build.gradle` you first need to add _PDF417.mobi_ maven repository to r
 
 ```
 repositories {
-	maven { url 'http://maven.microblink.com' }
+    maven { url 'https://maven.microblink.com' }
 }
 ```
 
@@ -110,7 +110,7 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 ```
 dependencies {
     implementation('com.microblink:pdf417.mobi:7.1.0@aar') {
-    	transitive = true
+        transitive = true
     }
 }
 ```
@@ -167,7 +167,7 @@ However, if you still want to use Eclipse, you will need to convert AAR archive 
 5. Copy the contents of `jni` folder to `libs` folder of your Eclipse library project.
 6. Replace the `res` folder on library project with the `res` folder of the `LibPdf417Mobi.aar` file.
 
-You?ve already created the project that contains almost everything you need. Now let?s see how to configure your project to reference this library project.
+You’ve already created the project that contains almost everything you need. Now let’s see how to configure your project to reference this library project.
 
 1. In the project you want to use the library (henceforth, "target project") add the library project as a dependency
 2. Open the `AndroidManifest.xml` file inside `LibPdf417Mobi.aar` file and make sure to copy all permissions, features and activities to the `AndroidManifest.xml` file of the target project.
@@ -183,19 +183,19 @@ Open your `pom.xml` file and add these directives as appropriate:
 
 ```xml
 <repositories>
-   	<repository>
-       	<id>MicroblinkRepo</id>
-       	<url>http://maven.microblink.com</url>
+    <repository>
+        <id>MicroblinkRepo</id>
+        <url>https://maven.microblink.com</url>
    	</repository>
 </repositories>
 
 <dependencies>
-	<dependency>
-		  <groupId>com.microblink</groupId>
-		  <artifactId>pdf417.mobi</artifactId>
-		  <version>7.1.0</version>
-		  <type>aar</type>
-  	</dependency>
+    <dependency>
+        <groupId>com.microblink</groupId>
+        <artifactId>pdf417.mobi</artifactId>
+        <version>7.1.0</version>
+        <type>aar</type>
+    </dependency>
 </dependencies>
 ```
 ## <a name="quickScan"></a> Performing your first scan
@@ -889,7 +889,7 @@ At the time of writing this documentation, [Android does not have support for co
 This problem is usually solved with transitive Maven dependencies, i.e. when publishing your AAR to Maven you specify dependencies of your AAR so they are automatically referenced by app using your AAR. Besides this, there are also several other approaches you can try:
 
 - you can ask your clients to reference _PDF417.mobi_ in their app when integrating your SDK
-- since the problem lies in resource merging part you can try avoiding this step by ensuring your library will not use any component from _PDF417.mobi_ that uses resources (i.e. built-in activities, fragments and views, except `RecognizerRunnerView`). You can perform [custom UI integration](#recognizerRunnerView) while taking care that all resources (strings, layouts, images, ...) used are solely from your AAR, not from _PDF417.mobi_. Then, in your AAR you should not reference `LibPdf417Mobi.aar` as gradle dependency, instead you should unzip it and copy its assets to your AAR?s assets folder, its `classes.jar` to your AAR?s lib folder (which should be referenced by gradle as jar dependency) and contents of its jni folder to your AAR?s src/main/jniLibs folder.
+- since the problem lies in resource merging part you can try avoiding this step by ensuring your library will not use any component from _PDF417.mobi_ that uses resources (i.e. built-in activities, fragments and views, except `RecognizerRunnerView`). You can perform [custom UI integration](#recognizerRunnerView) while taking care that all resources (strings, layouts, images, ...) used are solely from your AAR, not from _PDF417.mobi_. Then, in your AAR you should not reference `LibPdf417Mobi.aar` as gradle dependency, instead you should unzip it and copy its assets to your AAR’s assets folder, its `classes.jar` to your AAR’s lib folder (which should be referenced by gradle as jar dependency) and contents of its jni folder to your AAR’s src/main/jniLibs folder.
 - Another approach is to use [3rd party unofficial gradle script](https://github.com/adwiv/android-fat-aar) that aim to combine multiple AARs into single fat AAR. Use this script at your own risk and report issues to [its developers](https://github.com/adwiv/android-fat-aar/issues) - we do not offer support for using that script.
 - There is also a [3rd party unofficial gradle plugin](https://github.com/Vigi0303/fat-aar-plugin) which aims to do the same, but is more up to date with latest updates to Android gradle plugin. Use this plugin at your own risk and report all issues with using to [its developers](https://github.com/Vigi0303/fat-aar-plugin/issues) - we do not offer support for using that plugin.
 
@@ -1081,7 +1081,7 @@ This usually happens when you perform integration into [Eclipse project](#eclips
 
 #### <a name="multipleMicroblinkSDKs"></a> When trying to build app, I get error "Unable to merge dex" and "Multiple dex files define XXX"
 
-This error happens when you try to integrate multiple Microblink SDKs into the same application. Multiple Microblink SDKs cannot be integrated into the same application, and there is no need for that because SDKs are organized in the way that each SDK is feature superset of the smaller SDK, except the `PDF417` SDK which is the smallest SDK. For example `BlinkID` SDK contains all features from the `BlinkInput` SDK. Relations between SDKs are: `PDF417` ? `BlinkInput` ? `BlinkID` ? `PhotoPay`.
+This error happens when you try to integrate multiple Microblink SDKs into the same application. Multiple Microblink SDKs cannot be integrated into the same application, and there is no need for that because SDKs are organized in the way that each SDK is feature superset of the smaller SDK, except the `PDF417` SDK which is the smallest SDK. For example `BlinkID` SDK contains all features from the `BlinkInput` SDK. Relations between SDKs are: `PDF417` ⊆ `BlinkInput` ⊆ `BlinkID` ⊆ `PhotoPay`.
 
 #### <a name="unsatisfiedLinkError"></a> When my app starts, I get `UnsatisfiedLinkError`
 
