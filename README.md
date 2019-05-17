@@ -44,7 +44,7 @@ For more information on how to integrate _PDF417.mobi_ SDK into your app read th
         * [Using DirectAPI while RecognizerRunnerView is active](#directAPIWithRecognizer)
     * [Handling processing events with `RecognizerRunner` and `RecognizerRunnerView`](#processingEvents)
         * [Note about the `setMetadataCallbacks` method](#processingEventsImportantNote)
-* [`Recogniezr` concept and `RecognizerBundle`](#availableRecognizers)
+* [`Recognizer` concept and `RecognizerBundle`](#availableRecognizers)
     * [The `Recognizer` concept](#recognizerConcept)
     * [`RecognizerBundle`](#recognizerBundle)
         * [Passing `Recognizer` objects between activities](#intentOptimization)
@@ -99,7 +99,7 @@ In your `build.gradle` you first need to add _PDF417.mobi_ maven repository to r
 
 ```
 repositories {
-	maven { url 'http://maven.microblink.com' }
+    maven { url 'https://maven.microblink.com' }
 }
 ```
 
@@ -107,8 +107,8 @@ After that, you just need to add _PDF417.mobi_ as a dependency to your applicati
 
 ```
 dependencies {
-    implementation('com.microblink:pdf417.mobi:7.1.0@aar') {
-    	transitive = true
+    implementation('com.microblink:pdf417.mobi:7.2.0@aar') {
+        transitive = true
     }
 }
 ```
@@ -119,7 +119,7 @@ Android studio 3.0 should automatically import javadoc from maven dependency. If
 
 1. In Android Studio project sidebar, ensure [project view is enabled](https://developer.android.com/sdk/installing/studio-androidview.html)
 2. Expand `External Libraries` entry (usually this is the last entry in project view)
-3. Locate `pdf417.mobi-7.1.0` entry, right click on it and select `Library Properties...`
+3. Locate `pdf417.mobi-7.2.0` entry, right click on it and select `Library Properties...`
 4. A `Library Properties` pop-up window will appear
 5. Click the second `+` button in bottom left corner of the window (the one that contains `+` with little globe)
 6. Window for defining documentation URL will appear
@@ -137,7 +137,7 @@ Android studio 3.0 should automatically import javadoc from maven dependency. If
     ```
     dependencies {
         implementation project(':LibPdf417Mobi')
-        implementation "com.android.support:appcompat-v7:27.1.1"
+        implementation "com.android.support:appcompat-v7:28.0.0"
     }
     ```
     
@@ -181,25 +181,27 @@ Open your `pom.xml` file and add these directives as appropriate:
 
 ```xml
 <repositories>
-   	<repository>
-       	<id>MicroblinkRepo</id>
-       	<url>http://maven.microblink.com</url>
+    <repository>
+        <id>MicroblinkRepo</id>
+        <url>https://maven.microblink.com</url>
    	</repository>
 </repositories>
 
 <dependencies>
-	<dependency>
-		  <groupId>com.microblink</groupId>
-		  <artifactId>pdf417.mobi</artifactId>
-		  <version>7.1.0</version>
-		  <type>aar</type>
-  	</dependency>
+    <dependency>
+        <groupId>com.microblink</groupId>
+        <artifactId>pdf417.mobi</artifactId>
+        <version>7.2.0</version>
+        <type>aar</type>
+    </dependency>
 </dependencies>
 ```
 ## <a name="quickScan"></a> Performing your first scan
-1. Before starting a recognition process, you need to obtain a license from [Microblink dashboard](https://microblink.com/login). After registering, you will be able to generate a trial license for your app. License is bound to [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename) of your app, so please make sure you enter the correct package name when asked. 
+1. First you'll need to create an account at [Microblink dashboard](https://microblink.com/login) where you can generate a demo license for your app. License is bound to [package name](http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename) of your app, so please make sure you enter the correct package name when asked. 
 
-    After creating a license, you will have the option to download the license as a file that you must place within your application's _assets_ folder. You must ensure that license key is set before instantiating any other classes from the SDK, otherwise you will get an exception at runtime. Therefore, we recommend that you extend [Android Application class](https://developer.android.com/reference/android/app/Application.html) and set the license in its [onCreate callback](https://developer.android.com/reference/android/app/Application.html#onCreate()) in the following way:
+    Download your licence file and put it in your application's _assets_ folder. Make sure to set the license key before using any other classes from the SDK, otherwise you will get a runtime exception. 
+    
+    We recommend that you extend [Android Application class](https://developer.android.com/reference/android/app/Application.html) and set the license in [onCreate callback](https://developer.android.com/reference/android/app/Application.html#onCreate()) like this:
 
     ```java
     public class MyApplication extends Application {
@@ -210,7 +212,9 @@ Open your `pom.xml` file and add these directives as appropriate:
     }
     ```
 
-2. In your main activity, create recognizer objects that will perform image recognition, configure them and store them into [RecognizerBundle object](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html). You can see more information about available recognizers and about `RecognizerBundle` in chapter [RecognizerBundle and available recognizers](#availableRecognizers). For example, to scan PDF417 2D barcode, you can configure your recognizer object in the following way:
+2. In your main activity, create recognizer objects that will perform image recognition, configure them and put them into [RecognizerBundle object](https://pdf417.github.io/pdf417-android/com/microblink/entities/recognizers/RecognizerBundle.html). You can see more information about available recognizers and `RecognizerBundle` [here](#availableRecognizers). 
+
+	For example, to scan PDF417 2D barcode, configure your recognizer like this:
 
     ```java
     public class MyActivity extends Activity {
@@ -232,7 +236,7 @@ Open your `pom.xml` file and add these directives as appropriate:
     }
     ```
 
-3. You can start recognition process by starting `BarcodeScanActivity` activity by creating `BarcodeUISettings` and calling [`ActivityRunner.startActivityForResult`](https://pdf417.github.io/pdf417-android/com/microblink/uisettings/ActivityRunner.html#startActivityForResult-android.app.Activity-int-com.microblink.uisettings.UISettings-) method:
+3. Start recognition process by creating `BarcodeUISettings` and calling [`ActivityRunner.startActivityForResult`](https://pdf417.github.io/pdf417-android/com/microblink/uisettings/ActivityRunner.html#startActivityForResult-android.app.Activity-int-com.microblink.uisettings.UISettings-):
 	
 	```java
 	// method within MyActivity from previous step
@@ -247,7 +251,7 @@ Open your `pom.xml` file and add these directives as appropriate:
 	}
 	```
 	
-4. After `BarcodeScanActivity` activity finishes the scan, it will return to the calling activity or fragment and will call its method `onActivityResult`. You can obtain the scanning results in that method.
+4. `onActivityResult` will be called in your activity after scanning is finished, here you can get the scanning results.
 
 	```java
     @Override
@@ -257,7 +261,6 @@ Open your `pom.xml` file and add these directives as appropriate:
         if (requestCode == MY_REQUEST_CODE) {
             if (resultCode == BarcodeScanActivity.RESULT_OK && data != null) {
                 // load the data into all recognizers bundled within your RecognizerBundle
-                
                 mRecognizerBundle.loadFromIntent(data);
                 
                 // now every recognizer object that was bundled within RecognizerBundle
@@ -783,7 +786,7 @@ Similarly, if you, for example, remove the `QuadDetectionCallback` from `Metadat
 
 **Remember**, each time you make some changes to `MetadataCallbacks` object, you need to apply those changes to to your `RecognizerRunner` or `RecognizerRunnerView` by calling its `setMetadataCallbacks` method.
 
-# <a name="availableRecognizers"></a> `Recogniezr` concept and `RecognizerBundle`
+# <a name="availableRecognizers"></a> `Recognizer` concept and `RecognizerBundle`
 
 This section will first describe [what is a `Recognizer`](#recognizerConcept) and how it should be used to perform recognition of the images, videos and camera stream. Next, [we will describe how `RecognizerBundle`](#recognizerBundle) can be used to tweak the recognition procedure and to transfer `Recognizer` objects between activities.
 
@@ -1105,7 +1108,7 @@ This usually happens when you use `Recognizer` that produces image or similar la
 
 This usually happens when you attempt to transfer standalone `Result` that contains images or similar large objects via Intent and the size of the object exceeds Android intent transaction limit. Depending on the device, you will get either [TransactionTooLargeException](https://developer.android.com/reference/android/os/TransactionTooLargeException.html), a simple message `BINDER TRANSACTION FAILED` in log and your app will freeze or your app will get into restart loop. We recommend that you use `RecognizerBundle` and its API for sending `Recognizer` objects via Intent in a more safe manner ([check this section](#intentOptimization) for more information). However, if you really need to transfer standalone `Result` object (e.g. `Result` object obtained by cloning `Result` object owned by specific `Recognizer` object), you need to do that using global variables or singletons within your application. Sending large objects via Intent is not supported by Android.
 # <a name="info"></a> Additional info
-Complete API reference can be found in [Javadoc](https://pdf417.github.io/pdf417-android/index.html). 
+Complete API reference can be found in [Javadoc](https://pdf417.github.io/pdf417-android). 
 
 For any other questions, feel free to contact us at [help.microblink.com](http://help.microblink.com).
 
