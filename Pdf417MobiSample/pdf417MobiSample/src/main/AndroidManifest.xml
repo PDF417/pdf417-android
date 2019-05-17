@@ -28,8 +28,7 @@
         <activity
             android:name="com.microblink.activity.BarcodeScanActivity"
             tools:replace="android:theme"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:screenOrientation="portrait" >
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
         </activity>
     </application>
 
