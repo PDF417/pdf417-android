@@ -160,6 +160,13 @@ extends &lt;any&gt;</pre>
 <td class="colFirst"><code>static android.os.Parcelable.Creator</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#CREATOR">CREATOR</a></span></code>&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#TIMEOUT_INFINITY">TIMEOUT_INFINITY</a></span></code>
+<div class="block">Constant used as argument for <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#setNumMsBeforeTimeout-int-"><code>RecognizerBundle.setNumMsBeforeTimeout(int)</code></a> method when timeout should
+ be set to infinity.</div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -304,13 +311,30 @@ extends &lt;any&gt;</pre>
 <!--   -->
 </a>
 <h3>Field Detail</h3>
+<a name="TIMEOUT_INFINITY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>TIMEOUT_INFINITY</h4>
+<pre>public static final&nbsp;int TIMEOUT_INFINITY</pre>
+<div class="block">Constant used as argument for <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#setNumMsBeforeTimeout-int-"><code>RecognizerBundle.setNumMsBeforeTimeout(int)</code></a> method when timeout should
+ be set to infinity. Effectively, this means that recognition timeout will be disabled.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html#setNumMsBeforeTimeout-int-"><code>RecognizerBundle.setNumMsBeforeTimeout(int)</code></a>, 
+<a href="../../../../constant-values.html#com.microblink.entities.recognizers.RecognizerBundle.TIMEOUT_INFINITY">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
 <a name="CREATOR">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>CREATOR</h4>
-<pre>public static final&nbsp;android.os.Parcelable.Creator CREATOR</pre>
+<pre>@NonNull
+public static final&nbsp;android.os.Parcelable.Creator CREATOR</pre>
 </li>
 </ul>
 </li>
@@ -346,7 +370,8 @@ extends &lt;any&gt;</pre>
 <li class="blockList">
 <h4>createFromIntent</h4>
 <pre>@Nullable
-public static final&nbsp;<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a>&nbsp;createFromIntent(android.content.Intent&nbsp;intent)</pre>
+public static final&nbsp;<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a>&nbsp;createFromIntent(@NonNull
+                                                                android.content.Intent&nbsp;intent)</pre>
 <div class="block">Creates object of this class from <code>Intent</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -362,7 +387,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>getRecognizers</h4>
-<pre>public&nbsp;<a href="../../../../com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers">Recognizer</a>[]&nbsp;getRecognizers()</pre>
+<pre>@NonNull
+public&nbsp;<a href="../../../../com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers">Recognizer</a>[]&nbsp;getRecognizers()</pre>
 <div class="block">Returns the array of recognizers associated with this bundle.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -376,7 +402,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>getRecognitionMode</h4>
-<pre>public&nbsp;<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.RecognitionMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.RecognitionMode</a>&nbsp;getRecognitionMode()</pre>
+<pre>@NonNull
+public&nbsp;<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.RecognitionMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.RecognitionMode</a>&nbsp;getRecognitionMode()</pre>
 <div class="block">Returns the current recognition mode.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -390,7 +417,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>setRecognitionMode</h4>
-<pre>public&nbsp;void&nbsp;setRecognitionMode(<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.RecognitionMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.RecognitionMode</a>&nbsp;recognitionMode)</pre>
+<pre>public&nbsp;void&nbsp;setRecognitionMode(@NonNull
+                               <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.RecognitionMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.RecognitionMode</a>&nbsp;recognitionMode)</pre>
 <div class="block">This method is for debugging and testing purposes only. Please do not use it because calling it with
  wrong parameter might cause scanning loop to never terminate.</div>
 <dl>
@@ -478,7 +506,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>setFrameQualityEstimationMode</h4>
-<pre>public&nbsp;void&nbsp;setFrameQualityEstimationMode(<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.FrameQualityEstimationMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.FrameQualityEstimationMode</a>&nbsp;mode)</pre>
+<pre>public&nbsp;void&nbsp;setFrameQualityEstimationMode(@NonNull
+                                          <a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.FrameQualityEstimationMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.FrameQualityEstimationMode</a>&nbsp;mode)</pre>
 <div class="block">Sets the mode of the frame quality estimation. If automatic, it will be used if at least one enabled
  recognizer requires it or if device is fast enough to perform it always (default). If always on or always off,
  it will not depend on active recognizers nor device.
@@ -495,7 +524,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>getFrameQualityEstimationMode</h4>
-<pre>public&nbsp;<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.FrameQualityEstimationMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.FrameQualityEstimationMode</a>&nbsp;getFrameQualityEstimationMode()</pre>
+<pre>@NonNull
+public&nbsp;<a href="../../../../com/microblink/entities/recognizers/RecognizerBundle.FrameQualityEstimationMode.html" title="class in com.microblink.entities.recognizers">RecognizerBundle.FrameQualityEstimationMode</a>&nbsp;getFrameQualityEstimationMode()</pre>
 </li>
 </ul>
 <a name="getUniqueIdIntentExtraKey--">
@@ -504,7 +534,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>getUniqueIdIntentExtraKey</h4>
-<pre>protected&nbsp;java.lang.String&nbsp;getUniqueIdIntentExtraKey()</pre>
+<pre>@NonNull
+protected&nbsp;java.lang.String&nbsp;getUniqueIdIntentExtraKey()</pre>
 </li>
 </ul>
 <a name="getConcreteCreator--">
@@ -513,7 +544,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>getConcreteCreator</h4>
-<pre>protected&nbsp;&lt;any&gt;&nbsp;getConcreteCreator()</pre>
+<pre>@NonNull
+protected&nbsp;&lt;any&gt;&nbsp;getConcreteCreator()</pre>
 </li>
 </ul>
 <a name="consumeContentFromLoadedObject-com.microblink.entities.recognizers.RecognizerBundle-">
@@ -547,7 +579,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>equals</h4>
-<pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;o)</pre>
+<pre>public&nbsp;boolean&nbsp;equals(@Nullable
+                      java.lang.Object&nbsp;o)</pre>
 </li>
 </ul>
 <a name="readFromParcel-android.os.Parcel-">
@@ -556,7 +589,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockList">
 <li class="blockList">
 <h4>readFromParcel</h4>
-<pre>protected&nbsp;void&nbsp;readFromParcel(android.os.Parcel&nbsp;in)</pre>
+<pre>protected&nbsp;void&nbsp;readFromParcel(@NonNull
+                              android.os.Parcel&nbsp;in)</pre>
 </li>
 </ul>
 <a name="writeToParcel-android.os.Parcel-int-">
@@ -565,7 +599,8 @@ public static final&nbsp;<a href="../../../../com/microblink/entities/recognizer
 <ul class="blockListLast">
 <li class="blockList">
 <h4>writeToParcel</h4>
-<pre>public&nbsp;void&nbsp;writeToParcel(android.os.Parcel&nbsp;dest,
+<pre>public&nbsp;void&nbsp;writeToParcel(@NonNull
+                          android.os.Parcel&nbsp;dest,
                           int&nbsp;flags)</pre>
 </li>
 </ul>

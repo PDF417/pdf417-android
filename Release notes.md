@@ -1,5 +1,33 @@
 # Release notes
+
+## 7.2.0
+
+### New features:
+- enabled capturing of high resolution camera frames:
+    - When custom UI integration is performed, enable this functionality by using method `RecognizerRunnerView.setHighResFrameCaptureEnabled` and use `RecognizerRunnerView.captureHighResImage` to capture image
+    - When using provided scan activities, high resolution full camera frames taken at the moment of successful scan are returned if this option is enabled through `UISettings`. Concrete `UISettings` which implement interface `HighResSuccessFrameCaptureUIOptions` support this feature.
+
+### Improvements for existing features:
+- added option to force overlay orientation for `BarcodeOverlayController` (`BarcodeScanActivity`) - use `BarcodeUISettings.setForcedOrientation(OverlayOrientation)`
+- `RecognizerRunnerView` is lifecycle-aware now, it implements `android.arch.lifecycle.LifecycleObserver` interface
+- `BarcodeScanActivity` by default does not show result dialog after scan
+- updated default UI icons
+
+### Minor API changes:
+- Scanning timeout that can be configured by using `RecognizerBundle.setNumMsBeforeTimeout` is by default set to `RecognizerBundle.TIMEOUT_INFINITY`, which means that timeout is disabled by default. Previous default timeout value was 10 seconds.
+
+### Bug fixes:
+- fixed crashes on Nexus 6
+- removed incorrect autofocus check that was performed before concrete camera type is chosen
+- fixed crash on some devices when using `VIDEO_RESOLUTION_MAX_AVAILABLE`
+- fixed problems in camera management:
+    - default camera surface is `TextureVeiw` for devices that use Camera1 API, otherwise `SurfaceView` is used
+- fixed camera autofocus problems on Samsung S9/S9+ when optimisation for near scanning is enabled
+- fixed bug which caused that results from the previous scan are cleared when the scan activity is run again and entities which have produced results are not used in the new scan
+- various other bug fixes and improvements
+
 ## 7.1.0
+
 ### Bug fixes
 - fixed crash that could happend when calling `reconfigureRecogizers` on `RecognizerRunnerView`
 

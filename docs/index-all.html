@@ -86,6 +86,14 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#addChildViews-com.microblink.view.recognition.RecognizerRunnerView-">addChildViews(RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/IDisplayablePointsView.html#addDisplayablePointsDetection-com.microblink.metadata.detection.points.DisplayablePointsDetection-">addDisplayablePointsDetection(DisplayablePointsDetection)</a></span> - Method in interface com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/IDisplayablePointsView.html" title="interface in com.microblink.view.viewfinder.points">IDisplayablePointsView</a></dt>
+<dd>
+<div class="block">Sets the points detection that should be presented next.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#addDisplayablePointsDetection-com.microblink.metadata.detection.points.DisplayablePointsDetection-">addDisplayablePointsDetection(DisplayablePointsDetection)</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#addImage-com.microblink.image.highres.HighResImageWrapper-">addImage(HighResImageWrapper)</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#addOrientationChangeListener-OrientationChangeListener-">addOrientationChangeListener(OrientationChangeListener)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
 <div class="block">Adds the orientation listener that will receive orientation change events that are already reported
@@ -312,6 +320,8 @@
 <dd>
 <div class="block">Builds image object from Camera2 frame in YUV_420_888 format.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/image/ImageBuilder.html#buildImageFromJpegBytes-byte:A-int-">buildImageFromJpegBytes(byte[], int)</a></span> - Static method in class com.microblink.image.<a href="com/microblink/image/ImageBuilder.html" title="class in com.microblink.image">ImageBuilder</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/ImageBuilder.html#buildImageFromNativeContext-long-boolean-java.lang.Object-">buildImageFromNativeContext(long, boolean, Object)</a></span> - Static method in class com.microblink.image.<a href="com/microblink/image/ImageBuilder.html" title="class in com.microblink.image">ImageBuilder</a></dt>
 <dd>
 <div class="block">Builds image object from native context.</div>
@@ -340,7 +350,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/hardware/camera/CameraType.html#CAMERA_FRONTFACE">CAMERA_FRONTFACE</a></span> - Static variable in class com.microblink.hardware.camera.<a href="com/microblink/hardware/camera/CameraType.html" title="class in com.microblink.hardware.camera">CameraType</a></dt>
 <dd>
-<div class="block">Will use device's frontfacing camera, if it exists.</div>
+<div class="block">Will use device's front facing camera, if it exists.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/recognition/DetectionStatus.html#CAMERA_TOO_HIGH">CAMERA_TOO_HIGH</a></span> - Static variable in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/DetectionStatus.html" title="class in com.microblink.view.recognition">DetectionStatus</a></dt>
 <dd>
@@ -399,6 +409,12 @@
 <div class="block">If there is ongoing recognition process, this method will request cancellation of it and wait for
  recognition process to complete.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#captureHighResFrame--">captureHighResFrame()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/recognition/RecognizerRunnerView.html#captureHighResImage-HighResImageListener-">captureHighResImage(HighResImageListener)</a></span> - Method in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/RecognizerRunnerView.html" title="class in com.microblink.view.recognition">RecognizerRunnerView</a></dt>
+<dd>
+<div class="block">Starts capturing frame at full camera resolution and notifies listener once it's done.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlKeys.html#CardRevisionDate">CardRevisionDate</a></span> - Static variable in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlKeys.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlKeys</a></dt>
 <dd>
 <div class="block">Optional on AAMVA 04, 05, 06, 07, 08 and Compact barcodes
@@ -426,7 +442,9 @@
 <dd>
 <div class="block">Calculate and return point clamped to given norm (lengths).</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/Recognizer.html#CLASS_NAME">CLASS_NAME</a></span> - Static variable in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers">Recognizer</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#clearDisplayedContent--">clearDisplayedContent()</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#clearImages--">clearImages()</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/Entity.html#clone--">clone()</a></span> - Method in class com.microblink.entities.<a href="com/microblink/entities/Entity.html" title="class in com.microblink.entities">Entity</a></dt>
 <dd>
@@ -510,6 +528,10 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/fragment/overlay/package-summary.html">com.microblink.fragment.overlay</a> - package com.microblink.fragment.overlay</dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/microblink/fragment/overlay/components/package-summary.html">com.microblink.fragment.overlay.components</a> - package com.microblink.fragment.overlay.components</dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/microblink/fragment/overlay/listener/verification/package-summary.html">com.microblink.fragment.overlay.listener.verification</a> - package com.microblink.fragment.overlay.listener.verification</dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/microblink/geometry/package-summary.html">com.microblink.geometry</a> - package com.microblink.geometry</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/hardware/package-summary.html">com.microblink.hardware</a> - package com.microblink.hardware</dt>
@@ -521,6 +543,8 @@
 <dt><a href="com/microblink/hardware/orientation/package-summary.html">com.microblink.hardware.orientation</a> - package com.microblink.hardware.orientation</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/image/package-summary.html">com.microblink.image</a> - package com.microblink.image</dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/microblink/image/highres/package-summary.html">com.microblink.image.highres</a> - package com.microblink.image.highres</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/intent/package-summary.html">com.microblink.intent</a> - package com.microblink.intent</dt>
 <dd>&nbsp;</dd>
@@ -554,6 +578,8 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/microblink/view/recognition/package-summary.html">com.microblink.view.recognition</a> - package com.microblink.view.recognition</dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/microblink/view/viewfinder/points/package-summary.html">com.microblink.view.viewfinder.points</a> - package com.microblink.view.viewfinder.points</dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/microblink/view/viewfinder/quadview/package-summary.html">com.microblink.view.viewfinder.quadview</a> - package com.microblink.view.viewfinder.quadview</dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlKeys.html#ComplianceType">ComplianceType</a></span> - Static variable in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlKeys.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlKeys</a></dt>
@@ -567,6 +593,8 @@
 <dd>
 <div class="block">Inform quadview of configuration change event.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#consumeContentFromLoadedObject-com.microblink.entities.recognizers.HighResImagesBundle-">consumeContentFromLoadedObject(HighResImagesBundle)</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#consumeContentFromLoadedObject-com.microblink.entities.recognizers.RecognizerBundle-">consumeContentFromLoadedObject(RecognizerBundle)</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/Entity.html#consumeResultFrom-E-">consumeResultFrom(E)</a></span> - Method in class com.microblink.entities.<a href="com/microblink/entities/Entity.html" title="class in com.microblink.entities">Entity</a></dt>
@@ -623,6 +651,8 @@
 <dd>
 <div class="block">This method is called from native code to build <a href="com/microblink/results/date/DateResult.html" title="class in com.microblink.results.date"><code>DateResult</code></a> from native object.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/image/highres/HighResImageWrapper.Factory.html#createFromFrame-ICameraFrame-com.microblink.hardware.orientation.Orientation-">createFromFrame(ICameraFrame, Orientation)</a></span> - Static method in class com.microblink.image.highres.<a href="com/microblink/image/highres/HighResImageWrapper.Factory.html" title="class in com.microblink.image.highres">HighResImageWrapper.Factory</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#createFromIntent-android.content.Intent-">createFromIntent(Intent)</a></span> - Static method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>
 <div class="block">Creates object of this class from <code>Intent</code>.</div>
@@ -673,6 +703,8 @@
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.entities.recognizers.framegrabber.<a href="com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.html" title="class in com.microblink.entities.recognizers.framegrabber">FrameGrabberRecognizer</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.Result.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.entities.recognizers.framegrabber.<a href="com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.Result.html" title="class in com.microblink.entities.recognizers.framegrabber">FrameGrabberRecognizer.Result</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#CREATOR">CREATOR</a></span> - Static variable in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>&nbsp;</dd>
@@ -922,6 +954,10 @@
 <dd>
 <div class="block">Constructor for displayable quad detection.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/image/highres/HighResImageWrapper.html#dispose--">dispose()</a></span> - Method in interface com.microblink.image.highres.<a href="com/microblink/image/highres/HighResImageWrapper.html" title="interface in com.microblink.image.highres">HighResImageWrapper</a></dt>
+<dd>
+<div class="block">Disposes wrapped image.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/Image.html#dispose--">dispose()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/Image.html" title="class in com.microblink.image">Image</a></dt>
 <dd>
 <div class="block">Disposes native object containing image pixels.</div>
@@ -974,6 +1010,14 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/Recognizer.Result.State.html#Empty">Empty</a></span> - Static variable in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/Recognizer.Result.State.html" title="class in com.microblink.entities.recognizers">Recognizer.Result.State</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/hardware/accelerometer/ShakeCallback.html#EMPTY">EMPTY</a></span> - Static variable in interface com.microblink.hardware.accelerometer.<a href="com/microblink/hardware/accelerometer/ShakeCallback.html" title="interface in com.microblink.hardware.accelerometer">ShakeCallback</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#enableHighResSuccessFrameCapture-boolean-">enableHighResSuccessFrameCapture(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/HighResSuccessFrameCaptureUIOptions.html#enableHighResSuccessFrameCapture-boolean-">enableHighResSuccessFrameCapture(boolean)</a></span> - Method in interface com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/HighResSuccessFrameCaptureUIOptions.html" title="interface in com.microblink.uisettings.options">HighResSuccessFrameCaptureUIOptions</a></dt>
+<dd>
+<div class="block">Sets whether to enable capturing high res frames on recognition success.</div>
+</dd>
 <dt><a href="com/microblink/entities/Entity.html" title="class in com.microblink.entities"><span class="typeNameLink">Entity</span></a> - Class in <a href="com/microblink/entities/package-summary.html">com.microblink.entities</a></dt>
 <dd>
 <div class="block">Represents an entity that can be process a step during recognition.</div>
@@ -998,6 +1042,8 @@
 </a>
 <h2 class="title">F</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/microblink/image/highres/HighResImageWrapper.Factory.html#Factory--">Factory()</a></span> - Constructor for class com.microblink.image.highres.<a href="com/microblink/image/highres/HighResImageWrapper.Factory.html" title="class in com.microblink.image.highres">HighResImageWrapper.Factory</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/recognition/DetectionStatus.html#FAIL">FAIL</a></span> - Static variable in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/DetectionStatus.html" title="class in com.microblink.view.recognition">DetectionStatus</a></dt>
 <dd>
 <div class="block">Detection failed, nothing detected</div>
@@ -1076,6 +1122,11 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/CameraViewGroup.html#generateLayoutParams-android.util.AttributeSet-">generateLayoutParams(AttributeSet)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/CameraViewGroup.html" title="class in com.microblink.view">CameraViewGroup</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getAddress--">getAddress()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The full address of the United States driver license owner.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/MicroblinkSDK.html#getApplicationContext--">getApplicationContext()</a></span> - Static method in class com.microblink.<a href="com/microblink/MicroblinkSDK.html" title="class in com.microblink">MicroblinkSDK</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/util/CameraPermissionManager.html#getAskPermissionOverlay--">getAskPermissionOverlay()</a></span> - Method in class com.microblink.util.<a href="com/microblink/util/CameraPermissionManager.html" title="class in com.microblink.util">CameraPermissionManager</a></dt>
@@ -1094,9 +1145,9 @@
 <dd>
 <div class="block">The format of the scanned barcode.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getBeepSoundResourceID-int-">getBeepSoundResourceID(int)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getBeepSoundResourceID--">getBeepSoundResourceID()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/BeepSoundUIOptions.html#getBeepSoundResourceID-int-">getBeepSoundResourceID(int)</a></span> - Method in interface com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/BeepSoundUIOptions.html" title="interface in com.microblink.uisettings.options">BeepSoundUIOptions</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/BeepSoundUIOptions.html#getBeepSoundResourceID--">getBeepSoundResourceID()</a></span> - Method in interface com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/BeepSoundUIOptions.html" title="interface in com.microblink.uisettings.options">BeepSoundUIOptions</a></dt>
 <dd>
 <div class="block">Returns the resource ID of the sound to be played when recognition is successful.</div>
 </dd>
@@ -1114,7 +1165,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#getCameraFactorySettings--">getCameraFactorySettings()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getCameraOptimizedForNearScanning-boolean-">getCameraOptimizedForNearScanning(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getCameraOptimizedForNearScanning--">getCameraOptimizedForNearScanning()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
 <dd>
 <div class="block">Returns whether camera parameters should be optimized for near object scanning.</div>
 </dd>
@@ -1143,6 +1194,8 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Quadrilateral.html#getColor--">getColor()</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Quadrilateral.html" title="class in com.microblink.geometry">Quadrilateral</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#getConcreteCreator--">getConcreteCreator()</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#getConcreteCreator--">getConcreteCreator()</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#getConfigurationOrientation--">getConfigurationOrientation()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
@@ -1163,9 +1216,24 @@
 <div class="block">Date getter, if <a href="com/microblink/results/date/Date.html" title="class in com.microblink.results.date"><code>Date</code></a> representation of date result exists returns it,
  otherwise returns null.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getDateOfBirth--">getDateOfBirth()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The date of birth of the United States driver license owner.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getDateOfExpiry--">getDateOfExpiry()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The date of expiry of the United States driver license.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getDateOfIssue--">getDateOfIssue()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The date of issue of the United States driver license.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/results/date/Date.html#getDay--">getDay()</a></span> - Method in class com.microblink.results.date.<a href="com/microblink/results/date/Date.html" title="class in com.microblink.results.date">Date</a></dt>
 <dd>
-<div class="block">Returns day of the month.</div>
+<div class="block">Returns day of the month, or <code>0</code> if date is partial and day is not known.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/MetadataCallbacks.html#getDebugImageCallback--">getDebugImageCallback()</a></span> - Method in class com.microblink.metadata.<a href="com/microblink/metadata/MetadataCallbacks.html" title="class in com.microblink.metadata">MetadataCallbacks</a></dt>
 <dd>
@@ -1200,6 +1268,16 @@
 <dd>
 <div class="block">Returns the display location in coordinate system of image on which detection was performed.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getDocumentNumber--">getDocumentNumber()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The document number of the United States driver license.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getEndorsements--">getEndorsements()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The additional privileges granted to the United States driver license owner.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/MetadataCallbacks.html#getFailedDetectionCallback--">getFailedDetectionCallback()</a></span> - Method in class com.microblink.metadata.<a href="com/microblink/metadata/MetadataCallbacks.html" title="class in com.microblink.metadata">MetadataCallbacks</a></dt>
 <dd>
 <div class="block">Callback that will be invoked when all detections in <a href="com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers"><code>Recognizer</code></a>
@@ -1208,7 +1286,15 @@
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getField-com.microblink.entities.recognizers.blinkbarcode.usdl.UsdlKeys-">getField(UsdlKeys)</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Returns a field inside US Driver's licence.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getFirstName--">getFirstName()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The first name of the United States driver license owner.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getForcedOrientation--">getForcedOrientation()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dd>
+<div class="block">Returns forced overlay orientation.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/ImageFrame.html#getFormat--">getFormat()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/ImageFrame.html" title="class in com.microblink.image">ImageFrame</a></dt>
 <dd>&nbsp;</dd>
@@ -1226,6 +1312,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#getFrameQualityEstimationMode--">getFrameQualityEstimationMode()</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getFullName--">getFullName()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The full name of the United States driver license owner.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Rectangle.html#getHeight--">getHeight()</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry">Rectangle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/Image.html#getHeight--">getHeight()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/Image.html" title="class in com.microblink.image">Image</a></dt>
@@ -1236,6 +1327,12 @@
 <dd>
 <div class="block">returns the height of the frame</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#getHighResFrameLimit--">getHighResFrameLimit()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>
+<div class="block">Returns the current high res frame limit</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#getHighResImagesBundle--">getHighResImagesBundle()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#getHostActivity--">getHostActivity()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#getHostScreenOrientation--">getHostScreenOrientation()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
@@ -1244,6 +1341,10 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/hardware/camera/VideoResolutionPreset.html#getIdealHeight--">getIdealHeight()</a></span> - Method in class com.microblink.hardware.camera.<a href="com/microblink/hardware/camera/VideoResolutionPreset.html" title="class in com.microblink.hardware.camera">VideoResolutionPreset</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/image/highres/HighResImageWrapper.html#getImage--">getImage()</a></span> - Method in interface com.microblink.image.highres.<a href="com/microblink/image/highres/HighResImageWrapper.html" title="interface in com.microblink.image.highres">HighResImageWrapper</a></dt>
+<dd>
+<div class="block">Returns wrapped image.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/Image.html#getImageFormat--">getImageFormat()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/Image.html" title="class in com.microblink.image">Image</a></dt>
 <dd>
 <div class="block">Returns the format of the image.</div>
@@ -1258,6 +1359,8 @@
 <dd>
 <div class="block">Returns the orientation of the image.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#getImages--">getImages()</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/Image.html#getImageType--">getImageType()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/Image.html" title="class in com.microblink.image">Image</a></dt>
 <dd>
 <div class="block">Returns the type of the image.</div>
@@ -1270,6 +1373,11 @@
 <dd>
 <div class="block">Returns current intent data transfer mode.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getLastName--">getLastName()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The last name of the United States driver license owner.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Quadrilateral.html#getLowerLeft--">getLowerLeft()</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Quadrilateral.html" title="class in com.microblink.geometry">Quadrilateral</a></dt>
 <dd>
 <div class="block">Returns the point nearest to (0, height) coordinate</div>
@@ -1280,7 +1388,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/results/date/Date.html#getMonth--">getMonth()</a></span> - Method in class com.microblink.results.date.<a href="com/microblink/results/date/Date.html" title="class in com.microblink.results.date">Date</a></dt>
 <dd>
-<div class="block">Returns month of the year.</div>
+<div class="block">Returns month of the year, or <code>0</code> if date is partial and month is not known.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/ImageFrame.html#getNativeCameraFrame--">getNativeCameraFrame()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/ImageFrame.html" title="class in com.microblink.image">ImageFrame</a></dt>
 <dd>
@@ -1312,7 +1420,6 @@
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getOptionalElements--">getOptionalElements()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Array of elements that are not part of AAMVA standard and are specific to each US state.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/ImageFrame.html#getOrientation--">getOrientation()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/ImageFrame.html" title="class in com.microblink.image">ImageFrame</a></dt>
 <dd>
@@ -1322,7 +1429,7 @@
 <dd>
 <div class="block">Returns original string representation of the date which has been extracted from the OCR result.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getPinchToZoomAllowed-boolean-">getPinchToZoomAllowed(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getPinchToZoomAllowed--">getPinchToZoomAllowed()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
 <dd>
 <div class="block">Returns whether pinch to zoom is allowed on camera activity.</div>
 </dd>
@@ -1405,9 +1512,14 @@
 <dd>
 <div class="block">Returns the array of recognizers associated with this bundle.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getRegionOfInterestRotatable-boolean-">getRegionOfInterestRotatable(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getRegionOfInterestRotatable--">getRegionOfInterestRotatable()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
 <dd>
 <div class="block">Returns whether ROI (Region of Interest) will be rotated with user interface.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getRestrictions--">getRestrictions()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The restrictions to driving privileges for the United States driver license owner.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/Entity.html#getResult--">getResult()</a></span> - Method in class com.microblink.entities.<a href="com/microblink/entities/Entity.html" title="class in com.microblink.entities">Entity</a></dt>
 <dd>
@@ -1447,11 +1559,16 @@
 <dd>
 <div class="block">Returns the listener that will obtain the results of the scanning.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#getShowDialogAfterScan-boolean-">getShowDialogAfterScan(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getSex--">getSex()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The sex of the United States driver license owner.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#getShowDialogAfterScan--">getShowDialogAfterScan()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
 <dd>
 <div class="block">Returns flag which indicates whether result dialog should be shown after each barcode scan.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getShowingFocusRectangle-boolean-">getShowingFocusRectangle(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getShowingFocusRectangle--">getShowingFocusRectangle()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
 <dd>
 <div class="block">Returns flag which indicates whether showing of focus rectangle is enabled.</div>
 </dd>
@@ -1475,9 +1592,9 @@
 <div class="block">Returns the Quadrilateral which has same corners as original, but it guarantees that upper left
  point is the point nearest to (0,0) coordinate.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getSplashScreenLayoutResourceID-int-">getSplashScreenLayoutResourceID(int)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getSplashScreenLayoutResourceID--">getSplashScreenLayoutResourceID()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/SplashScreenUIOptions.html#getSplashScreenLayoutResourceID-int-">getSplashScreenLayoutResourceID(int)</a></span> - Method in interface com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/SplashScreenUIOptions.html" title="interface in com.microblink.uisettings.options">SplashScreenUIOptions</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/SplashScreenUIOptions.html#getSplashScreenLayoutResourceID--">getSplashScreenLayoutResourceID()</a></span> - Method in interface com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/SplashScreenUIOptions.html" title="interface in com.microblink.uisettings.options">SplashScreenUIOptions</a></dt>
 <dd>
 <div class="block">Returns the ID of the layout resource that will be used as camera splash screen displayed
  while camera is being initialized.</div>
@@ -1511,6 +1628,10 @@
 <dd>
 <div class="block">Returns target activity.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BarcodeOverlayController.html#getTorchButtonId--">getTorchButtonId()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BarcodeOverlayController.html" title="class in com.microblink.fragment.overlay">BarcodeOverlayController</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#getTorchButtonId--">getTorchButtonId()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/detection/quad/DisplayableQuadDetection.html#getTransformedDisplayLocation--">getTransformedDisplayLocation()</a></span> - Method in class com.microblink.metadata.detection.quad.<a href="com/microblink/metadata/detection/quad/DisplayableQuadDetection.html" title="class in com.microblink.metadata.detection.quad">DisplayableQuadDetection</a></dt>
 <dd>
 <div class="block">Returns the display location in normalized coordinate system of visible camera frame.</div>
@@ -1524,6 +1645,8 @@
 <div class="block">Returns the transformation matrix that can map coordinates from original coordinate system
  in which object was created into view's coordinate system.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#getUniqueIdIntentExtraKey--">getUniqueIdIntentExtraKey()</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#getUniqueIdIntentExtraKey--">getUniqueIdIntentExtraKey()</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Quadrilateral.html#getUpperLeft--">getUpperLeft()</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Quadrilateral.html" title="class in com.microblink.geometry">Quadrilateral</a></dt>
@@ -1538,13 +1661,20 @@
 <dd>
 <div class="block">Returns whether using of FLAG_SECURE on activity window is requested.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getUsingLegacyCameraAPI-boolean-">getUsingLegacyCameraAPI(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#getUsingLegacyCameraAPI--">getUsingLegacyCameraAPI()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/CameraSettingsUIOptions.html#getUsingLegacyCameraAPI-boolean-">getUsingLegacyCameraAPI(boolean)</a></span> - Method in interface com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/CameraSettingsUIOptions.html" title="interface in com.microblink.uisettings.options">CameraSettingsUIOptions</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/CameraSettingsUIOptions.html#getUsingLegacyCameraAPI--">getUsingLegacyCameraAPI()</a></span> - Method in interface com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/CameraSettingsUIOptions.html" title="interface in com.microblink.uisettings.options">CameraSettingsUIOptions</a></dt>
 <dd>
 <div class="block">Returns whether legacy camera API should be used even on Lollipop devices that support
  newer Camera2 API.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html#getVehicleClass--">getVehicleClass()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer.Result</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">The type of vehicle the driver license owner has privilege to drive.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#getView--">getView()</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/ImageFrame.html#getVisiblePart--">getVisiblePart()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/ImageFrame.html" title="class in com.microblink.image">ImageFrame</a></dt>
 <dd>
 <div class="block">returns the region that defines the visible part of frame</div>
@@ -1618,12 +1748,30 @@
 <dd>
 <div class="block">Mandatory on AAMVA 02, 03, 04, 05, 06, 07, 08 and Compact barcodes.</div>
 </dd>
+<dt><a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers"><span class="typeNameLink">HighResImagesBundle</span></a> - Class in <a href="com/microblink/entities/recognizers/package-summary.html">com.microblink.entities.recognizers</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#HighResImagesBundle--">HighResImagesBundle()</a></span> - Constructor for class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#HighResImagesBundle-android.content.Intent-">HighResImagesBundle(Intent)</a></span> - Constructor for class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/microblink/image/highres/HighResImageWrapper.html" title="interface in com.microblink.image.highres"><span class="typeNameLink">HighResImageWrapper</span></a> - Interface in <a href="com/microblink/image/highres/package-summary.html">com.microblink.image.highres</a></dt>
+<dd>
+<div class="block">Wrapper around <a href="com/microblink/image/Image.html" title="class in com.microblink.image"><code>Image</code></a> used for high resolution images.</div>
+</dd>
+<dt><a href="com/microblink/image/highres/HighResImageWrapper.Factory.html" title="class in com.microblink.image.highres"><span class="typeNameLink">HighResImageWrapper.Factory</span></a> - Class in <a href="com/microblink/image/highres/package-summary.html">com.microblink.image.highres</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/microblink/uisettings/options/HighResSuccessFrameCaptureUIOptions.html" title="interface in com.microblink.uisettings.options"><span class="typeNameLink">HighResSuccessFrameCaptureUIOptions</span></a> - Interface in <a href="com/microblink/uisettings/options/package-summary.html">com.microblink.uisettings.options</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:I">
 <!--   -->
 </a>
 <h2 class="title">I</h2>
 <dl>
+<dt><a href="com/microblink/view/viewfinder/points/IDisplayablePointsView.html" title="interface in com.microblink.view.viewfinder.points"><span class="typeNameLink">IDisplayablePointsView</span></a> - Interface in <a href="com/microblink/view/viewfinder/points/package-summary.html">com.microblink.view.viewfinder.points</a></dt>
+<dd>
+<div class="block">Interface for views that can draw displayable points on the camera overlay.</div>
+</dd>
 <dt><a href="com/microblink/image/Image.html" title="class in com.microblink.image"><span class="typeNameLink">Image</span></a> - Class in <a href="com/microblink/image/package-summary.html">com.microblink.image</a></dt>
 <dd>
 <div class="block">Represents a image that is being processed.</div>
@@ -1669,8 +1817,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/NotSupportedReason.html#INVALID_OR_MISSING_LICENSE">INVALID_OR_MISSING_LICENSE</a></span> - Static variable in class com.microblink.view.<a href="com/microblink/view/NotSupportedReason.html" title="class in com.microblink.view">NotSupportedReason</a></dt>
 <dd>
-<div class="block">Indicates that current build configuration requires valid license to be set with either <code>com.microblink.MicroblinkSDK#setLicenseKey(String)</code>,
- <code>com.microblink.MicroblinkSDK#setLicenseBuffer(byte[])</code> or <a href="com/microblink/MicroblinkSDK.html#setLicenseFile-java.lang.String-android.content.Context-"><code>MicroblinkSDK.setLicenseFile(String, Context)</code></a> before using
+<div class="block">Indicates that current build configuration requires valid license to be set with either <a href="com/microblink/MicroblinkSDK.html#setLicenseKey-java.lang.String-android.content.Context-"><code>MicroblinkSDK.setLicenseKey(String, Context)</code></a>,
+ <a href="com/microblink/MicroblinkSDK.html#setLicenseBuffer-byte:A-android.content.Context-"><code>MicroblinkSDK.setLicenseBuffer(byte[], Context)</code></a> or <a href="com/microblink/MicroblinkSDK.html#setLicenseFile-java.lang.String-android.content.Context-"><code>MicroblinkSDK.setLicenseFile(String, Context)</code></a> before using
  the scanner and set license is not valid</div>
 </dd>
 <dt><a href="com/microblink/recognition/InvalidLicenceKeyException.html" title="class in com.microblink.recognition"><span class="typeNameLink">InvalidLicenceKeyException</span></a> - Exception in <a href="com/microblink/recognition/package-summary.html">com.microblink.recognition</a></dt>
@@ -1688,6 +1836,8 @@
      A string of letters and/or numbers that is affixed to the raw materials (card stock,
      laminate, etc.) used in producing driver licenses and ID cards.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#isAnimationInProgress--">isAnimationInProgress()</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewManager.html#isAnimationInProgress--">isAnimationInProgress()</a></span> - Method in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewManager.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewManager</a></dt>
 <dd>
 <div class="block">Returns true if quad view animation is currently in progress.</div>
@@ -1741,6 +1891,16 @@
 <dt><span class="memberNameLink"><a href="com/microblink/image/ImageFrame.html#isFocused--">isFocused()</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/ImageFrame.html" title="class in com.microblink.image">ImageFrame</a></dt>
 <dd>
 <div class="block">returns true if camera thinks this frame is focused</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#isHighResFrameCaptureEnabled--">isHighResFrameCaptureEnabled()</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>
+<div class="block">Returns true if high res frame capture was enabled.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#isHighResSuccessFrameCaptureEnabled--">isHighResSuccessFrameCaptureEnabled()</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/HighResSuccessFrameCaptureUIOptions.html#isHighResSuccessFrameCaptureEnabled--">isHighResSuccessFrameCaptureEnabled()</a></span> - Method in interface com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/HighResSuccessFrameCaptureUIOptions.html" title="interface in com.microblink.uisettings.options">HighResSuccessFrameCaptureUIOptions</a></dt>
+<dd>
+<div class="block">Returns whether capturing high res frames on recognition success is enabled.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/hardware/orientation/Orientation.html#isHorizontal--">isHorizontal()</a></span> - Method in class com.microblink.hardware.orientation.<a href="com/microblink/hardware/orientation/Orientation.html" title="class in com.microblink.hardware.orientation">Orientation</a></dt>
 <dd>&nbsp;</dd>
@@ -1912,6 +2072,12 @@
 </a>
 <h2 class="title">L</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/OverlayOrientation.html#LANDSCAPE">LANDSCAPE</a></span> - Static variable in class com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options">OverlayOrientation</a></dt>
+<dd>
+<div class="block">Allowed orientations will be
+ <a href="com/microblink/hardware/orientation/Orientation.html#ORIENTATION_LANDSCAPE_RIGHT"><code>Orientation.ORIENTATION_LANDSCAPE_RIGHT</code></a> or
+ <a href="com/microblink/hardware/orientation/Orientation.html#ORIENTATION_LANDSCAPE_LEFT"><code>Orientation.ORIENTATION_LANDSCAPE_LEFT</code></a>.</div>
+</dd>
 <dt><a href="com/microblink/locale/LanguageUtils.html" title="class in com.microblink.locale"><span class="typeNameLink">LanguageUtils</span></a> - Class in <a href="com/microblink/locale/package-summary.html">com.microblink.locale</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/locale/LanguageUtils.html#LanguageUtils--">LanguageUtils()</a></span> - Constructor for class com.microblink.locale.<a href="com/microblink/locale/LanguageUtils.html" title="class in com.microblink.locale">LanguageUtils</a></dt>
@@ -1999,6 +2165,8 @@
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/MetadataCallbacks.html#MetadataCallbacks--">MetadataCallbacks()</a></span> - Constructor for class com.microblink.metadata.<a href="com/microblink/metadata/MetadataCallbacks.html" title="class in com.microblink.metadata">MetadataCallbacks</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mHandler">mHandler</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mHighResImagesBundle">mHighResImagesBundle</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#mHostScreenOrientation">mHostScreenOrientation</a></span> - Variable in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
@@ -2100,10 +2268,6 @@
 <dd>
 <div class="block">Slave orientation change listeners that can be notified on orientation change events generated by mOrientationManager</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#mTorchButton">mTorchButton</a></span> - Variable in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
-<dd>
-<div class="block">This is a torch control button</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/DisplayableObject.html#mTransformMatrix">mTransformMatrix</a></span> - Variable in class com.microblink.metadata.<a href="com/microblink/metadata/DisplayableObject.html" title="class in com.microblink.metadata">DisplayableObject</a></dt>
 <dd>
 <div class="block">Transformation matrix containing the transformation from original coordinate system into view's coordinate system</div>
@@ -2131,10 +2295,6 @@
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Point.html#negativeClone--">negativeClone()</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Point.html" title="class in com.microblink.geometry">Point</a></dt>
 <dd>
 <div class="block">Calculate and return negative of current point.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/microblink/view/NotSupportedReason.html#NO_AUTOFOCUS_CAMERA">NO_AUTOFOCUS_CAMERA</a></span> - Static variable in class com.microblink.view.<a href="com/microblink/view/NotSupportedReason.html" title="class in com.microblink.view">NotSupportedReason</a></dt>
-<dd>
-<div class="block">Indicates that current configuration requires camera autofocus support and current device does not support that feature</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/util/RecognizerCompatibilityStatus.html#NO_CAMERA">NO_CAMERA</a></span> - Static variable in class com.microblink.util.<a href="com/microblink/util/RecognizerCompatibilityStatus.html" title="class in com.microblink.util">RecognizerCompatibilityStatus</a></dt>
 <dd>
@@ -2211,6 +2371,8 @@
 <dd>
 <div class="block">Called when quad view starts animating quad.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#onAnimationUpdate-android.animation.ValueAnimator-">onAnimationUpdate(ValueAnimator)</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onAttach-android.app.Activity-">onAttach(Activity)</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onAutofocusFailed--">onAutofocusFailed()</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
@@ -2327,6 +2489,8 @@
 <div class="block">Invoked when all recognizers in active <a href="com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers"><code>Recognizer</code></a>
  chain have failed to detect anything on the image.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#onDraw-android.graphics.Canvas-">onDraw(Canvas)</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onError-java.lang.Throwable-">onError(Throwable)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onError-java.lang.Throwable-">onError(Throwable)</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
@@ -2344,6 +2508,8 @@
 <div class="block">Called on processing thread when it wants to show an image it is currently in process.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#onLayout-boolean-int-int-int-int-">onLayout(boolean, int, int, int, int)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#onLayout-boolean-int-int-int-int-">onLayout(boolean, int, int, int, int)</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#onMeasure-int-int-">onMeasure(int, int)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>&nbsp;</dd>
@@ -2434,8 +2600,6 @@
 <dd>
 <div class="block">Called when device stops shaking/moving.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/BaseScanOverlayController.html#onSizeChanged-int-int-">onSizeChanged(int, int)</a></span> - Method in class com.microblink.fragment.overlay.<a href="com/microblink/fragment/overlay/BaseScanOverlayController.html" title="class in com.microblink.fragment.overlay">BaseScanOverlayController</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/OnSizeChangedListener.html#onSizeChanged-int-int-">onSizeChanged(int, int)</a></span> - Method in interface com.microblink.view.<a href="com/microblink/view/OnSizeChangedListener.html" title="interface in com.microblink.view">OnSizeChangedListener</a></dt>
 <dd>
 <div class="block">Called when CameraView changes the size of itself and its children.</div>
@@ -2460,6 +2624,19 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/fragment/RecognizerRunnerFragment.html#onStop--">onStop()</a></span> - Method in class com.microblink.fragment.<a href="com/microblink/fragment/RecognizerRunnerFragment.html" title="class in com.microblink.fragment">RecognizerRunnerFragment</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/listener/verification/OverlayTorchStateListener.html#onTorchStateChanged-boolean-">onTorchStateChanged(boolean)</a></span> - Method in interface com.microblink.fragment.overlay.listener.verification.<a href="com/microblink/fragment/overlay/listener/verification/OverlayTorchStateListener.html" title="interface in com.microblink.fragment.overlay.listener.verification">OverlayTorchStateListener</a></dt>
+<dd>
+<div class="block">Called every time when torch state is changed, e.g.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/listener/verification/OverlayTorchStateListener.html#onTorchStateInitialised-boolean-">onTorchStateInitialised(boolean)</a></span> - Method in interface com.microblink.fragment.overlay.listener.verification.<a href="com/microblink/fragment/overlay/listener/verification/OverlayTorchStateListener.html" title="interface in com.microblink.fragment.overlay.listener.verification">OverlayTorchStateListener</a></dt>
+<dd>
+<div class="block">Called when camera preview is started and torch support status becomes available.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/components/TorchController.html#onTorchSupportStatusAvailable--">onTorchSupportStatusAvailable()</a></span> - Method in class com.microblink.fragment.overlay.components.<a href="com/microblink/fragment/overlay/components/TorchController.html" title="class in com.microblink.fragment.overlay.components">TorchController</a></dt>
+<dd>
+<div class="block">This method should be called immediately after the camera preview has been started and
+ torch support status is available (torch is supported by currently opened camera or not).</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Point.html#operatorMinus-com.microblink.geometry.Point-">operatorMinus(Point)</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Point.html" title="class in com.microblink.geometry">Point</a></dt>
 <dd>
 <div class="block">- operator on the point.</div>
@@ -2520,6 +2697,14 @@
 <dt><span class="memberNameLink"><a href="com/microblink/image/ImageType.html#ORIGINAL">ORIGINAL</a></span> - Static variable in class com.microblink.image.<a href="com/microblink/image/ImageType.html" title="class in com.microblink.image">ImageType</a></dt>
 <dd>
 <div class="block">This is the original image that arrived from camera.</div>
+</dd>
+<dt><a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options"><span class="typeNameLink">OverlayOrientation</span></a> - Class in <a href="com/microblink/uisettings/options/package-summary.html">com.microblink.uisettings.options</a></dt>
+<dd>
+<div class="block">Orientation of the rotatable views in camera overlay.</div>
+</dd>
+<dt><a href="com/microblink/fragment/overlay/listener/verification/OverlayTorchStateListener.html" title="interface in com.microblink.fragment.overlay.listener.verification"><span class="typeNameLink">OverlayTorchStateListener</span></a> - Interface in <a href="com/microblink/fragment/overlay/listener/verification/package-summary.html">com.microblink.fragment.overlay.listener.verification</a></dt>
+<dd>
+<div class="block">Listener that will be notified when camera torch state is updated by the overlay controller.</div>
 </dd>
 </dl>
 <a name="I:P">
@@ -2603,9 +2788,25 @@
 <dd>
 <div class="block">A callback that will be invoked when <a href="com/microblink/metadata/detection/points/DisplayablePointsDetection.html" title="class in com.microblink.metadata.detection.points"><code>DisplayablePointsDetection</code></a> gets available.</div>
 </dd>
+<dt><a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points"><span class="typeNameLink">PointSetView</span></a> - Class in <a href="com/microblink/view/viewfinder/points/package-summary.html">com.microblink.view.viewfinder.points</a></dt>
+<dd>
+<div class="block">A view that can draw PointsDetectorResult.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#PointSetView-android.content.Context-android.util.AttributeSet-int-int-int-">PointSetView(Context, AttributeSet, int, int, int)</a></span> - Constructor for class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>
+<div class="block">Constructor for PointSetView.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#PointSetView-android.content.Context-android.util.AttributeSet-int-">PointSetView(Context, AttributeSet, int)</a></span> - Constructor for class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/microblink/metadata/detection/points/PointsType.html" title="class in com.microblink.metadata.detection.points"><span class="typeNameLink">PointsType</span></a> - Class in <a href="com/microblink/metadata/detection/points/package-summary.html">com.microblink.metadata.detection.points</a></dt>
 <dd>
 <div class="block">Represents a type of <a href="com/microblink/metadata/detection/points/DisplayablePointsDetection.html" title="class in com.microblink.metadata.detection.points"><code>DisplayablePointsDetection</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/OverlayOrientation.html#PORTRAIT">PORTRAIT</a></span> - Static variable in class com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options">OverlayOrientation</a></dt>
+<dd>
+<div class="block">Allowed orientations will be
+ <a href="com/microblink/hardware/orientation/Orientation.html#ORIENTATION_PORTRAIT"><code>Orientation.ORIENTATION_PORTRAIT</code></a> or
+ <a href="com/microblink/hardware/orientation/Orientation.html#ORIENTATION_PORTRAIT_UPSIDE"><code>Orientation.ORIENTATION_PORTRAIT_UPSIDE</code></a>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#prepareCameraSettings-CameraSettings-">prepareCameraSettings(CameraSettings)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
@@ -2622,6 +2823,8 @@
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#putInteger-java.lang.String-int-">putInteger(String, int)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#putParcelable-java.lang.String-android.os.Parcelable-">putParcelable(String, Parcelable)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#putSerializable-java.lang.String-java.io.Serializable-">putSerializable(String, Serializable)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#putString-java.lang.String-java.lang.String-">putString(String, String)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
 <dd>&nbsp;</dd>
@@ -2685,11 +2888,17 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/Entity.Result.html#readFromParcel-android.os.Parcel-">readFromParcel(Parcel)</a></span> - Method in class com.microblink.entities.<a href="com/microblink/entities/Entity.Result.html" title="class in com.microblink.entities">Entity.Result</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#readFromParcel-android.os.Parcel-">readFromParcel(Parcel)</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#readFromParcel-android.os.Parcel-">readFromParcel(Parcel)</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#readInteger-java.lang.String-int-">readInteger(String, int)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#readParcelable-java.lang.String-">readParcelable(String)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#readParcelable-java.lang.String-T-">readParcelable(String, T)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#readSerializable-java.lang.String-">readSerializable(String)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#readString-java.lang.String-">readString(String)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
 <dd>&nbsp;</dd>
@@ -2942,6 +3151,10 @@
 </a>
 <h2 class="title">S</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/microblink/image/highres/HighResImageWrapper.html#saveToFile-java.io.File-">saveToFile(File)</a></span> - Method in interface com.microblink.image.highres.<a href="com/microblink/image/highres/HighResImageWrapper.html" title="interface in com.microblink.image.highres">HighResImageWrapper</a></dt>
+<dd>
+<div class="block">Saves image to given file.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#saveToIntent-android.content.Intent-">saveToIntent(Intent)</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>
 <div class="block">Saves this <a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers"><code>RecognizerBundle</code></a> to <code>Intent</code> so it can be passed to another <code>Activity</code>.</div>
@@ -3081,10 +3294,20 @@
 <dd>
 <div class="block">Callback that will be invoked when debug text information gets available.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/IDisplayablePointsView.html#setDisplayablePointsDetection-com.microblink.metadata.detection.points.DisplayablePointsDetection-">setDisplayablePointsDetection(DisplayablePointsDetection)</a></span> - Method in interface com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/IDisplayablePointsView.html" title="interface in com.microblink.view.viewfinder.points">IDisplayablePointsView</a></dt>
+<dd>
+<div class="block">Displays given points detection and clears previously displayed content.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#setDisplayablePointsDetection-com.microblink.metadata.detection.points.DisplayablePointsDetection-">setDisplayablePointsDetection(DisplayablePointsDetection)</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/MetadataCallbacks.html#setFailedDetectionCallback-com.microblink.metadata.detection.FailedDetectionCallback-">setFailedDetectionCallback(FailedDetectionCallback)</a></span> - Method in class com.microblink.metadata.<a href="com/microblink/metadata/MetadataCallbacks.html" title="class in com.microblink.metadata">MetadataCallbacks</a></dt>
 <dd>
 <div class="block">Callback that will be invoked when all detections in <a href="com/microblink/entities/recognizers/Recognizer.html" title="class in com.microblink.entities.recognizers"><code>Recognizer</code></a>
  See <a href="com/microblink/metadata/detection/FailedDetectionCallback.html" title="interface in com.microblink.metadata.detection"><code>FailedDetectionCallback</code></a> for more information.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#setForcedOrientation-com.microblink.uisettings.options.OverlayOrientation-">setForcedOrientation(OverlayOrientation)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
+<dd>
+<div class="block">Defines forced overlay orientation.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#setForceUseLegacyCamera-boolean-">setForceUseLegacyCamera(boolean)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
@@ -3106,9 +3329,23 @@
 <dd>
 <div class="block">Allow sending unfocused camera frames to <a href="com/microblink/entities/recognizers/framegrabber/FrameCallback.html" title="interface in com.microblink.entities.recognizers.framegrabber"><code>FrameCallback</code></a>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#setHighResFrameCaptureEnabled-boolean-">setHighResFrameCaptureEnabled(boolean)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>
+<div class="block">High res frame capture is disabled by default and needs to be enabled by using this method.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#setHighResFrameLimit-int-">setHighResFrameLimit(int)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
+<dd>
+<div class="block">Sets the maximum number of high res frames that can be active at a given moment.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/points/PointSetView.html#setHostActivityOrientation-int-">setHostActivityOrientation(int)</a></span> - Method in class com.microblink.view.viewfinder.points.<a href="com/microblink/view/viewfinder/points/PointSetView.html" title="class in com.microblink.view.viewfinder.points">PointSetView</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/image/Image.html#setImageOrientation-com.microblink.hardware.orientation.Orientation-">setImageOrientation(Orientation)</a></span> - Method in class com.microblink.image.<a href="com/microblink/image/Image.html" title="class in com.microblink.image">Image</a></dt>
 <dd>
 <div class="block">Use this method to change Image's orientation.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/viewfinder/quadview/QuadViewManager.html#setInitialHostActivityOrientation-int-">setInitialHostActivityOrientation(int)</a></span> - Method in class com.microblink.view.viewfinder.quadview.<a href="com/microblink/view/viewfinder/quadview/QuadViewManager.html" title="class in com.microblink.view.viewfinder.quadview">QuadViewManager</a></dt>
+<dd>
+<div class="block">Changes initial host activity orientation.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#setInitialOrientation-com.microblink.hardware.orientation.Orientation-">setInitialOrientation(Orientation)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
 <dd>
@@ -3156,6 +3393,12 @@
 <dt><span class="memberNameLink"><a href="com/microblink/MicroblinkSDK.html#setLicenseKey-java.lang.String-java.lang.String-android.content.Context-">setLicenseKey(String, String, Context)</a></span> - Static method in class com.microblink.<a href="com/microblink/MicroblinkSDK.html" title="class in com.microblink">MicroblinkSDK</a></dt>
 <dd>
 <div class="block">Set license key and unlock the SDK.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/view/recognition/RecognizerRunnerView.html#setLifecycle-android.arch.lifecycle.Lifecycle-">setLifecycle(Lifecycle)</a></span> - Method in class com.microblink.view.recognition.<a href="com/microblink/view/recognition/RecognizerRunnerView.html" title="class in com.microblink.view.recognition">RecognizerRunnerView</a></dt>
+<dd>
+<div class="block">Sets lifecycle that will be observed
+ so that you don't have to manually call
+ <a href="com/microblink/view/recognition/RecognizerRunnerView.html#create--"><code>RecognizerRunnerView.create()</code></a>, <a href="com/microblink/view/recognition/RecognizerRunnerView.html#resume--"><code>RecognizerRunnerView.resume()</code></a> and other lifecycle methods.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Quadrilateral.html#setMargins-int-int-int-int-int-">setMargins(int, int, int, int, int)</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Quadrilateral.html" title="class in com.microblink.geometry">Quadrilateral</a></dt>
 <dd>&nbsp;</dd>
@@ -3212,8 +3455,6 @@
 <div class="block">Sets the listener that will be asked if device orientation is allowed prior rotating
  rotatable view and native recognizer to that orientation.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.html#setPhotoMode-boolean-">setPhotoMode(boolean)</a></span> - Method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.html" title="class in com.microblink.view">BaseCameraView</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/BaseScanUISettings.html#setPinchToZoomAllowed-boolean-">setPinchToZoomAllowed(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BaseScanUISettings.html" title="class in com.microblink.uisettings">BaseScanUISettings</a></dt>
 <dd>
 <div class="block">Defines whether pinch to zoom will be allowed on camera activity, default is <code>false</code>.</div>
@@ -3353,7 +3594,7 @@
 <dd>
 <div class="block">Sets the shake callback that will be notified about device shake events.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#setShowDialogAfterScan-java.lang.Boolean-">setShowDialogAfterScan(Boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/BarcodeUISettings.html#setShowDialogAfterScan-boolean-">setShowDialogAfterScan(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/BarcodeUISettings.html" title="class in com.microblink.uisettings">BarcodeUISettings</a></dt>
 <dd>
 <div class="block">Defines whether result dialog should be shown after each barcode scan, default is <code>true</code>.</div>
 </dd>
@@ -3389,12 +3630,18 @@
 <dd>
 <div class="block">Turns the torch on the camera on or off.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/components/TorchController.html#setTorchStateListener-com.microblink.fragment.overlay.listener.verification.OverlayTorchStateListener-">setTorchStateListener(OverlayTorchStateListener)</a></span> - Method in class com.microblink.fragment.overlay.components.<a href="com/microblink/fragment/overlay/components/TorchController.html" title="class in com.microblink.fragment.overlay.components">TorchController</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.html#setUncertainDecoding-boolean-">setUncertainDecoding(boolean)</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.usdl.<a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlRecognizer.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl">UsdlRecognizer</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
 <div class="block">Enable decoding of non-standard PDF417 barcodes, but without
  guarantee that all data will be read.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/components/TorchController.html#setup-android.widget.ImageView-com.microblink.view.recognition.RecognizerRunnerView-">setup(ImageView, RecognizerRunnerView)</a></span> - Method in class com.microblink.fragment.overlay.components.<a href="com/microblink/fragment/overlay/components/TorchController.html" title="class in com.microblink.fragment.overlay.components">TorchController</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/components/TorchController.html#setup-android.widget.ImageView-com.microblink.view.recognition.RecognizerRunnerView-int-int-">setup(ImageView, RecognizerRunnerView, int, int)</a></span> - Method in class com.microblink.fragment.overlay.components.<a href="com/microblink/fragment/overlay/components/TorchController.html" title="class in com.microblink.fragment.overlay.components">TorchController</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/uisettings/UISettings.html#setUsingFlagSecure-boolean-">setUsingFlagSecure(boolean)</a></span> - Method in class com.microblink.uisettings.<a href="com/microblink/uisettings/UISettings.html" title="class in com.microblink.uisettings">UISettings</a></dt>
 <dd>
 <div class="block">Defines whether FLAG_SECURE on activity window, which indicates that the display has a secure
@@ -3640,10 +3887,27 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/successframe/SuccessFrameGrabberRecognizer.html#terminateNative-long-">terminateNative(long)</a></span> - Method in class com.microblink.entities.recognizers.successframe.<a href="com/microblink/entities/recognizers/successframe/SuccessFrameGrabberRecognizer.html" title="class in com.microblink.entities.recognizers.successframe">SuccessFrameGrabberRecognizer</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#TIMEOUT_INFINITY">TIMEOUT_INFINITY</a></span> - Static variable in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
+<dd>
+<div class="block">Constant used as argument for <a href="com/microblink/entities/recognizers/RecognizerBundle.html#setNumMsBeforeTimeout-int-"><code>RecognizerBundle.setNumMsBeforeTimeout(int)</code></a> method when timeout should
+ be set to infinity.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/OverlayOrientation.html#toActivityInfoOrientation--">toActivityInfoOrientation()</a></span> - Method in class com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options">OverlayOrientation</a></dt>
+<dd>
+<div class="block">Helper method to convert <a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options"><code>OverlayOrientation</code></a> to <code>ActivityInfo</code> constant.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Quadrilateral.html#toFloatArray-float:A-">toFloatArray(float[])</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Quadrilateral.html" title="class in com.microblink.geometry">Quadrilateral</a></dt>
 <dd>
 <div class="block">Converts this quadrilateral to array of float points.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/OverlayOrientation.html#toOrientation--">toOrientation()</a></span> - Method in class com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options">OverlayOrientation</a></dt>
+<dd>
+<div class="block">Helper method to convert <a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options"><code>OverlayOrientation</code></a> to <a href="com/microblink/hardware/orientation/Orientation.html" title="class in com.microblink.hardware.orientation"><code>Orientation</code></a>.</div>
+</dd>
+<dt><a href="com/microblink/fragment/overlay/components/TorchController.html" title="class in com.microblink.fragment.overlay.components"><span class="typeNameLink">TorchController</span></a> - Class in <a href="com/microblink/fragment/overlay/components/package-summary.html">com.microblink.fragment.overlay.components</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/components/TorchController.html#TorchController--">TorchController()</a></span> - Constructor for class com.microblink.fragment.overlay.components.<a href="com/microblink/fragment/overlay/components/TorchController.html" title="class in com.microblink.fragment.overlay.components">TorchController</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/geometry/Rectangle.html#toRectF--">toRectF()</a></span> - Method in class com.microblink.geometry.<a href="com/microblink/geometry/Rectangle.html" title="class in com.microblink.geometry">Rectangle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.Result.html#toString--">toString()</a></span> - Method in class com.microblink.entities.recognizers.blinkbarcode.barcode.<a href="com/microblink/entities/recognizers/blinkbarcode/barcode/BarcodeRecognizer.Result.html" title="class in com.microblink.entities.recognizers.blinkbarcode.barcode">BarcodeRecognizer.Result</a></dt>
@@ -3730,6 +3994,8 @@
 <dd>
 <div class="block">UPC E barcode was scanned</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/microblink/fragment/overlay/components/TorchController.html#updateTorchState-boolean-">updateTorchState(boolean)</a></span> - Method in class com.microblink.fragment.overlay.components.<a href="com/microblink/fragment/overlay/components/TorchController.html" title="class in com.microblink.fragment.overlay.components">TorchController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/microblink/entities/recognizers/blinkbarcode/usdl/UsdlKeys.html" title="class in com.microblink.entities.recognizers.blinkbarcode.usdl"><span class="typeNameLink">UsdlKeys</span></a> - Class in <a href="com/microblink/entities/recognizers/blinkbarcode/usdl/package-summary.html">com.microblink.entities.recognizers.blinkbarcode.usdl</a></dt>
 <dd>
 <div class="block">Possible keys that can be used for obtaining USDL result elements.</div>
@@ -3780,6 +4046,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/detection/points/PointsType.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in class com.microblink.metadata.detection.points.<a href="com/microblink/metadata/detection/points/PointsType.html" title="class in com.microblink.metadata.detection.points">PointsType</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/OverlayOrientation.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in class com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options">OverlayOrientation</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/util/RecognizerCompatibilityStatus.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in class com.microblink.util.<a href="com/microblink/util/RecognizerCompatibilityStatus.html" title="class in com.microblink.util">RecognizerCompatibilityStatus</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/view/BaseCameraView.CameraViewState.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in class com.microblink.view.<a href="com/microblink/view/BaseCameraView.CameraViewState.html" title="class in com.microblink.view">BaseCameraView.CameraViewState</a></dt>
@@ -3817,6 +4085,8 @@
 <dt><span class="memberNameLink"><a href="com/microblink/intent/IntentDataTransferMode.html#values--">values()</a></span> - Static method in class com.microblink.intent.<a href="com/microblink/intent/IntentDataTransferMode.html" title="class in com.microblink.intent">IntentDataTransferMode</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/metadata/detection/points/PointsType.html#values--">values()</a></span> - Static method in class com.microblink.metadata.detection.points.<a href="com/microblink/metadata/detection/points/PointsType.html" title="class in com.microblink.metadata.detection.points">PointsType</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/uisettings/options/OverlayOrientation.html#values--">values()</a></span> - Static method in class com.microblink.uisettings.options.<a href="com/microblink/uisettings/options/OverlayOrientation.html" title="class in com.microblink.uisettings.options">OverlayOrientation</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/util/RecognizerCompatibilityStatus.html#values--">values()</a></span> - Static method in class com.microblink.util.<a href="com/microblink/util/RecognizerCompatibilityStatus.html" title="class in com.microblink.util">RecognizerCompatibilityStatus</a></dt>
 <dd>&nbsp;</dd>
@@ -3889,6 +4159,8 @@
 <dt><span class="memberNameLink"><a href="com/microblink/entities/Entity.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.entities.<a href="com/microblink/entities/Entity.html" title="class in com.microblink.entities">Entity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.entities.recognizers.framegrabber.<a href="com/microblink/entities/recognizers/framegrabber/FrameGrabberRecognizer.html" title="class in com.microblink.entities.recognizers.framegrabber">FrameGrabberRecognizer</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/HighResImagesBundle.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/HighResImagesBundle.html" title="class in com.microblink.entities.recognizers">HighResImagesBundle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/microblink/entities/recognizers/RecognizerBundle.html#writeToParcel-android.os.Parcel-int-">writeToParcel(Parcel, int)</a></span> - Method in class com.microblink.entities.recognizers.<a href="com/microblink/entities/recognizers/RecognizerBundle.html" title="class in com.microblink.entities.recognizers">RecognizerBundle</a></dt>
 <dd>&nbsp;</dd>

@@ -12,12 +12,15 @@ com.microblink.entities.recognizers.framegrabber
 com.microblink.entities.recognizers.successframe
 com.microblink.fragment
 com.microblink.fragment.overlay
+com.microblink.fragment.overlay.components
+com.microblink.fragment.overlay.listener.verification
 com.microblink.geometry
 com.microblink.hardware
 com.microblink.hardware.accelerometer
 com.microblink.hardware.camera
 com.microblink.hardware.orientation
 com.microblink.image
+com.microblink.image.highres
 com.microblink.intent
 com.microblink.locale
 com.microblink.metadata
@@ -34,4 +37,5 @@ com.microblink.uisettings.options
 com.microblink.util
 com.microblink.view
 com.microblink.view.recognition
+com.microblink.view.viewfinder.points
 com.microblink.view.viewfinder.quadview
