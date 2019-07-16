@@ -1,5 +1,10 @@
 # Release notes
 
+## 7.2.1
+
+### Bug fixes:
+- fixed scanning bug for devices with problematic camera resolution, which caused that SDK was unable to scan data, known affected devices were: `OnePlus 6T`, `OnePlus 7 Pro` and `Vivo V15`
+
 ## 7.2.0
 
 ### New features:
