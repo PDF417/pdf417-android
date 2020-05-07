@@ -1,11 +1,11 @@
 package mobi.pdf417.demo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.TextView;
@@ -18,7 +18,7 @@ import com.microblink.uisettings.BarcodeUISettings;
 
 import java.util.Arrays;
 
-public class Pdf417MobiDemoActivity extends Activity {
+public class Pdf417MobiDemoActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 1337;
 
