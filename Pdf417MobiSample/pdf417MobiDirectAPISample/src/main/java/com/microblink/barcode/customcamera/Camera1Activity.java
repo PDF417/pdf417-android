@@ -5,26 +5,25 @@ import android.content.Intent;
 import android.graphics.ImageFormat;
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
 
-import com.microblink.activity.BaseScanActivity;
 import com.microblink.barcode.R;
-import com.microblink.directApi.DirectApiErrorListener;
-import com.microblink.directApi.RecognizerRunner;
-import com.microblink.entities.recognizers.RecognizerBundle;
-import com.microblink.hardware.orientation.Orientation;
-import com.microblink.image.Image;
-import com.microblink.image.ImageBuilder;
-import com.microblink.recognition.FeatureNotSupportedException;
-import com.microblink.recognition.RecognitionSuccessType;
-import com.microblink.util.Log;
-import com.microblink.view.recognition.ScanResultListener;
+import com.microblink.blinkbarcode.directApi.DirectApiErrorListener;
+import com.microblink.blinkbarcode.directApi.RecognizerRunner;
+import com.microblink.blinkbarcode.entities.recognizers.RecognizerBundle;
+import com.microblink.blinkbarcode.hardware.orientation.Orientation;
+import com.microblink.blinkbarcode.image.Image;
+import com.microblink.blinkbarcode.image.ImageBuilder;
+import com.microblink.blinkbarcode.recognition.RecognitionSuccessType;
+import com.microblink.blinkbarcode.util.Log;
+import com.microblink.blinkbarcode.view.recognition.ScanResultListener;
 
 import java.io.IOException;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 @SuppressWarnings("deprecation")
 public class Camera1Activity extends Activity implements ScanResultListener, SurfaceHolder.Callback, Camera.PreviewCallback {
@@ -56,13 +55,7 @@ public class Camera1Activity extends Activity implements ScanResultListener, Sur
     protected void onStart() {
         super.onStart();
         // get the recognizer instance
-        try {
-            mRecognizerRunner = RecognizerRunner.getSingletonInstance();
-        } catch (FeatureNotSupportedException e) {
-            Toast.makeText(this, "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
+        mRecognizerRunner = RecognizerRunner.getSingletonInstance();
 
         // initialize recognizer singleton
         mRecognizerRunner.initialize(this, mRecognizerBundle, new DirectApiErrorListener() {
@@ -155,13 +148,19 @@ public class Camera1Activity extends Activity implements ScanResultListener, Sur
             // return results
             Intent intent = new Intent();
             mRecognizerBundle.saveToIntent(intent);
-            setResult(BaseScanActivity.RESULT_OK, intent);
+            setResult(Activity.RESULT_OK, intent);
             finish();
         } else {
             if (mCamera != null) {
                 mCamera.addCallbackBuffer(mPixelBuffer);
             }
         }
+    }
+
+    @Override
+    public void onUnrecoverableError(@NonNull Throwable throwable) {
+        Toast.makeText(this, throwable.toString(), Toast.LENGTH_LONG).show();
+        finish();
     }
 
     @Override

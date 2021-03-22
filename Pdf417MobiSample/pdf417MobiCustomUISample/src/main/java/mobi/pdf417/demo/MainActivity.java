@@ -4,26 +4,29 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.WorkerThread;
 import android.view.View;
 import android.webkit.URLUtil;
+import android.widget.Toast;
 
-import com.microblink.entities.recognizers.RecognizerBundle;
-import com.microblink.entities.recognizers.blinkbarcode.barcode.BarcodeRecognizer;
-import com.microblink.fragment.RecognizerRunnerFragment;
-import com.microblink.fragment.overlay.BarcodeOverlayController;
-import com.microblink.fragment.overlay.ScanningOverlay;
-import com.microblink.geometry.Rectangle;
-import com.microblink.recognition.RecognitionSuccessType;
-import com.microblink.uisettings.ActivityRunner;
-import com.microblink.uisettings.BarcodeUISettings;
-import com.microblink.view.recognition.ScanResultListener;
+import com.microblink.blinkbarcode.entities.recognizers.RecognizerBundle;
+import com.microblink.blinkbarcode.entities.recognizers.blinkbarcode.barcode.BarcodeRecognizer;
+import com.microblink.blinkbarcode.fragment.RecognizerRunnerFragment;
+import com.microblink.blinkbarcode.fragment.overlay.ScanningOverlay;
+import com.microblink.blinkbarcode.fragment.overlay.basic.BasicOverlayController;
+import com.microblink.blinkbarcode.geometry.Rectangle;
+import com.microblink.blinkbarcode.recognition.RecognitionSuccessType;
+import com.microblink.blinkbarcode.uisettings.ActivityRunner;
+import com.microblink.blinkbarcode.uisettings.BarcodeUISettings;
+import com.microblink.blinkbarcode.view.recognition.ScanResultListener;
 
 import java.util.Arrays;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.WorkerThread;
+import androidx.appcompat.app.AppCompatActivity;
+
 // ScanningOverlayBinder must be implemented for case when RecognizerRunnerFragment is used
-public class MainActivity extends Activity implements RecognizerRunnerFragment.ScanningOverlayBinder {
+public class MainActivity extends AppCompatActivity implements RecognizerRunnerFragment.ScanningOverlayBinder {
 
     private static final int MY_REQUEST_CODE = 1337;
 
@@ -43,13 +46,13 @@ public class MainActivity extends Activity implements RecognizerRunnerFragment.S
     private RecognizerRunnerFragment mRecognizerRunnerFragment;
 
     /**
-     * BarcodeOverlayController displays same UI as BarcodeScanActivity, but over given RecognizerRunnerFragment.
+     * BasicOverlayController displays same UI as BarcodeScanActivity, but over given RecognizerRunnerFragment.
      * Association is done via {@link #getScanningOverlay()} method in fragment's {@link RecognizerRunnerFragment#onAttach(Activity)}
      * lifecycle event, so you must ensure that mScanOverlay exists at this time.
      */
-    private BarcodeOverlayController mScanOverlay = createRecognizerAndOverlay();
+    private BasicOverlayController mScanOverlay = createRecognizerAndOverlay();
 
-    private BarcodeOverlayController createRecognizerAndOverlay() {
+    private BasicOverlayController createRecognizerAndOverlay() {
         // You have to enable recognizers and barcode types you want to support
         // Don't enable what you don't need, it will significantly decrease scanning performance
         mBarcodeRecognizer = new BarcodeRecognizer();
@@ -58,7 +61,8 @@ public class MainActivity extends Activity implements RecognizerRunnerFragment.S
 
         mRecognizerBundle = new RecognizerBundle(mBarcodeRecognizer);
 
-        return new BarcodeOverlayController(new BarcodeUISettings(mRecognizerBundle), new ScanResultListener() {
+        BarcodeUISettings uiSettings = new BarcodeUISettings(mRecognizerBundle);
+        return uiSettings.createOverlayController(this, new ScanResultListener() {
             // called when RecognizerRunnerFragment finishes recognition
             @Override
             @WorkerThread
@@ -69,6 +73,12 @@ public class MainActivity extends Activity implements RecognizerRunnerFragment.S
                 removeFragment();
                 handleScanResult();
             }
+
+            @Override
+            public void onUnrecoverableError(@NonNull Throwable throwable) {
+                Toast.makeText(MainActivity.this, throwable.toString(), Toast.LENGTH_LONG).show();
+                finish();
+            }
         });
     }
 
@@ -78,7 +88,8 @@ public class MainActivity extends Activity implements RecognizerRunnerFragment.S
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState != null) {
-            mRecognizerRunnerFragment = (RecognizerRunnerFragment) getFragmentManager().findFragmentById(R.id.recognizer_runner_view_container);
+            mRecognizerRunnerFragment = (RecognizerRunnerFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.recognizer_runner_view_container);
         }
     }
 
@@ -116,7 +127,7 @@ public class MainActivity extends Activity implements RecognizerRunnerFragment.S
             scanLayout.setVisibility(View.VISIBLE);
 
             mRecognizerRunnerFragment = new RecognizerRunnerFragment();
-            getFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                     .add(R.id.recognizer_runner_view_container, mRecognizerRunnerFragment)
                     .addToBackStack(null)
                     .commit();
@@ -161,6 +172,7 @@ public class MainActivity extends Activity implements RecognizerRunnerFragment.S
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             // updates bundled recognizers with results that have arrived
             mRecognizerBundle.loadFromIntent(data);

@@ -11,8 +11,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,18 +18,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.microblink.barcode.R;
-import com.microblink.directApi.DirectApiErrorListener;
-import com.microblink.directApi.RecognizerRunner;
-import com.microblink.entities.recognizers.RecognizerBundle;
-import com.microblink.hardware.orientation.Orientation;
-import com.microblink.recognition.FeatureNotSupportedException;
-import com.microblink.recognition.RecognitionSuccessType;
-import com.microblink.view.recognition.ScanResultListener;
+import com.microblink.blinkbarcode.directApi.DirectApiErrorListener;
+import com.microblink.blinkbarcode.directApi.RecognizerRunner;
+import com.microblink.blinkbarcode.entities.recognizers.RecognizerBundle;
+import com.microblink.blinkbarcode.hardware.orientation.Orientation;
+import com.microblink.blinkbarcode.recognition.FeatureNotSupportedException;
+import com.microblink.blinkbarcode.recognition.RecognitionSuccessType;
+import com.microblink.blinkbarcode.view.recognition.ScanResultListener;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 
 public class ScanImageActivity extends Activity {
 
@@ -111,15 +112,7 @@ public class ScanImageActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        try {
-            mRecognizerRunner = RecognizerRunner.getSingletonInstance();
-        } catch (FeatureNotSupportedException e) {
-            Toast.makeText(this, "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
-
+        mRecognizerRunner = RecognizerRunner.getSingletonInstance();
         mRecognizerRunner.initialize(this, mRecognizerBundle, new DirectApiErrorListener() {
             @Override
             public void onRecognizerError(Throwable t) {
@@ -217,6 +210,11 @@ public class ScanImageActivity extends Activity {
                         }
                     });
                 }
+            }
+
+            @Override
+            public void onUnrecoverableError(@NonNull Throwable throwable) {
+                Toast.makeText(ScanImageActivity.this, throwable.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }

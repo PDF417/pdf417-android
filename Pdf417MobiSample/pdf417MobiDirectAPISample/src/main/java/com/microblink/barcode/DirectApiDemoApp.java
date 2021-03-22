@@ -2,8 +2,8 @@ package com.microblink.barcode;
 
 import android.app.Application;
 
-import com.microblink.MicroblinkSDK;
-import com.microblink.intent.IntentDataTransferMode;
+import com.microblink.blinkbarcode.MicroblinkSDK;
+import com.microblink.blinkbarcode.intent.IntentDataTransferMode;
 
 public final class DirectApiDemoApp extends Application {
     @Override

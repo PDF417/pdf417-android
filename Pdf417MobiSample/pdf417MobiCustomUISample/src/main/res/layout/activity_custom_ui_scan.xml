@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context="mobi.pdf417.demo.CustomUIScanActivity">
 
-    <com.microblink.view.recognition.RecognizerRunnerView
+    <com.microblink.blinkbarcode.view.recognition.RecognizerRunnerView
         android:id="@+id/recognizer_runner_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        custom:mb_initialOrientation="portrait">
+        android:layout_height="match_parent">
 
-    </com.microblink.view.recognition.RecognizerRunnerView>
+    </com.microblink.blinkbarcode.view.recognition.RecognizerRunnerView>
 
 </FrameLayout>
