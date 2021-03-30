@@ -1,13 +1,13 @@
 ## PDF417.mobi SDK size report
 
-This is SDK size report for all supported ABIs. Sizes are calculated by using Android official [**apkanalyzer**](https://developer.android.com/studio/command-line/apkanalyzer) command line tool.
+This SDK size report is for all supported ABIs. We use the Android official [**apkanalyzer**](https://developer.android.com/studio/command-line/apkanalyzer) command line tool to calculate the sizes.
 
-**NOTE**: Presented APK sizes are sums of `base APK size` + `size of our SDK`. Roughly, `base APK size` is about `1MB`, which means that APK size increase caused by our SDK in your application will be less than presented for approximately `1MB`.
+**NOTE**: Presented APK sizes are sums of the `base APK size` + `size of our SDK`. Roughly, the `base APK size` is about `1 MB`, which means that the APK size increase caused by our SDK in your application will be approximately `1 MB` less than presented.
 
 | ABI | APK file size | APK download size |
 | --- |:-------------:| :----------------:|
-| armeabi-v7a | 1.8MB | 1.5MB |
-| arm64-v8a | 2MB | 1.6MB |
-| x86 | 2.1MB | 1.7MB |
-| x86_64 | 2MB | 1.7MB |
+| armeabi-v7a | 1.7MB | 1.4MB |
+| arm64-v8a | 1.9MB | 1.6MB |
+| x86 | 2.1MB | 1.8MB |
+| x86_64 | 1.9MB | 1.6MB |
 
