@@ -4,11 +4,11 @@
 
 ### **PDF417.mobi v8 Release Announcement**
 
-As of this version, PDF417.mobi SDK is fully compatible with other Microblink SDKs, which means that you can use it with other Microblink SDKs in the same application.
+As of this version, PDF417.mobi SDK is fully compatible with other Microblink SDKs, which means that you can use it alongside anoother Microblink SDK in the same application.
 
 ### Improvements:
 
-- We've translated complete SDK to the following languages: **Arabic**, **Chinese traditional**, **Chinese simplified**, **Croatian**, **Czech**, **Dutch**, **English**, **Filipino**, **French**, **German**, **Hewrew**, **Hungarian**, **Indonesian**, **Italian**, **Malay**, **Portuguese**, **Romanian**, **Serbian**, **Slovak**, **Spanish**, **Slovenian**, **Thai** and **Vietnamese**.
+- We've translated complete SDK to the following languages: **Arabic**, **Chinese traditional**, **Chinese simplified**, **Croatian**, **Czech**, **Dutch**, **English**, **Filipino**, **French**, **German**, **Hebrew**, **Hungarian**, **Indonesian**, **Italian**, **Malay**, **Portuguese**, **Romanian**, **Serbian**, **Slovak**, **Spanish**, **Slovenian**, **Thai** and **Vietnamese**.
 - We added the option to disable Microblink logs in the console output. Use `LoggingSettings.disableMicroblinkLogging()`. Be careful with this option. We need full log outputs from the application for support purposes. In case of having problems with scanning certain items, undesired behavior on the specific device(s), crashes inside SDK or anything unmentioned, we will need a full log from your side. If you disable Microblink logging, you won't be able to provide us this information. Hence support might be limited.
 - We've  made the SDK safe from **tapjacking**, a form of attack where a user is tricked into tapping something he or she didn't intend to tap. We did this by adding a new security option that prompts the SDK to discard touches when the activity's window is obscured by another visible window.
 - We've introduced a new `FrameRecognitionCallback` callback for the `RecognizerRunnerView`, which is invoked each time a camera frame from a video stream is recognized. Use `RecognizerRunnerView.setFrameRecognitionCallback` method to set the callback.
