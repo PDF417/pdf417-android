@@ -1,5 +1,46 @@
 # Release notes
 
+## 8.0.0
+
+### **PDF417.mobi v8 Release Announcement**
+
+As of this version, PDF417.mobi SDK is fully compatible with other Microblink SDKs, which means that you can use it alongside anoother Microblink SDK in the same application.
+
+### Improvements:
+
+- We've translated complete SDK to the following languages: **Arabic**, **Chinese traditional**, **Chinese simplified**, **Croatian**, **Czech**, **Dutch**, **English**, **Filipino**, **French**, **German**, **Hebrew**, **Hungarian**, **Indonesian**, **Italian**, **Malay**, **Portuguese**, **Romanian**, **Serbian**, **Slovak**, **Spanish**, **Slovenian**, **Thai** and **Vietnamese**.
+- We added the option to disable Microblink logs in the console output. Use `LoggingSettings.disableMicroblinkLogging()`. Be careful with this option. We need full log outputs from the application for support purposes. In case of having problems with scanning certain items, undesired behavior on the specific device(s), crashes inside SDK or anything unmentioned, we will need a full log from your side. If you disable Microblink logging, you won't be able to provide us this information. Hence support might be limited.
+- We've  made the SDK safe from **tapjacking**, a form of attack where a user is tricked into tapping something he or she didn't intend to tap. We did this by adding a new security option that prompts the SDK to discard touches when the activity's window is obscured by another visible window.
+- We've introduced a new `FrameRecognitionCallback` callback for the `RecognizerRunnerView`, which is invoked each time a camera frame from a video stream is recognized. Use `RecognizerRunnerView.setFrameRecognitionCallback` method to set the callback.
+- We've improved camera performance on some Samsung devices.
+
+### Major API changes:
+
+- To ensure compatibility with other Microblink SDKs, we have repackaged all classes. We have renamed the root package `com.microblink` to `com.microblink.blinkbarcode`, which is unique to `PDF417.mobi` SDK.
+- SDK has been migrated to **AndroidX** dependencies - previous SDK dependency com.android.support:appcompat-v7 has been replaced with  **androidx.appcompat:appcompat**
+- `ScanResultListener` interface now has an additional method called when the scanning cannot continue because of an unrecoverable error. You have to implement `onUnrecoverableError` method.
+If you're using built-in activities, when `onActivityResult` is called with `RESULT_CANCELED` result code, the exception will be available via `ActivityRunner.EXTRA_SCAN_EXCEPTION` intent extra. If the user canceled the scan, the exception would be `null`.
+
+### Minor API changes:
+
+- We've deprecated `Pdf417Recognizer` - use `BarcodeRecognizer` instead.
+- We've introduced new API for configuring camera options on `UISettings` -  use `UISettings.setCameraSettings`, which accepts object of `CameraSettings` type.
+- `RecognizerRunnerFragment` extends `androidx.fragment.app.Fragment`, instead of deprecated `android.app.Fragment`.
+- All provided scan activities extend `AppCompatActivity`.
+- We've removed `RecognizerRunnerView` custom attributes: `mb_initialOrientation` and `mb_aspectMode`. Use `RecognizerRunnerView.setInitialOrientation` and `RecognizerRunnerView.setAspectMode` to configure the attributes in the code.
+- We've changed default `IntentDataTransferMode` to `IntentDataTransferMode.PERSISTED_OPTIMISED`. It can be configured by using `MicroblinkSDK.setIntentDataTransferMode`.
+- We've replaced `Using time-limited license!` warning with `Using trial license!` warning. The warning message is displayed when using a trial license key.
+- We've renamed `RecogitionMode` to `RecognitionDebugMode` in `RecognizerBundle`.
+
+### Bug fixes:
+
+- We've fixed camera busy error in camera management that was happening during the quick closing and opening of the camera.
+- We've fixed rare crash on Samsung J5 Prime caused by race condition during the initialization of native camera frame.
+- We've fixed problems with aspect ratio of camera preview on Huawei Mate 10.
+- We've fixed crash when using Direct API on high-resolution `com.microblink.image.Image` from `HighResImageWrapper`.
+- We've fixed race conditions in camera management, which in some cases caused that the camera was unable to resume after it has been paused.
+- We've fixed the front-facing camera error on `Oukitel WP8 Pro`.
+
 ## 7.2.1
 
 ### Bug fixes:

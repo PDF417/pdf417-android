@@ -1,22 +1,21 @@
 package mobi.pdf417.demo;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.TextView;
 
-import com.microblink.MicroblinkSDK;
-import com.microblink.entities.recognizers.RecognizerBundle;
-import com.microblink.entities.recognizers.blinkbarcode.barcode.BarcodeRecognizer;
-import com.microblink.uisettings.ActivityRunner;
-import com.microblink.uisettings.BarcodeUISettings;
+import com.microblink.blinkbarcode.MicroblinkSDK;
+import com.microblink.blinkbarcode.entities.recognizers.RecognizerBundle;
+import com.microblink.blinkbarcode.entities.recognizers.blinkbarcode.barcode.BarcodeRecognizer;
+import com.microblink.blinkbarcode.uisettings.ActivityRunner;
+import com.microblink.blinkbarcode.uisettings.BarcodeUISettings;
 
 import java.util.Arrays;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Pdf417MobiDemoActivity extends AppCompatActivity {
 
@@ -56,6 +55,7 @@ public class Pdf417MobiDemoActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             handleScanResultIntent(data);
         }
@@ -106,20 +106,7 @@ public class Pdf417MobiDemoActivity extends AppCompatActivity {
     private void setupVersionTextView() {
         String versionString;
 
-        try {
-            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            String appVersion = packageInfo.versionName;
-            int appVersionCode = packageInfo.versionCode;
-
-            versionString = "Application version: " +
-                    appVersion +
-                    ", build " +
-                    appVersionCode +
-                    "\nLibrary version: " +
-                    MicroblinkSDK.getNativeLibraryVersionString();
-        } catch (NameNotFoundException e) {
-            versionString = "";
-        }
+        versionString = "Library version: " +  MicroblinkSDK.getNativeLibraryVersionString();
 
         TextView tvVersion = findViewById(R.id.tvVersion);
         tvVersion.setText(versionString);

@@ -2,8 +2,8 @@ package mobi.pdf417.demo;
 
 import android.app.Application;
 
-import com.microblink.MicroblinkSDK;
-import com.microblink.intent.IntentDataTransferMode;
+import com.microblink.blinkbarcode.MicroblinkSDK;
+import com.microblink.blinkbarcode.intent.IntentDataTransferMode;
 
 public final class CustomUIDemoApp extends Application {
     @Override

@@ -34,8 +34,6 @@ import android.media.ImageReader;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.Size;
 import android.view.LayoutInflater;
@@ -45,16 +43,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.microblink.activity.BaseScanActivity;
 import com.microblink.barcode.R;
-import com.microblink.directApi.DirectApiErrorListener;
-import com.microblink.directApi.RecognizerRunner;
-import com.microblink.entities.recognizers.RecognizerBundle;
-import com.microblink.hardware.orientation.Orientation;
-import com.microblink.image.ImageBuilder;
-import com.microblink.recognition.FeatureNotSupportedException;
-import com.microblink.recognition.RecognitionSuccessType;
-import com.microblink.view.recognition.ScanResultListener;
+import com.microblink.blinkbarcode.directApi.DirectApiErrorListener;
+import com.microblink.blinkbarcode.directApi.RecognizerRunner;
+import com.microblink.blinkbarcode.entities.recognizers.RecognizerBundle;
+import com.microblink.blinkbarcode.hardware.orientation.Orientation;
+import com.microblink.blinkbarcode.image.ImageBuilder;
+import com.microblink.blinkbarcode.recognition.RecognitionSuccessType;
+import com.microblink.blinkbarcode.view.recognition.ScanResultListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,6 +59,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 /**
  * Created by dodo on 11/02/16.
@@ -103,7 +102,7 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
                 if (img != null) {
                     if (mRecognizerRunner.getCurrentState() == RecognizerRunner.State.READY) {
                         mImageBeingRecognized = img;
-                        com.microblink.image.Image image = ImageBuilder.buildImageFromCamera2Image(mImageBeingRecognized, Orientation.ORIENTATION_LANDSCAPE_RIGHT, null);
+                        com.microblink.blinkbarcode.image.Image image = ImageBuilder.buildImageFromCamera2Image(mImageBeingRecognized, Orientation.ORIENTATION_LANDSCAPE_RIGHT, null);
                         Log.i(TAG, "Starting recognition");
                         mTimestamp = System.currentTimeMillis();
                         mRecognizerRunner.recognizeImage(image, Camera2Fragment.this);
@@ -305,13 +304,7 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
     @Override
     public void onStart() {
         super.onStart();
-        try {
-            mRecognizerRunner = RecognizerRunner.getSingletonInstance();
-        } catch (FeatureNotSupportedException e) {
-            Toast.makeText(Camera2Fragment.this.getActivity(), "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
-            getActivity().finish();
-            return;
-        }
+        mRecognizerRunner = RecognizerRunner.getSingletonInstance();
 
         mRecognizerRunner.initialize(getActivity(), mRecognizerBundle, new DirectApiErrorListener() {
             @Override
@@ -649,7 +642,7 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
             // return results
             Intent intent = new Intent();
             mRecognizerBundle.saveToIntent(intent);
-            getActivity().setResult(BaseScanActivity.RESULT_OK, intent);
+            getActivity().setResult(Activity.RESULT_OK, intent);
             getActivity().finish();
         } else {
             try {
@@ -658,6 +651,14 @@ public class Camera2Fragment extends Fragment implements ScanResultListener {
             } catch (Exception exc) {
                 Log.w(TAG, "Failed to capture another frame for ImageReader");
             }
+        }
+    }
+
+    @Override
+    public void onUnrecoverableError(@NonNull Throwable throwable) {
+        Activity activity = getActivity();
+        if (activity != null) {
+            Toast.makeText(activity, throwable.toString(), Toast.LENGTH_LONG).show();
         }
     }
 

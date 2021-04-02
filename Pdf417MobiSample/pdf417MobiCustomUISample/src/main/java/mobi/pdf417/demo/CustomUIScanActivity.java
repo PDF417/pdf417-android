@@ -11,35 +11,36 @@ import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.microblink.activity.BarcodeScanActivity;
-import com.microblink.entities.recognizers.RecognizerBundle;
-import com.microblink.geometry.Rectangle;
-import com.microblink.hardware.SuccessCallback;
-import com.microblink.hardware.orientation.Orientation;
-import com.microblink.metadata.MetadataCallbacks;
-import com.microblink.metadata.detection.FailedDetectionCallback;
-import com.microblink.metadata.detection.points.DisplayablePointsDetection;
-import com.microblink.metadata.detection.points.PointsDetectionCallback;
-import com.microblink.metadata.detection.quad.DisplayableQuadDetection;
-import com.microblink.metadata.detection.quad.QuadDetectionCallback;
-import com.microblink.recognition.RecognitionSuccessType;
-import com.microblink.util.CameraPermissionManager;
-import com.microblink.view.CameraAspectMode;
-import com.microblink.view.CameraEventsListener;
-import com.microblink.view.OrientationAllowedListener;
-import com.microblink.view.exception.NonLandscapeOrientationNotSupportedException;
-import com.microblink.view.recognition.RecognizerRunnerView;
-import com.microblink.view.recognition.ScanResultListener;
-import com.microblink.view.viewfinder.points.PointSetView;
-import com.microblink.view.viewfinder.quadview.QuadViewManager;
-import com.microblink.view.viewfinder.quadview.QuadViewManagerFactory;
-import com.microblink.view.viewfinder.quadview.QuadViewPreset;
+import com.microblink.blinkbarcode.activity.BarcodeScanActivity;
+import com.microblink.blinkbarcode.entities.recognizers.RecognizerBundle;
+import com.microblink.blinkbarcode.geometry.Rectangle;
+import com.microblink.blinkbarcode.hardware.SuccessCallback;
+import com.microblink.blinkbarcode.hardware.orientation.Orientation;
+import com.microblink.blinkbarcode.metadata.MetadataCallbacks;
+import com.microblink.blinkbarcode.metadata.detection.FailedDetectionCallback;
+import com.microblink.blinkbarcode.metadata.detection.points.DisplayablePointsDetection;
+import com.microblink.blinkbarcode.metadata.detection.points.PointsDetectionCallback;
+import com.microblink.blinkbarcode.metadata.detection.quad.DisplayableQuadDetection;
+import com.microblink.blinkbarcode.metadata.detection.quad.QuadDetectionCallback;
+import com.microblink.blinkbarcode.recognition.RecognitionSuccessType;
+import com.microblink.blinkbarcode.util.CameraPermissionManager;
+import com.microblink.blinkbarcode.view.CameraAspectMode;
+import com.microblink.blinkbarcode.view.CameraEventsListener;
+import com.microblink.blinkbarcode.view.OrientationAllowedListener;
+import com.microblink.blinkbarcode.view.exception.NonLandscapeOrientationNotSupportedException;
+import com.microblink.blinkbarcode.view.recognition.RecognizerRunnerView;
+import com.microblink.blinkbarcode.view.recognition.ScanResultListener;
+import com.microblink.blinkbarcode.view.viewfinder.points.PointSetView;
+import com.microblink.blinkbarcode.view.viewfinder.quadview.QuadViewManager;
+import com.microblink.blinkbarcode.view.viewfinder.quadview.QuadViewManagerFactory;
+import com.microblink.blinkbarcode.view.viewfinder.quadview.QuadViewPreset;
+
+import androidx.annotation.NonNull;
 
 @SuppressLint("InflateParams")
 public class CustomUIScanActivity extends Activity implements View.OnClickListener {
@@ -314,6 +315,12 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
                 }, 2000);
             }
         }
+
+        @Override
+        public void onUnrecoverableError(@NonNull Throwable throwable) {
+            Toast.makeText(CustomUIScanActivity.this, throwable.toString(), Toast.LENGTH_LONG).show();
+            finish();
+        }
     };
 
     private final CameraEventsListener mCameraEventsListener = new CameraEventsListener() {
@@ -340,7 +347,7 @@ public class CustomUIScanActivity extends Activity implements View.OnClickListen
             // This method will be called when opening of camera resulted in exception or
             // recognition process encountered an error.
             // The error details will be given in ex parameter.
-            com.microblink.util.Log.e(this, ex, "Error");
+            com.microblink.blinkbarcode.util.Log.e(this, ex, "Error");
             AlertDialog.Builder ab = new AlertDialog.Builder(CustomUIScanActivity.this);
             ab.setMessage("There has been an error!")
                     .setTitle("Error")
